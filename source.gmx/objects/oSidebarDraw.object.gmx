@@ -261,6 +261,10 @@ palette = ds_list_create();
     cyclePaletteObjects(oPlayerStart),
     false, "Goal", false, "Markers");
     
+    newPaletteObject(oBulletBlocker,
+    cyclePaletteObjects(oAlignMarker),
+    false, "Bullet Blocker", false, "Markers");
+    
     /*newPaletteObject(oTrg,
     undefined, 
     false, "Trigger", false, "Markers");*/
