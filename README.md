@@ -1,2 +1,2 @@
 # j2l-expansion
-j2l is a large-scale expansion project for jtool, an "I Wanna" fangame real-time map creation tool. This update is aimed at breathing new life into the tool, since it's usage has declined a lot over the past few years, and it isn't maintained as actively as it once was. The name "j2l" is a portmanteau of the original name and the number 2, to express that this expansion is basically jtool 2.
+j2l is a large-scale expansion project for jtool, an "I Wanna" fangame real-time map creation tool. This update is aimed at breathing new life into the tool as it hasn't been actively maintained in a long time, and its uasage has been rapidly declining in the past couple years. "j2l" is basically jtool 2, with all the grace and freedom jtool originally had and more!
