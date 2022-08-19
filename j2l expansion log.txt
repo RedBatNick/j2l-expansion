@@ -146,17 +146,25 @@ SIDEBAR
 
 		Re-Added Slip Blocks (oSlipBlock).
 
+		Added Slopes (oSlope<direction>).		
+	
 		Re-Added Conveyors, and added new vertical "Elevator" varieties (oSlideBlock<direction>). 
+
+		Added Snapforms, specialized platforms which automatically snap the player upon jumping (oSnapform / oSnapformSideways).
+
+		Added Disappear Platforms, the red platforms from Morning Dew (oDisappearPlatform / oDisappearPlatformSideways).
 
 		Added Align Markers (oAlignMarker). Lights up based on whether you have the relevant align. Accessible from Bullet Blocker.
 
-		Re-Added Nekoron Water (oWaterN). Accessible from Water.
+		Re-Added Nekoron Water (oWaterNekoron). Accessible from Water.
 
-		Added Catharsis Water (oWaterC). Accessible from Water.
+		Added Catharsis Water (oWaterCatharsis). Accessible from Water.
 
-		//Plans to add Vapor, the slow upwards and downwards movement gimmick used in CN3 (oVaporUp / oVaporDown).
+		Added Disappear Water (oWaterDisappear). Accessible from Water.
 
-		//Plans to add other objects for Gravity-changing (oGravityBlock<direction>).
+		Added Vapor, the slow upwards and downwards movement gimmick used in CN3 (oVaporUp / oVaporDown).
+
+		Added other objects for Gravity-changing (oGravityBlock<direction>).
 
 
 	ANALYSIS
@@ -170,41 +178,6 @@ SIDEBAR
 
 
 SKINNING
-	Made more objects skinnable (player blood, slip blocks, conveyors, gravity arrows).
+	Made almost every object skinnable.
 
-	Added more options for animations in skin_config.ini (block, platform, slipblock, slideblock, killerblock, minikillerblock, warp, gravarrow).
-
-
-
-ADDITIONAL INFORMATION
-	
-	TAS / RECORDING MODE
-		TAS mode is currently very broken, rendering it unusable. This shall be fixed in the future, however I am also looking to source help from other people to re-build the TAS system and make it better overall. 
-	
-		Recording mode has received some optimizations, however I have not yet had time to fully flesh out these changes, and so it might be unstable. I would avoid using it for the time being as I have not done proper testing to make sure it works properly; if you decide to use it anyways, do so at your own risk.
-
-		If you'd like to help with fixing the TAS / Recording modes, please get in contact with Fangame Needle Tech at https://discord.gg/9pzruAS6F3. They can provide you much of the things that need fixing / updating, and would be instrumental in fine-tuning new additions.
-
-
-	SIDEWAYS GRAVITY
-		I would like to incorporate sideways gravity, however I would also like to do it in a much better way than the current standard. Most people opt to use a new global variable to differentiate sideways and normal gravity, but I would prefer instead for jtool to do something along the lines of making a set of control variables that interchange hspeed/vspeed. I cannot promise this addition any time soon as it is not a simple matter.
-
-
-	SIDEBAR ADDITIONS
-		I have plans to add the vast majority of objects from CN3 (a lot of which are in Ctool, therefore I'd also include cmap integration), the Many Spikes Mod, Morning Dew, and much more, however it is a lot of work to do, so it will be withheld for the time being. At the very least, I have re-added a few supplementary objects such as the unused jtool objects, Catharsis water, and elevators.
-
-		As for the Analysis section, I would like to add a realtime input timeline to show recent actions, but that is very complex, so it will also be withheld for now.
-
-
-	SKINNING / OBJECT SELECTION
-		I would like to make an effort to re-do the skinning system and object selection system for greater efficiency, but I have not had time to properly figure it out. For now they will remain mostly the same, outside of the few additions I made for skinning as previously mentioned.
-
-
-
-
-
-OUTLINE
-	
-	I have many plans for this later on, but currently I have too much on my hands that I care more about. At the very least, I hope this version of jtool can help you find a lot of use!
-
-	If you find any bugs, please feel free to DM me on Discord at RedBatNick#6751.
+	Made almost every skin file animatable. All skin files that have multiple images are automatically processed for sprite length.
