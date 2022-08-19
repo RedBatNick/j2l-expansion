@@ -600,15 +600,8 @@ if (global.sidebarstate != sidebar_analysis)
         if killer color = global.color_killer
         
         //draw object animations
-        var skinnable = global.skinnable_objects[? object_get_name(obj)];
-        var animspeed = skinnable[? "Speed"];
+        var frame = skinnableImage(obj);
         
-        if (animspeed == undefined) {
-            animspeed = 1;
-        }
-        
-        var frame = floor((global.count % (sprite_get_number(spr) / animspeed)) * animspeed);
-    
         //draw_sprite_ext(spr,frame,xxx+w/2-off,yyy+h/2-off,1,1,0,color,1)
         draw_sprite_ext(spr,frame,xxx+w/2-sprite_get_width(spr)/2+sprite_get_xoffset(spr),yyy+h/2-sprite_get_height(spr)/2+sprite_get_yoffset(spr),1,1,0,color,1)
         

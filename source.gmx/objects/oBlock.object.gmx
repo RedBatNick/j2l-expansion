@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>skinnableImage();
-codable_create();
+            <string>codable_create();
 </string>
           </argument>
         </arguments>

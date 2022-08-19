@@ -27,8 +27,6 @@
             <kind>1</kind>
             <string>highlight_count = 1000;
 chosen = false;
-
-skinnableImage();
 </string>
           </argument>
         </arguments>

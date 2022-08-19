@@ -71,7 +71,7 @@ newSkinnableObject(oMiniSpikeDown, "minidown");
 
 
 // Fruit.
-newSkinnableObject(oApple, "apple");
+newSkinnableObject(oApple, "apple", 1 / 15);
 newSkinnableObject(oEggplant, "eggplant");
 newSkinnableObject(oBanana, "banana");
 
@@ -127,8 +127,8 @@ newSkinnableObject(oGravityBlockDown, "gravityblockdown");
 
 
 // Saves.
-newSkinnableObject(oSave, "save");
-newSkinnableObject(oSaveFlip, "save");
+newSkinnableObject(oSave, "save", 0);
+newSkinnableObject(oSaveFlip, "save", 0);
 
 
 // Markers. 

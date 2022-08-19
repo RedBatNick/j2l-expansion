@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>highlight_count = 1000;
 
-skinnableImage();
 codable_create();
 </string>
           </argument>

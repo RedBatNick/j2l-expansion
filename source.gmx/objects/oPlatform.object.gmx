@@ -29,7 +29,6 @@
 bounce = false;
 snap = 1;
 
-skinnableImage();
 codable_create();
 </string>
           </argument>

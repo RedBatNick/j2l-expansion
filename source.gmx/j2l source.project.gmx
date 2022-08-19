@@ -582,6 +582,7 @@
           <script>scripts\cycleSkin.gml</script>
         </scripts>
         <script>scripts\updatePaletteDepths.gml</script>
+        <script>scripts\mouseInWindow.gml</script>
       </scripts>
       <scripts name="controls">
         <script>scripts\scrControls.gml</script>

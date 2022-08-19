@@ -108,10 +108,6 @@ for (var key = ds_map_find_first(global.skinnable_objects); key != undefined; ke
         sprite_assign(spr_index, spr_default);
         skinnable[? "Speed"] = skinnable[? "DefaultSpeed"];
     }
-    
-    with (asset_get_index(key)) {
-        image_speed = skinnable[? "Speed"];
-    }
 }
 
 // assign background from file
