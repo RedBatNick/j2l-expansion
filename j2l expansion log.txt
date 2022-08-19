@@ -1,0 +1,210 @@
+--- 2.0.0 beta (j2l expansion)
+>This update was made by RedBatNick, with help from popop614, MrChen233, KingSlendy, and more.
+
+SAVING/LOADING FORMAT
+	Rebuilt the saving/loading format. Maps load faster than before, object type cap removed, save map is more readable and editable.
+	
+	Legacy jmaps (maps made using a pre 2.0.0 format) can be normally loaded, but will display a warning to tell you it was made in an old format. Simply resave the map to remove this warning.
+
+
+MENU
+	Rebuilt the dropdown menu. Relevant options can now be found in submenus.
+	
+	FILE
+		Replaced RMJ Map options with "Other Formats" dropdown. Contains formatting options in which you can import/export files. (Starts with RMJ maps).
+
+			Added support for legacy jmaps (maps made using a pre 2.0.0 format), thus making most, if not all jmap files backwards compatible.
+
+			// Plans to add support for cmaps. 
+
+			// Plans to add support for IWM maps.
+
+			// Plans to add support for GMX room files.
+
+			// Plans to add support for GM82 room files.
+			
+
+		Moved all recording options under "Recording" dropdown. Contains all the original options for starting, stopping, erasing, continuing, saving, and loading recordings.
+
+
+	MAP
+		Replaced "Dotkid" option with "Transforms" dropdown. Contains transformations the player can toggle on and off (Starting with Dotkid).
+
+			Added new "Vkid" option, which operates like the VVV gimmick used in VoVoVo, Save My Boy, etc.
+
+			Added new "Telekid" option, which operates like the teleport shooting gimmick used in NANG.
+
+			Added new "Lunarkid" option, which operates like the "Rocket" gimmick used in Morning Dew.
+
+			Added new "Linekid" option, which operates like the line rotating gimmick used in Morning Dew.
+
+			All transformations are applicable with each other. Some combinations have special behaviors, such as Dotkid and Lunarkid, or Vkid and Telekid.
+		
+
+		Replaced Saves options with "Save Types" dropdown. Contains save types the player can toggle on and off (Starting with Z saves and Shoot saves).
+		
+			Added new "S saves" option, which allows you to press S to save.
+			You can't use the "S to save anywhere" hotkey while touching a save.
+
+			Added new "Touch saves" option, which allows you to save via proxy.
+
+			All save types are applicable with each other. You can, for example, have saves which are unsavable, or, you could have saves that work by pressing Z or S on them.
+
+
+		Replaced "Inf Jump" option with "Physics" dropdown. Contains physics options the player can toggle on and off (Starting with Inf Jump).
+
+			Added new "Ice" options (including None, Slip, Domu, Pressure), which determine what momentum options you have. 
+
+			Added new "Slowshot" option, which makes your bullets move slow, and allows you to have up to 10 bullets on screen as opposed to 4.
+		
+
+		Replaced Border options with "Borders" dropdown. Contains border options the player can switch between (Starting with Solid/Death Border).
+
+			Added new "BBox" options (including Center, Far Edge, Near Edge) which determine what type of collision the player has with the border.
+
+			Added new "Wrap" options (including None, X, Y, XY), which determine what type of screenwrapping the player can do.
+
+
+		Added new "Interactions" dropdown. Contains options for how certain object interactions occur.
+
+			Added new "Dotkid Clipping" option, which determines whether or not you will clip into a block when transforming to/from Dotkid.
+
+			Added new "Dotkid Platfix" option, which determines whether or not Dotkid will have fixed platform collision.
+
+			Added new "Telekid Range" option, which determines whether or not you can teleport while right next to a block or not with Telekid.
+
+
+	
+
+	PREFERENCES
+		Moved many player-specific preferences into "Player" dropdown. Contains preference options pertaining to the player (Death/No Death, Show/Only Hitbox, Dot Outline)
+
+			Added new "Hit Death" toggle to the original death options, which instead causes you to become intangible for 1 second when touching a killer.
+
+			Added new "Save Subpx" option, which controls whether or not your subpixels (halign and valign) are floored upon saving and resetting. 
+
+
+		Moved many window-specific preferences into "Screen" dropdown. Contains
+		preference options pertaining to the display (Fullscreen/Windowed, Hide/Show Sidebar, Mouse Coordinates, Grid Overlay)
+
+			Added new "Grid Sync" option, which determines whether the grid overlay size is directly effected by the current grid snap or not. 
+			Should be used in conjunction with the "Grid" draw option.
+
+
+		Moved many system-specific preferences into "System" dropdown. Contains preference options pertaining to system settings (Lock/Unlock Water, Backup on/off, Check for updates on/off)
+
+			Added new "Lock Keys" option, which determines what state the palette hotkeys are in. When set to 1, the player may only use most hotkeys while holding Control. When set to 2, the player may not use most hotkeys. Useful for testing purposes when accidentally fat fingering.
+
+			Added new "Air Saving" option, which determines whether the player can save in the air, or only when on or 1px above the floor. Useful for not saving in a bad position on accident.
+
+			Added new "Global Time" option, which determines whether animations restart on room restart.
+
+
+		//Plans to add "Controls" dropdown, which would contain preference options for all available keybinds.
+
+		//Plans to add "Position" dropdown, which would contain input options for moving the view. This feature would allow for farlands experimentation.
+
+
+	Added and expanded upon various icons for menu options to add extra flavor.
+
+	Made the menu slightly shorter since less space is required now to fit all options.
+
+	Replaced "Forum thread", "Skin library", and "More of my tools" links in About with "I Wanna Hub" link.
+
+
+PLAYER 
+	Fixed being able to A/D through blocks.
+
+	Updated relevant code to function more like the Verve Engine player for easier access.
+
+	Fixed Dotkid collision with platforms (can be toggled on/off with the "Dotkid Platfix" option under the "Interactions" dropdown).
+
+	Removed sPlayerShoot as an animation due to inaccuracies and redundancy.
+
+	Streamlined how player sprites and masks are handled (playerSprite script).
+
+
+SIDEBAR
+	Revised what information is displayed on the sidebar. 
+
+	The sidebar will default to a "Hybrid" state which mirrors the original sidebar layout, and clicking on the button will switch it to toggle between "Palette" and "Analysis" states. 
+	
+	Holding Ctrl and Left clicking on the button will revert it back to the "Hybrid" state.
+
+	Non-Hybrid sidebar states have additional scrolling space.
+
+	PALETTE
+		Rebuilt the object palette to remove redundancy, and for more convenience. The palette is similar to Maker's, and could be considered as a "Maker Lite" palette.
+
+		Added Eggplants from IWBTGuy (oEggplant). Accessible from Fruit.
+		
+		Added Bananas from IWBTDestination (oBanana). Accessible from Fruit.
+
+		Updated and fixed the default oMiniKillerBlock sprite. Accessible from Killer Block.
+
+		Added Sideways Platforms (oSidewaysPlatform). Accessible from Platform. 
+
+		Re-Added Slip Blocks (oSlipBlock).
+
+		Re-Added Conveyors, and added new vertical "Elevator" varieties (oSlideBlock<direction>). 
+
+		Added Align Markers (oAlignMarker). Lights up based on whether you have the relevant align. Accessible from Bullet Blocker.
+
+		Re-Added Nekoron Water (oWaterN). Accessible from Water.
+
+		Added Catharsis Water (oWaterC). Accessible from Water.
+
+		//Plans to add Vapor, the slow upwards and downwards movement gimmick used in CN3 (oVaporUp / oVaporDown).
+
+		//Plans to add other objects for Gravity-changing (oGravityBlock<direction>).
+
+
+	ANALYSIS
+		Added several more digits to the X position subpixels display; lowered the Y position subpixels from 16 to 9, since both X and Y subpixels effectively stop mattering past 9 decimal places.
+
+		Removed "pos" text from X and Y in the player position section.
+
+		Added Gravity, H, and V values to Analysis display. They track Gravity, Hspeed, and Vspeed respectively, and can also have their digits extended up to 9 decimals just as X and Y.
+
+		Added Cactus notation to jump height section. Cactus notation checks for extra shift releases, and would look like "1+1 cactus" for a 2f cancel, or "1+1+1 cactus" for a double cancel, etc.
+
+
+SKINNING
+	Made more objects skinnable (player blood, slip blocks, conveyors, gravity arrows).
+
+	Added more options for animations in skin_config.ini (block, platform, slipblock, slideblock, killerblock, minikillerblock, warp, gravarrow).
+
+
+
+ADDITIONAL INFORMATION
+	
+	TAS / RECORDING MODE
+		TAS mode is currently very broken, rendering it unusable. This shall be fixed in the future, however I am also looking to source help from other people to re-build the TAS system and make it better overall. 
+	
+		Recording mode has received some optimizations, however I have not yet had time to fully flesh out these changes, and so it might be unstable. I would avoid using it for the time being as I have not done proper testing to make sure it works properly; if you decide to use it anyways, do so at your own risk.
+
+		If you'd like to help with fixing the TAS / Recording modes, please get in contact with Fangame Needle Tech at https://discord.gg/9pzruAS6F3. They can provide you much of the things that need fixing / updating, and would be instrumental in fine-tuning new additions.
+
+
+	SIDEWAYS GRAVITY
+		I would like to incorporate sideways gravity, however I would also like to do it in a much better way than the current standard. Most people opt to use a new global variable to differentiate sideways and normal gravity, but I would prefer instead for jtool to do something along the lines of making a set of control variables that interchange hspeed/vspeed. I cannot promise this addition any time soon as it is not a simple matter.
+
+
+	SIDEBAR ADDITIONS
+		I have plans to add the vast majority of objects from CN3 (a lot of which are in Ctool, therefore I'd also include cmap integration), the Many Spikes Mod, Morning Dew, and much more, however it is a lot of work to do, so it will be withheld for the time being. At the very least, I have re-added a few supplementary objects such as the unused jtool objects, Catharsis water, and elevators.
+
+		As for the Analysis section, I would like to add a realtime input timeline to show recent actions, but that is very complex, so it will also be withheld for now.
+
+
+	SKINNING / OBJECT SELECTION
+		I would like to make an effort to re-do the skinning system and object selection system for greater efficiency, but I have not had time to properly figure it out. For now they will remain mostly the same, outside of the few additions I made for skinning as previously mentioned.
+
+
+
+
+
+OUTLINE
+	
+	I have many plans for this later on, but currently I have too much on my hands that I care more about. At the very least, I hope this version of jtool can help you find a lot of use!
+
+	If you find any bugs, please feel free to DM me on Discord at RedBatNick#6751.
