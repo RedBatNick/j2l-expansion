@@ -4,11 +4,11 @@ j2l is a large-scale expansion project for jtool, an "I Wanna" fangame real-time
 Current j2l plans:
 
 [/] New save/load system
-  [/] Backwards compatibility with Legacy jmaps
-  [ ] Backwards compatibility with cmaps
-  [ ] Backwards compatibility IWM maps
-  [ ] Possible backwards compatibility with gmx room files
-  [ ] Possible backwards compatibility with gm82 room files
+	[/] Backwards compatibility with Legacy jmaps
+	[ ] Backwards compatibility with cmaps
+	[ ] Backwards compatibility IWM maps
+	[ ] Possible backwards compatibility with gmx room files
+	[ ] Possible backwards compatibility with gm82 room files
   
 [ ] All viable Crimson Needle 3 gimmicks / feature additions
   
