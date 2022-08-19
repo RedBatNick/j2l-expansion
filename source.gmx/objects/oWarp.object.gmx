@@ -28,8 +28,7 @@
             <string>highlight_count = 1000;
 chosen = false;
 
-var skinnable = global.skinnable_objects[? object_get_name(object_index)];
-image_speed = skinnable[? "Speed"];
+skinnableImage();
 </string>
           </argument>
         </arguments>

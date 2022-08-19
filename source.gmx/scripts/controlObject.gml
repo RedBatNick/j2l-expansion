@@ -28,6 +28,9 @@ switch(type)
         case oPlatform:
         case oPlatformSideways:
         
+        case oSnaplessPlatform:
+        case oSnaplessPlatformSideways:
+        
         case oSnapform:
         case oSnapformSideways:
         

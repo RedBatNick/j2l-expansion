@@ -27,8 +27,7 @@
             <kind>1</kind>
             <string>highlight_count = 1000;
 
-var skinnable = global.skinnable_objects[? object_get_name(object_index)];
-image_speed = skinnable[? "Speed"];
+skinnableImage();
 codable_create();
 </string>
           </argument>

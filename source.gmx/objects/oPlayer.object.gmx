@@ -1033,7 +1033,7 @@ if (global.dotkid)
     }
 }
 
-if (global.lunarkid || other.image_alpha &lt; 1) 
+if (global.lunarkid || !other.snap) 
     exit;
 
 if (sign(global.grav == 1)) 

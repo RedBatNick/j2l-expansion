@@ -7,4 +7,4 @@ if (animspeed == undefined) {
 }
 
 image_speed = animspeed;
-image_index = floor((global.count % (sprite_get_number(sprite_index) / animspeed)) * animspeed);
+//image_index = floor((global.count % (sprite_get_number(sprite_index) / animspeed)) * animspeed);

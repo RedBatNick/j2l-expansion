@@ -75,8 +75,6 @@ delay = 1;
             <string>if (place_meeting(x,y,oPlayer) &amp;&amp; active)
 {
     alarm[0] = delay;
-    with (oPlayer)
-        djump = 1;
     active = 0;
 }
 </string>

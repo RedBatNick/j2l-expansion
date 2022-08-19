@@ -25,12 +25,6 @@ newSkinnableObject(oEditBlock, "block");
 newSkinnableObject(oEditMiniBlock, "miniblock");
 newSkinnableObject(oSlipBlock, "slipblock");
 
-newSkinnableObject(oSlideBlock, "slideblock");
-newSkinnableObject(oSlideBlockU, "slideblockup");
-newSkinnableObject(oSlideBlockR, "slideblockright");
-newSkinnableObject(oSlideBlockL, "slideblockleft");
-newSkinnableObject(oSlideBlockD, "slideblockdown");
-
 
 // Slopes.
 newSkinnableObject(oSlope, "slopeblock");
@@ -40,11 +34,24 @@ newSkinnableObject(oSlopeDownLeft, "slopedownleft");
 newSkinnableObject(oSlopeDownRight, "slopedownright");
 
 
+// Conveyors.
+newSkinnableObject(oSlideBlock, "slideblock");
+newSkinnableObject(oSlideBlockU, "slideblockup");
+newSkinnableObject(oSlideBlockR, "slideblockright");
+newSkinnableObject(oSlideBlockL, "slideblockleft");
+newSkinnableObject(oSlideBlockD, "slideblockdown");
+
+
 // Platforms.
 newSkinnableObject(oPlatform, "platform");
 newSkinnableObject(oPlatformSideways, "platform");
+
+newSkinnableObject(oSnaplessPlatform, "snaplessplatform");
+newSkinnableObject(oSnaplessPlatformSideways, "snaplessplatform");
+
 newSkinnableObject(oSnapform, "snapform");
 newSkinnableObject(oSnapformSideways, "snapform");
+
 newSkinnableObject(oDisappearPlatform, "disappearplatform");
 newSkinnableObject(oDisappearPlatformSideways, "disappearplatform");
 
@@ -69,6 +76,13 @@ newSkinnableObject(oEggplant, "eggplant");
 newSkinnableObject(oBanana, "banana");
 
 
+// Lines.
+newSkinnableObject(oLineKillerV, "linev");
+newSkinnableObject(oLineKillerH, "lineh");
+newSkinnableObject(oLineKillerDA, "lineda");
+newSkinnableObject(oLineKillerDB, "linedb");
+
+
 // Killerblocks.
 newSkinnableObject(oKillerBlock, "killerblock");
 newSkinnableObject(oMiniKillerBlock, "minikillerblock");
@@ -78,9 +92,14 @@ newSkinnableObject(oMiniKillerBlock, "minikillerblock");
 newSkinnableObject(oWater, "water1");
 newSkinnableObject(oWater2, "water2");
 newSkinnableObject(oWater3, "water3");
-newSkinnableObject(oWaterNekoron, "waterNekoron");
-newSkinnableObject(oWaterCatharsis, "waterCatharsis");
-newSkinnableObject(oWaterDisappear, "waterDisappear");
+newSkinnableObject(oWaterNekoron, "nwater");
+newSkinnableObject(oWaterCatharsis, "cwater");
+newSkinnableObject(oWaterDisappear, "diswater");
+
+
+// Vapor.
+newSkinnableObject(oVaporUp, "vaporup");
+newSkinnableObject(oVaporDown, "vapordown");
 
 
 // Vines.
@@ -101,6 +120,11 @@ newSkinnableObject(oGravityArrowRight, "gravityarrowright");
 newSkinnableObject(oGravityArrowLeft, "gravityarrowleft");
 newSkinnableObject(oGravityArrowDown, "gravityarrowdown");
 
+newSkinnableObject(oGravityBlockUp, "gravityblockup");
+newSkinnableObject(oGravityBlockRight, "gravityblockright");
+newSkinnableObject(oGravityBlockLeft, "gravityblockleft");
+newSkinnableObject(oGravityBlockDown, "gravityblockdown");
+
 
 // Saves.
 newSkinnableObject(oSave, "save");
@@ -109,6 +133,7 @@ newSkinnableObject(oSaveFlip, "save");
 
 // Markers. 
 newSkinnableObject(oBulletBlocker, "bulletblocker");
+newSkinnableObject(oAlignMarker, "alignmarker");
 
 
 // Warps.

@@ -866,6 +866,10 @@
           <object>objects\oPlatform</object>
           <object>objects\oPlatformSideways</object>
         </objects>
+        <objects name="snapless">
+          <object>objects\oSnaplessPlatform</object>
+          <object>objects\oSnaplessPlatformSideways</object>
+        </objects>
         <objects name="snapform">
           <object>objects\oSnapform</object>
           <object>objects\oSnapformSideways</object>
@@ -995,7 +999,7 @@
       <object>objects\oHideSidebar</object>
       <object>objects\oSidebar</object>
       <object>objects\oSidebarDraw</object>
-      <object>objects\oPalette</object>
+      <object>objects\oEdit</object>
       <objects name="deprecated">
         <objects name="default buttons">
           <object>objects\oEditorInstructions</object>
@@ -1004,7 +1008,7 @@
           <object>objects\oSpeedComboBox</object>
         </objects>
         <objects name="palette">
-          <object>objects\oEdit</object>
+          <object>objects\oPalette</object>
         </objects>
         <objects name="analysis">
           <object>objects\oDeathDisplay</object>

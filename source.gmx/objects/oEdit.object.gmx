@@ -293,7 +293,7 @@ ysnapped_previous = ysnapped
             <string>// selected object and sprite. set by the menu object.
 selected_index = 0;
 selected_cycle = 0;
-var obj_palette = oPalette.palette[| 0];
+var obj_palette = oSidebarDraw.palette[| 0];
 selected_object = obj_palette[? "Object"];
 selected_sprite = object_get_sprite(selected_object);
 selected_killer = obj_palette[? "Killer"];

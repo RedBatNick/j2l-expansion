@@ -1,4 +1,4 @@
-// comboBoxButton(x,y,w,h,droph,text)
+/// comboBoxButton(x, y, w, h, droph, text, icon)
 
 var xx = argument0
 var yy = argument1
@@ -15,9 +15,9 @@ if menuButton(xx,yy,w,h,text,enabled,icon) {
 }
 
 if selected
-and (mouse_x < x or mouse_x > x+w-1
-or mouse_y < y or mouse_y > y+h+droph-1
-or global.state != globalstate_idle) {
+&& (mouse_x < xx || mouse_x > xx+w-1
+|| mouse_y < yy || mouse_y > yy+h+droph-1
+|| global.state != globalstate_idle) {
     selected = false
     global.comboboxselected = false
 }

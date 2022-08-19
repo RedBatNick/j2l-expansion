@@ -27,9 +27,9 @@
             <kind>1</kind>
             <string>yspeed = 0;
 bounce = false;
+snap = 1;
 
-var skinnable = global.skinnable_objects[? object_get_name(object_index)];
-image_speed = skinnable[? "Speed"];
+skinnableImage();
 codable_create();
 </string>
           </argument>
