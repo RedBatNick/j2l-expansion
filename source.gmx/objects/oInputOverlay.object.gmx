@@ -1663,7 +1663,7 @@ if (mode == input_about)
     +"#record version 1.1#"
     +"#made by Patrickgh3"
     +"#original record mod by Cube"
-    +"#j2l expansion by RedBatNick#"
+    +"#j2l expansion by RedBatNick and KingSlendy#"
     +"#Special thanks:"
     +"#YoYoYoDude1 for his studio engine"
     +"#Thenewgeezer for the original RMJ"
@@ -1673,9 +1673,8 @@ if (mode == input_about)
     +"#DuckNumbers for the original TAS mode"
     +"#Syfactor26 for the Many Spikes Mod"
     +"#Chen233 for the advanced input overlay"
-    +"#KingSlendy for help with the new save/load system"
     +"#people who gave feedback and feature ideas"
-    +'#Various other makers for their own "X"tool mods'
+    +"#Various other makers for their own 'X'tool mods"
     
     +"##Please read readme.html for more info!");
     

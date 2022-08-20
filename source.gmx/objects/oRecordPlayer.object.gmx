@@ -175,7 +175,7 @@ if (xxL &lt; 0 || xxR &gt; 800)
         {
             with (oBorderDeath)
             {
-                if (type = 'left')
+                if (type = "left")
                     highlight_count = 0;
             }
         }
@@ -183,7 +183,7 @@ if (xxL &lt; 0 || xxR &gt; 800)
         {
             with (oBorderDeath)
             {
-                if (type = 'right')
+                if (type = "right")
                     highlight_count = 0;
             }
         }
@@ -203,7 +203,7 @@ if (yyU &lt; 0 || yyD &gt; 608)
         {
             with (oBorderDeath) 
             {
-                if (type = 'top')
+                if (type = "top")
                     highlight_count = 0;
             }
         }
@@ -211,7 +211,7 @@ if (yyU &lt; 0 || yyD &gt; 608)
         {
             with (oBorderDeath)
             {
-                if (type = 'bottom')
+                if (type = "bottom")
                     highlight_count = 0;
             }
         }
