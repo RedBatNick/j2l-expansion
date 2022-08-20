@@ -28,8 +28,8 @@
             <string>/// Places and removes objects with the mouse.
 
 // bounds of the area where you can place and remove objects
-xmin = 0;
-ymin = 0;
+xmin = 1;
+ymin = 1;
 xmax = 799;
 ymax = 607;
 
