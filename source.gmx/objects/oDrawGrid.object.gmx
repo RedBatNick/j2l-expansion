@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surf = surface_create(800,608)
-needToRedrawSurf = true
+            <string>surf = surface_create(800,608);
+needToRedrawSurf = true;
 </string>
           </argument>
         </arguments>
@@ -49,9 +49,9 @@ needToRedrawSurf = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not surface_exists(surf) {
-    surf = surface_create(800,608)
-    needToRedrawSurf = true
+            <string>if (!surface_exists(surf)) {
+    surf = surface_create(800,608);
+    needToRedrawSurf = true;
 }
 </string>
           </argument>
@@ -75,11 +75,11 @@ needToRedrawSurf = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.grid_draw != 0 and needToRedrawSurf {
-    needToRedrawSurf = false
-    surface_set_target(surf)
-    draw_clear_alpha(c_black,0)
-    draw_set_color(c_black)
+            <string>if (global.grid_draw != 0 &amp;&amp; needToRedrawSurf) {
+    needToRedrawSurf = false;
+    surface_set_target(surf);
+    draw_clear_alpha(c_black,0);
+    draw_set_color(c_black);
     /*if global.grid_draw == 2 or global.grid_draw == 1 {
         for (var xx=-608; xx&lt;800; xx+=4) {
             draw_line(xx,0,xx+608,608)
@@ -89,25 +89,25 @@ needToRedrawSurf = true
     }
     else*/ 
     {
-        for (var xx=0; xx&lt;800; xx+=global.grid_draw) {
-            draw_line(xx,0,xx,607)
+        for (var xx = 0; xx &lt; 800; xx+=global.grid_draw) {
+            draw_line(xx,0,xx,607);
         }
-        for (var yy=0; yy&lt;608; yy+=global.grid_draw) {
-            draw_line(0,yy,799,yy)
+        for (var yy = 0; yy &lt; 608; yy+=global.grid_draw) {
+            draw_line(0,yy,799,yy);
         }
     }
-    surface_reset_target()
+    surface_reset_target();
 }
 
-if global.grid_sync and global.grid_draw != 0 &amp;&amp; (global.grid_draw != oEdit.snap)
+if (global.grid_sync &amp;&amp; global.grid_draw != 0 &amp;&amp; (global.grid_draw != oEdit.snap))
 {
     global.grid_draw = oEdit.snap;
-    needToRedrawSurf = true
-    saveConfig()
+    needToRedrawSurf = true;
+    saveConfig();
 }
 
-if global.grid_draw != 0 {
-    draw_surface_ext(surf,0,0,1,1,0,c_white,0.15)
+if (global.grid_draw != 0) {
+    draw_surface_ext(surf,0,0,1,1,0,c_white,0.15);
 }
 </string>
           </argument>

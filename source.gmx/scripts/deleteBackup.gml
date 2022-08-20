@@ -1,4 +1,6 @@
-if file_exists(prefix_project_path_if_needed('backup.jmap')) {
-    file_delete(prefix_project_path_if_needed('backup.jmap'))
-}
-alarm[5] = global.backup_period
+var backup = prefix_project_path_if_needed("backup.jmap");
+
+if (file_exists(backup))
+    file_delete(backup);
+
+alarm[3] = global.backup_period;

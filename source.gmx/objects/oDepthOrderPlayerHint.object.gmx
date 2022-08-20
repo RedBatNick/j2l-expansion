@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>count = 0
+            <string>count = 0;
 </string>
           </argument>
         </arguments>
@@ -48,10 +48,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>count += 1
+            <string>count += 1;
 
-if count &gt; 75 image_alpha -= 0.025
-if image_alpha &lt;= 0 instance_destroy()
+if (count &gt; 75) { image_alpha -= 0.025; }
+if (image_alpha &lt;= 0) { instance_destroy(); }
 </string>
           </argument>
         </arguments>
@@ -74,7 +74,7 @@ if image_alpha &lt;= 0 instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
+            <string>draw_self();
 </string>
           </argument>
         </arguments>

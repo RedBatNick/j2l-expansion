@@ -11,8 +11,8 @@ if (!global.vkid)
     else if (djump > 0 || place_meeting(x,y+global.grav,oWater2) || place_meeting(x,y+global.grav,oWater3) || global.infinitejump) 
     {
         vspeed = -jump2;
-        
         playerSprite(sPlayerJump);
+        
         audio_play_sound(sndDJump,0,0);
         global.frameaction_djump = true;
         

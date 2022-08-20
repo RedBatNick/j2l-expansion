@@ -25,15 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var view_w = 1056 - (256*global.hidesidebar)
-if window_get_width() != view_w {
-    window_set_size(view_w,608)
-    view_wport = view_w
-    view_wview = view_w
-    completelyResetZoom()
-    saveAndResetZoom()
-    if not window_get_fullscreen() oZoom.x2 = view_w
-    display_set_gui_size(view_wport,view_hport)
+            <string>var view_w = 1056 - (256*global.hidesidebar);
+if (window_get_width() != view_w) {
+    window_set_size(view_w,608);
+    view_wport = view_w;
+    view_wview = view_w;
+    completelyResetZoom();
+    saveAndResetZoom();
+    if (!window_get_fullscreen()) { oZoom.x2 = view_w; }
+    display_set_gui_size(view_wport,view_hport);
 }
 </string>
           </argument>

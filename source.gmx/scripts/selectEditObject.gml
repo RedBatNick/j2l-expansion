@@ -1,4 +1,4 @@
-var i = argument0;
+var i = argument[0];
 
 oEdit.selected_object = objs[i];
 oEdit.selected_sprite = sprs[i];

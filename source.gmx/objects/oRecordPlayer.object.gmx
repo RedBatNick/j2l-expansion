@@ -30,33 +30,8 @@
 //record movement values
 grav = global.recordGrav;
 xscale = global.recordXscale;
-angle = global.recordAngle;
+//angle = global.recordAngle;
 vspeed = global.recordVspeed;
-
-
-//record transforms
-dotkid = global.recordDotkid;
-vkid = global.recordVkid;
-telekid = global.recordTelekid;
-lunarkid = global.recordLunarkid;
-linekid = global.recordLinekid;
-
-
-//record physics
-infinitejump = global.recordInfinitejump;
-icetype = global.recordIcetype;
-slippage = global.recordSlippage;
-
-
-//record border
-borderbox = global.recordBorderbox;
-screenwraptype = global.recordScreenwraptype;
-
-
-//record interactions
-dotclip = global.recordDotclip;
-dotplatfix = global.recordDotplatfix;
-telerange = global.recordTelerange;
 
 global.PlayerFrameCounter = 0;
 
@@ -89,7 +64,7 @@ jump2 = 7 * grav;
 maxSpeed = 3;
 maxVspeed = 9;
 
-if (linekid)
+/*if (linekid)
     image_angle = angle;
 
 if (lunarkid) 
@@ -99,7 +74,7 @@ if (lunarkid)
     gravity = 0; 
     friction = 0.0005;
 }
-else { gravity = 0.4 * grav }
+else */{ gravity = 0.4 * grav }
 
 frozen = false;
 djump = true;

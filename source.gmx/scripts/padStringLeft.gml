@@ -2,11 +2,11 @@
 
 // padStringLeft(str,length,padchar)
 
-var str = argument0
-var length = argument1
-var padchar = argument2
+var str = argument[0];
+var length = argument[1];
+var padchar = argument[2];
 
-while string_length(str) < length {
-    str = padchar + str
+while (string_length(str) < length) {
+    str = padchar + str;
 }
-return str
+return str;

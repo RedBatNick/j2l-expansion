@@ -1,4 +1,4 @@
-var count = argument0
+var count = argument[0];
 
-var fraction = 1-(count-global.killer_holdduration)/global.killer_fadeduration
-return clamp(fraction,0,1)
+var fraction = 1-(count-global.killer_holdduration)/global.killer_fadeduration;
+return clamp(fraction,0,1);

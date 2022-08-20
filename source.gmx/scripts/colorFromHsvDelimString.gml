@@ -2,10 +2,10 @@
 
 // color_from_hsvstring(str,delim)
 
-var str = argument0
-var delim = argument1
+var str = argument[0];
+var delim = argument[1];
 
 return make_color_hsv(
 real(splitDelimString(str,delim,0)),
 real(splitDelimString(str,delim,1)),
-real(splitDelimString(str,delim,2)))
+real(splitDelimString(str,delim,2)));

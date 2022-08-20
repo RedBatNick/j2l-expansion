@@ -11,12 +11,12 @@
 /// GMLscripts.com/license
 {
     var str, S, E, M, byte, n;
-    str = argument0;
+    str = argument[0];
     var i;
     for (i = 0; i < 8; i += 1) {
         //byte[i] = ord(string_char_at(str,8 - i));
         byte[i] = 0
-        for (var j=0; j<8; j+=1) {
+        for (var j = 0; j < 8; j+=1) {
             byte[i] += real(string_char_at(str,(7-i)*8+j+1)) * (128>>j)
         }
     }

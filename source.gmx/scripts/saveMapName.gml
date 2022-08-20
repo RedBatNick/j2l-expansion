@@ -1,7 +1,7 @@
-var filename = argument0
-if not global.BackupFailSafe{
-oEdit.undo_nochanges = true}
-global.BackupFailSafe = false
+var filename = argument[0];
+if (!global.BackupFailSafe)
+    oEdit.undo_nochanges = true;
+global.BackupFailSafe = false;
 
 var map = ds_map_create();
 
@@ -17,6 +17,20 @@ ver[? "VerPatch"] = global.version_patch;
 ds_list_mark_as_map(vers, index);
 index++;
 ds_map_add_list(map, "Version", vers);
+
+// transformations
+var forms = ds_list_create();
+var index = 0;
+forms[| index] = ds_map_create();
+var form = forms[| index];
+form[? "Dot"] = global.dotkid;
+form[? "VVV"] = global.vkid;
+form[? "Tele"] = global.telekid;
+form[? "Lunar"] = global.lunarkid;
+form[? "Line"] = global.linekid;
+ds_list_mark_as_map(forms, index);
+index++;
+ds_map_add_list(map, "KidType", forms);
 
 // save types
 var saves = ds_list_create();
@@ -67,20 +81,6 @@ ds_list_mark_as_map(actions, index);
 index++;
 ds_map_add_list(map, "Interactions", actions);
 
-// transformations
-var forms = ds_list_create();
-var index = 0;
-forms[| index] = ds_map_create();
-var form = forms[| index];
-form[? "Dot"] = global.dotkid;
-form[? "VVV"] = global.vkid;
-form[? "Tele"] = global.telekid;
-form[? "Lunar"] = global.lunarkid;
-form[? "Line"] = global.linekid;
-ds_list_mark_as_map(forms, index);
-index++;
-ds_map_add_list(map, "KidType", forms);
-
 // player values
 var players = ds_list_create();
 var index = 0;
@@ -127,29 +127,29 @@ with (all) {
     object[? "Y"] = ystart;
     
     //image values
-    if image_xscale != 1
+    if (image_xscale != 1)
         object[? "XScale"] = image_xscale;
         
-    if image_yscale != 1
+    if (image_yscale != 1)
         object[? "YScale"] = image_yscale;
         
-    if image_angle != 0
+    if (image_angle != 0)
         object[? "Angle"] = image_angle;
           
     //movement values
-    if direction != 0
+    if (direction != 0)
         object[? "Dir"] = direction;
     
-    if speed != 0
+    if (speed != 0)
         object[? "Spd"] = speed;
         
-    if gravity_direction != 270
+    if (gravity_direction != 270)
         object[? "Grvdir"] = gravity_direction;
         
-    if gravity != 0
+    if (gravity != 0)
         object[? "Grv"] = gravity;
         
-    if friction != 0
+    if (friction != 0)
         object[? "Fric"] = friction;
         
     //final save
@@ -169,16 +169,16 @@ buffer_delete(buffer);
 ds_map_destroy(map);
 
 // warning messages for oob or unrecognized objects
-var warning_message = ''
-if objects_unrecognized {
-    warning_message += "Warning: Some objects were not official and weren't saved."
+var warning_message = "";
+if (objects_unrecognized) {
+    warning_message += "Warning: Some objects were not official and weren't saved.";
 }
-if objects_out_of_range {
+if (objects_out_of_range) {
     warning_message = "Warning: Some objects were out of range and weren't saved."
-        +'#(x or y < '+string(min_pos)+' or >= '+string(max_pos)+')'
+        +"#(x or y < "+string(min_pos)+" or >= "+string(max_pos)+")";
 }
-if warning_message != '' {
-    inputOverlay(input_info,false,warning_message)
+if (warning_message != "") {
+    inputOverlay(input_info,false,warning_message);
 }
 
-return true
+return true;

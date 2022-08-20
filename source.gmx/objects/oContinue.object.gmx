@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>continueRecordBegin()
+            <string>continueRecordBegin();
 </string>
           </argument>
         </arguments>
@@ -48,8 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.record == 1 {
-    draw_background_ext(bgRecord,0,18,1,1,0,c_white,0.4)
+            <string>if (global.record == 1) {
+    draw_background_ext(bgRecord,0,18,1,1,0,c_white,0.4);
 }
 </string>
           </argument>

@@ -156,7 +156,7 @@ if (xxL &lt; 0 || xxR &gt; 800)
         {
             with (oBorderDeath)
             {
-                if (type = 'left')
+                if (type = "left")
                     highlight_count = 0;
             }
         }
@@ -164,7 +164,7 @@ if (xxL &lt; 0 || xxR &gt; 800)
         {
             with (oBorderDeath)
             {
-                if (type = 'right')
+                if (type = "right")
                     highlight_count = 0;
             }
         }
@@ -186,7 +186,7 @@ if (yyU &lt; 0 || yyD &gt; 608)
         {
             with (oBorderDeath) 
             {
-                if (type = 'top')
+                if (type = "top")
                     highlight_count = 0;
             }
         }
@@ -194,7 +194,7 @@ if (yyU &lt; 0 || yyD &gt; 608)
         {
             with (oBorderDeath)
             {
-                if (type = 'bottom')
+                if (type = "bottom")
                     highlight_count = 0;
             }
         }
@@ -275,22 +275,22 @@ if (global.record == 1)
     ds_list_add(global.recordList,scrButtonCheckReleased(KEY.JUMP));
     
     //#2
-    ds_list_add(global.recordList,keyboard_check(ord("J")));
+    ds_list_add(global.recordList,keyboard_check(ord('J')));
     
-    ds_list_add(global.recordList,keyboard_check(ord("K")));
+    ds_list_add(global.recordList,keyboard_check(ord('K')));
     
-    ds_list_add(global.recordList,keyboard_check(ord("P")));
+    ds_list_add(global.recordList,keyboard_check(ord('P')));
     
-    ds_list_add(global.recordList,keyboard_check(ord("O")));
+    ds_list_add(global.recordList,keyboard_check(ord('O')));
     
     //#3
     ds_list_add(global.recordList,scrButtonCheckPressed(KEY.ALIGN_LEFT));
     
     ds_list_add(global.recordList,scrButtonCheckPressed(KEY.ALIGN_RIGHT));
     
-    ds_list_add(global.recordList,keyboard_check(ord("U")));
+    ds_list_add(global.recordList,keyboard_check(ord('U')));
     
-    ds_list_add(global.recordList,keyboard_check(ord("I")));
+    ds_list_add(global.recordList,keyboard_check(ord('I')));
     
     ds_list_add(global.recordList,scrButtonCheckPressed(KEY.NUDGE_LEFT));
     
@@ -795,8 +795,8 @@ if (onVineL || onVineR)
     image_speed = 0.5;
     
     // pressed away from the vine
-    if (onVineL &amp;&amp; scrButtonCheckPressed(KEY.RIGHT)) // || scrButtonCheck(ord("P"))
-    or (onVineR &amp;&amp; scrButtonCheckPressed(KEY.LEFT)) // || scrButtonCheck(ord("O")) 
+    if (onVineL &amp;&amp; scrButtonCheckPressed(KEY.RIGHT)) // || scrButtonCheck(ord('P'))
+    or (onVineR &amp;&amp; scrButtonCheckPressed(KEY.LEFT)) // || scrButtonCheck(ord('O')) 
     {       
         if (scrButtonCheck(KEY.JUMP)) // jumping off vine
         {
@@ -1178,13 +1178,13 @@ else
         if (place_free(x,y+i))
         {
             y = y+i;
-            //show_debug_message("before: "+string(y)+'/'+'after: '+string(y+i))
+            //show_debug_message("before: "+string(y)+"/"+"after: "+string(y+i))
             break;
         }
         else if (place_free(x,y-i))
         {
             y = y-i;
-            //show_debug_message("before: "+string(y)+'/'+'after: '+string(y-i))
+            //show_debug_message("before: "+string(y)+"/"+"after: "+string(y-i))
             break;
         }
     }

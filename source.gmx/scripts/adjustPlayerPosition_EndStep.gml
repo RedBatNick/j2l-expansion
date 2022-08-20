@@ -8,7 +8,7 @@
    Save at current position using S.
 */
 
-if (argument_count >= 1)
+if (argument_count == 1)
     var obj = argument[0];
 else
     var obj = object_index;
@@ -16,8 +16,8 @@ else
 var kidGrav = global.grav;
 var alignleft = scrButtonCheckPressed(KEY.ALIGN_LEFT);
 var alignright = scrButtonCheckPressed(KEY.ALIGN_RIGHT);
-var moveleft = keyboard_check(ord("U"));
-var moveright = keyboard_check(ord("I"));
+var moveleft = keyboard_check(ord('U'));
+var moveright = keyboard_check(ord('I'));
 var nudgeleft = scrButtonCheckPressed(KEY.NUDGE_LEFT);
 var nudgeright = scrButtonCheckPressed(KEY.NUDGE_RIGHT);
 
@@ -54,8 +54,8 @@ with (obj)
 
 if (obj == oPlayer)
 {
-    if (scrButtonCheckPressed(KEY.MOVE_PLACE)//keyboard_check_pressed(ord('W')) 
-    && !global.paused && mouse_x >= 0 && mouse_x < 800 && mouse_y >= 0 && mouse_y < 608) 
+    if (scrButtonCheckPressed(KEY.MOVE_PLACE)
+    && !global.paused && point_in_rect(mouse_x,mouse_y,0,0,800,608))
     {
         if (!instance_exists(obj)) { loadPlayer(); }
         with (obj) 
@@ -67,7 +67,7 @@ if (obj == oPlayer)
         }
     }
     
-    if ((scrButtonCheckPressed(KEY.SAVE_PLACE)//keyboard_check_pressed(ord('S')) 
+    if ((scrButtonCheckPressed(KEY.SAVE_PLACE)
     && !keyboard_check(vk_control)) && (instance_exists(obj)))
     {
         with (obj) 
@@ -95,8 +95,8 @@ if (obj == oPlayer)
         if (onblock) 
         {
             inputOverlay(input_textbox,inputCallback_VAlign,
-                'Valign (was '+string(obj.y-floor(obj.y))+')');
-            oInputOverlay.textbox_label = '0.';
+                "Valign (was "+string(obj.y-floor(obj.y))+")");
+            oInputOverlay.textbox_label = "0.";
         }
     }
     
@@ -109,8 +109,8 @@ if (obj == oPlayer)
         if (onblock) 
         {
             inputOverlay(input_textbox,inputCallback_HAlign,
-                'Halign (was '+string(obj.x-floor(obj.x))+')');
-            oInputOverlay.textbox_label = '0.';
+                "Halign (was "+string(obj.x-floor(obj.x))+")");
+            oInputOverlay.textbox_label = "0.";
         }
     }
     

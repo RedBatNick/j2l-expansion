@@ -1,4 +1,6 @@
-switch argument0
+var mini = argument[0];
+
+switch (mini)
 {
     case oWaterDisappearMini:
     case 34:
@@ -24,7 +26,7 @@ switch argument0
     case 57:
     case 37:
     case 38:
-        if (string_count("Mini", object_get_name(argument0)) > 0)
+        if (string_count("Mini", object_get_name(mini)) > 0)
             return 2;
         else
             return 1;

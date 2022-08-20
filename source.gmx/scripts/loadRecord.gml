@@ -3,8 +3,9 @@ var filename, f;
 filename = argument[0];
 f = file_text_open_read(filename);
 
-if (argument_count >= 2)
-    var cont = argument[1];
+var cont = false;
+if (argument_count == 2)
+    cont = argument[1];
 
 ds_list_read(global.recordList, file_text_read_string(f))
 

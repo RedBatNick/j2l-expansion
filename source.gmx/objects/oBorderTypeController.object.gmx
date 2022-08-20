@@ -25,20 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.bordertype == bordertype_death
-and instance_exists(oBorderBlock) {
-    with oBorderBlock instance_destroy()
+            <string>if (global.bordertype == bordertype_death &amp;&amp; instance_exists(oBorderBlock)) {
+    with (oBorderBlock) 
+        instance_destroy();
 }
-else if global.bordertype == bordertype_solid
-and not instance_exists(oBorderBlock) {
+else if (global.bordertype == bordertype_solid &amp;&amp; !instance_exists(oBorderBlock)) {
     var bTop = instance_create(0,-32,oBorderBlock);
-    bTop.image_xscale = 25
+    bTop.image_xscale = 25;
     var bBot = instance_create(0,608,oBorderBlock);
-    bBot.image_xscale = 25
+    bBot.image_xscale = 25;
     var bLeft = instance_create(-32,0,oBorderBlock);
-    bLeft.image_yscale = 19
+    bLeft.image_yscale = 19;
     var bRight = instance_create(800,0,oBorderBlock);
-    bRight.image_yscale = 19
+    bRight.image_yscale = 19;
 }
 </string>
           </argument>

@@ -1,22 +1,22 @@
 // Saves all the present palette objects to file.
 
-filename = get_save_filename_ext('jtool map|*.jmap','','','Save Map')
-if (filename == '') 
+filename = get_save_filename_ext("jtool map|*.jmap","","","Save Map")
+if (filename == "") 
     return false;
 
 var success;
 if (argument_count == 0) {
-    success = saveMapName(filename)
+    success = saveMapName(filename);
 } else {
     type = argument[0];
     
     switch(type)
     {
-        case 'legacy':
+        case "legacy":
         success = saveOldJMapName(filename);
         break;
         
-        case 'ctool':
+        case "ctool":
         success = saveCMapName(filename);
         break;
     }
@@ -24,7 +24,7 @@ if (argument_count == 0) {
 
 if (success)
 {
-    global.lastloadedmapname = splitDelimString(filename, '\', string_count('\', filename));
+    global.lastloadedmapname = splitDelimString(filename, "\", string_count("\", filename));
     updateCaption();
     deleteBackup();
 }

@@ -55,10 +55,10 @@
     <instance objName="oWorld" x="64" y="-80" name="inst_2E47D279" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oEdit" x="96" y="-80" name="inst_12095817" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oMenu" x="128" y="-80" name="inst_AF137121" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oBorderDeath" x="64" y="-32" name="inst_54B35928" locked="0" code="type='top'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oBorderDeath" x="96" y="-32" name="inst_B6A669A0" locked="0" code="type='bottom'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oBorderDeath" x="128" y="-32" name="inst_7F1970D0" locked="0" code="type='left'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oBorderDeath" x="160" y="-32" name="inst_004A1208" locked="0" code="type='right'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBorderDeath" x="64" y="-32" name="inst_54B35928" locked="0" code="type = &quot;top&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBorderDeath" x="96" y="-32" name="inst_B6A669A0" locked="0" code="type = &quot;bottom&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBorderDeath" x="128" y="-32" name="inst_7F1970D0" locked="0" code="type = &quot;left&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBorderDeath" x="160" y="-32" name="inst_004A1208" locked="0" code="type = &quot;right&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oDrawGrid" x="168" y="-72" name="inst_7CB1E00B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oZoom" x="192" y="-80" name="inst_82440A97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oHideSidebar" x="768" y="-48" name="inst_54C9CF7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

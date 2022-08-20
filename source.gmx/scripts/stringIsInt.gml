@@ -3,23 +3,23 @@
 
 // stringIsInt(str)
 
-var str = argument0
-var validchars = '0123456789'
+var str = argument[0];
+var validchars = "0123456789";
 
-for (var i=0; i<string_length(str); i++) {
-    var char = string_char_at(str,i+1)
-    if i == 0 and char == '-' and string_length(str) >= 2 {
-        continue
+for (var i=0; i<string_length(str); i+=1) {
+    var char = string_char_at(str,i+1);
+    if (i == 0 && char == "-" && string_length(str) >= 2) {
+        continue;
     }
-    var found = false
-    for (var j=0; j<string_length(validchars); j++) {
-        if char == string_char_at(validchars,j+1) {
-            found = true
-            break
+    var found = false;
+    for (var j = 0; j < string_length(validchars); j+=1) {
+        if (char == string_char_at(validchars,j+1)) {
+            found = true;
+            break;
         }
     }
-    if not found {
-        return false
+    if (!found) {
+        return false;
     }
 }
-return true
+return true;

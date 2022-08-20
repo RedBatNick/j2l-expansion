@@ -11,7 +11,7 @@
 /// GMLscripts.com/license
 {
     var n, str, c, byte, E, M;
-    n = argument0;
+    n = argument[0];
     if (n == 0) {
         return string_repeat(chr(0),8);
     }
@@ -46,7 +46,7 @@
     str = "";
     for (i = 7; i >= 0; i -= 1) {
         //str += chr(byte[i]);
-        for (var j=0; j<8; j+=1) {
+        for (var j = 0; j < 8; j+=1) {
             str += string((byte[i] & (128>>j)) != 0)
         }
     }

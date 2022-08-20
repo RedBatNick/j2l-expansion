@@ -10,7 +10,7 @@
 /// GMLscripts.com/license
 {
     var dec, bin;
-    dec = argument0;
+    dec = argument[0];
     if (dec) bin = "" else bin="0";
     while (dec) {
         bin = string_char_at("01", (dec & 1) + 1) + bin;

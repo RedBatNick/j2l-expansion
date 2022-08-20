@@ -4,32 +4,27 @@
 if (oPlayer.vspeed < 0 && scrButtonCheckReleased(KEY.JUMP) && !global.TIMER_ON)
 { //initialise
     
-    global.lowcancel1 = ''
-    global.lowcancel2 = ''
-    global.lowcancel3 = ''
+    global.lowcancel1 = "";
+    global.lowcancel2 = "";
+    global.lowcancel3 = "";
     global.TIMER_ON = true;
     global.start_time = 0; 
 }
 
-if(global.TIMER_ON)
-{//check your conditions
-global.start_time = global.start_time + 1;
+if (global.TIMER_ON) //check your conditions
+{
+    global.start_time = global.start_time + 1;
+    
     if (oPlayer.vspeed < 0 && scrButtonCheckReleased(KEY.JUMP))
     {
-        global.lowcancel1 = global.start_time; //log the time this happened
-        
-        
-    }
-
-    if (oPlayer.vspeed < 0 && scrButtonCheckReleased(KEY.JUMP) && global.lowcancel1 != '')
-    {
-       global.lowcancel2 = global.start_time; //log the time this happened
-       
-    }
-    if (oPlayer.vspeed < 0 && scrButtonCheckReleased(KEY.JUMP) && global.lowcancel2 != '')
-    {
-        global.lowcancel3 = global.start_time; //log the time this happened
-        
+        if (global.lowcancel2 != "")
+            global.lowcancel3 = global.start_time;
+    
+        if (global.lowcancel1 != "")
+            global.lowcancel2 = global.start_time;
+            
+        global.lowcancel1 = global.start_time; 
+        //log the times each lowcancel happened
     }
 
     if (oPlayer.vspeed >= 0)

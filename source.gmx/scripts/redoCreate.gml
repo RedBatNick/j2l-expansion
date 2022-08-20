@@ -1,1 +1,1 @@
-undoDestroy( argument0 );
+undoDestroy(argument[0]);

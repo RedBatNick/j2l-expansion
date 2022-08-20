@@ -1,8 +1,8 @@
 ///controlObject(type, [val])
 ///combines the functionality of the xObject scripts
-///so it's much easier to modify the palette objects
+///so it"s much easier to modify the palette objects
 
-var type,val
+var type,val;
 
 if (argument_count >= 1) {
     type = argument[0];
@@ -13,9 +13,9 @@ if (argument_count >= 2) {
 
 switch(type)
 {
-    case 'saveID': return object_get_name(val); break;
-    case 'loadID': return asset_get_index(val); break;
-    case 'inPalette':
+    case "saveID": return object_get_name(val); break;
+    case "loadID": return asset_get_index(val); break;
+    case "inPalette":
     switch val {
         // Blocks.
         case oEditBlock:

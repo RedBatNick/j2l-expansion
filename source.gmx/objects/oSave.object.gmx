@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0
-can_save=true
-grav = 1
+            <string>image_speed = 0;
+can_save = true;
+grav = 1;
 </string>
           </argument>
         </arguments>
@@ -50,7 +50,7 @@ grav = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index=0
+            <string>image_index = 0;
 </string>
           </argument>
         </arguments>
@@ -73,7 +73,7 @@ grav = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>can_save=true
+            <string>can_save = true;
 </string>
           </argument>
         </arguments>

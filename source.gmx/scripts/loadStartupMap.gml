@@ -1,4 +1,7 @@
-if (file_exists("startup.jmap")) {
+var startup = "startup.jmap";
+
+if (file_exists(startup)) 
+{
     global.shouldresetloadedmapname = true;
-    loadMap("startup.jmap");
+    loadMap(startup);
 }

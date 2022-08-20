@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 1
-w = 10
-h = 10
-count = 0
+            <string>image_alpha = 1;
+w = 10;
+h = 10;
+count = 0;
 </string>
           </argument>
         </arguments>
@@ -51,13 +51,14 @@ count = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>count += 0.08
-image_alpha = -sqr(count)+1
-if image_alpha &lt;= 0 instance_destroy()
+            <string>count += 0.08;
+image_alpha = -sqr(count)+1;
+if (image_alpha &lt;= 0) 
+    instance_destroy();
 
-draw_set_color(global.color_palettepressed)
-draw_set_alpha(image_alpha*global.buttonpalettepressedalpha)
-draw_rectangle(x+1,y+1,x+w-1,y+h-1,false)
+draw_set_color(global.color_palettepressed);
+draw_set_alpha(image_alpha*global.buttonpalettepressedalpha);
+draw_rectangle(x+1,y+1,x+w-1,y+h-1,false);
 
 </string>
           </argument>

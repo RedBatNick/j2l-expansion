@@ -10,12 +10,13 @@
 /// GMLscripts.com/license
 {
     var bin, dec, l, p;
-    bin = argument0;
+    bin = argument[0];
     dec = 0;
     l = string_length(bin);
-    for (p=1; p<=l; p+=1) {
+    for (p = 1; p <= l; p+=1) {
         dec = dec << 1;
-        if (string_char_at(bin, p) == "1") dec = dec | 1;
+        if (string_char_at(bin, p) == "1") 
+            dec = dec | 1;
     }
     return dec;
 }

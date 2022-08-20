@@ -10,17 +10,17 @@ if (argument_count == 2)
 var baseXstring;
 switch (base) {
     case 32:
-    baseXstring += '0123456789abcdefghijklmnopqrstuv';
+    baseXstring += "0123456789abcdefghijklmnopqrstuv";
 
     case 64: 
-    baseXstring += 'wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@';
+    baseXstring += "wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@";
     
     case 128:
-    baseXstring += '$%^&*()-=[]\;,./_+{}|:<>?`~あえいうおかけきくこまめみもむがげぎごぐはへひほふさせしそすざぜじぞずな';
+    baseXstring += "$%^&*()-=[]\;,./_+{}|:<>?`~あえいうおかけきくこまめみもむがげぎごぐはへひほふさせしそすざぜじぞずな";
     break
 }
 
-var result = '';
+var result = "";
 
 while (number > 0) 
 {

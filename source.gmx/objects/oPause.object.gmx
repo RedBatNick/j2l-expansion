@@ -212,9 +212,9 @@ for (i = 5; i &lt;= 12; i+=1)
     if (keyboard_check_pressed(vk_f1+(i-1)))
     {
         if (keyboard_check(vk_enter))
-            game_save('Save'+string(i)+'.dat');
-        else if (file_exists('Save'+string(i)+'.dat'))
-            game_load('Save'+string(i)+'.dat');
+            game_save("Save"+string(i)+".dat");
+        else if (file_exists("Save"+string(i)+".dat"))
+            game_load("Save"+string(i)+".dat");
     }
 }
 

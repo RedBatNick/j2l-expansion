@@ -3,8 +3,9 @@
 // x and y digits are its position, and o digits are its object_index.
 // See also: undoDeserializeObject
 
-var instance = argument0
+var instance = argument[0];
 
-if instance.x < -32 or instance.x >= 832 return ''
+if (instance.x < -32 || instance.x >= 832) 
+    return "";
 
-return getPositionString( instance.x, instance.y ) + padStringLeft(string(instance.object_index),3,'0')
+return getPositionString(instance.x,instance.y) + padStringLeft(string(instance.object_index),3,"0");

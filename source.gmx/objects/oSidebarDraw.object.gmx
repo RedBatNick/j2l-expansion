@@ -63,13 +63,13 @@ for (i = 0; i &lt; 2; i+=1)
             <string>///palette variables
 
 // death display
-global.death_count = 0
+global.death_count = 0;
 
 // fps display
-global.PlayerFrameCounter = 0
-global.SavedPlayerFrameCounter = 0
+global.PlayerFrameCounter = 0;
+global.SavedPlayerFrameCounter = 0;
 
-combobox_selected = false
+combobox_selected = false;
 
 /*
     xx - x coordinate of the button location
@@ -381,13 +381,13 @@ global.RecordPlayerPosition = false;
 player = noone;
 
 //cancel hints
-cancelHints_Create()
+cancelHints_Create();
 
 //jump durations
-jumpDurations_Create()
+jumpDurations_Create();
 
 //bhop hint
-bhopHint_Create()
+bhopHint_Create();
 </string>
           </argument>
         </arguments>
@@ -434,17 +434,18 @@ bhopHint_Create()
           <argument>
             <kind>1</kind>
             <string>///end step functions
-var choose_player = oPlayer
-if instance_exists(oRecordPlayer) {choose_player = oRecordPlayer}
+var choose_player = oPlayer;
+if (instance_exists(oRecordPlayer)) 
+    choose_player = oRecordPlayer;
 
 //cancel hints
-cancelHints_EndStep()
+cancelHints_EndStep();
 
 //jump durations
-jumpDurations_EndStep(choose_player)
+jumpDurations_EndStep(choose_player);
 
 //bhop hint
-bhopHint_EndStep(choose_player)
+bhopHint_EndStep(choose_player);
 </string>
           </argument>
         </arguments>
@@ -532,7 +533,8 @@ if (global.state == globalstate_idle &amp;&amp; global.sidebarstate != sidebar_h
           <argument>
             <kind>1</kind>
             <string>///initial setup
-if global.hidesidebar exit
+if (global.hidesidebar) 
+    exit;
 </string>
           </argument>
         </arguments>
@@ -576,21 +578,21 @@ if global.hidesidebar exit
             <string>///object palette draw
 if (global.sidebarstate != sidebar_analysis)
 {
-    if combobox_selected and global.state != globalstate_idle {
-        combobox_selected = false
-        global.comboboxselected = false
+    if (combobox_selected &amp;&amp; global.state != globalstate_idle) {
+        combobox_selected = false;
+        global.comboboxselected = false;
     }
     
-    var xpos = 816
-    var xo = 0
-    var w = 50
-    dx = w+8
+    var xpos = 816;
+    var xo = 0;
+    var w = 50;
+    dx = w+8;
     
-    var ypos = 48
-    var yo = 0
-    var h = 50
-    dy = h+8
-    var tooltip_to_draw = ''
+    var ypos = 48;
+    var yo = 0;
+    var h = 50;
+    dy = h+8;
+    var tooltip_to_draw = "";
     
     for (var i = 0; i &lt; ds_list_size(palette); i += 1) {
         /*
@@ -616,42 +618,42 @@ if (global.sidebarstate != sidebar_analysis)
             continue;
         
         // draw button backing and sprite
-        var xxx = xpos+xo+xx*dx
-        var yyy = (ypos+yo+yy*dy)-global.scrollY[0]
-        drawButton(xxx,yyy,w,h,false)
+        var xxx = xpos+xo+xx*dx;
+        var yyy = (ypos+yo+yy*dy)-global.scrollY[0];
+        drawButton(xxx,yyy,w,h,false);
         
-        var color = c_white
-        if killer color = global.color_killer
+        var color = c_white;
+        if killer color = global.color_killer;
         
         //draw object animations
         var frame = skinnableImage(obj);
         
         //draw_sprite_ext(spr,frame,xxx+w/2-off,yyy+h/2-off,1,1,0,color,1)
-        draw_sprite_ext(spr,frame,xxx+w/2-sprite_get_width(spr)/2+sprite_get_xoffset(spr),yyy+h/2-sprite_get_height(spr)/2+sprite_get_yoffset(spr),1,1,0,color,1)
+        draw_sprite_ext(spr,frame,xxx+w/2-sprite_get_width(spr)/2+sprite_get_xoffset(spr),yyy+h/2-sprite_get_height(spr)/2+sprite_get_yoffset(spr),1,1,0,color,1);
         
         // draw highlight and set tooltip
-        var button_highlighted = point_in_rect(mouse_x,mouse_y,xxx,yyy,xxx+w,yyy+h)
-            and (not global.comboboxselected or in_combobox)
-            and global.state == globalstate_idle
+        var button_highlighted = point_in_rect(mouse_x,mouse_y,xxx,yyy,xxx+w,yyy+h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
         
-        if button_highlighted {
-            draw_set_alpha(global.buttonhoveralpha)
-            draw_set_color(global.color_buttonhover)
-            draw_rectangle(xxx+1,yyy+1,xxx+w-2,yyy+h-2,false)
-            if global.buttonhoverborder {
-                draw_set_alpha(0.3)
-                draw_set_color(c_black)
-                draw_rectangle(xxx-1,yyy-1,xxx+w,yyy+h,true)
+        if (button_highlighted) {
+            draw_set_alpha(global.buttonhoveralpha);
+            draw_set_color(global.color_buttonhover);
+            draw_rectangle(xxx+1,yyy+1,xxx+w-2,yyy+h-2,false);
+            
+            if (global.buttonhoverborder) {
+                draw_set_alpha(0.3);
+                draw_set_color(c_black);
+                draw_rectangle(xxx-1,yyy-1,xxx+w,yyy+h,true);
             }
-            if tooltip != '' {
-                tooltip_to_draw = tooltip
+            
+            if (tooltip != "") {
+                tooltip_to_draw = tooltip;
             }
         }
         
         // pressing button
-        var is_comboboxtoggle = combo == true
-        if button_highlighted {
-            if mouse_check_button_pressed(mb_left) {
+        var is_comboboxtoggle = combo == true;
+        if (button_highlighted) {
+            if (mouse_check_button_pressed(mb_left)) {
                 with (oEdit) {
                     selected_object = obj;
                     selected_sprite = spr;
@@ -661,43 +663,43 @@ if (global.sidebarstate != sidebar_analysis)
                 }
     
                 var flash = instance_create(xxx,yyy,oPaletteButtonFlash);
-                flash.w = w
-                flash.h = h
+                flash.w = w;
+                flash.h = h;
             }
-            if mouse_check_button_pressed(mb_right) and is_comboboxtoggle {
-                combobox_selected = not combobox_selected
-                global.comboboxselected = combobox_selected
+            if (mouse_check_button_pressed(mb_right) &amp;&amp; is_comboboxtoggle) {
+                combobox_selected = !combobox_selected;
+                global.comboboxselected = combobox_selected;
             
                 var flash = instance_create(xxx,yyy,oPaletteButtonFlash);
-                flash.w = w
-                flash.h = h
+                flash.w = w;
+                flash.h = h;
             }
         }
         
         // draw combo box back and detect mouse leave
-        if is_comboboxtoggle and combobox_selected {
-            var combo_x = x+xo-8
-            var combo_y = y+yo+(yy+1)*dy-9
-            var combo_w = dx*4+8
-            var combo_h = dy*combo+9
+        if (is_comboboxtoggle &amp;&amp; combobox_selected) {
+            var combo_x = x+xo-8;
+            var combo_y = y+yo+(yy+1)*dy-9;
+            var combo_w = dx*4+8;
+            var combo_h = dy*combo+9;
             
-            drawButton(combo_x,combo_y,combo_w,combo_h,false)
-            drawButton(xxx,yyy,w,combo_y-yyy+1,false)
-            draw_set_color(global.color_button)
-            draw_line(xxx,combo_y,xxx+w-2,combo_y)
+            drawButton(combo_x,combo_y,combo_w,combo_h,false);
+            drawButton(xxx,yyy,w,combo_y-yyy+1,false);
+            draw_set_color(global.color_button);
+            draw_line(xxx,combo_y,xxx+w-2,combo_y);
             
-            if not point_in_rect(mouse_x,mouse_y,combo_x,yyy,combo_x+combo_w,combo_y+combo_h) {
-                combobox_selected = false
-                global.comboboxselected = false
+            if (!point_in_rect(mouse_x,mouse_y,combo_x,yyy,combo_x+combo_w,combo_y+combo_h)) {
+                combobox_selected = false;
+                global.comboboxselected = false;
             }
         }
     }
     
-    if tooltip_to_draw != '' {
-        draw_set_font(font_small)
-        var w = string_width(tooltip_to_draw)+10
-        var xx = min(mouse_x, room_width-5-w)
-        menuButton(xx, mouse_y+20, w, 25, tooltip_to_draw, false, false)
+    if (tooltip_to_draw != "") {
+        draw_set_font(font_small);
+        var w = string_width(tooltip_to_draw)+10;
+        var xx = min(mouse_x, room_width-5-w);
+        menuButton(xx, mouse_y+20, w, 25, tooltip_to_draw, false, false);
     }
 }
 </string>
@@ -741,26 +743,27 @@ if (global.sidebarstate != sidebar_analysis)
           <argument>
             <kind>1</kind>
             <string>///death display
-if global.sidebarstate != sidebar_palette
+if (global.sidebarstate != sidebar_palette)
 {
-    var xx = 808
-    var yy = 376
+    var xx = 808;
+    var yy = 376;
     
-    if global.sidebarstate == sidebar_analysis {
+    if (global.sidebarstate == sidebar_analysis) {
         yy = 48-global.scrollY[1];
     }
     
-    var w = 136
-    var h = 32
+    var w = 136;
+    var h = 32;
     
-    drawButton(xx,yy,w,h,false)
-    fontSetup(font_small, c_black, fa_left, fa_center, 1)
-    draw_text(xx+5, yy+16, 'Deaths: '+string(global.death_count))
+    drawButton(xx,yy,w,h,false);
+    fontSetup(font_small, c_black, fa_left, fa_center, 1);
+    draw_text(xx+5, yy+16, "Deaths: "+string(global.death_count));
     
-    var buttons_active = global.state == globalstate_idle and not global.comboboxselected
-    var xo = 92
-    if menuButton(xx+xo,yy,w-xo,32,'Reset',buttons_active,false) {
-        global.death_count = 0
+    var buttons_active = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+    var xo = 92;
+    
+    if (menuButton(xx+xo,yy,w-xo,32,"Reset",buttons_active,false)) {
+        global.death_count = 0;
     }
 }
 </string>
@@ -784,22 +787,24 @@ if global.sidebarstate != sidebar_palette
           <argument>
             <kind>1</kind>
             <string>///fps display
-if global.sidebarstate != sidebar_palette
+if (global.sidebarstate != sidebar_palette)
 {
-    var xx = 952
-    var yy = 376
+    var xx = 952;
+    var yy = 376;
     
-    if global.sidebarstate == sidebar_analysis {
+    if (global.sidebarstate == sidebar_analysis) {
         yy = 48-global.scrollY[1];
     }
     
-    var w = 96
-    var h = 32
-    drawButton(xx,yy,w,h,false)
-    fontSetup(font_small, c_black, fa_left, fa_center, 1)
-    draw_text(xx+12, yy+16, 'FPS: '+string(fps))
-    if global.FrameCounterOn = true or global.record == 1 or global.record == 2 {
-    draw_text(xx+70, yy+16, string(global.PlayerFrameCounter)) }
+    var w = 96;
+    var h = 32;
+    drawButton(xx,yy,w,h,false);
+    fontSetup(font_small, c_black, fa_left, fa_center, 1);
+    draw_text(xx+12, yy+16, "FPS: "+string(fps));
+    
+    if (global.FrameCounterOn = true || global.record &gt; 0) {
+        draw_text(xx+70, yy+16, string(global.PlayerFrameCounter));
+    }
 }
 </string>
           </argument>
@@ -822,16 +827,16 @@ if global.sidebarstate != sidebar_palette
           <argument>
             <kind>1</kind>
             <string>///cancel hints
-var xx = 952
-var yy = 416
+var xx = 952;
+var yy = 416;
 
-if global.sidebarstate == sidebar_analysis {
+if (global.sidebarstate == sidebar_analysis) {
     yy = 176-global.scrollY[1];
 }
 
-if global.sidebarstate != sidebar_palette {
-    drawButton(xx,yy,96,80,false)
-    drawHint(xx,yy,96,'Cancel',jc_duration,jc_show)
+if (global.sidebarstate != sidebar_palette) {
+    drawButton(xx,yy,96,80,false);
+    drawHint(xx,yy,96,"Cancel",jc_duration,jc_show);
 }
 </string>
           </argument>
@@ -854,21 +859,21 @@ if global.sidebarstate != sidebar_palette {
           <argument>
             <kind>1</kind>
             <string>///bhop hint
-var xx = 952
-var yy = 504
-var h = 64
+var xx = 952;
+var yy = 504;
+var h = 64;
 
-if global.sidebarstate == sidebar_analysis {
+if (global.sidebarstate == sidebar_analysis) {
     yy = 264-global.scrollY[1];
 
-    if global.sidebarlevel == 1 {
-        h = 96
+    if (global.sidebarlevel == 1) {
+        h = 96;
     }    
 }
 
-if global.sidebarstate != sidebar_palette {
-    drawButton(xx,yy,96,h,false)
-    drawHint(xx,yy,96,'Bhop',bhop_offset,bhop_show)
+if (global.sidebarstate != sidebar_palette) {
+    drawButton(xx,yy,96,h,false);
+    drawHint(xx,yy,96,"Bhop",bhop_offset,bhop_show);
 }
 </string>
           </argument>
@@ -891,59 +896,59 @@ if global.sidebarstate != sidebar_palette {
           <argument>
             <kind>1</kind>
             <string>///player position
-if global.sidebarstate != sidebar_palette
+if (global.sidebarstate != sidebar_palette)
 {
-    var xx = 808
-    var yy = 416
-    var w = 136
-    var char = 9
-    
-    if global.sidebarstate == sidebar_analysis {
+    var xx = 808;
+    var yy = 416;
+    var w = 136;
+    var char = 9;
+        
+    if (global.sidebarstate == sidebar_analysis) {
         yy = 88-global.scrollY[1];
-        w = 240
+        w = 240;
     }
     else
     {
-        if global.sidebarlevel == 1 {
-            w = 240
+        if (global.sidebarlevel == 1) {
+            w = 240;
         }
     }
         
-    drawButton(xx,yy,w,80,false)
-    fontSetup(font_small,c_black,fa_left,fa_top,1)
+    drawButton(xx,yy,w,80,false);
+    fontSetup(font_small,c_black,fa_left,fa_top,1);
     
-    if (instance_exists(oRecordPlayer) or instance_exists(oRecordPlayerCopy)) and global.RecordPlayerPosition = true 
+    if ((instance_exists(oRecordPlayer) || instance_exists(oRecordPlayerCopy)) &amp;&amp; global.RecordPlayerPosition = true)
     {
-        if instance_exists(oRecordPlayer) {
+        if (instance_exists(oRecordPlayer)) {
             player = oRecordPlayer;
         }
-        else if instance_exists(oRecordPlayerCopy) {
+        else if (instance_exists(oRecordPlayerCopy)) {
             player = oRecordPlayerCopy;
         }
     } 
-    else if instance_exists(oPlayer) or instance_exists(oPlayerCopy) 
+    else if (instance_exists(oPlayer) || instance_exists(oPlayerCopy))
     {
-        if instance_exists(oPlayer) {
+        if (instance_exists(oPlayer)) {
             player = oPlayer;
         }
-        else if instance_exists(oPlayerCopy) {
+        else if (instance_exists(oPlayerCopy)) {
             player = oPlayerCopy;
         }
     }
     
     var text = array_create(3);
-    text[0] = 'Align    ';
-    text[1] = 'X   ';
-    text[2] = 'Y   ';
-    if (player != noone and instance_exists(player))
+    text[0] = "Align    ";
+    text[1] = "X   ";
+    text[2] = "Y   ";
+    if (player != noone &amp;&amp; instance_exists(player))
     {
         var align = player.x mod 3;
         var ypos = player.y;
         var xpos = player.x;
         
-        var xstr = xpos
-        var ystr = ypos
-        if global.sidebarlevel == 1 {
+        var xstr = xpos;
+        var ystr = ypos;
+        if (global.sidebarlevel == 1) {
             xstr = string_format(xpos,3,char);
             ystr = string_format(ypos,3,char);
         }
@@ -954,50 +959,50 @@ if global.sidebarstate != sidebar_palette
     }
     
     
-    var yy2 = yy+5
-    var dy = 20
-    var xx2 = xx+7
+    var yy2 = yy+5;
+    var dy = 20;
+    var xx2 = xx+7;
     
     for (i = 0; i &lt; 3; i+=1)
     {
         draw_text(xx2,yy2+5,text[i]);
-        yy2+=dy;
+        yy2 += dy;
     }
     
-    var buttons_active = global.state == globalstate_idle and not global.comboboxselected
-    var buttonw = 24
-    var buttonh = 12
-    var buttonx = xx+136-buttonw
-    var buttony = yy
+    var buttons_active = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+    var buttonw = 24;
+    var buttonh = 12;
+    var buttonx = xx+136-buttonw;
+    var buttony = yy;
     
-    if global.sidebarstate == sidebar_hybrid {
-        if menuButton(buttonx,buttony,buttonw,buttonh,'',buttons_active,false) {
-            global.sidebarlevel = not global.sidebarlevel
-            saveConfig()
+    if (global.sidebarstate == sidebar_hybrid) {
+        if (menuButton(buttonx,buttony,buttonw,buttonh,"",buttons_active,false)) {
+            global.sidebarlevel = !global.sidebarlevel;
+            saveConfig();
         }
     }
     
-    if menuButton(x,buttony,buttonw,buttonh,'',buttons_active,false) { 
-        global.RecordPlayerPosition = not global.RecordPlayerPosition
+    if (menuButton(x,buttony,buttonw,buttonh,"",buttons_active,false)) { 
+        global.RecordPlayerPosition = !global.RecordPlayerPosition;
     }
     
-    fontSetup(font_small,c_black,fa_center,fa_center,1)
-    if global.sidebarstate == sidebar_hybrid {
-        draw_text(buttonx+buttonw/2,buttony+buttonh/2-5,'. . .')
-        draw_text(buttonx+buttonw/2-1,buttony+buttonh/2-5,'. . .')
+    fontSetup(font_small,c_black,fa_center,fa_center,1);
+    if (global.sidebarstate == sidebar_hybrid) {
+        draw_text(buttonx+buttonw/2,buttony+buttonh/2-5,". . .");
+        draw_text(buttonx+buttonw/2-1,buttony+buttonh/2-5,". . .");
     }
-    draw_text(x+buttonw/2,buttony+buttonh/2-5,'. . .')
-    draw_text(x+buttonw/2-1,buttony+buttonh/2-5,'. . .')
+    draw_text(x+buttonw/2,buttony+buttonh/2-5,". . .");
+    draw_text(x+buttonw/2-1,buttony+buttonh/2-5,". . .");
     
     /*if global.playery _extended {
         var bx = x+140
         var by = y+22
         var bw = 32
         var bh = 24
-        if menuButton(bx,by,bw,bh,'- .5',-100,buttons_active,false) {
+        if menuButton(bx,by,bw,bh,"- .5",-100,buttons_active,false) {
             nudgePlayerHalf(-1)
         }
-        if menuButton(bx+bw+8,by,bw,bh,'+ .5',-100,buttons_active,false) {
+        if menuButton(bx+bw+8,by,bw,bh,"+ .5",-100,buttons_active,false) {
             nudgePlayerHalf(1)
         }
     }*/
@@ -1023,48 +1028,48 @@ if global.sidebarstate != sidebar_palette
           <argument>
             <kind>1</kind>
             <string>///player speed (analysis only)
-if global.sidebarstate == sidebar_analysis
+if (global.sidebarstate == sidebar_analysis)
 {
-    var xx = 808
+    var xx = 808;
     var yy = 176-global.scrollY[1];//416
-    var w = 136
-    var char = 9
+    var w = 136;
+    var char = 9;
     
-    drawButton(xx,yy,w,80,false)
-    fontSetup(font_small,c_black,fa_left,fa_top,1)
+    drawButton(xx,yy,w,80,false);
+    fontSetup(font_small,c_black,fa_left,fa_top,1);
     
-    if (instance_exists(oRecordPlayer) or instance_exists(oRecordPlayerCopy)) and global.RecordPlayerPosition = true 
+    if ((instance_exists(oRecordPlayer) || instance_exists(oRecordPlayerCopy)) &amp;&amp; global.RecordPlayerPosition = true)
     {
-        if instance_exists(oRecordPlayer) {
+        if (instance_exists(oRecordPlayer)) {
             player = oRecordPlayer;
         }
-        else if instance_exists(oRecordPlayerCopy) {
+        else if (instance_exists(oRecordPlayerCopy)) {
             player = oRecordPlayerCopy;
         }
     } 
-    else if instance_exists(oPlayer) or instance_exists(oPlayerCopy) 
+    else if (instance_exists(oPlayer) || instance_exists(oPlayerCopy))
     {
-        if instance_exists(oPlayer) {
+        if (instance_exists(oPlayer)) {
             player = oPlayer;
         }
-        else if instance_exists(oPlayerCopy) {
+        else if (instance_exists(oPlayerCopy)) {
             player = oPlayerCopy;
         }
     }
     
     var text = array_create(3);
-    text[0] = 'Gravity    ';
-    text[1] = 'H   ';
-    text[2] = 'V   ';
-    if (player != noone and instance_exists(player))
+    text[0] = "Gravity    ";
+    text[1] = "H   ";
+    text[2] = "V   ";
+    if (player != noone &amp;&amp; instance_exists(player))
     {
         var grav = player.gravity; 
         var vspd = player.vspeed;
         var hspd = player.hspeed;
         
-        var hstr = hspd
-        var vstr = vspd
-        if global.sidebarlevel == 1 {
+        var hstr = hspd;
+        var vstr = vspd;
+        if (global.sidebarlevel == 1) {
             hstr = string_format(hspd,2,char);
             vstr = string_format(vspd,2,char);
         }
@@ -1075,14 +1080,14 @@ if global.sidebarstate == sidebar_analysis
     }
     
     
-    var yy2 = yy+5
-    var dy = 20
-    var xx2 = xx+7
+    var yy2 = yy+5;
+    var dy = 20;
+    var xx2 = xx+7;
     
     for (i = 0; i &lt; 3; i+=1)
     {
         draw_text(xx2,yy2+5,text[i]);
-        yy2+=dy;
+        yy2 += dy;
     }
 }
 </string>
@@ -1106,21 +1111,21 @@ if global.sidebarstate == sidebar_analysis
           <argument>
             <kind>1</kind>
             <string>///jump durations
-if global.sidebarstate != sidebar_palette
+if (global.sidebarstate != sidebar_palette)
 {
-    var xx = 808
-    var yy = 504
+    var xx = 808;
+    var yy = 504;
     
-    if global.sidebarstate == sidebar_analysis
+    if (global.sidebarstate == sidebar_analysis)
         yy = 264-global.scrollY[1];
         
-    var xo = 8
-    var yo = 5
-    var dy = 20
-    var w = 136
-    var h = 96
-    drawButton(xx,yy,w,h,false)
-    jumpDurations_Draw(xx+xo,yy+yo,dy)
+    var xo = 8;
+    var yo = 5;
+    var dy = 20;
+    var w = 136;
+    var h = 96;
+    drawButton(xx,yy,w,h,false);
+    jumpDurations_Draw(xx+xo,yy+yo,dy);
 }
 </string>
           </argument>
@@ -1202,130 +1207,132 @@ if (global.sidebarstate != sidebar_hybrid)
           <argument>
             <kind>1</kind>
             <string>///editor instructions
-var xx = 808
-var yy = 8
-var enabled = global.state == globalstate_idle and not global.comboboxselected
-if menuButtonToggle(xx,yy,96,32,enabled,false,
-'Hide','Instructions',global.editorinstructions) {
-    global.editorinstructions = not global.editorinstructions
-    saveConfig()
+var xx = 808;
+var yy = 8;
+var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+
+if (menuButtonToggle(xx,yy,96,32,enabled,false,"Hide","Instructions",global.editorinstructions)) {
+    global.editorinstructions = !global.editorinstructions;
+    saveConfig();
 }
 
-if global.editorinstructions {
-    var xx = 565
-    var yy = 5
-    var dy = 25
-    var dx = 88
-    var h = 432
-    var buttons_active = global.state == globalstate_idle and not global.comboboxselected
-    if menuButton(xx+205,h,30,12,'',buttons_active,false) {
-        global.instructionspage += 1
-        if global.instructionspage &gt; 2 global.instructionspage = 0
+if (global.editorinstructions) {
+    var xx = 565;
+    var yy = 5;
+    var dy = 25;
+    var dx = 88;
+    var h = 432;
+    var buttons_active = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+    if (menuButton(xx+205,h,30,12,"",buttons_active,false)) {
+        global.instructionspage += 1;
+        
+        if (global.instructionspage &gt; 2) 
+            global.instructionspage = 0;
     }
     
-    fontSetup(font_small,c_black,fa_center,fa_center,1)
-    draw_text(xx+220,h,'. . .')
-    draw_text(xx+220,h,'. . .')
+    fontSetup(font_small,c_black,fa_center,fa_center,1);
+    draw_text(xx+220,h,". . .");
+    draw_text(xx+220,h,". . .");
     
-    draw_sprite_ext(sPopup,0,xx-12,0,(800-(xx-12))/sprite_get_width(sPopup),(h-0)/sprite_get_height(sPopup),0,c_white,0.9)
-    fontSetup(font_small,c_black,fa_left,fa_top,1)
-    draw_rectangle(xx-12,-1,800,h,true)
+    draw_sprite_ext(sPopup,0,xx-12,0,(800-(xx-12))/sprite_get_width(sPopup),(h-0)/sprite_get_height(sPopup),0,c_white,0.9);
+    fontSetup(font_small,c_black,fa_left,fa_top,1);
+    draw_rectangle(xx-12,-1,800,h,true);
 
-    switch global.instructionspage {
+    switch (global.instructionspage) {
         case 0: // default keybinds
         var maxarray = 17;
         var button = array_create(maxarray);
-        button[0] = 'L Click'
-        button[1] = 'R Click'
-        button[2] = 'M Click, Space'
-        button[3] = 'Ctrl'
-        button[4] = 'Alt'
-        button[5] = 'Ctrl + Z'
-        button[6] = 'Ctrl + Y'
-        button[7] = '[ '+scrGetKeybind(global.controls[KEY.SAVE_PLACE, 0])+' ]';//'S'
-        button[8] = '[ '+scrGetKeybind(global.controls[KEY.MOVE_PLACE, 0])+' ]';//'W'
+        button[0] = "L Click";
+        button[1] = "R Click";
+        button[2] = "M Click, Space";
+        button[3] = "Ctrl";
+        button[4] = "Alt";
+        button[5] = "Ctrl + Z";
+        button[6] = "Ctrl + Y";
+        button[7] = "[ "+scrGetKeybind(global.controls[KEY.SAVE_PLACE, 0])+" ]";//"S"
+        button[8] = "[ "+scrGetKeybind(global.controls[KEY.MOVE_PLACE, 0])+" ]";//"W"
         
-        button[9] = '[ '+scrGetKeybind(global.controls[KEY.ALIGN_LEFT, 0])+' ]' 
-        +' / '+'[ '+scrGetKeybind(global.controls[KEY.NUDGE_LEFT, 0])+' ]' //'A/N'
+        button[9] = "[ "+scrGetKeybind(global.controls[KEY.ALIGN_LEFT, 0])+" ]" 
+        +" / "+"[ "+scrGetKeybind(global.controls[KEY.NUDGE_LEFT, 0])+" ]"; //"A/N"
         
-        button[10] = '[ '+scrGetKeybind(global.controls[KEY.ALIGN_RIGHT, 0])+' ]' 
-        +' / '+'[ '+scrGetKeybind(global.controls[KEY.NUDGE_RIGHT, 0])+' ]'//'D/M'
+        button[10] = "[ "+scrGetKeybind(global.controls[KEY.ALIGN_RIGHT, 0])+" ]" 
+        +" / "+"[ "+scrGetKeybind(global.controls[KEY.NUDGE_RIGHT, 0])+" ]";//"D/M"
         
-        button[11] = '[ '+scrGetKeybind(global.controls[KEY.V_ALIGN, 0])+' ]';//'V'
-        button[12] = '[ '+scrGetKeybind(global.controls[KEY.H_ALIGN, 0])+' ]';//'H'
-        button[13] = '0...9'
-        button[14] = 'M Wheel'
-        button[15] = 'X, C'
-        button[16] = 'B'
+        button[11] = "[ "+scrGetKeybind(global.controls[KEY.V_ALIGN, 0])+" ]";//"V"
+        button[12] = "[ "+scrGetKeybind(global.controls[KEY.H_ALIGN, 0])+" ]";//"H"
+        button[13] = "0...9";
+        button[14] = "M Wheel";
+        button[15] = "X, C";
+        button[16] = "B";
         
         var action = array_create(maxarray);
-        action[0] = 'Place Object'
-        action[1] = 'Remove Object'
-        action[2] = 'Move Object'
-        action[3] = 'Select'
-        action[4] = 'Edit Code'
-        action[5] = 'Undo'
-        action[6] = 'Redo'
-        action[7] = 'Save'
-        action[8] = 'Move Kid'
-        action[9] = 'Nudge Kid Left'
-        action[10] = 'Nudge Kid Right'
-        action[11] = 'Set Valign'
-        action[12] = 'Set Halign'
-        action[13] = 'Select Object'
-        action[14] = 'Change Object'
-        action[15] = 'Zoom In/Out'
-        action[16] = 'Ball'
+        action[0] = "Place Object";
+        action[1] = "Remove Object";
+        action[2] = "Move Object";
+        action[3] = "Select";
+        action[4] = "Edit Code";
+        action[5] = "Undo";
+        action[6] = "Redo";
+        action[7] = "Save";
+        action[8] = "Move Kid";
+        action[9] = "Nudge Kid Left";
+        action[10] = "Nudge Kid Right";
+        action[11] = "Set Valign";
+        action[12] = "Set Halign";
+        action[13] = "Select Object";
+        action[14] = "Change Object";
+        action[15] = "Zoom In/Out";
+        action[16] = "Ball";
         
         for (i = 0; i &lt; maxarray; i+=1)
         {
-            draw_set_halign(fa_left)
-            draw_text(xx,yy,button[i])
-            draw_set_halign(fa_right)
-            draw_text(xx+dx*2.5,yy,action[i])
-            yy += dy
-        } break
+            draw_set_halign(fa_left);
+            draw_text(xx,yy,button[i]);
+            draw_set_halign(fa_right);
+            draw_text(xx+dx*2.5,yy,action[i]);
+            yy += dy;
+        } break;
         
         case 1: // TAS/recording keybinds
         var maxarray = 13;
         var button = array_create(maxarray);
-        button[0] = 'TAS/Recording Controls'
-        button[1] = 'Enter+F5-12'
-        button[2] = 'F5-12'
-        button[3] = 'F1'
-        button[4] = 'Enter+F1'
-        button[5] = 'Space'
-        button[6] = 'Enter+1'
-        button[7] = 'Enter+2'
-        button[8] = 'Enter+Space'
-        button[9] = 'J'
-        button[10] = 'K'
-        button[11] = 'U, I'
-        button[12] = 'O, P'
+        button[0] = "TAS/Recording Controls";
+        button[1] = "Enter+F5-12";
+        button[2] = "F5-12";
+        button[3] = "F1";
+        button[4] = "Enter+F1";
+        button[5] = "Space";
+        button[6] = "Enter+1";
+        button[7] = "Enter+2";
+        button[8] = "Enter+Space";
+        button[9] = "J";
+        button[10] = "K";
+        button[11] = "U, I";
+        button[12] = "O, P";
         
         var action = array_create(maxarray);
-        action[0] = ''
-        action[1] = 'Create Save State'
-        action[2] = 'Load Save State'
-        action[3] = 'Frame Advance'
-        action[4] = 'Rewind'
-        action[5] = 'Unpause'
-        action[6] = 'Recording FA'
-        action[7] = 'Recording Rewind'
-        action[8] = 'Recording Unpause'
-        action[9] = 'Jump'
-        action[10] = 'Release Jump'
-        action[11] = 'Nudge Kid X'
-        action[12] = 'Vine Let Go'
+        action[0] = "";
+        action[1] = "Create Save State";
+        action[2] = "Load Save State";
+        action[3] = "Frame Advance";
+        action[4] = "Rewind";
+        action[5] = "Unpause";
+        action[6] = "Recording FA";
+        action[7] = "Recording Rewind";
+        action[8] = "Recording Unpause";
+        action[9] = "Jump";
+        action[10] = "Release Jump";
+        action[11] = "Nudge Kid X";
+        action[12] = "Vine Let Go";
         
         for (i = 0; i &lt; maxarray; i+=1)
         {
-            draw_set_halign(fa_left)
-            draw_text(xx,yy,button[i])
-            draw_set_halign(fa_right)
-            draw_text(xx+dx*2.5,yy,action[i])
-            yy += dy
-        } break
+            draw_set_halign(fa_left);
+            draw_text(xx,yy,button[i]);
+            draw_set_halign(fa_right);
+            draw_text(xx+dx*2.5,yy,action[i]);
+            yy += dy;
+        } break;
     }
  }
 </string>
@@ -1349,17 +1356,19 @@ if global.editorinstructions {
           <argument>
             <kind>1</kind>
             <string>///value tracker (analysis only)
-if global.sidebarstate == sidebar_analysis
+if (global.sidebarstate == sidebar_analysis)
 {
-    var xx = 912
-    var yy = 8
+    var xx = 912;
+    var yy = 8;
     
-    var sprite = sPlayerIdle
-    if global.RecordPlayerPosition sprite = sMenuRecord
-    var enabled = global.state == globalstate_idle and not global.comboboxselected
-    if menuButtonToggle(xx,yy,32,32,enabled,sprite,'','',global.RecordPlayerPosition) {
-        global.RecordPlayerPosition = not global.RecordPlayerPosition
-        saveConfig()
+    var sprite = sPlayerIdle;
+    if (global.RecordPlayerPosition) 
+        sprite = sMenuRecord;
+        
+    var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+    if (menuButtonToggle(xx,yy,32,32,enabled,sprite,'','',global.RecordPlayerPosition)) {
+        global.RecordPlayerPosition = !global.RecordPlayerPosition;
+        saveConfig();
     }
 }
 </string>
@@ -1383,17 +1392,16 @@ if global.sidebarstate == sidebar_analysis
           <argument>
             <kind>1</kind>
             <string>///menu (Esc) button
-var xx = 952
-var yy = 8
-var enabled = global.state == globalstate_idle and not global.comboboxselected and not global.hidesidebar
-var clicked = menuButton(xx,yy,96,32,'Menu (Esc)',enabled,false)
+var xx = 952;
+var yy = 8;
+var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected &amp;&amp; !global.hidesidebar;
+var clicked = menuButton(xx,yy,96,32,'Menu (Esc)',enabled,false);
 
-var escpressed = keyboard_check_pressed(vk_escape) and oMenu.steps_out_of_menu &gt; 0
-    and global.state == globalstate_idle
+var escpressed = keyboard_check_pressed(vk_escape) &amp;&amp; oMenu.steps_out_of_menu &gt; 0 &amp;&amp; global.state == globalstate_idle;
 
-if clicked or escpressed {
-    global.state = globalstate_menu
-    saveAndResetZoom()
+if (clicked || escpressed) {
+    global.state = globalstate_menu;
+    saveAndResetZoom();
 }
 </string>
           </argument>
@@ -1416,13 +1424,13 @@ if clicked or escpressed {
           <argument>
             <kind>1</kind>
             <string>///grid overlay size
-if global.sidebarstate != sidebar_analysis
+if (global.sidebarstate != sidebar_analysis)
 {
-    var xx = 808
-    var yy = 336
-    var w = 112
-    var h = 32
-    var droph = 75
+    var xx = 808;
+    var yy = 336;
+    var w = 112;
+    var h = 32;
+    var droph = 75;
     
     if (global.sidebarstate == sidebar_palette)
     {
@@ -1430,61 +1438,60 @@ if global.sidebarstate != sidebar_analysis
         h = 24;
     }
         
-    comboBoxButton(xx,yy,w,h,droph,'Snap: '+string(oEdit.snap),sMenuGrid)
+    comboBoxButton(xx,yy,w,h,droph,"Snap: "+string(oEdit.snap),sMenuGrid);
     
     if (global.sidebarstate == sidebar_palette)
     {
-        if selected &amp;&amp; menuButton(xx,yy,w,h,'Snap: '+string(oEdit.snap), true, sMenuGrid)
-        {
-            switch oEdit.snap {
-                case 0: oEdit.snap = 32 break
-                case 32: oEdit.snap = 16 break
-                case 16: oEdit.snap = 8 break
-                case 8: oEdit.snap = 4 break
-                case 4: oEdit.snap = 2 break
-                default: oEdit.snap = 32 break
+        if (selected &amp;&amp; menuButton(xx,yy,w,h,"Snap: "+string(oEdit.snap), true, sMenuGrid)) {
+            switch (oEdit.snap) {
+                case 0: oEdit.snap = 32; break;
+                case 32: oEdit.snap = 16; break;
+                case 16: oEdit.snap = 8; break;
+                case 8: oEdit.snap = 4; break;
+                case 4: oEdit.snap = 2; break;
+                default: oEdit.snap = 32; break;
             }
-            saveConfig()
-            selected = false
-            global.comboboxselected = false
+            saveConfig();
+            selected = false;
+            global.comboboxselected = false;
         }
     }
     else
     {
-        if selected {
-            drawButton(xx,yy+h-1,w,droph,false)
-            draw_set_color(global.color_button)
-            draw_line(xx,yy+h-1,xx+w-2,yy+h-1)
+        if (selected) {
+            drawButton(xx,yy+h-1,w,droph,false);
+            draw_set_color(global.color_button);
+            draw_line(xx,yy+h-1,xx+w-2,yy+h-1);
         }
     
-        var bx = xx
-        var by = yy+h-1
-        var bw = 38
-        var bh = 38
-        var dx = 37
+        var bx = xx;
+        var by = yy+h-1;
+        var bw = 38;
+        var bh = 38;
+        var dx = 37;
         
         var gridsnap = array_create(5);
         gridsnap[0] = 32;
         gridsnap[1] = 16;
         gridsnap[2] = 8;
         gridsnap[3] = 1;
-        gridsnap[4] = 'other [ '+scrGetKeybind(global.controls[KEY.GRID_SNAP, 0])+' ]';
+        gridsnap[4] = "other [ "+scrGetKeybind(global.controls[KEY.GRID_SNAP, 0])+" ]";
         for (i = 0; i &lt; 5; i+=1)
         {
             if (i != 4)
             {
-                if selected &amp;&amp; menuButton(bx,by,bw,bh,string(gridsnap[i]),true,false) {
+                if (selected &amp;&amp; menuButton(bx,by,bw,bh,string(gridsnap[i]),true,false)) {
                     oEdit.snap = gridsnap[i];
-                    saveConfig()
-                    selected = false
-                    global.comboboxselected = false
+                    saveConfig();
+                    selected = false;
+                    global.comboboxselected = false;
                 }
             }
             else
             {
                 if (selected &amp;&amp; menuButton(bx,by,bw*2-1,bh,string(gridsnap[i]),true,false)
                 &amp;&amp; global.state != globalstate_input) {
-                    inputOverlay(input_textbox,inputCallback_GridCustom,'Grid snap (was '+string(oEdit.snap)+')')
+                    inputOverlay(input_textbox,inputCallback_GridCustom,"Grid snap (was "+string(oEdit.snap)+")");
                 }
             }
             
@@ -1518,49 +1525,49 @@ if global.sidebarstate != sidebar_analysis
           <argument>
             <kind>1</kind>
             <string>///room speed toggle
-if global.sidebarstate == sidebar_hybrid
+if (global.sidebarstate == sidebar_hybrid)
 {
-    var xx = 936
-    var yy = 336
-    var w = 112
-    var h = 32
-    var droph = 75
+    var xx = 936;
+    var yy = 336;
+    var w = 112;
+    var h = 32;
+    var droph = 75;
     
-    comboBoxButton(xx,yy,w,h,droph,'Speed: '+string(room_speed),sMenuSpeed)
+    comboBoxButton(xx,yy,w,h,droph,"Speed: "+string(room_speed),sMenuSpeed);
     
-    if selected {
-        drawButton(xx,yy+h-1,w,droph,false)
-        draw_set_color(global.color_button)
-        draw_line(xx,yy+h-1,xx+w-2,yy+h-1)
+    if (selected) {
+        drawButton(xx,yy+h-1,w,droph,false);
+        draw_set_color(global.color_button);
+        draw_line(xx,yy+h-1,xx+w-2,yy+h-1);
     }
     
-    var bx = xx
-    var by = yy+h-1
-    var bw = 38
-    var bh = 38
-    var dx = 37
+    var bx = xx;
+    var by = yy+h-1;
+    var bw = 38;
+    var bh = 38;
+    var dx = 37;
     
     var roomspd = array_create(5);
     roomspd[0] = 50;
     roomspd[1] = 25;
     roomspd[2] = 10;
     roomspd[3] = 100;
-    roomspd[4] = 'other [ '+scrGetKeybind(global.controls[KEY.ROOM_SPEED, 0])+' ]';
+    roomspd[4] = "other [ "+scrGetKeybind(global.controls[KEY.ROOM_SPEED, 0])+" ]";
     for (i = 0; i &lt; 5; i+=1)
     {    
         if (i != 4)
         {
-            if selected and menuButton(bx,by,bw,bh,string(roomspd[i]),true,false) {
-                room_speed = roomspd[i]
-                selected = false
-                global.comboboxselected = false
+            if (selected &amp;&amp; menuButton(bx,by,bw,bh,string(roomspd[i]),true,false)) {
+                room_speed = roomspd[i];
+                selected = false;
+                global.comboboxselected = false;
             }
         }
         else
         {
-            if (selected and menuButton(bx,by,bw*2-1,bh,string(roomspd[i]),true,false)
-            and global.state != globalstate_input) {
-                inputOverlay(input_textbox,inputCallback_SpeedCustom,'Room speed (was '+string(room_speed)+')')
+            if (selected &amp;&amp; menuButton(bx,by,bw*2-1,bh,string(roomspd[i]),true,false)
+            &amp;&amp; global.state != globalstate_input) {
+                inputOverlay(input_textbox,inputCallback_SpeedCustom,"Room speed (was "+string(room_speed)+")");
             }
         }
         
@@ -1593,15 +1600,17 @@ if global.sidebarstate == sidebar_hybrid
           <argument>
             <kind>1</kind>
             <string>///analysis level (analysis only)
-if global.sidebarstate == sidebar_analysis
+if (global.sidebarstate == sidebar_analysis)
 {
-    var xx = 808
-    var yy = 576
+    var xx = 808;
+    var yy = 576;
+    var w = 96;
+    var h = 24;
     
-    var enabled = global.state == globalstate_idle and not global.comboboxselected
-    if menuButtonToggle(xx,yy,96,24,enabled,false,'Advanced','Standard',global.sidebarlevel) {
-        global.sidebarlevel = not global.sidebarlevel
-        saveConfig()
+    var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+    if (menuButtonToggle(xx,yy,w,h,enabled,false,'Advanced','Standard',global.sidebarlevel)) {
+        global.sidebarlevel = !global.sidebarlevel;
+        saveConfig();
     }
 }
 </string>
@@ -1625,18 +1634,20 @@ if global.sidebarstate == sidebar_analysis
           <argument>
             <kind>1</kind>
             <string>///sidebar toggle
-var xx = 952
-var yy = 576
+var xx = 952;
+var yy = 576;
+var w = 96;
+var h = 24;
 
 var states = array_create(3);
-states[0] = 'Palette'
-states[1] = 'Analysis'
-states[2] = 'Hybrid'
+states[0] = "Palette";
+states[1] = "Analysis";
+states[2] = "Hybrid";
 
-var enabled = global.state == globalstate_idle and not global.comboboxselected
-if menuButtonToggle(xx,yy,96,24,enabled,false,states[global.sidebarstate],'Palette',global.sidebarstate) {
-    if keyboard_check(vk_control) { global.sidebarstate = sidebar_hybrid; }
-    else { global.sidebarstate = not global.sidebarstate }
+var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+if (menuButtonToggle(xx,yy,w,h,enabled,false,states[global.sidebarstate],"Palette",global.sidebarstate)) {
+    if (keyboard_check(vk_control)) { global.sidebarstate = sidebar_hybrid; }
+    else { global.sidebarstate = !global.sidebarstate }
     
     if (global.sidebarstate != sidebar_analysis) 
         event_user(0);

@@ -9,10 +9,7 @@ global.paused = true;
 with (oPlayer) 
     djump = global.continuedjump;
 
-with (oDisappearPlatform) { count = 0; }
-with (oJumpRefresher) { count = 0; }
-with (oKiller) { highlight_count = 1000; }
-with (oWarp) { highlight_count = 1000; }
+reloadObjects();
 
 //codable_room_restart()
 

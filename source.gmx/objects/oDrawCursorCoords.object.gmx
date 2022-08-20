@@ -25,16 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not global.mousecoords
-or global.state != globalstate_idle
-or not point_in_rect(mouse_x,mouse_y,0,0,799,607) exit
+            <string>if (!global.mousecoords || global.state != globalstate_idle
+|| !point_in_rect(mouse_x,mouse_y,0,0,799,607)) 
+    exit;
 
-fontSetup(font_small, c_black, fa_left, fa_bottom, 1)
+fontSetup(font_small, c_black, fa_left, fa_bottom, 1);
 
-var str = '('+string(oEdit.xsnapped)+','+string(oEdit.ysnapped)+')'
-var yy = max(mouse_y-5, 20)
-var xx = min(mouse_x, 800-5-string_width(str))
-draw_text(xx, yy, str)
+var str = "("+string(oEdit.xsnapped)+","+string(oEdit.ysnapped)+")";
+var yy = max(mouse_y-5, 20);
+var xx = min(mouse_x, 800-5-string_width(str));
+draw_text(xx, yy, str);
 </string>
           </argument>
         </arguments>

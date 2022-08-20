@@ -25,15 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>xIdle = 928
-yIdle = 25
-xMenu = 890
-yMenu = 25
+            <string>xIdle = 928;
+yIdle = 25;
+xMenu = 890;
+yMenu = 25;
 
-x = xMenu
-y = yMenu
-xTarget = x
-yTarget = y
+x = xMenu;
+y = yMenu;
+xTarget = x;
+yTarget = y;
 </string>
           </argument>
         </arguments>
@@ -56,32 +56,33 @@ yTarget = y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if visible {
-    if mouse_check_button_pressed(mb_left)
-    and point_in_circle(mouse_x,mouse_y,x,y,15) {
-        image_angle -= 360
+            <string>if (visible) {
+    if (mouse_check_button_pressed(mb_left) &amp;&amp; point_in_circle(mouse_x,mouse_y,x,y,15)) {
+        image_angle -= 360;
     }
     var ease = 0.05;
-    if image_angle &lt; -180 ease *= power(0.99, -image_angle div 30) // what the
+    if (image_angle &lt; -180) {
+        ease *= power(0.99, -image_angle div 30) // what the
+    }
     image_angle += (0-image_angle)*ease
     //if 0-image_angle &lt; 1.5 image_angle = 0
 }
 else {
-    rotating = false
-    image_angle = 0
+    rotating = false;
+    image_angle = 0;
 }
 
-if global.state == globalstate_menu {
-    xTarget = xMenu
-    yTarget = yMenu
+if (global.state == globalstate_menu) {
+    xTarget = xMenu;
+    yTarget = yMenu;
 }
-else if global.state == globalstate_idle {
-    xTarget = xIdle
-    yTarget = yIdle
+else if (global.state == globalstate_idle) {
+    xTarget = xIdle;
+    yTarget = yIdle;
 }
 
-x += (xTarget-x)*0.15
-y += (yTarget-y)*0.15
+x += (xTarget-x)*0.15;
+y += (yTarget-y)*0.15;
 </string>
           </argument>
         </arguments>
@@ -104,7 +105,7 @@ y += (yTarget-y)*0.15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
+            <string>draw_self();
 </string>
           </argument>
         </arguments>

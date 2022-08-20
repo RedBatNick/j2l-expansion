@@ -3,7 +3,7 @@
 bhcount += 1;
 
 var player_on_ground = false;
-with (argument0) 
+with (argument[0]) 
 {
     player_on_ground = (place_meeting(x,y+global.grav,oBlock)
     && place_meeting(x,y+global.grav,oBlock));
@@ -15,11 +15,11 @@ if (global.frameaction_jump) {
 
 // press jump before hitting ground
 // simulate player to find out how many frames it would have taken to hit the ground
-if (scrButtonCheckPressed(KEY.JUMP) && !global.frameaction_jump && instance_exists(argument0)) 
+if (scrButtonCheckPressed(KEY.JUMP) && !global.frameaction_jump && instance_exists(argument[0])) 
 {
-    var realplayer = argument0;
+    var realplayer = argument[0];
     var playersim;
-    with (argument0) { playersim = instance_copy(true); }
+    with (argument[0]) { playersim = instance_copy(true); }
     playersim.y = realplayer.yprevious;
     playersim.vspeed = bhop_vspeedprevious;
     
@@ -61,5 +61,5 @@ if (!player_on_ground) {
     bhop_waitinglate = false;
 }
 
-if (instance_exists(argument0)) 
-    bhop_vspeedprevious = argument0.vspeed;
+if (instance_exists(argument[0])) 
+    bhop_vspeedprevious = argument[0].vspeed;

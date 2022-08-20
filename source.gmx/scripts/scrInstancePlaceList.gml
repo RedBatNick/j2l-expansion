@@ -1,19 +1,19 @@
-var x1, y1, obj, dsid, this, that, i;
+///scrInstancePlaceList(x, y, obj)
 
-x1 = argument0;
-y1 = argument1;
-obj = argument2;
+var x1 = argument[0];
+var y1 = argument[1];
+var obj = argument[2];
 
-dsid = ds_list_create();
-this = id;
+var dsid = ds_list_create();
+var this = id;
 
 with (obj)
 {
-    that = id;
+    var that = id;
     
     with (this)
     {
-        i = instance_place(x1, y1, that);
+        var i = instance_place(x1, y1, that);
         if (i != -4) { ds_list_add(dsid, i); }
     }
 }
