@@ -2,35 +2,54 @@ var mini = argument[0];
 
 switch (mini)
 {
+    // Water.
+    case oWater:
+    case oWaterMini:
+    
+    case oWater2:
+    case oWater2Mini:
+    
+    case oWater3:
+    case oWater3Mini:
+    
+    case oWaterCatharsis:
+    case oWaterCatharsisMini:
+    
+    case oWaterDisappear:
     case oWaterDisappearMini:
-    case 34:
-    case 35:
-    case 36:
-    case 46:
-    case 48:
-    case 50:
-    case 60:
-    case 62:
-    case 56:
-    case 58:
-    case 73:
-    case 31:
-    case 32:
-    case 33:
-    case 45:
-    case 47:
-    case 49:
-    case 59:
-    case 61:
-    case 55:
-    case 57:
-    case 37:
-    case 38:
+    
+    
+    // Vapor.
+    case oVaporUp:
+    case oVaporUpMini:
+    
+    case oVaporDown:
+    case oVaporDownMini:
+    
+    
+    // Gravity.
+    case oGravityBlockUp:
+    case oGravityBlockUpMini:
+    
+    case oGravityBlockDown:
+    case oGravityBlockDownMini:
+    
+    
+    // Fields.
+    case oFieldDotkidOn:
+    case oFieldDotkidOnMini:
+ 
+    case oFieldDotkidOff:
+    case oFieldDotkidOffMini:
+ 
+    case oFieldTripleOn:
+    case oFieldTripleOnMini:
+ 
         if (string_count("Mini", object_get_name(mini)) > 0)
             return 2;
         else
             return 1;
-        break
+        break;
     default:
         return 0;
 }

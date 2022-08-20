@@ -51,7 +51,7 @@ if (show) {
         switch(label) {
             case "Cancel": 
             if (framecount_jump1_jc != 0)
-                str += " ("+string(framecount_jump1+framecount_jump1_jc)+" f)";
+                str += " ("+string(framecount_jump1+framecount_jump1_jc1)+" f)";
         
            // if (framecount_jump2_jc != 0)
                 //str += "# ("+string(framecount_jump2+framecount_jump2_jc)+" f)";

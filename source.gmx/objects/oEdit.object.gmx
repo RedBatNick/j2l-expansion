@@ -51,6 +51,8 @@ redoDelay = 30;
 
 xsnapped_previous = 0;
 ysnapped_previous = 0;
+
+usingMini = 0;
 </string>
           </argument>
         </arguments>
@@ -128,6 +130,10 @@ if (shouldCaptureControls) {
             y = -1000;
             var inst = instance_position(mouse_x,mouse_y,all);
             if (inst != noone &amp;&amp; controlObject("inPalette",inst.object_index)) {//objectInPalette(inst.object_index) {
+                if (scrValidMini(inst.object_index) == 2)
+                    usingMini = 1;
+                else
+                    usingMini = 0;
                 selected_object = inst.object_index;
                 selected_sprite = inst.sprite_index;
                 selected_killer = object_is_ancestor(inst.object_index, oKiller);
@@ -225,6 +231,25 @@ if (shouldCaptureControls) {
             with (oPatBall) {
                 if (collision_line(other.xprevious, other.yprevious, other.x, other.y,id,true,false)) {
                     instance_destroy();
+                }
+            }
+            if (keyboard_check_pressed(vk_tab))
+            {
+                var checkValidMini = scrValidMini(selected_object);
+                if (checkValidMini != 0)
+                {
+                    if (string_count("Mini", object_get_name(selected_object)) &gt; 0)
+                    {
+                        usingMini = 0;
+                        var objStr = string_copy(object_get_name(selected_object), 1, (string_length(object_get_name(selected_object)) - 4));
+                        selected_object = asset_get_index(objStr);
+                    }
+                    else
+                    {
+                        usingMini = 1;
+                        var objStr = (object_get_name(selected_object) + "Mini");
+                        selected_object = asset_get_index(objStr);
+                    }
                 }
             }
         }
