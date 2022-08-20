@@ -43,7 +43,7 @@ while (index <= string_length(content))
                 oEdit.undo_nochanges = 1
                 with (all)
                 {
-                    if objectInPalette(object_index)
+                    if controlObject('inPalette',object_index)
                         instance_destroy()
                 }
                 with (oPatBall)
@@ -60,7 +60,7 @@ while (index <= string_length(content))
                     }
                     else
                     {
-                        objectid = saveIDToObject(base64StringToInt(string_copy(objectstring, i, 1)))
+                        objectid = saveXToObject(base64StringToInt(string_copy(objectstring, i, 1)),1)
                         if (objectid != noone)
                         {
                             xx = base32StringToInt(string_copy(objectstring, (i + 1), 2))

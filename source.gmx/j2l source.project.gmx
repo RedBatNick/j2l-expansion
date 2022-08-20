@@ -35,13 +35,25 @@
     <sound>sound\sndShoot</sound>
     <sound>sound\sndWallJump</sound>
     <sound>sound\sndDeath</sound>
-    <sounds name="vkid">
-      <sound>sound\sndVFlip1</sound>
-      <sound>sound\sndVFlip2</sound>
+    <sounds name="transforms">
+      <sounds name="vkid">
+        <sound>sound\sndVFlip1</sound>
+        <sound>sound\sndVFlip2</sound>
+      </sounds>
+      <sounds name="telekid">
+        <sound>sound\sndTeleport</sound>
+      </sounds>
+      <sounds name="toggle">
+        <sound>sound\sndTransformOn</sound>
+        <sound>sound\sndTransformOff</sound>
+        <sound>sound\sndTransformSwitch</sound>
+      </sounds>
     </sounds>
-    <sounds name="telekid">
-      <sound>sound\sndTeleport</sound>
+    <sounds name="physics">
+      <sound>sound\sndTripleAdd</sound>
+      <sound>sound\sndTripleRemove</sound>
     </sounds>
+    <sound>sound\sndBooster</sound>
     <sound>sound\sndWall</sound>
   </sounds>
   <sprites name="sprites">
@@ -168,6 +180,11 @@
           <sprite>sprites\sVaporUp</sprite>
           <sprite>sprites\sVaporDown</sprite>
         </sprites>
+        <sprites name="booster">
+          <sprite>sprites\sBoosterUp</sprite>
+          <sprite>sprites\sBoosterUpRefresher</sprite>
+          <sprite>sprites\sBoosterUpApple</sprite>
+        </sprites>
         <sprites name="vine">
           <sprites name="standard">
             <sprite>sprites\sVineL</sprite>
@@ -199,6 +216,16 @@
             <sprite>sprites\sGravityBlockRight</sprite>
             <sprite>sprites\sGravityBlockLeft</sprite>
             <sprite>sprites\sGravityBlockDown</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="field">
+          <sprites name="dotkid">
+            <sprite>sprites\sFieldDotOn</sprite>
+            <sprite>sprites\sFieldDotOff</sprite>
+          </sprites>
+          <sprites name="triple jump">
+            <sprite>sprites\sFieldTripleOn</sprite>
+            <sprite>sprites\sFieldTripleOff</sprite>
           </sprites>
         </sprites>
       </sprites>
@@ -442,7 +469,6 @@
     <scripts name="player">
       <script>scripts\playerJump.gml</script>
       <script>scripts\playerVJump.gml</script>
-      <script>scripts\reloadObjects.gml</script>
       <script>scripts\playerShoot.gml</script>
       <script>scripts\TASwatercheck.gml</script>
       <script>scripts\TASNudgeCheck.gml</script>
@@ -515,7 +541,6 @@
           <scripts name="variable object ids">
             <script>scripts\objectToSaveX.gml</script>
             <script>scripts\saveXToObject.gml</script>
-            <script>scripts\XInPalette.gml</script>
           </scripts>
         </scripts>
         <scripts name="formats">
@@ -555,6 +580,7 @@
       </scripts>
       <scripts name="palette">
         <script>scripts\controlObject.gml</script>
+        <script>scripts\reloadObjects.gml</script>
         <script>scripts\newPaletteObject.gml</script>
         <script>scripts\cyclePaletteObjects.gml</script>
         <script>scripts\scrollPaletteObject.gml</script>
@@ -929,6 +955,11 @@
           <object>objects\oVaporUp</object>
           <object>objects\oVaporDown</object>
         </objects>
+        <objects name="booster">
+          <object>objects\oBoosterUp</object>
+          <object>objects\oBoosterUpRefresher</object>
+          <object>objects\oBoosterUpApple</object>
+        </objects>
         <objects name="vine">
           <objects name="standard">
             <object>objects\oVineL</object>
@@ -960,6 +991,16 @@
             <object>objects\oGravityBlockDown</object>
           </objects>
         </objects>
+        <objects name="field">
+          <objects name="dotkid">
+            <object>objects\oFieldDotkidOn</object>
+            <object>objects\oFieldDotkidOff</object>
+          </objects>
+          <objects name="triple jump">
+            <object>objects\oFieldTripleOn</object>
+            <object>objects\oFieldTripleOff</object>
+          </objects>
+        </objects>
       </objects>
       <objects name="save">
         <object>objects\oSave</object>
@@ -967,6 +1008,9 @@
       </objects>
       <objects name="warp">
         <object>objects\oWarp</object>
+      </objects>
+      <objects name="trigger">
+        <object>objects\oTrg</object>
       </objects>
     </objects>
     <objects name="other elements">
@@ -987,14 +1031,25 @@
           <object>objects\oVaporUpMini</object>
           <object>objects\oVaporDownMini</object>
         </objects>
+        <objects name="booster">
+          <object>objects\oBoosterUpMini</object>
+        </objects>
         <objects name="gravity">
           <objects name="blocks">
             <object>objects\oGravityBlockUpMini</object>
             <object>objects\oGravityBlockDownMini</object>
           </objects>
         </objects>
+        <objects name="field">
+          <objects name="dotkid">
+            <object>objects\oFieldDotkidOnMini</object>
+            <object>objects\oFieldDotkidOffMini</object>
+          </objects>
+          <objects name="triple jump">
+            <object>objects\oFieldTripleOnMini</object>
+          </objects>
+        </objects>
       </objects>
-      <object>objects\oTrg</object>
     </objects>
     <objects name="sidebar">
       <object>objects\oHideSidebar</object>

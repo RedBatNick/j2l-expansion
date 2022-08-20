@@ -57,7 +57,7 @@ var borders = map[? "BorderType"];
 for (var i = 0; i < ds_list_size(borders); i+=1) {
     var border = borders[| i];
     global.bordertype = border[? "Collision"];
-    global.bboxborder = border[? "BorderBox"];
+    global.borderbox = border[? "BorderBox"];
     global.screenwraptype = border[? "Screenwrap"];
 }
 
@@ -80,8 +80,8 @@ for (var i = 0; i < ds_list_size(forms); i+=1) {
     global.dotkid = form[? "Dot"];
     global.vkid = form[? "VVV"];
     global.telekid = form[? "Tele"];
-    global.linekid = form[? "Line"];
     global.lunarkid = form[? "Lunar"];
+    global.linekid = form[? "Line"];
 }
 
 //player values
@@ -115,7 +115,7 @@ with (oEdit) {
 
 with (all) {
     if (controlObject('inPalette', object_index)) {
-        instance_destroy()
+        instance_destroy();
     }
 }
 

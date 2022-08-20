@@ -36,10 +36,10 @@ switch objectindex {
     case oMiniKillerBlock:
     
     //ctool objects
-    case oBooster:
-    case oBoosterMini:
-    case oRefreshBlock:
-    case oFruitRefresher:
+    case oBoosterUp:
+    case oBoosterUpMini:
+    case oBoosterUpRefresher:
+    case oBoosterUpApple:
     case oGravityBlockUp:
     case oGravityBlockDown:
     case oVaporUp:
@@ -50,12 +50,12 @@ switch objectindex {
     case oLineKillerDB:
     case oShootRefresherL:
     case oShootRefresherR:
-    case oTripleAdd:
-    case oDotField:
-    case oNoDot:
+    case oFieldTripleOn:
+    case oFieldDotkidOn:
+    case oFieldDotkidOff:
     case oWaterDisappear:
     case oWaterCatharsis:
-    case oTripleRemove:
+    case oFieldTripleOff:
     case oWaterMini:
     case oWater2Mini:
     case oWater3Mini:
@@ -63,8 +63,8 @@ switch objectindex {
     case oGravityBlockDownMini:
     case oVaporUpMini:
     case oVaporDownMini:
-    case oTripleAddMini:
-    case oNoDotMini:
+    case oFieldTripleOnMini:
+    case oFieldDotkidOffMini:
     case oWaterCatharsisMini:
     case oWaterDisappearMini:
     case oPlatformSideways:

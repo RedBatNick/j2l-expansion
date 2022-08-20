@@ -101,6 +101,12 @@ switch(type)
         case oVaporDown:
         
         
+        // Booster.
+        case oBoosterUp:
+        case oBoosterUpRefresher:
+        case oBoosterUpApple:
+        
+        
         // Vines.
         case oVineL:
         case oVineR:
@@ -127,6 +133,14 @@ switch(type)
         case oGravityBlockDown:
         
         
+        // Field.
+        case oFieldDotkidOn:
+        case oFieldDotkidOff:
+        
+        case oFieldTripleOn:
+        case oFieldTripleOff:
+        
+        
         // Saves.
         case oSave:
         case oSaveFlip:
@@ -140,6 +154,22 @@ switch(type)
         // Warps.
         case oPlayerStart:
         case oWarp:
+        
+        
+        // Mini objects (for ctool)
+        case oWaterMini:
+        case oWater2Mini:
+        case oWater3Mini:
+        case oWaterCatharsisMini:
+        case oWaterDisappearMini:
+        case oVaporUpMini:
+        case oVaporDownMini:
+        case oBoosterUpMini:
+        case oGravityBlockUpMini:
+        case oGravityBlockDownMini:
+        case oFieldDotkidOnMini:
+        case oFieldDotkidOffMini:
+        case oFieldTripleOnMini:
         
         
         // Other:

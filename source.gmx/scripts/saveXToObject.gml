@@ -1,9 +1,15 @@
-var saveid = argument0
-var readid = argument1
+///saveXToObject(saveid, [ readid ])
+var saveid = argument[0];
+
+var readid = 0;
+if (argument_count == 2)
+    readid = argument[1];
 
 //default objects
-if readid >= 0 {
-    switch saveid {
+if (readid >= 0) 
+{
+    switch (saveid) 
+    {
         case 1:  return oEditBlock
         case 2:  return oEditMiniBlock
         case 3:  return oSpikeUp
@@ -33,17 +39,20 @@ if readid >= 0 {
         case 27: return oMiniKillerBlock 
     
         default: 
-            if readid == 0 return noone
+            if (readid == 0) 
+                return noone;
     }
 }
 
 //ctool objects
-if readid >= 1 {
-    switch saveid {
-        case 28: return oBooster
-        //case 29: return oBoosterMini
-        case 30: return oRefreshBlock
-        case 31: return oFruitRefresher
+if (readid >= 1) 
+{
+    switch (saveid) 
+    {
+        case 28: return oBoosterUp
+        case 29: return oBoosterUpMini
+        case 30: return oBoosterUpRefresher
+        case 31: return oBoosterUpApple
         case 32: return oGravityBlockUp
         case 33: return oGravityBlockDown
         case 34: return oVaporUp
@@ -54,11 +63,11 @@ if readid >= 1 {
         case 39: return oLineKillerDB
         case 40: return oShootRefresherL
         case 41: return oShootRefresherR
-        case 42: return oTripleAdd
-        case 43: return oDotField
-        case 44: return oNoDot
+        case 42: return oFieldTripleOn
+        case 43: return oFieldDotkidOn
+        case 44: return oFieldDotkidOff
         case 45: return oWaterCatharsis
-        case 46: return oTripleRemove
+        case 46: return oFieldTripleOff
         case 47: return oWaterDisappear
         case 48: return oWaterMini
         case 49: return oWater2Mini
@@ -67,15 +76,16 @@ if readid >= 1 {
         case 52: return oGravityBlockDownMini
         case 53: return oVaporUpMini
         case 54: return oVaporDownMini
-        case 55: return oTripleAddMini
-        case 56: return oDotFieldMini
-        case 57: return oNoDotMini
+        case 55: return oFieldTripleOnMini
+        case 56: return oFieldDotkidOnMini
+        case 57: return oFieldDotkidOffMini
         case 58: return oWaterCatharsisMini
         case 59: return oWaterDisappearMini
         case 60: return oPlatformSideways
     
         default: 
-            if readid == 1 return noone
+            if (readid == 1) 
+                return noone;
     }
 }
 

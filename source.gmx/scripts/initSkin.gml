@@ -102,6 +102,12 @@ newSkinnableObject(oVaporUp, "vaporup");
 newSkinnableObject(oVaporDown, "vapordown");
 
 
+// Booster.
+newSkinnableObject(oBoosterUp, "boosterup");
+newSkinnableObject(oBoosterUpRefresher, "boosteruprefresher");
+newSkinnableObject(oBoosterUpApple, "boosterupapple");
+
+
 // Vines.
 newSkinnableObject(oVineR, "walljumpR");
 newSkinnableObject(oVineL, "walljumpL");
@@ -110,20 +116,27 @@ newSkinnableObject(oVineL, "walljumpL");
 // Refreshers.
 newSkinnableObject(oJumpRefresher, "jumprefresher");
 
-newSkinnableObject(oShootRefresherR, "shootrefresherR");
-newSkinnableObject(oShootRefresherL, "shootrefresherL");
+//newSkinnableObject(oShootRefresherR, "shootrefresherR", 0);
+//newSkinnableObject(oShootRefresherL, "shootrefresherL", 0);
 
 
 // Gravity.
-newSkinnableObject(oGravityArrowUp, "gravityarrowup");
-newSkinnableObject(oGravityArrowRight, "gravityarrowright");
-newSkinnableObject(oGravityArrowLeft, "gravityarrowleft");
-newSkinnableObject(oGravityArrowDown, "gravityarrowdown");
+newSkinnableObject(oGravityArrowUp, "gravarrowup");
+newSkinnableObject(oGravityArrowRight, "gravarrowright");
+newSkinnableObject(oGravityArrowLeft, "gravarrowleft");
+newSkinnableObject(oGravityArrowDown, "gravarrowdown");
 
-newSkinnableObject(oGravityBlockUp, "gravityblockup");
-newSkinnableObject(oGravityBlockRight, "gravityblockright");
-newSkinnableObject(oGravityBlockLeft, "gravityblockleft");
-newSkinnableObject(oGravityBlockDown, "gravityblockdown");
+newSkinnableObject(oGravityBlockUp, "gravblockup");
+newSkinnableObject(oGravityBlockRight, "gravblockright");
+newSkinnableObject(oGravityBlockLeft, "gravblockleft");
+newSkinnableObject(oGravityBlockDown, "gravblockdown");
+
+
+// Fields.
+newSkinnableObject(oFieldDotkidOn, "fielddotkidon");
+newSkinnableObject(oFieldDotkidOff, "fielddotkidoff");
+newSkinnableObject(oFieldTripleOn, "fieldtripleon");
+newSkinnableObject(oFieldTripleOff, "fieldtripleoff");
 
 
 // Saves.
@@ -133,9 +146,29 @@ newSkinnableObject(oSaveFlip, "save", 0);
 
 // Markers. 
 newSkinnableObject(oBulletBlocker, "bulletblocker");
-newSkinnableObject(oAlignMarker, "alignmarker");
+//newSkinnableObject(oAlignMarker, "alignmarker");
 
 
 // Warps.
 newSkinnableObject(oPlayerStart, "playerstart");
 newSkinnableObject(oWarp, "warp");
+
+
+// Triggers.
+newSkinnableObject(oTrg, "trigger");
+
+
+// Mini objects (for ctool)
+newSkinnableObject(oWaterMini, "water1");
+newSkinnableObject(oWater2Mini, "water2");
+newSkinnableObject(oWater3Mini, "water3");
+newSkinnableObject(oWaterCatharsisMini, "cwater");
+newSkinnableObject(oWaterDisappearMini, "diswater");
+newSkinnableObject(oVaporUpMini, "vaporup");
+newSkinnableObject(oVaporDownMini, "vapordown");
+newSkinnableObject(oBoosterUpMini, "boosterup");
+newSkinnableObject(oGravityBlockUpMini, "gravblockup");
+newSkinnableObject(oGravityBlockDownMini, "gravblockdown");
+newSkinnableObject(oFieldDotkidOnMini, "fielddotkidon");
+newSkinnableObject(oFieldDotkidOffMini, "fielddotkidoff");
+newSkinnableObject(oFieldTripleOnMini, "fieldtripleon");

@@ -55,7 +55,7 @@ while index <= string_length(content) {
                         i += 3
                     }
                     else {
-                        var objectid = saveIDToObject(base32StringToInt(string_copy(objectstring,i,1)))
+                        var objectid = saveXToObject(base32StringToInt(string_copy(objectstring,i,1)))
                         if objectid != noone {
                             var xx = base32StringToInt(string_copy(objectstring,i+1,2))
                             var inst = instance_create(xx-128,yy-128,objectid);

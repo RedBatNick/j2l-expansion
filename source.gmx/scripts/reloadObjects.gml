@@ -1,11 +1,14 @@
 // Player.
 with (oDomuIce) { slipSpeed = 0; }
 
+
 // Platforms.
 with (oDisappearPlatform) { count = 0; }
 
+
 // Killers.
 with (oKiller) { highlight_count = 1000; }
+
 
 // Water.
 with (oWaterDisappear)
@@ -14,6 +17,14 @@ with (oWaterDisappear)
     alarm[0] = -1;
     active = 1;
 }
+
+
+// Boosters.
+with (oBoosterUpRefresher)
+{
+    image_alpha = 1;
+}
+
 
 // Refreshers.
 with (oJumpRefresher) { count = 0; }

@@ -306,6 +306,14 @@ palette = ds_list_create();
     false, "Vapor Down", false, "Vapor");
     
     
+    // Booster.
+    newPaletteObject(oBoosterUp,
+    cyclePaletteObjects(oBoosterUpRefresher,oBoosterUpApple),
+    false, "Booster Up", false, "Booster");
+    
+    
+    
+    
     // Vines.
     newPaletteObject(oVineR,
     cyclePaletteObjects(oVineL), 
@@ -330,6 +338,22 @@ palette = ds_list_create();
     newPaletteObject(oGravityBlockDown,
     cyclePaletteObjects(oGravityBlockUp),
     false, "Gravity Block", false, "Gravity");
+    
+    
+    // Fields.
+    newPaletteObject(oFieldDotkidOn,
+    cyclePaletteObjects(oFieldDotkidOff),
+    false, "Dotkid Field", false, "Fields");
+    
+    newPaletteObject(oFieldTripleOn,
+    cyclePaletteObjects(oFieldTripleOff),
+    false, "Triple Field", false, "Fields");
+    
+    
+    // Triggers.
+    newPaletteObject(oTrg,
+    undefined,
+    false, "Trigger", false, "Triggers");
 </string>
           </argument>
         </arguments>

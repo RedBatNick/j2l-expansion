@@ -1,9 +1,9 @@
-var d = 1;
+var d = numJumps-1;
 
 if (argument_count >= 1)
     d = argument[0];
 
-if (!kidLunar) 
+if (!global.lunarkid) 
 {
     global.grav *= -1;
     djump = d;

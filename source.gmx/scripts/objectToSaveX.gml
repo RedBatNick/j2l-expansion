@@ -1,9 +1,15 @@
-var objectindex = argument0
-var readid = argument1
+///objectToSaveX(objectindex, [ readid ])
+var objectindex = argument[0];
+
+var readid = 0;
+if (argument_count == 2)
+    readid = argument[1];
 
 //default objects
-if readid >= 0 {
-    switch objectindex {
+if (readid >= 0) 
+{
+    switch (objectindex) 
+    {
         case oEditBlock:        return 1
         case oEditMiniBlock:    return 2
         case oSpikeUp:          return 3
@@ -33,55 +39,61 @@ if readid >= 0 {
         case oMiniKillerBlock:  return 27
         
         default: 
-            if readid == 0 return -1
+            if (readid == 0) 
+                return -1;
     }
 }
 
 //ctool objects
-if readid >= 1 {
-    switch objectindex {
-        case oBooster:          return 28
-        case oBoosterMini:      return 29
-        case oRefreshBlock:     return 30
-        case oFruitRefresher:   return 31
-        case oGravityBlockUp:   return 32
-        case oGravityBlockDown: return 33
-        case oVaporUp:          return 34
-        case oVaporDown:        return 35
-        case oLineKillerV:      return 36
-        case oLineKillerH:      return 37
-        case oLineKillerDA:     return 38
-        case oLineKillerDB:     return 39
-        case oShootRefresherL:  return 40
-        case oShootRefresherR:  return 41
-        case oTripleAdd:        return 42
-        case oDotField:         return 43
-        case oNoDot:            return 44
-        case oWaterCatharsis:   return 45
-        case oTripleRemove:     return 46
-        case oWaterDisappear:   return 47
-        case oWaterMini:        return 48
-        case oWater2Mini:        return 49
+if (readid >= 1) 
+{
+    switch (objectindex) 
+    {
+        case oBoosterUp:            return 28
+        case oBoosterUpMini:        return 29
+        case oBoosterUpRefresher:   return 30
+        case oBoosterUpApple:       return 31
+        case oGravityBlockUp:       return 32
+        case oGravityBlockDown:     return 33
+        case oVaporUp:              return 34
+        case oVaporDown:            return 35
+        case oLineKillerV:          return 36
+        case oLineKillerH:          return 37
+        case oLineKillerDA:         return 38
+        case oLineKillerDB:         return 39
+        case oShootRefresherL:      return 40
+        case oShootRefresherR:      return 41
+        case oFieldTripleOn:        return 42
+        case oFieldDotkidOn:        return 43
+        case oFieldDotkidOff:       return 44
+        case oWaterCatharsis:       return 45
+        case oFieldTripleOff:       return 46
+        case oWaterDisappear:       return 47
+        case oWaterMini:            return 48
+        case oWater2Mini:           return 49
         case oWater3Mini:           return 50
-        case oGravityBlockUpMini:     return 51
-        case oGravityBlockDownMini:    return 52
-        case oVaporUpMini:           return 53
-        case oVaporDownMini:          return 54
-        case oTripleAddMini:             return 55
-        case oDotFieldMini:              return 56
-        case oNoDotMini:                 return 57
-        case oWaterCatharsisMini:        return 58
-        case oWaterDisappearMini:        return 59
-        case oPlatformSideways: return 60
+        case oGravityBlockUpMini:   return 51
+        case oGravityBlockDownMini: return 52
+        case oVaporUpMini:          return 53
+        case oVaporDownMini:        return 54
+        case oFieldTripleOnMini:    return 55
+        case oFieldDotkidOnMini:    return 56
+        case oFieldDotkidOffMini:   return 57
+        case oWaterCatharsisMini:   return 58
+        case oWaterDisappearMini:   return 59
+        case oPlatformSideways:     return 60
         
         default:
-            if readid == 1 return -1
+            if (readid == 1) 
+                return -1;
     }
 }
 
 /*UNUSED GTOOL OBJECTS
-if readid >= 2 {
-    switch objectindex {
+if (readid >= 2) 
+{
+    switch (objectindex) 
+    {
         case oRocketField:      return 61
         case oRocketEnd:        return 62
         case oLineField:        return 63
@@ -89,6 +101,7 @@ if readid >= 2 {
         case objEditBlock2:     return 65
         
         default: 
-            if readid == 2 return -1
+            if (readid == 2) 
+                return -1;
     }
 }*/
