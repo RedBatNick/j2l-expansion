@@ -385,7 +385,7 @@ if (mode == input_fileformat)
                 {
                     global.input_bool = false;
                     global.input_cancel = false;
-                    inputCallback_LoadMap();
+                    inputCallback_LoadMap("rmj");
                 }
             }
             
@@ -408,14 +408,14 @@ if (mode == input_fileformat)
             {
                 if (!oEdit.undo_nochanges) 
                 {
-                    inputOverlay(input_yesno,inputCallback_LoadMap,
+                    inputOverlay(input_yesno,inputCallback_LoadMap("legacy"),
                     "Map has been modified. Save changes?");
                 }
                 else 
                 {
                     global.input_bool = false;
                     global.input_cancel = false;
-                    inputCallback_LoadMap();
+                    inputCallback_LoadMap("legacy");
                 }
             }
             
@@ -438,21 +438,28 @@ if (mode == input_fileformat)
             {
                 if (!oEdit.undo_nochanges) 
                 {
-                    inputOverlay(input_yesno,inputCallback_LoadMap,
+                    inputOverlay(input_yesno,inputCallback_LoadMap("ctool"),
                     "Map has been modified. Save changes?");
                 }
                 else 
                 {
                     global.input_bool = false;
                     global.input_cancel = false;
-                    inputCallback_LoadMap();
+                    inputCallback_LoadMap("ctool");
                 }
             }
             
             //save cmap
             if (menuButton(xx+69,yy,w,h,"Export Ctool",true,sMenuSaveCMap)) 
             {
-            
+                if (window_get_fullscreen()) 
+                {
+                    window_set_fullscreen(false);
+                    oWorld.alarm[0] = 1;
+                    oWorld.buffertype = "ctool";
+                    oWorld.alarm[2] = 2;
+                }
+                else { saveMap("ctool"); }
             } break;
                         
             

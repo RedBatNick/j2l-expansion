@@ -1,25 +1,38 @@
 // Saves all the present palette objects to file.
 
-filename = get_save_filename_ext("jtool map|*.jmap","","","Save Map")
-if (filename == "") 
-    return false;
-
-var success;
-if (argument_count == 0) {
-    success = saveMapName(filename);
-} else {
-    type = argument[0];
+var filetype = "jtool";
+if (argument_count == 1) {
+    filetype = argument[0];
+}
     
-    switch(type)
-    {
-        case "legacy":
-        success = saveOldJMapName(filename);
-        break;
+var filename;
+var success; 
+
+switch(filetype)
+{
+    case "ctool":
+    filename = get_save_filename_ext("ctool map|*.cmap","","","Save Map")
+    if (filename == "") 
+        return false;
+    
+    success = saveCMapName(filename);
+    break;
+
+    case "legacy":
+    filename = get_save_filename_ext("jtool map|*.jmap","","","Save Map")
+    if (filename == "") 
+        return false;
+    
+    success = saveOldJMapName(filename);
+    break;
+    
+    case "jtool":
+    filename = get_save_filename_ext("jtool map|*.jmap","","","Save Map")
+    if (filename == "") 
+        return false;
         
-        case "ctool":
-        success = saveCMapName(filename);
-        break;
-    }
+    success = saveMapName(filename);
+    break;
 }
 
 if (success)

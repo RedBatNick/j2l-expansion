@@ -44,10 +44,11 @@ with (all) {
         
     var maxpos = 896;
     var minpos = -128;
-    if (x >= maxpos || y >= maxpos || x < minpos || y < minpos)
+    if (x >= maxpos || y >= maxpos || x < minpos || y < minpos) {
         objects_out_of_range = true;
         continue;
-        
+    }
+    
     var yy = y;
     file_text_write_string(f,"-"+padStringLeft(intToBase32String(y+128), 2, "0"));
     with (all) {

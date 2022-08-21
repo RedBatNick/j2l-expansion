@@ -45,6 +45,7 @@ global.savePlayerXScale = 1;
 room_speed = 50;
 global.death_count = 0;
 loadPlayer();
+
 completelyResetZoom();
 global.lastloadedmapname = splitDelimString(filename, "\", string_count("\", filename));
 updateCaption();

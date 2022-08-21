@@ -149,10 +149,35 @@ if (shouldCaptureControls) {
             x = -1000;
             y = -1000;
             var inst = instance_position(mouse_x,mouse_y,all);
-            if (inst != noone &amp;&amp; controlObject("inPalette",inst.object_index) &amp;&amp; codable_is_codable(inst)) {//objectInPalette(inst.object_index) and codable_is_codable(inst) {
-                inputOverlay(input_textarea,inputCallback_addCodeToObject,"Enter Code for Step Event:");
-                selected_instance = inst;
-                if (inst.code_step_written != "") then keyboard_string = inst.code_step_written;
+            if (inst != noone) 
+            {
+                if (inst.object_index == oSave &amp;&amp; controlObject("inPalette",oSave)) {
+                    canSign = 1;
+                    for (i = 0; i &lt; instance_number(oSave); i+=1)
+                    {
+                        var atsete = instance_find(oSave, i);
+                        if (atsete != inst &amp;&amp; canSign)
+                        {
+                            if (atsete.textline[0] != "")
+                            {
+                                audio_play_sound(sndNoSigning,0,false);
+                                canSign = 0;
+                            }
+                        }
+                    }
+                    if (canSign)
+                    {
+                        inputOverlay(input_textarea,inputCallback_addTextToSign,"Enter sign text:");
+                        selected_instance = inst;
+                        if (inst.textSplit != "")
+                            keyboard_string = inst.textSplit;
+                    }
+                }
+                else if (controlObject("inPalette",inst.object_index) &amp;&amp; codable_is_codable(inst)) {//objectInPalette(inst.object_index) and codable_is_codable(inst) {
+                    inputOverlay(input_textarea,inputCallback_addCodeToObject,"Enter Code for Step Event:");
+                    selected_instance = inst;
+                    if (inst.code_step_written != "") then keyboard_string = inst.code_step_written;
+                }
             }
         }
     } else if (space || middleHeld || draggedInstance != noone) {  // object movement

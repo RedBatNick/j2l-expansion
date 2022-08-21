@@ -2,7 +2,7 @@
 //Extension of nsp_execute_script. DO NOT CALL THIS DIRECTLY
 //add any GML scripts here that you want to support.
 
-switch (argument[0]) {
+switch (argument0) {
     //instance functions
     case "instance_create":  return codable_instance_create(argument1[0],argument1[1],argument1[2]);
     case "instance_destroy": instance_destroy(); return 0;

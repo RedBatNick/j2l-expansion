@@ -156,7 +156,7 @@ while (!file_text_eof(f))
                 show_debug_message("x: "+string(xxx)+"#y: "+string(yyy)+"#textstr: "+string(textstr));
             }
         }
-        file_text_readln(f);
+        file_text_read_string(f);
     }
     
     if (!found) {
@@ -165,7 +165,7 @@ while (!file_text_eof(f))
             show_debug_message("found");
             found = true;
         }
-        file_text_readln(f);
+        file_text_read_string(f);
     }
 }
 file_text_close(f);

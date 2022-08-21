@@ -30,5 +30,18 @@ with (oBoosterUpRefresher)
 with (oJumpRefresher) { count = 0; }
 with (oShootRefresher) { image_index = 0; }
 
+
+// Saves.
+with (oSave)
+{
+    drawtext = 0;
+    arrowVis = 0;
+    state = 0;
+    
+    with (oPlayer)
+        frozen = 0;
+}
+
+
 // Warps.
 with (oWarp) { highlight_count = 1000; }

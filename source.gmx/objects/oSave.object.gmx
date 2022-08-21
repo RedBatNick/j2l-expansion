@@ -25,9 +25,49 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>///default save variables
+image_speed = 0;
 can_save = true;
 grav = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///sign variables
+myFont = 2;
+linediff = 16;
+lineNum = 2;
+signwidth = 100;
+yy = 16;
+
+for (i = 0; i &lt; lineNum; i += 1)
+    textline[i] = "";
+textSplit = "";
+
+if (string_length(textline[1]) &gt; string_length(textline[0]))
+    signwidth = (string_width(textline[1]) + 16);
+else
+    signwidth = (string_width(textline[0]) + 16);
+
+state = 0;
+arrowVis = 0;
+drawtext = 0;
 </string>
           </argument>
         </arguments>
@@ -96,7 +136,8 @@ grav = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var shot = undefined;
+            <string>///default save function
+var shot = undefined;
 
 if (global.savetypez) {
     shot = shot || place_meeting(x,y,oPlayer) &amp;&amp; scrButtonCheckPressed(KEY.SHOOT);
@@ -112,12 +153,195 @@ if (global.savetypetouch) {
 }
 
 if (shot &amp;&amp; can_save &amp;&amp; instance_exists(oPlayer) &amp;&amp; grav == global.grav) 
+    event_user(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///sign function
+if (instance_exists(oPlayer) &amp;&amp; textline[0] != "")
 {
-    savePlayer();
-    can_save = false;
-    alarm[0] = 30;
-    alarm[1] = 59;
-    image_index = 1;
+    if (collision_rectangle(x, y, x+sprite_width, y+sprite_height, oPlayer, 1, 1))
+    {
+        if (state == 0)
+        {
+            arrowVis = min(1, (arrowVis + 0.02));
+            if (scrButtonCheckPressed(KEY.UP))
+            {
+                state = 1;
+                oPlayer.frozen = 1;
+                drawtext = 1;
+                arrowVis = 0;
+            }
+        }
+        else if (scrButtonCheckPressed(KEY.UP) || scrButtonCheckPressed(KEY.DOWN) || scrButtonCheckPressed(KEY.JUMP) || scrButtonCheckPressed(KEY.SHOOT))
+        {
+            state = 0;
+            oPlayer.frozen = 0;
+            drawtext = 0;
+            arrowVis = 1;
+        }
+    }
+    else
+        arrowVis = max(0, (arrowVis - 0.02));
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="21">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (string_length(textline[1]) &gt; string_length(textline[0]))
+    signwidth = (string_width(textline[1]) + 32);
+else
+    signwidth = (string_width(textline[0]) + 32);
+    
+if (textline[1] == "")
+    lineNum = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (can_save &amp;&amp; instance_exists(oPlayer) &amp;&amp; global.grav == grav)
+{
+    var player_in_room = (oPlayer.x &lt; 0 || oPlayer.x &gt; 800 || oPlayer.y &lt; 0 || oPlayer.y &gt; 608);
+    
+    if (!player_in_room)
+    {
+        savePlayer();
+        can_save = false;
+        alarm[0] = 30;
+        if (textline[0] == "")
+            alarm[1] = 59;
+        else
+        {
+            image_speed = 0.32;
+            audio_play_sound(sndSaveCross, 0, false);
+            instance_create(x+16, y+16, oSaveCross);
+        }
+        image_index = 1;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_index = 0;
+image_speed = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+if (textline[0] != "")
+{
+    if (arrowVis &gt; 0)
+        draw_sprite_ext(sSaveArrow, 0, (x + (sprite_width / 2)), (y - 16), 1, 1, 0, c_white, arrowVis);
+    
+    if (drawtext)
+    {
+        draw_set_color(c_black);
+        draw_set_alpha(0.78);
+        draw_rectangle(((x + (sprite_width / 2)) - (signwidth / 2)), ((y - (27 + (lineNum * linediff))) + yy), ((x + (sprite_width / 2)) + (signwidth / 2)), ((y - 18) + yy), 0);
+        
+        draw_set_alpha(1);
+        draw_set_color(c_white);
+        draw_rectangle((((x + (sprite_width / 2)) - (signwidth / 2)) - 1), ((y - (27 + (lineNum * linediff))) + yy), ((x + (sprite_width / 2)) + (signwidth / 2)), ((y - 18) + yy), 1);
+        
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_bottom);
+        
+        draw_set_font(myFont);
+        
+        for (i = 0; i &lt; lineNum; i += 1)
+            draw_text((x + (sprite_width / 2)), ((y - (21 + (i * linediff))) + yy), textline[i]);
+    }
 }
 </string>
           </argument>

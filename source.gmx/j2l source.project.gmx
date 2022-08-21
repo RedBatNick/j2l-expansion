@@ -54,6 +54,10 @@
       <sound>sound\sndTripleRemove</sound>
     </sounds>
     <sound>sound\sndBooster</sound>
+    <sounds name="saves">
+      <sound>sound\sndSaveCross</sound>
+      <sound>sound\sndNoSigning</sound>
+    </sounds>
     <sound>sound\sndWall</sound>
   </sounds>
   <sprites name="sprites">
@@ -181,9 +185,11 @@
           <sprite>sprites\sVaporDown</sprite>
         </sprites>
         <sprites name="booster">
-          <sprite>sprites\sBoosterUp</sprite>
-          <sprite>sprites\sBoosterUpRefresher</sprite>
-          <sprite>sprites\sBoosterUpApple</sprite>
+          <sprites name="up">
+            <sprite>sprites\sBoosterUp</sprite>
+            <sprite>sprites\sBoosterUpRefresher</sprite>
+            <sprite>sprites\sBoosterUpApple</sprite>
+          </sprites>
         </sprites>
         <sprites name="vine">
           <sprites name="standard">
@@ -232,6 +238,11 @@
       <sprites name="save">
         <sprite>sprites\sSave</sprite>
         <sprite>sprites\sSaveFlip</sprite>
+        <sprites name="sign">
+          <sprite>sprites\sSaveArrow</sprite>
+          <sprite>sprites\sSaveCrossGlow</sprite>
+          <sprite>sprites\sSaveCrossParticle</sprite>
+        </sprites>
       </sprites>
       <sprites name="warp">
         <sprite>sprites\sWarp</sprite>
@@ -544,14 +555,14 @@
           </scripts>
         </scripts>
         <scripts name="formats">
+          <script>scripts\saveMap.gml</script>
+          <script>scripts\loadMapAskName.gml</script>
           <scripts name="new format (use this one for new stuff)">
             <scripts name="save map">
-              <script>scripts\saveMap.gml</script>
               <script>scripts\saveMapName.gml</script>
             </scripts>
             <scripts name="load map">
               <script>scripts\loadMap.gml</script>
-              <script>scripts\loadMapAskName.gml</script>
               <script>scripts\loadStartupMap.gml</script>
             </scripts>
           </scripts>
@@ -641,6 +652,7 @@
             <script>scripts\inputCallback_VAlign.gml</script>
             <script>scripts\inputCallback_NewVersionOpenThread.gml</script>
             <script>scripts\inputCallback_addCodeToObject.gml</script>
+            <script>scripts\inputCallback_addTextToSign.gml</script>
           </scripts>
         </scripts>
         <scripts name="menu buttons">
@@ -818,6 +830,7 @@
     </scripts>
     <scripts name="functions">
       <script>scripts\scrInstancePlaceList.gml</script>
+      <script>scripts\scrLineCreate.gml</script>
       <scripts name="drawing">
         <script>scripts\draw_sprite_fog.gml</script>
         <script>scripts\draw_sprite_neg.gml</script>
@@ -1001,6 +1014,11 @@
       <objects name="save">
         <object>objects\oSave</object>
         <object>objects\oSaveFlip</object>
+        <objects name="sign">
+          <object>objects\oSaveCross</object>
+          <object>objects\oSaveCrossGlow</object>
+          <object>objects\oSaveCrossParticle</object>
+        </objects>
       </objects>
       <objects name="warp">
         <object>objects\oWarp</object>
