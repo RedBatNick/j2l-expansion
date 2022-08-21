@@ -596,6 +596,12 @@
         <script>scripts\newPaletteObject.gml</script>
         <script>scripts\cyclePaletteObjects.gml</script>
         <script>scripts\scrollPaletteObject.gml</script>
+        <scripts name="edit function">
+          <script>scripts\selectEditObject.gml</script>
+          <script>scripts\editCreateObject.gml</script>
+          <script>scripts\editCreateObjectIfFree.gml</script>
+          <script>scripts\editCreateObjectIfNotSamePos.gml</script>
+        </scripts>
         <scripts name="mini scripts (for ctool)">
           <script>scripts\scrMakeMini.gml</script>
           <script>scripts\scrValidMini.gml</script>
@@ -695,7 +701,6 @@
         <script>scripts\colorFromHsvDelimString.gml</script>
         <script>scripts\prefix_project_path_if_needed.gml</script>
         <script>scripts\FSIniReadReal.gml</script>
-        <script>scripts\selectEditObject.gml</script>
         <script>scripts\handleObjectDragMode.gml</script>
         <script>scripts\findInstanceToDrag.gml</script>
       </scripts>
@@ -822,9 +827,6 @@
         <script>scripts\highlightGetFraction.gml</script>
         <script>scripts\number_to_frames_string.gml</script>
         <script>scripts\nudgePlayerHalf.gml</script>
-        <script>scripts\editCreateObject.gml</script>
-        <script>scripts\editCreateObjectIfFree.gml</script>
-        <script>scripts\editCreateObjectIfNotSamePos.gml</script>
         <script>scripts\deleteBackup.gml</script>
         <script>scripts\exitPressed.gml</script>
       </scripts>
@@ -845,6 +847,7 @@
   <fonts name="fonts">
     <font>fonts\font_small</font>
     <font>fonts\font_big</font>
+    <font>fonts\font_sign</font>
   </fonts>
   <objects name="objects">
     <object>objects\oWorld</object>

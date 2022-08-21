@@ -120,7 +120,7 @@ if (instance_exists(oSave))
         var ins = instance_find(oSave, i);
         if (ins.textline[0] != "")
         {
-            file_text_write_string(f,string(ins.x)+" "+string(ins.y)+" |"+string(ins.textline[0])+"|");
+            file_text_write_string(f, (((((string(ins.x) + " ") + string(ins.y)) + " |") + string(ins.textline[0])) + "|"));
             file_text_writeln(f);
         }
     }

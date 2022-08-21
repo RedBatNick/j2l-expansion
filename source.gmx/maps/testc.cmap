@@ -1,4 +1,18 @@
-ctool|2.0.0|inf:0|dot:0|sav:1|bor:0|px:40u8g00000000|py:40ubg00000000|ps:1|pg:1|objects:-l0xi0xh0xj0ym0yn0ra0rc0Lr0Ls0Lq0-j0xi0ym0-m0xh0xi0yl0ym0ra0-k0xk0xj0xi0xh0ym0yn0ra0rc0rb0Lt0Lp0Lq0Ls0Lr0-c0A50A60A70Bk0Bj0Bi0Ce0Cf0ts0tr0tq0sm0sn0so0Ja0Jb0J90J80-b0A50A70A60Bi0Bk0Bj0Cf0Cg0tq0ts0sn0Jb0Ja0J90J80-d0A60Bi0Bj0Ce0Cf0tq0tr0ts0sn0so0sp0J90Ja0-a0A60Bk0Bj0Cg0ts0tr0Do0Dp0Dq0-h0z80z90za01f01g01h0Gj0Gl0Gk0Ec0Kr0Kq0Kp0Ko0-i0z80Gj0Gk0Kp0Kq0Kr0-g0z90z80z60Gl0Gk0Ee0Ed0Ec0Kq0kg0-f0z70Gl0Ed0-n0ra0-60Hl0Hj0Hk0Fa0Fb0Fc0Dr0Dq0wh0wg0wi0-40Hk0Hm0Hl0Fe0-50Hm0Hl0Hk0Fe0Fd0Fc0Fb0Fa0F90-70Fc0Dq0Dr0Dp0Dn0Dm0Dh0wf0we0wi0wh0wg0ua0u90u80-e0so0sp0-80Dn0Dp0Do0Dh0we0wf0wg0wh0wi0u90ub0ua0-90Do0Dr0Dq0u90ua0ub0uc0
+ctool|2.0.0|inf:0|dot:0|sav:1|bor:0|px:40u8g00000000|py:40ubg00000000|ps:1|pg:1|objects:-h01f01g01h0-g0ch0kg0
+
+data repeated below for easy parsing by other tools
+objects: (x, y, type)
+352 416 1 384 416 1 416 416 1 416 384 12 384 384 20 
+version:2.0.0
+infinitejump:0
+dotkid:0
+savetype:1
+bordertype:0
+playersavex:401
+playersavey:407.0000000000000000
+playersavexscale:1
+savestrings: (x, y, string)
+p0Ko0-i0z80Gj0Gk0Kp0Kq0Kr0-g0z90z80z60Gl0Gk0Ee0Ed0Ec0Kq0kg0-f0z70Gl0Ed0-n0ra0-60Hl0Hj0Hk0Fa0Fb0Fc0Dr0Dq0wh0wg0wi0-40Hk0Hm0Hl0Fe0-50Hm0Hl0Hk0Fe0Fd0Fc0Fb0Fa0F90-70Fc0Dq0Dr0Dp0Dn0Dm0Dh0wf0we0wi0wh0wg0ua0u90u80-e0so0sp0-80Dn0Dp0Do0Dh0we0wf0wg0wh0wi0u90ub0ua0-90Do0Dr0Dq0u90ua0ub0uc0
 
 data repeated below for easy parsing by other tools
 objects: (x, y, type)

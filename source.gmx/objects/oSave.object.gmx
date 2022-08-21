@@ -50,7 +50,7 @@ grav = 1;
           <argument>
             <kind>1</kind>
             <string>///sign variables
-myFont = 2;
+myFont = font_sign;
 linediff = 16;
 lineNum = 2;
 signwidth = 100;
@@ -60,11 +60,11 @@ for (i = 0; i &lt; lineNum; i += 1)
     textline[i] = "";
 textSplit = "";
 
-if (string_length(textline[1]) &gt; string_length(textline[0]))
+/*if (string_length(textline[1]) &gt; string_length(textline[0]))
     signwidth = (string_width(textline[1]) + 16);
 else
-    signwidth = (string_width(textline[0]) + 16);
-
+    signwidth = (string_width(textline[0]) + 16);*/
+    
 state = 0;
 arrowVis = 0;
 drawtext = 0;
@@ -175,9 +175,9 @@ if (shot &amp;&amp; can_save &amp;&amp; instance_exists(oPlayer) &amp;&amp; grav
           <argument>
             <kind>1</kind>
             <string>///sign function
-if (instance_exists(oPlayer) &amp;&amp; textline[0] != "")
+if (textline[0] != "")
 {
-    if (collision_rectangle(x, y, x+sprite_width, y+sprite_height, oPlayer, 1, 1))
+    if (instance_exists(oPlayer) &amp;&amp; collision_rectangle(x, y, x+sprite_width, y+sprite_height, oPlayer, 1, 1))
     {
         if (state == 0)
         {
@@ -255,7 +255,6 @@ if (textline[1] == "")
             <string>if (can_save &amp;&amp; instance_exists(oPlayer) &amp;&amp; global.grav == grav)
 {
     var player_in_room = (oPlayer.x &lt; 0 || oPlayer.x &gt; 800 || oPlayer.y &lt; 0 || oPlayer.y &gt; 608);
-    
     if (!player_in_room)
     {
         savePlayer();
@@ -318,7 +317,11 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>if (string_length(textline[1]) &gt; string_length(textline[0]))
+    signwidth = string_width(textline[1]) + (string_length(textline[1])+16);
+else
+    signwidth = string_width(textline[0]) + (string_length(textline[0])+16);
+
 if (textline[0] != "")
 {
     if (arrowVis &gt; 0)
