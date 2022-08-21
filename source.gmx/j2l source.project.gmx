@@ -165,6 +165,7 @@
         <sprites name="other">
           <sprite>sprites\sKillerBlock</sprite>
           <sprite>sprites\sMiniKillerBlock</sprite>
+          <sprite>sprites\sTheBoy</sprite>
         </sprites>
       </sprites>
       <sprites name="misc">
@@ -945,6 +946,10 @@
         <objects name="other">
           <object>objects\oKillerBlock</object>
           <object>objects\oMiniKillerBlock</object>
+          <objects name="the boy">
+            <object>objects\oTheBoy</object>
+            <object>objects\oTempFruit</object>
+          </objects>
         </objects>
       </objects>
       <objects name="misc">
