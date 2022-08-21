@@ -5,7 +5,7 @@ if (scroll == 0) {
     return 0;
 }
 
-var obj_palette = oSidebarDraw.palette[| selected_index];
+var obj_palette = global.palette[| selected_index];
 var cycle_objects = obj_palette[? "Cycle"];
 var length = array_length_1d(cycle_objects);
 selected_cycle = (selected_cycle + length + scroll) % length;

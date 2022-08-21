@@ -99,6 +99,18 @@
         <sprite>sprites\sEditBlock</sprite>
         <sprite>sprites\sEditMiniBlock</sprite>
         <sprite>sprites\sSlipBlock</sprite>
+        <sprites name="lines">
+          <sprite>sprites\sSolidLineU</sprite>
+          <sprite>sprites\sSolidLineR</sprite>
+          <sprite>sprites\sSolidLineL</sprite>
+          <sprite>sprites\sSolidLineD</sprite>
+        </sprites>
+        <sprites name="mini lines">
+          <sprite>sprites\sMiniSolidLineU</sprite>
+          <sprite>sprites\sMiniSolidLineR</sprite>
+          <sprite>sprites\sMiniSolidLineL</sprite>
+          <sprite>sprites\sMiniSolidLineD</sprite>
+        </sprites>
         <sprites name="slide">
           <sprite>sprites\sSlideBlock</sprite>
           <sprite>sprites\sSlideBlockU</sprite>
@@ -150,6 +162,72 @@
             <sprite>sprites\sMiniSpikeLeft</sprite>
             <sprite>sprites\sMiniSpikeDown</sprite>
           </sprites>
+          <sprites name="thin">
+            <sprite>sprites\sSpikeUpThin</sprite>
+            <sprite>sprites\sSpikeRightThin</sprite>
+            <sprite>sprites\sSpikeLeftThin</sprite>
+            <sprite>sprites\sSpikeDownThin</sprite>
+          </sprites>
+          <sprites name="mini thin">
+            <sprite>sprites\sMiniSpikeUpThin</sprite>
+            <sprite>sprites\sMiniSpikeRightThin</sprite>
+            <sprite>sprites\sMiniSpikeLeftThin</sprite>
+            <sprite>sprites\sMiniSpikeDownThin</sprite>
+          </sprites>
+          <sprites name="flat">
+            <sprite>sprites\sSpikeDownLeftFlat</sprite>
+            <sprite>sprites\sSpikeDownRightFlat</sprite>
+            <sprite>sprites\sSpikeUpLeftFlat</sprite>
+            <sprite>sprites\sSpikeUpRightFlat</sprite>
+          </sprites>
+          <sprites name="mini flat">
+            <sprite>sprites\sMiniSpikeUpFlat</sprite>
+            <sprite>sprites\sMiniSpikeRightFlat</sprite>
+            <sprite>sprites\sMiniSpikeLeftFlat</sprite>
+            <sprite>sprites\sMiniSpikeDownFlat</sprite>
+          </sprites>
+          <sprites name="line">
+            <sprite>sprites\sSpikeUpLine</sprite>
+            <sprite>sprites\sSpikeRightLine</sprite>
+            <sprite>sprites\sSpikeLeftLine</sprite>
+            <sprite>sprites\sSpikeDownLine</sprite>
+            <sprite>sprites\sSpikeUpHalfLine</sprite>
+            <sprite>sprites\sSpikeRightHalfLine</sprite>
+            <sprite>sprites\sSpikeLeftHalfLine</sprite>
+            <sprite>sprites\sSpikeDownHalfLine</sprite>
+          </sprites>
+          <sprites name="mini line">
+            <sprite>sprites\sMiniSpikeUpLine</sprite>
+            <sprite>sprites\sMiniSpikeRightLine</sprite>
+            <sprite>sprites\sMiniSpikeLeftLine</sprite>
+            <sprite>sprites\sMiniSpikeDownLine</sprite>
+            <sprite>sprites\sMiniSpikeUpHalfLine</sprite>
+            <sprite>sprites\sMiniSpikeRightHalfLine</sprite>
+            <sprite>sprites\sMiniSpikeLeftHalfLine</sprite>
+            <sprite>sprites\sMiniSpikeDownHalfLine</sprite>
+          </sprites>
+          <sprites name="hole">
+            <sprite>sprites\sSpikeUpHole</sprite>
+            <sprite>sprites\sSpikeRightHole</sprite>
+            <sprite>sprites\sSpikeLeftHole</sprite>
+            <sprite>sprites\sSpikeDownHole</sprite>
+          </sprites>
+          <sprites name="box">
+            <sprite>sprites\sSpikeDownLeftBox</sprite>
+            <sprite>sprites\sSpikeDownRightBox</sprite>
+            <sprite>sprites\sSpikeUpLeftBox</sprite>
+            <sprite>sprites\sSpikeUpRightBox</sprite>
+          </sprites>
+          <sprites name="curved">
+            <sprite>sprites\sSpikeUpRightCurved</sprite>
+            <sprite>sprites\sSpikeUpLeftCurved</sprite>
+            <sprite>sprites\sSpikeRightUpCurved</sprite>
+            <sprite>sprites\sSpikeRightDownCurved</sprite>
+            <sprite>sprites\sSpikeLeftUpCurved</sprite>
+            <sprite>sprites\sSpikeLeftDownCurved</sprite>
+            <sprite>sprites\sSpikeDownRightCurved</sprite>
+            <sprite>sprites\sSpikeDownLeftCurved</sprite>
+          </sprites>
         </sprites>
         <sprites name="fruit">
           <sprite>sprites\sApple</sprite>
@@ -157,10 +235,10 @@
           <sprite>sprites\sBanana</sprite>
         </sprites>
         <sprites name="lines">
-          <sprite>sprites\sLineV</sprite>
-          <sprite>sprites\sLineH</sprite>
-          <sprite>sprites\sLineDA</sprite>
-          <sprite>sprites\sLineDB</sprite>
+          <sprite>sprites\sKillerLineV</sprite>
+          <sprite>sprites\sKillerLineH</sprite>
+          <sprite>sprites\sKillerLineDA</sprite>
+          <sprite>sprites\sKillerLineDB</sprite>
         </sprites>
         <sprites name="other">
           <sprite>sprites\sKillerBlock</sprite>
@@ -882,6 +960,18 @@
           <object>objects\oEditMiniBlock</object>
         </objects>
         <object>objects\oSlipBlock</object>
+        <objects name="lines">
+          <object>objects\oSolidLineU</object>
+          <object>objects\oSolidLineR</object>
+          <object>objects\oSolidLineL</object>
+          <object>objects\oSolidLineD</object>
+        </objects>
+        <objects name="mini lines">
+          <object>objects\oMiniSolidLineU</object>
+          <object>objects\oMiniSolidLineR</object>
+          <object>objects\oMiniSolidLineL</object>
+          <object>objects\oMiniSolidLineD</object>
+        </objects>
         <objects name="slide">
           <object>objects\oSlideBlock</object>
           <object>objects\oSlideBlockU</object>
@@ -934,6 +1024,72 @@
             <object>objects\oMiniSpikeLeft</object>
             <object>objects\oMiniSpikeDown</object>
           </objects>
+          <objects name="thin">
+            <object>objects\oSpikeUpThin</object>
+            <object>objects\oSpikeRightThin</object>
+            <object>objects\oSpikeLeftThin</object>
+            <object>objects\oSpikeDownThin</object>
+          </objects>
+          <objects name="mini thin">
+            <object>objects\oMiniSpikeUpThin</object>
+            <object>objects\oMiniSpikeRightThin</object>
+            <object>objects\oMiniSpikeLeftThin</object>
+            <object>objects\oMiniSpikeDownThin</object>
+          </objects>
+          <objects name="flat">
+            <object>objects\oSpikeDownLeftFlat</object>
+            <object>objects\oSpikeDownRightFlat</object>
+            <object>objects\oSpikeUpLeftFlat</object>
+            <object>objects\oSpikeUpRightFlat</object>
+          </objects>
+          <objects name="mini flat">
+            <object>objects\oMiniSpikeUpFlat</object>
+            <object>objects\oMiniSpikeRightFlat</object>
+            <object>objects\oMiniSpikeLeftFlat</object>
+            <object>objects\oMiniSpikeDownFlat</object>
+          </objects>
+          <objects name="line">
+            <object>objects\oSpikeUpLine</object>
+            <object>objects\oSpikeRightLine</object>
+            <object>objects\oSpikeLeftLine</object>
+            <object>objects\oSpikeDownLine</object>
+            <object>objects\oSpikeUpLineHalf</object>
+            <object>objects\oSpikeRightLineHalf</object>
+            <object>objects\oSpikeLeftLineHalf</object>
+            <object>objects\oSpikeDownLineHalf</object>
+          </objects>
+          <objects name="mini line">
+            <object>objects\oMiniSpikeUpLine</object>
+            <object>objects\oMiniSpikeRightLine</object>
+            <object>objects\oMiniSpikeLeftLine</object>
+            <object>objects\oMiniSpikeDownLine</object>
+            <object>objects\oMiniSpikeUpLineHalf</object>
+            <object>objects\oMiniSpikeRightLineHalf</object>
+            <object>objects\oMiniSpikeLeftLineHalf</object>
+            <object>objects\oMiniSpikeDownLineHalf</object>
+          </objects>
+          <objects name="hole">
+            <object>objects\oSpikeUpHole</object>
+            <object>objects\oSpikeRightHole</object>
+            <object>objects\oSpikeLeftHole</object>
+            <object>objects\oSpikeDownHole</object>
+          </objects>
+          <objects name="box">
+            <object>objects\oSpikeDownLeftBox</object>
+            <object>objects\oSpikeDownRightBox</object>
+            <object>objects\oSpikeUpLeftBox</object>
+            <object>objects\oSpikeUpRightBox</object>
+          </objects>
+          <objects name="curved">
+            <object>objects\oSpikeUpRightCurved</object>
+            <object>objects\oSpikeUpLeftCurved</object>
+            <object>objects\oSpikeRightUpCurved</object>
+            <object>objects\oSpikeRightDownCurved</object>
+            <object>objects\oSpikeLeftUpCurved</object>
+            <object>objects\oSpikeLeftDownCurved</object>
+            <object>objects\oSpikeDownRightCurved</object>
+            <object>objects\oSpikeDownLeftCurved</object>
+          </objects>
         </objects>
         <objects name="fruit">
           <object>objects\oApple</object>
@@ -941,10 +1097,10 @@
           <object>objects\oBanana</object>
         </objects>
         <objects name="lines">
-          <object>objects\oLineKillerV</object>
-          <object>objects\oLineKillerH</object>
-          <object>objects\oLineKillerDA</object>
-          <object>objects\oLineKillerDB</object>
+          <object>objects\oKillerLineV</object>
+          <object>objects\oKillerLineH</object>
+          <object>objects\oKillerLineDA</object>
+          <object>objects\oKillerLineDB</object>
         </objects>
         <objects name="other">
           <object>objects\oKillerBlock</object>

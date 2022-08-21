@@ -62,10 +62,10 @@ if (readid >= 1)
         case 37: return oShootRefresherL;
         case 38: return oShootRefresherR;
         case 39: return oBoosterUpApple;
-        case 40: return oLineKillerH;
-        case 41: return oLineKillerV;
-        case 42: return oLineKillerDA;
-        case 43: return oLineKillerDB;
+        case 40: return oKillerLineH;
+        case 41: return oKillerLineV;
+        case 42: return oKillerLineDA;
+        case 43: return oKillerLineDB;
         case 44: return oTheBoy;
         case 45: return oWaterDisappear;
         case 46: return oFieldDotkidOn;

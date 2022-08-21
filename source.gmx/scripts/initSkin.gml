@@ -26,12 +26,26 @@ newSkinnableObject(oEditMiniBlock, "miniblock");
 newSkinnableObject(oSlipBlock, "slipblock");
 
 
+// Line Blocks.
+newSkinnableObject(oSolidLineU, "solidlineup");
+newSkinnableObject(oSolidLineR, "solidlineright");
+newSkinnableObject(oSolidLineL, "solidlineleft");
+newSkinnableObject(oSolidLineD, "solidlinedown");
+
+
+// Mini Line Blocks.
+newSkinnableObject(oMiniSolidLineU, "minisolidlineup");
+newSkinnableObject(oMiniSolidLineR, "minisolidlineright");
+newSkinnableObject(oMiniSolidLineL, "minisolidlineleft");
+newSkinnableObject(oMiniSolidLineD, "minisolidlinedown");
+
+
 // Slopes.
 newSkinnableObject(oSlope, "slopeblock");
 newSkinnableObject(oSlopeUpRight, "slopeupright");
-newSkinnableObject(oSlopeUpLeft, "slopeupleft");
+newSkinnableObject(oSlopeUpLeft, "slopedownright");
 newSkinnableObject(oSlopeDownLeft, "slopedownleft");
-newSkinnableObject(oSlopeDownRight, "slopedownright");
+newSkinnableObject(oSlopeDownRight, "slopeupleft");
 
 
 // Conveyors.
@@ -63,12 +77,86 @@ newSkinnableObject(oSpikeLeft, "spikeleft");
 newSkinnableObject(oSpikeDown, "spikedown");
 
 
-// Minispikes.
+// Mini Spikes.
 newSkinnableObject(oMiniSpikeUp, "miniup");
 newSkinnableObject(oMiniSpikeRight, "miniright");
 newSkinnableObject(oMiniSpikeLeft, "minileft");
 newSkinnableObject(oMiniSpikeDown, "minidown");
 
+
+// Thin Spikes.
+newSkinnableObject(oSpikeUpThin, "spikeupthin");
+newSkinnableObject(oSpikeRightThin, "spikerightthin");
+newSkinnableObject(oSpikeLeftThin, "spikeleftthin");
+newSkinnableObject(oSpikeDownThin, "spikedownthin");
+
+
+// Mini Thin Spikes.
+newSkinnableObject(oMiniSpikeUpThin, "minispikeupthin");
+newSkinnableObject(oMiniSpikeRightThin, "minispikerightthin");
+newSkinnableObject(oMiniSpikeLeftThin, "minispikeleftthin");
+newSkinnableObject(oMiniSpikeDownThin, "minispikedownthin");
+
+
+// Flat Spikes.
+newSkinnableObject(oSpikeUpRightFlat, "spikeuprightflat");
+newSkinnableObject(oSpikeDownRightFlat, "spikedownrightflat");
+newSkinnableObject(oSpikeDownLeftFlat, "spikedownleftflat");
+newSkinnableObject(oSpikeUpLeftFlat, "spikeupleftflat");
+
+
+// Mini Flat Spikes.
+newSkinnableObject(oMiniSpikeUpFlat, "minispikeupflat");
+newSkinnableObject(oMiniSpikeRightFlat, "minispikerightflat");
+newSkinnableObject(oMiniSpikeLeftFlat, "minispikeleftflat");
+newSkinnableObject(oMiniSpikeDownFlat, "minispikedownflat");
+
+
+// Line Spikes.
+newSkinnableObject(oSpikeUpLine, "spikeupline");
+newSkinnableObject(oSpikeRightLine, "spikerightline");
+newSkinnableObject(oSpikeLeftLine, "spikeleftline");
+newSkinnableObject(oSpikeDownLine, "spikedownline");
+newSkinnableObject(oSpikeUpLineHalf, "spikeuplinehalf");
+newSkinnableObject(oSpikeRightLineHalf, "spikerightlinehalf");
+newSkinnableObject(oSpikeLeftLineHalf, "spikeleftlinehalf");
+newSkinnableObject(oSpikeDownLineHalf, "spikedownlinehalf");
+
+
+// Mini Line Spikes.
+newSkinnableObject(oMiniSpikeUpLine, "minispikeupline");
+newSkinnableObject(oMiniSpikeRightLine, "minispikerightline");
+newSkinnableObject(oMiniSpikeLeftLine, "minispikeleftline");
+newSkinnableObject(oMiniSpikeDownLine, "minispikedownline");
+newSkinnableObject(oMiniSpikeUpLineHalf, "minispikeuplinehalf");
+newSkinnableObject(oMiniSpikeRightLineHalf, "minispikerightlinehalf");
+newSkinnableObject(oMiniSpikeLeftLineHalf, "minispikeleftlinehalf");
+newSkinnableObject(oMiniSpikeDownLineHalf, "minispikedownlinehalf");
+
+
+// Hole Spikes.
+newSkinnableObject(oSpikeUpHole, "spikeuphole");
+newSkinnableObject(oSpikeRightHole, "spikerighthole");
+newSkinnableObject(oSpikeLeftHole, "spikelefthole");
+newSkinnableObject(oSpikeDownHole, "spikedownhole");
+
+
+// Box Spikes.
+newSkinnableObject(oSpikeUpRightBox, "spikeuprightbox");
+newSkinnableObject(oSpikeDownRightBox, "spikedownrightbox");
+newSkinnableObject(oSpikeDownLeftBox, "spikedownleftbox");
+newSkinnableObject(oSpikeUpLeftBox, "spikeupleftbox");
+
+
+// Curved Spikes.
+newSkinnableObject(oSpikeUpRightCurved, "spikeuprightcurved");
+newSkinnableObject(oSpikeUpLeftCurved, "spikeupleftcurved");
+newSkinnableObject(oSpikeRightUpCurved, "spikerightupcurved");
+newSkinnableObject(oSpikeRightDownCurved, "spikerightdowncurved");
+newSkinnableObject(oSpikeLeftUpCurved, "spikeleftupcurved");
+newSkinnableObject(oSpikeLeftDownCurved, "spikeleftdowncurved");
+newSkinnableObject(oSpikeDownRightCurved, "spikedownrightcurved");
+newSkinnableObject(oSpikeDownLeftCurved, "spikedownleftcurved");
 
 // Fruit.
 newSkinnableObject(oApple, "apple", 1 / 15);
@@ -76,14 +164,14 @@ newSkinnableObject(oEggplant, "eggplant");
 newSkinnableObject(oBanana, "banana");
 
 
-// Lines.
-newSkinnableObject(oLineKillerV, "linev");
-newSkinnableObject(oLineKillerH, "lineh");
-newSkinnableObject(oLineKillerDA, "lineda");
-newSkinnableObject(oLineKillerDB, "linedb");
+// Killer Lines.
+newSkinnableObject(oKillerLineV, "killerlinev");
+newSkinnableObject(oKillerLineH, "killerlineh");
+newSkinnableObject(oKillerLineDA, "killerlineda");
+newSkinnableObject(oKillerLineDB, "killerlinedb");
 
 
-// Killerblocks.
+// Killer Blocks.
 newSkinnableObject(oKillerBlock, "killerblock");
 newSkinnableObject(oMiniKillerBlock, "minikillerblock");
 

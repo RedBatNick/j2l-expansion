@@ -236,12 +236,8 @@ if (shouldCaptureControls) {
                     continue;
                 }
                 
-                if (global.waterlocked &amp;&amp;
-                    (object_index == oWater
-                    || object_index == oWater2
-                    || object_index == oWater3
-                    || object_index == oWaterNekoron
-                    || object_index == oWaterCatharsis))
+                var water = string_count(object_get_name(object_index), "oWater") &gt; 1;
+                if (global.waterlocked &amp;&amp; water)
                         continue;
                 
                 if ((place_meeting(x,y,oEdit)
@@ -348,7 +344,7 @@ ysnapped_previous = ysnapped;
             <string>// selected object and sprite. set by the menu object.
 selected_index = 0;
 selected_cycle = 0;
-var obj_palette = oSidebarDraw.palette[| 0];
+var obj_palette = global.palette[| 0];
 selected_object = obj_palette[? "Object"];
 selected_sprite = object_get_sprite(selected_object);
 selected_killer = obj_palette[? "Killer"];

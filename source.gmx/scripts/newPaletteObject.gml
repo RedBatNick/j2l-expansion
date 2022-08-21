@@ -1,8 +1,8 @@
 ///newPaletteObject(object, cycle, killer, tooltip, combo, [ group ])
-var index = ds_list_size(palette);
-palette[| index] = ds_map_create();
-ds_list_mark_as_map(palette, index);
-var map = palette[| index];
+var index = ds_list_size(global.palette);
+global.palette[| index] = ds_map_create();
+ds_list_mark_as_map(global.palette, index);
+var map = global.palette[| index];
 var obj = argument[0];
 map[? "Object"] = obj;
 var list = argument[1];

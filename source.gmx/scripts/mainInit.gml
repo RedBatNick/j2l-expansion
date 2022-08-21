@@ -26,6 +26,7 @@ window_command_hook(window_command_close);
 global.state = globalstate_idle; //keeps track of what features are currently active
 global.comboboxselected = false; //keeps track of whether or not the palette options (speed, grid, etc.) are active
 global.count = 0; //keeps track of global time
+global.palette = 0; 
 global.frameaction_jump = false; //keeps track of whether a single jump is happening
 global.frameaction_djump = false; //keeps track of whether a double jump is happening
 global.frameaction_jumpslow = false; //keeps track of whether a cancel is happening

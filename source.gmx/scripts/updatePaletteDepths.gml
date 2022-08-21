@@ -14,6 +14,20 @@ for (var i = 0; i < ds_list_size(global.depthList); i+=1)
             ds_list_add(objectList, oSlipBlock);
             
             
+            // Solid Lines.
+            ds_list_add(objectList, oSolidLineU);
+            ds_list_add(objectList, oSolidLineR);
+            ds_list_add(objectList, oSolidLineL);
+            ds_list_add(objectList, oSolidLineD);
+            
+            
+            // Mini Solid Lines.
+            ds_list_add(objectList, oMiniSolidLineU);
+            ds_list_add(objectList, oMiniSolidLineR);
+            ds_list_add(objectList, oMiniSolidLineL);
+            ds_list_add(objectList, oMiniSolidLineD);
+            
+            
             // Slopes.
             ds_list_add(objectList, oSlope);
             ds_list_add(objectList, oSlopeUpRight);
@@ -45,6 +59,8 @@ for (var i = 0; i < ds_list_size(global.depthList); i+=1)
             break;
            
         case depthorder_spike:
+            
+        
             // Spikes.
             ds_list_add(objectList, oSpikeUp);
             ds_list_add(objectList, oSpikeRight);
@@ -52,11 +68,86 @@ for (var i = 0; i < ds_list_size(global.depthList); i+=1)
             ds_list_add(objectList, oSpikeDown);
             
             
-            // Minispikes.
+            // Mini Spikes.
             ds_list_add(objectList, oMiniSpikeUp);
             ds_list_add(objectList, oMiniSpikeRight);
             ds_list_add(objectList, oMiniSpikeLeft);
             ds_list_add(objectList, oMiniSpikeDown);
+            
+            
+            // Thin Spikes.
+            ds_list_add(objectList, oSpikeUpThin);
+            ds_list_add(objectList, oSpikeRightThin);
+            ds_list_add(objectList, oSpikeLeftThin);
+            ds_list_add(objectList, oSpikeDownThin);
+            
+            
+            // Mini Thin Spikes.
+            ds_list_add(objectList, oMiniSpikeUpThin);
+            ds_list_add(objectList, oMiniSpikeRightThin);
+            ds_list_add(objectList, oMiniSpikeLeftThin);
+            ds_list_add(objectList, oMiniSpikeDownThin);
+            
+            
+            // Flat Spikes.
+            ds_list_add(objectList, oSpikeUpRightFlat);
+            ds_list_add(objectList, oSpikeDownRightFlat);
+            ds_list_add(objectList, oSpikeDownLeftFlat);
+            ds_list_add(objectList, oSpikeUpLeftFlat);
+            
+            
+            // Mini Flat Spikes.
+            ds_list_add(objectList, oMiniSpikeUpFlat);
+            ds_list_add(objectList, oMiniSpikeRightFlat);
+            ds_list_add(objectList, oMiniSpikeLeftFlat);
+            ds_list_add(objectList, oMiniSpikeDownFlat);
+            
+            
+            // Line Spikes.
+            ds_list_add(objectList, oSpikeUpLine);
+            ds_list_add(objectList, oSpikeRightLine);
+            ds_list_add(objectList, oSpikeLeftLine);
+            ds_list_add(objectList, oSpikeDownLine);
+            ds_list_add(objectList, oSpikeUpLineHalf);
+            ds_list_add(objectList, oSpikeRightLineHalf);
+            ds_list_add(objectList, oSpikeLeftLineHalf);
+            ds_list_add(objectList, oSpikeDownLineHalf);
+            
+            
+            // Mini Line Spikes.
+            ds_list_add(objectList, oMiniSpikeUpLine);
+            ds_list_add(objectList, oMiniSpikeRightLine);
+            ds_list_add(objectList, oMiniSpikeLeftLine);
+            ds_list_add(objectList, oMiniSpikeDownLine);
+            ds_list_add(objectList, oMiniSpikeUpLineHalf);
+            ds_list_add(objectList, oMiniSpikeRightLineHalf);
+            ds_list_add(objectList, oMiniSpikeLeftLineHalf);
+            ds_list_add(objectList, oMiniSpikeDownLineHalf);
+            
+            
+            // Hole Spikes.
+            ds_list_add(objectList, oSpikeUpHole);
+            ds_list_add(objectList, oSpikeRightHole);
+            ds_list_add(objectList, oSpikeLeftHole);
+            ds_list_add(objectList, oSpikeDownHole);
+            
+            
+            // Box Spikes.
+            ds_list_add(objectList, oSpikeUpRightBox);
+            ds_list_add(objectList, oSpikeDownRightBox);
+            ds_list_add(objectList, oSpikeDownLeftBox);
+            ds_list_add(objectList, oSpikeUpLeftBox);
+            
+            
+            // Curved Spikes.
+            ds_list_add(objectList, oSpikeUpRightCurved);
+            ds_list_add(objectList, oSpikeUpLeftCurved);
+            ds_list_add(objectList, oSpikeRightUpCurved);
+            ds_list_add(objectList, oSpikeRightDownCurved);
+            ds_list_add(objectList, oSpikeLeftUpCurved);
+            ds_list_add(objectList, oSpikeLeftDownCurved);
+            ds_list_add(objectList, oSpikeDownRightCurved);
+            ds_list_add(objectList, oSpikeDownLeftCurved);
             
             
             // Fruit.
@@ -65,14 +156,14 @@ for (var i = 0; i < ds_list_size(global.depthList); i+=1)
             ds_list_add(objectList, oBanana);
             
             
-            // Killerlines.
-            ds_list_add(objectList, oLineKillerV);
-            ds_list_add(objectList, oLineKillerH);
-            ds_list_add(objectList, oLineKillerDA);
-            ds_list_add(objectList, oLineKillerDB);
+            // Killer Lines.
+            ds_list_add(objectList, oKillerLineV);
+            ds_list_add(objectList, oKillerLineH);
+            ds_list_add(objectList, oKillerLineDA);
+            ds_list_add(objectList, oKillerLineDB);
             
             
-            // Killerblocks.
+            // Killer Blocks.
             ds_list_add(objectList, oKillerBlock);
             ds_list_add(objectList, oMiniKillerBlock);
             break;
@@ -95,7 +186,6 @@ for (var i = 0; i < ds_list_size(global.depthList); i+=1)
         case depthorder_player:
             // Player.
             ds_list_add(objectList, oPlayer);
-
             
             
             // Saves.

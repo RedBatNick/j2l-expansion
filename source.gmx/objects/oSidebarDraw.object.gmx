@@ -80,10 +80,10 @@ combobox_selected = false;
     killer - whether or not to draw the object with the killer tint
 */
 
-palette = ds_list_create();
+global.palette = ds_list_create();
 //event_user(0);
 
-/*
+
 //hybrid page
 
     //1st row
@@ -114,7 +114,7 @@ palette = ds_list_create();
     false, "Slip Block", false)
     
     newPaletteObject(oSlope,
-    cyclePaletteObjects(oSlopeDownRight,oSlopeDownLeft,oSlopeUpLeft,oSlopeUpRight),
+    cyclePaletteObjects(oSlopeUpRight,oSlopeDownRight,oSlopeDownLeft,oSlopeUpLeft),
     false, "Slopes", false);
     
     newPaletteObject(oSlideBlockR,
@@ -126,18 +126,6 @@ palette = ds_list_create();
     newPaletteObject(oPlatform,
     cyclePaletteObjects(oPlatformSideways),
     false, "Platform", false);
- 
-    newPaletteObject(oSnaplessPlatform,
-    cyclePaletteObjects(oSnaplessPlatformSideways),
-    false, "Snapless Platform", false);
-    
-    newPaletteObject(oSnapform,
-    cyclePaletteObjects(oSnapformSideways),
-    false, "Snapform", false);
-    
-    newPaletteObject(oDisappearPlatform,
-    cyclePaletteObjects(oDisappearPlatformSideways),
-    false, "Disappear Platform", false);
     
     
     //4th row
@@ -160,7 +148,7 @@ palette = ds_list_create();
     
     //5th row
     newPaletteObject(oWater,
-    cyclePaletteObjects(oWater2,oWater3,oWaterNekoron,oWaterCatharsis,oWaterDisappear), 
+    cyclePaletteObjects(oWater2,oWater3,oWaterNekoron),
     false, "Water", false);
     
     newPaletteObject(oVineR,
@@ -174,10 +162,10 @@ palette = ds_list_create();
     newPaletteObject(oGravityArrowDown,
     cyclePaletteObjects(oGravityArrowUp), 
     false, "Gravity Arrow", false);
-*/
+
 
 //palette page
-
+/*
     // Spikes.
     newPaletteObject(oSpikeUp, 
     cyclePaletteObjects(oSpikeRight,oSpikeDown,oSpikeLeft), 
@@ -186,6 +174,42 @@ palette = ds_list_create();
     newPaletteObject(oMiniSpikeUp,
     cyclePaletteObjects(oMiniSpikeRight,oMiniSpikeDown,oMiniSpikeLeft),
     true, "Mini Spike", false, "Spikes");
+    
+    newPaletteObject(oSpikeUpThin,
+    cyclePaletteObjects(oSpikeRightThin,oSpikeDownThin,oSpikeLeftThin),
+    true, "Thin Spike", false, "Spikes");
+    
+    newPaletteObject(oMiniSpikeUpThin,
+    cyclePaletteObjects(oMiniSpikeRightThin,oMiniSpikeDownThin,oMiniSpikeLeftThin),
+    true, "Mini Thin Spike", false, "Spikes");
+    
+    newPaletteObject(oSpikeUpRightFlat,
+    cyclePaletteObjects(oSpikeDownRightFlat,oSpikeDownLeftFlat,oSpikeUpLeftFlat),
+    true, "Flat Spikes", false, "Spikes");
+    
+    newPaletteObject(oMiniSpikeUpFlat,
+    cyclePaletteObjects(oMiniSpikeRightFlat,oMiniSpikeDownFlat,oMiniSpikeLeftFlat),
+    true, "Mini Flat Spikes", false, "Spikes");
+    
+    newPaletteObject(oSpikeUpLine,
+    cyclePaletteObjects(oSpikeUpLineHalf,oSpikeRightLine,oSpikeRightLineHalf,oSpikeDownLine,oSpikeDownLineHalf,oSpikeLeftLine,oSpikeLeftLineHalf),
+    true, "Line Spikes", false, "Spikes");
+    
+    newPaletteObject(oMiniSpikeUpLine,
+    cyclePaletteObjects(oMiniSpikeUpLineHalf,oMiniSpikeRightLine,oMiniSpikeRightLineHalf,oMiniSpikeDownLine,oMiniSpikeDownLineHalf,oMiniSpikeLeftLine,oMiniSpikeLeftLineHalf),
+    true, "Mini Line Spikes", false, "Spikes");
+    
+    newPaletteObject(oSpikeUpHole,
+    cyclePaletteObjects(oSpikeRightHole,oSpikeDownHole,oSpikeLeftHole),
+    true, "Hole Spikes", false, "Spikes");
+    
+    newPaletteObject(oSpikeUpRightBox,
+    cyclePaletteObjects(oSpikeDownRightBox,oSpikeDownLeftBox,oSpikeUpLeftBox),
+    true, "Box Spikes", false, "Spikes");
+    
+    newPaletteObject(oSpikeUpRightCurved,
+    cyclePaletteObjects(oSpikeRightUpCurved,oSpikeRightDownCurved,oSpikeDownRightCurved,oSpikeDownLeftCurved,oSpikeLeftDownCurved,oSpikeLeftUpCurved,oSpikeUpLeftCurved),
+    true, "Curved Spikes", false, "Spikes");
     
     
     // Fruit.
@@ -203,8 +227,8 @@ palette = ds_list_create();
     
 
     // Other Killers.
-    newPaletteObject(oLineKillerV,
-    cyclePaletteObjects(oLineKillerDB,oLineKillerH,oLineKillerDA),
+    newPaletteObject(oKillerLineV,
+    cyclePaletteObjects(oKillerLineDB,oKillerLineH,oKillerLineDA),
     true, "Killer Line", false, "Other Killers");
     
     newPaletteObject(oKillerBlock,
@@ -221,8 +245,16 @@ palette = ds_list_create();
     undefined,
     false, "Slip Block", false, "Blocks")
     
+    newPaletteObject(oSolidLineU,
+    cyclePaletteObjects(oSolidLineR,oSolidLineD,oSolidLineL),
+    false, "Solid Line", false, "Blocks");
+    
+    newPaletteObject(oMiniSolidLineU,
+    cyclePaletteObjects(oMiniSolidLineR,oMiniSolidLineD,oMiniSolidLineL),
+    false, "Mini Solid Line", false, "Blocks");
+    
     newPaletteObject(oSlope,
-    cyclePaletteObjects(oSlopeUpRight,oSlopeUpLeft,oSlopeDownLeft,oSlopeDownRight),
+    cyclePaletteObjects(oSlopeUpRight,oSlopeDownRight,oSlopeDownLeft,oSlopeUpLeft),
     false, "Slopes", false, "Blocks");
     
     newPaletteObject(oSlideBlockR,
@@ -264,11 +296,7 @@ palette = ds_list_create();
     newPaletteObject(oBulletBlocker,
     cyclePaletteObjects(oAlignMarker),
     false, "Bullet Blocker", false, "Markers");
-    
-    /*newPaletteObject(oTrg,
-    undefined, 
-    false, "Trigger", false, "Markers");*/
-    
+
     
     // Water.
     newPaletteObject(oWater,
@@ -410,7 +438,7 @@ bhopHint_Create();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_list_destroy(palette);
+            <string>ds_list_destroy(global.palette);
 </string>
           </argument>
         </arguments>
@@ -594,7 +622,7 @@ if (global.sidebarstate != sidebar_analysis)
     dy = h+8;
     var tooltip_to_draw = "";
     
-    for (var i = 0; i &lt; ds_list_size(palette); i += 1) {
+    for (var i = 0; i &lt; ds_list_size(global.palette); i += 1) {
         /*
             xx - x coordinate of the button location
             yy - y coordinate of the button location
@@ -604,7 +632,7 @@ if (global.sidebarstate != sidebar_analysis)
             killer - whether or not to draw the object with the killer tint
         */
         
-        var obj_palette = palette[| i];
+        var obj_palette = global.palette[| i];
         var xx = i mod 4;
         var yy = i div 4;
         var obj = obj_palette[? "Object"];

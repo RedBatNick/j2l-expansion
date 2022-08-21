@@ -6,14 +6,11 @@ with (all) {
         continue;
     }
     
-    if (global.waterlocked && 
-    (object_index == oWater 
-    || object_index == oWater2 
-    || object_index == oWater3 
-    || object_index == oWaterNekoron
-    || object_index == oWaterCatharsis)) {
+    var water = string_count(object_get_name(object_index), "oWater") > 1;
+    if (global.waterlocked && water) {
         continue;
     }
+    
     if (collision_point(instanceX,instanceY,id,true,false)) {
         return id;
     }

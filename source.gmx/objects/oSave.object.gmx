@@ -317,7 +317,10 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (string_length(textline[1]) &gt; string_length(textline[0]))
+            <string>if (object_index == oSave)
+    draw_self();
+
+if (string_length(textline[1]) &gt; string_length(textline[0]))
     signwidth = string_width(textline[1]) + (string_length(textline[1])+16);
 else
     signwidth = string_width(textline[0]) + (string_length(textline[0])+16);
