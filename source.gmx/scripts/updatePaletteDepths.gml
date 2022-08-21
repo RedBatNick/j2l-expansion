@@ -59,8 +59,6 @@ for (var i = 0; i < ds_list_size(global.depthList); i+=1)
             break;
            
         case depthorder_spike:
-            
-        
             // Spikes.
             ds_list_add(objectList, oSpikeUp);
             ds_list_add(objectList, oSpikeRight);
