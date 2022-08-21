@@ -2,10 +2,12 @@
 //Returns true if this instance is a codable object type, false otherwise
 
 //If this instance was dynamically created, do not allow the user to give it code
-if ds_list_find_index(global.dynamic_instance_list,argument0) > -1 return false
+if (ds_list_find_index(global.dynamic_instance_list,argument[0]) > -1) 
+    return false;
 
+//if (controlObject("inPalette",argument[0].object_index))
 //Otherwise, check to see if it's a codable type
-switch (argument0.object_index) {
+switch (argument[0].object_index) {
     case oEditBlock:
     case oEditMiniBlock:
     case oPlatform:
@@ -19,7 +21,7 @@ switch (argument0.object_index) {
     case oMiniSpikeDown:
     case oApple:
     case oTrg:
-        return true
+        return true;
     default:
-        return false
+        return false;
 }

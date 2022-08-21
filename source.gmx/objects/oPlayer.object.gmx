@@ -58,7 +58,7 @@ hit = 0;
 hitX = x;
 hitY = y;
 
-playerMask();
+playerSprite(sPlayerIdle);
 </string>
           </argument>
         </arguments>
@@ -795,8 +795,8 @@ if (onVineL || onVineR)
     image_speed = 0.5;
     
     // pressed away from the vine
-    if (onVineL &amp;&amp; scrButtonCheckPressed(KEY.RIGHT)) // || scrButtonCheck(ord('P'))
-    or (onVineR &amp;&amp; scrButtonCheckPressed(KEY.LEFT)) // || scrButtonCheck(ord('O')) 
+    if (onVineL &amp;&amp; scrButtonCheckPressed(KEY.RIGHT)) || keyboard_check(ord('P'))
+    || (onVineR &amp;&amp; scrButtonCheckPressed(KEY.LEFT)) || keyboard_check(ord('O')) 
     {       
         if (scrButtonCheck(KEY.JUMP)) // jumping off vine
         {

@@ -588,10 +588,6 @@
           <script>scripts\scrMakeMini.gml</script>
           <script>scripts\scrValidMini.gml</script>
         </scripts>
-        <scripts name="deprecated">
-          <script>scripts\selectPrevObject.gml</script>
-          <script>scripts\selectNextObject.gml</script>
-        </scripts>
       </scripts>
       <scripts name="window">
         <script>scripts\updateCaption.gml</script>
@@ -1056,26 +1052,6 @@
       <object>objects\oSidebar</object>
       <object>objects\oSidebarDraw</object>
       <object>objects\oEdit</object>
-      <objects name="deprecated">
-        <objects name="default buttons">
-          <object>objects\oEditorInstructions</object>
-          <object>objects\oOptionsButton</object>
-          <object>objects\oGridComboBox</object>
-          <object>objects\oSpeedComboBox</object>
-        </objects>
-        <objects name="palette">
-          <object>objects\oPalette</object>
-        </objects>
-        <objects name="analysis">
-          <object>objects\oDeathDisplay</object>
-          <object>objects\oJumpDurations</object>
-          <object>objects\oPlayerPosition</object>
-          <object>objects\oBhopHint</object>
-          <object>objects\oCancelHint</object>
-          <object>objects\oToggleAnalysis</object>
-          <object>objects\oFpsDisplay</object>
-        </objects>
-      </objects>
     </objects>
     <objects name="tool misc">
       <object>objects\oBorderDeath</object>

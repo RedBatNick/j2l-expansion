@@ -2,7 +2,7 @@
 //Extension of nsp_execute_script. DO NOT CALL THIS DIRECTLY
 //add any GML scripts here that you want to support.
 
-switch (argument0) {
+switch (argument[0]) {
     //instance functions
     case "instance_create":  return codable_instance_create(argument1[0],argument1[1],argument1[2]);
     case "instance_destroy": instance_destroy(); return 0;
@@ -44,5 +44,5 @@ switch (argument0) {
     
     case "point_distance":   return point_distance(argument1[0],argument1[1],argument1[2],argument1[3]);
     case "point_direction":  return point_direction(argument1[0],argument1[1],argument1[2],argument1[3]);
-    default:return undefined;
+    default: return undefined;
 }

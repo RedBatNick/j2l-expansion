@@ -1360,13 +1360,13 @@ if (global.sidebarstate == sidebar_analysis)
 {
     var xx = 912;
     var yy = 8;
-    
+
     var sprite = sPlayerIdle;
     if (global.RecordPlayerPosition) 
         sprite = sMenuRecord;
         
     var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
-    if (menuButtonToggle(xx,yy,32,32,enabled,sprite,'','',global.RecordPlayerPosition)) {
+    if (menuButtonToggle(xx,yy,32,32,enabled,sprite,"","",global.RecordPlayerPosition)) {
         global.RecordPlayerPosition = !global.RecordPlayerPosition;
         saveConfig();
     }
@@ -1394,8 +1394,9 @@ if (global.sidebarstate == sidebar_analysis)
             <string>///menu (Esc) button
 var xx = 952;
 var yy = 8;
+
 var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected &amp;&amp; !global.hidesidebar;
-var clicked = menuButton(xx,yy,96,32,'Menu (Esc)',enabled,false);
+var clicked = menuButton(xx,yy,96,32,"Menu (Esc)",enabled,false);
 
 var escpressed = keyboard_check_pressed(vk_escape) &amp;&amp; oMenu.steps_out_of_menu &gt; 0 &amp;&amp; global.state == globalstate_idle;
 
@@ -1608,7 +1609,7 @@ if (global.sidebarstate == sidebar_analysis)
     var h = 24;
     
     var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
-    if (menuButtonToggle(xx,yy,w,h,enabled,false,'Advanced','Standard',global.sidebarlevel)) {
+    if (menuButtonToggle(xx,yy,w,h,enabled,false,"Advanced","Standard",global.sidebarlevel)) {
         global.sidebarlevel = !global.sidebarlevel;
         saveConfig();
     }

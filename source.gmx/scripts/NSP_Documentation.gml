@@ -178,7 +178,7 @@ Credit would be nice if you use it.
 >>EXAMPLES:
   (These are a few examples of what NSP can execute or evaluate.)
   
-  - x=my_number(x+y) / ( (20 mod 14) * ('a'=='a') / (3 +- (6+4==7)) ) +16;
+  - x=my_number(x+y) / ( (20 mod 14) * ("a"=="a") / (3 +- (6+4==7)) ) +16;
   - instance_create(x,y,obj_tester).vspeed=2;
   - with (other) {instance_destroy()};
   - with (instance_create(32,32,obj_tester)) hspeed=1;

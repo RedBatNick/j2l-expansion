@@ -18,7 +18,7 @@ with (obj)
     }
 }
 
-if ds_list_empty(dsid)
+if (ds_list_empty(dsid))
 {
     ds_list_destroy(dsid);
     dsid = -4;

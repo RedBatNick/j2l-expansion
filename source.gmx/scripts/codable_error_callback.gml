@@ -3,4 +3,4 @@
 //You can handle the error message here however you like
 
 //show_message(argument0);
-inputOverlay(input_info,0,"#Code Execution Error in "+object_get_name(object_index)+":##"+argument0);
+inputOverlay(input_info,0,"#Code Execution Error in "+object_get_name(object_index)+":##"+argument[0]);
