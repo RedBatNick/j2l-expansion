@@ -186,12 +186,12 @@ newSkinnableObject(oWaterNekoron, "nwater");
 newSkinnableObject(oWaterCatharsis, "cwater");
 
 newSkinnableObject(oWaterDisappear, "diswater");
-newSkinnableObject(oUpdraft, "updraft");
 
 
 // Vapor.
 newSkinnableObject(oVaporUp, "vaporup");
 newSkinnableObject(oVaporDown, "vapordown");
+newSkinnableObject(oUpdraft, "updraft");
 
 
 // Booster.
@@ -207,6 +207,8 @@ newSkinnableObject(oBoosterDownApple, "boosterdownapple");
 // Vines.
 newSkinnableObject(oVineR, "walljumpR");
 newSkinnableObject(oVineL, "walljumpL");
+
+
 
 
 // Refreshers.

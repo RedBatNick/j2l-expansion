@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>count = 0;
+refreshTime = 100;
 </string>
           </argument>
         </arguments>
@@ -50,8 +51,12 @@
             <kind>1</kind>
             <string>if (count == 0) 
 {
-    count = 100;
-    other.djump = true;
+    count = refreshTime;
+
+    with (other) {
+        if (djump &lt; numJumps-1)
+            djump += 1;
+    }
 }
 </string>
           </argument>
@@ -77,8 +82,49 @@
             <kind>1</kind>
             <string>if (count == 0) 
 {
-    count = 100;
-    other.djump = true;
+    count = refreshTime;
+    
+    with (other) {
+        if (other.object_index != oJumpDefresher)
+        {
+            if (djump &lt; numJumps-1)
+                djump += 1;
+        }
+        else { djump = 0; }
+        
+        switch(other.object_index)
+        {
+            case oJumpHighRefresher:
+            highd = 1;
+            lowd = 0;
+            break;
+            
+            case oJumpLowRefresher:
+            highd = 0;
+            lowd = 1;
+            break;
+            
+            case oJumpFlipRefresher:
+            flipd = 1;
+            break;
+            
+            case oJumpTelefresher:
+            teled = 1;
+            break;
+            
+            case oJumpFastRefresher:
+            fastd = 1;
+            break;
+            
+            case oJumpSwitchRefresher:
+            switchd = 1;
+            break;
+            
+            case oJumpSlowRefresher:
+            slowd = 1;
+            break;
+        }
+    }
 }
 </string>
           </argument>
@@ -104,15 +150,13 @@
             <kind>1</kind>
             <string>if (!global.paused &amp;&amp; !global.recordingpaused)
 {
-    if (object_index == oJumpRefresher)
-    {
-        if (count &gt; 0) { count -= 1; }
-    }
+    if (count &gt; 0) { count -= 1; }
 }
 
 if (count == 0) { image_alpha = 1; }
 else { image_alpha = 0.1; }
 
+image_angle = 90-(90*sign(global.grav));
 draw_self();
 </string>
           </argument>

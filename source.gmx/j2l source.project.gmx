@@ -281,44 +281,53 @@
             <sprite>sprites\sVineL</sprite>
             <sprite>sprites\sVineR</sprite>
           </sprites>
-          <sprites name="upwards">
-            <sprite>sprites\sprRedVineL</sprite>
-            <sprite>sprites\sprRedVineR</sprite>
+          <sprites name="rise">
+            <sprite>sprites\sRiseVineL</sprite>
+            <sprite>sprites\sRiseVineR</sprite>
           </sprites>
           <sprites name="iced">
-            <sprite>sprites\sprIceVineL</sprite>
-            <sprite>sprites\sprIceVineR</sprite>
+            <sprite>sprites\sIceVineL</sprite>
+            <sprite>sprites\sIceVineR</sprite>
           </sprites>
           <sprites name="flip-gravity">
-            <sprite>sprites\sprBlueVineL</sprite>
-            <sprite>sprites\sprBlueVineR</sprite>
+            <sprite>sprites\sFlipVineL</sprite>
+            <sprite>sprites\sFlipVineR</sprite>
           </sprites>
           <sprites name="sticky">
-            <sprite>sprites\sprYellowVineL</sprite>
-            <sprite>sprites\sprYellowVineR</sprite>
+            <sprite>sprites\sStickyVineL</sprite>
+            <sprite>sprites\sStickyVineR</sprite>
           </sprites>
           <sprites name="low-gravity">
-            <sprite>sprites\sPurpleVineL</sprite>
-            <sprite>sprites\sPurpleVineR</sprite>
+            <sprite>sprites\sLowGravVineL</sprite>
+            <sprite>sprites\sLowGravVineR</sprite>
           </sprites>
-          <sprites name="toggle">
+          <sprites name="twin">
             <sprites name="white">
-              <sprite>sprites\sprWhiteVineL</sprite>
-              <sprite>sprites\sprWhiteVineR</sprite>
+              <sprite>sprites\sWhiteVineL</sprite>
+              <sprite>sprites\sWhiteVineR</sprite>
             </sprites>
             <sprites name="black">
-              <sprite>sprites\sprBlackVineL</sprite>
-              <sprite>sprites\sprBlackVineR</sprite>
+              <sprite>sprites\sBlackVineL</sprite>
+              <sprite>sprites\sBlackVineR</sprite>
             </sprites>
           </sprites>
           <sprites name="fire">
-            <sprite>sprites\sprFireVineL</sprite>
-            <sprite>sprites\sprFireVineR</sprite>
+            <sprite>sprites\sFireVineL</sprite>
+            <sprite>sprites\sFireVineR</sprite>
+            <sprite>sprites\sprFirePart</sprite>
           </sprites>
         </sprites>
         <sprites name="refresher">
           <sprites name="jump">
             <sprite>sprites\sJumpRefresher</sprite>
+            <sprite>sprites\sJumpDefresher</sprite>
+            <sprite>sprites\sJumpHighRefresher</sprite>
+            <sprite>sprites\sJumpLowRefresher</sprite>
+            <sprite>sprites\sJumpFlipRefresher</sprite>
+            <sprite>sprites\sJumpTelefresher</sprite>
+            <sprite>sprites\sJumpFastRefresher</sprite>
+            <sprite>sprites\sJumpSwitchRefresher</sprite>
+            <sprite>sprites\sJumpSlowRefresher</sprite>
           </sprites>
           <sprites name="shoot">
             <sprite>sprites\sShootRefresherL</sprite>
@@ -342,6 +351,11 @@
             <sprite>sprites\sGravityBlockLeft</sprite>
             <sprite>sprites\sGravityBlockDown</sprite>
           </sprites>
+        </sprites>
+        <sprites name="ladder">
+          <sprite>sprites\sLadderCen</sprite>
+          <sprite>sprites\sLadderVer</sprite>
+          <sprite>sprites\sLadderHor</sprite>
         </sprites>
         <sprites name="field">
           <sprites name="dotkid">
@@ -1190,6 +1204,17 @@
         <objects name="refresher">
           <objects name="jump">
             <object>objects\oJumpRefresher</object>
+            <object>objects\oJumpDefresher</object>
+            <object>objects\oJumpHighRefresher</object>
+            <object>objects\oJumpLowRefresher</object>
+            <object>objects\oJumpFlipRefresher</object>
+            <object>objects\oJumpTelefresher</object>
+            <object>objects\oJumpFastRefresher</object>
+            <object>objects\oJumpSwitchRefresher</object>
+            <objects name="slow">
+              <object>objects\oJumpSlowRefresher</object>
+              <object>objects\oJumpSlowEffect</object>
+            </objects>
           </objects>
           <objects name="shoot">
             <object>objects\oShootRefresher</object>

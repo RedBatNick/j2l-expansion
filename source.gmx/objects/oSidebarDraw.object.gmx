@@ -354,6 +354,31 @@ global.palette = ds_list_create();
     cyclePaletteObjects(oVineL), 
     false, "Vine", false, "Vines");
     
+    /*newPaletteObject(oRiseVineR,
+    cyclePaletteObjects(oRiseVineL),
+    false, "Rise Vine", false, "Vines");
+    
+    newPaletteObject(oIceVineR,
+    cyclePaletteObjects(oIceVineL),
+    false, "Iced Vine", false, "Vines");
+    
+    newPaletteObject(oFlipVineR,
+    cyclePaletteObjects(oFlipVineL),
+    false, "Flip Vine", false, "Vines");
+    
+    newPaletteObject(oStickyVineR,
+    cyclePaletteObjects(oStickyVineL),
+    false, "Sticky Vine", false, "Vines");
+    
+    newPaletteObject(oLowGravVineR,
+    cyclePaletteObjects(oLowGravVineL),
+    false, "Low-Grav Vine", false, "Vines");
+    
+    newPaletteObject(oFireVineR,
+    cyclePaletteObjects(oFireVineL),
+    false, "Fire Vine", false, "Vines");*/
+    
+    
     
     // Refreshers.
     newPaletteObject(oJumpRefresher,

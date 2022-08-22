@@ -20,10 +20,10 @@
   <width>32</width>
   <height>32</height>
   <frames>
-    <frame index="0">images\sprFireVineL_0.png</frame>
-    <frame index="1">images\sprFireVineL_1.png</frame>
-    <frame index="2">images\sprFireVineL_2.png</frame>
-    <frame index="3">images\sprFireVineL_3.png</frame>
-    <frame index="4">images\sprFireVineL_4.png</frame>
+    <frame index="0">images\sFireVineL_0.png</frame>
+    <frame index="1">images\sFireVineL_1.png</frame>
+    <frame index="2">images\sFireVineL_2.png</frame>
+    <frame index="3">images\sFireVineL_3.png</frame>
+    <frame index="4">images\sFireVineL_4.png</frame>
   </frames>
 </sprite>

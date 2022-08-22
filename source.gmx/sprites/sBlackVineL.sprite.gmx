@@ -20,9 +20,9 @@
   <width>32</width>
   <height>32</height>
   <frames>
-    <frame index="0">images\sprBlackVineL_0.png</frame>
-    <frame index="1">images\sprBlackVineL_1.png</frame>
-    <frame index="2">images\sprBlackVineL_2.png</frame>
-    <frame index="3">images\sprBlackVineL_3.png</frame>
+    <frame index="0">images\sBlackVineL_0.png</frame>
+    <frame index="1">images\sBlackVineL_1.png</frame>
+    <frame index="2">images\sBlackVineL_2.png</frame>
+    <frame index="3">images\sBlackVineL_3.png</frame>
   </frames>
 </sprite>

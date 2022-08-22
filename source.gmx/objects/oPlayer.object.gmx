@@ -25,38 +25,56 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.tasAD = false;
+            <string>global.tasAD = false; //sets whether TAS mode input is active
 
-jump = 8.5 * global.grav;
-jump2 = 7 * global.grav;
-maxSpeed = 3;
-maxVspeed = 9;
 
-if (global.linekid)
-    image_angle = global.savePlayerAngle;
+jump = 8.5 * global.grav; //sets the primary jump height
+jump2 = 7 * global.grav; //sets the secondary jump height
+maxSpeed = 3; //sets the max relative horizontal speed
+maxVspeed = 9; //sets the max relative vertical speed
 
-if (global.lunarkid) 
-{
+if (global.linekid) {
+    image_angle = global.savePlayerAngle; //sets linekid's image angle
+}
+    
+if (global.lunarkid) {
     //sl = instance_create(x, y, objBow);
     //sl.sprite_index = sprLander; 
-    gravity = 0; 
+    
+    gravity = 0; //sets lunarkid to spawn inert 
     friction = 0.0005;
 }
-else { gravity = 0.4 * global.grav }
+else { 
+    gravity = 0.4 * global.grav; //sets the player's constant falling speed
+}
+start = false; //sets whether lunarkid is in motion
 
-frozen = false;
-numJumps = 2;
-djump = numJumps-1;
-onPlatform = false;
-image_speed = 0.2;
-nudgeBlockCheck = false;
 
-slipSpeed = 0;
-start = false;
+frozen = false; //sets whether the player is unable to move
+numJumps = 2; //sets the maximum number of jumps the player has
+djump = numJumps-1; //sets whether the player has a secondary jump
+onPlatform = false; //sets whether the player is on a platform
+image_speed = 0.2; //sets the animation speed of the player's idle animation
+nudgeBlockCheck = false; //sets whether the player is standing on a block
 
-hit = 0;
-hitX = x;
-hitY = y;
+
+//Jumple Refrenture variables
+highd = 0; //sets whether the player has a high double jump 
+lowd = 0; //sets whether the player has a low double jump 
+flipd = 0; //sets whether the player's double jump will flip gravity 
+teled = 0; //sets whether the player's double jump will teleport forward
+fastd = 0; //sets whether the player has a fast double jump
+switchd = 0; //sets whether the player's double jump will switch toggle objects
+slowd = 0; //sets whether the player's double jump will slow time
+
+
+//other variables
+slipSpeed = 0; //sets whether the player has Domu ice effect active (DOMU)
+
+
+hit = 0; //sets whether the kid is intangible or not
+hitX = x; //sets the x position of the player's hit X coordinate
+hitY = y; //sets the y position of the player's hit X coordinate
 
 playerSprite(sPlayerIdle);
 </string>
