@@ -19,11 +19,13 @@ with (oWaterDisappear)
 }
 
 
+// Vapor.
+with (oUpdraft) { drafted = false; }
+
+
 // Boosters.
-with (oBoosterUpRefresher)
-{
-    image_alpha = 1;
-}
+with (oBoosterUpRefresher) { image_alpha = 1; }
+with (oBoosterDownRefresher) { image_alpha = 1; }
 
 
 // Refreshers.

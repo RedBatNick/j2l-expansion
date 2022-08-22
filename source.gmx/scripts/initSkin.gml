@@ -43,9 +43,9 @@ newSkinnableObject(oMiniSolidLineD, "minisolidlinedown");
 // Slopes.
 newSkinnableObject(oSlope, "slopeblock");
 newSkinnableObject(oSlopeUpRight, "slopeupright");
-newSkinnableObject(oSlopeUpLeft, "slopedownright");
+newSkinnableObject(oSlopeDownRight, "slopedownright");
 newSkinnableObject(oSlopeDownLeft, "slopedownleft");
-newSkinnableObject(oSlopeDownRight, "slopeupleft");
+newSkinnableObject(oSlopeUpLeft, "slopeupleft");
 
 
 // Conveyors.
@@ -92,10 +92,10 @@ newSkinnableObject(oSpikeDownThin, "spikedownthin");
 
 
 // Mini Thin Spikes.
-newSkinnableObject(oMiniSpikeUpThin, "minispikeupthin");
-newSkinnableObject(oMiniSpikeRightThin, "minispikerightthin");
-newSkinnableObject(oMiniSpikeLeftThin, "minispikeleftthin");
-newSkinnableObject(oMiniSpikeDownThin, "minispikedownthin");
+newSkinnableObject(oMiniSpikeUpThin, "miniupthin");
+newSkinnableObject(oMiniSpikeRightThin, "minirightthin");
+newSkinnableObject(oMiniSpikeLeftThin, "minileftthin");
+newSkinnableObject(oMiniSpikeDownThin, "minidownthin");
 
 
 // Flat Spikes.
@@ -106,10 +106,10 @@ newSkinnableObject(oSpikeUpLeftFlat, "spikeupleftflat");
 
 
 // Mini Flat Spikes.
-newSkinnableObject(oMiniSpikeUpFlat, "minispikeupflat");
-newSkinnableObject(oMiniSpikeRightFlat, "minispikerightflat");
-newSkinnableObject(oMiniSpikeLeftFlat, "minispikeleftflat");
-newSkinnableObject(oMiniSpikeDownFlat, "minispikedownflat");
+newSkinnableObject(oMiniSpikeUpFlat, "miniupflat");
+newSkinnableObject(oMiniSpikeRightFlat, "minirightflat");
+newSkinnableObject(oMiniSpikeLeftFlat, "minileftflat");
+newSkinnableObject(oMiniSpikeDownFlat, "minidownflat");
 
 
 // Line Spikes.
@@ -124,14 +124,14 @@ newSkinnableObject(oSpikeDownLineHalf, "spikedownlinehalf");
 
 
 // Mini Line Spikes.
-newSkinnableObject(oMiniSpikeUpLine, "minispikeupline");
-newSkinnableObject(oMiniSpikeRightLine, "minispikerightline");
-newSkinnableObject(oMiniSpikeLeftLine, "minispikeleftline");
-newSkinnableObject(oMiniSpikeDownLine, "minispikedownline");
-newSkinnableObject(oMiniSpikeUpLineHalf, "minispikeuplinehalf");
-newSkinnableObject(oMiniSpikeRightLineHalf, "minispikerightlinehalf");
-newSkinnableObject(oMiniSpikeLeftLineHalf, "minispikeleftlinehalf");
-newSkinnableObject(oMiniSpikeDownLineHalf, "minispikedownlinehalf");
+newSkinnableObject(oMiniSpikeUpLine, "miniupline");
+newSkinnableObject(oMiniSpikeRightLine, "minirightline");
+newSkinnableObject(oMiniSpikeLeftLine, "minileftline");
+newSkinnableObject(oMiniSpikeDownLine, "minidownline");
+newSkinnableObject(oMiniSpikeUpLineHalf, "miniuplinehalf");
+newSkinnableObject(oMiniSpikeRightLineHalf, "minirightlinehalf");
+newSkinnableObject(oMiniSpikeLeftLineHalf, "minileftlinehalf");
+newSkinnableObject(oMiniSpikeDownLineHalf, "minidownlinehalf");
 
 
 // Hole Spikes.
@@ -158,10 +158,11 @@ newSkinnableObject(oSpikeLeftDownCurved, "spikeleftdowncurved");
 newSkinnableObject(oSpikeDownRightCurved, "spikedownrightcurved");
 newSkinnableObject(oSpikeDownLeftCurved, "spikedownleftcurved");
 
+
 // Fruit.
-newSkinnableObject(oApple, "apple", 1 / 15);
+newSkinnableObject(oApple, "apple", 1/15);
 newSkinnableObject(oEggplant, "eggplant");
-newSkinnableObject(oBanana, "banana");
+newSkinnableObject(oBananas, "bananas");
 
 
 // Killer Lines.
@@ -180,9 +181,12 @@ newSkinnableObject(oMiniKillerBlock, "minikillerblock");
 newSkinnableObject(oWater, "water1");
 newSkinnableObject(oWater2, "water2");
 newSkinnableObject(oWater3, "water3");
+
 newSkinnableObject(oWaterNekoron, "nwater");
 newSkinnableObject(oWaterCatharsis, "cwater");
+
 newSkinnableObject(oWaterDisappear, "diswater");
+newSkinnableObject(oUpdraft, "updraft");
 
 
 // Vapor.
@@ -194,6 +198,10 @@ newSkinnableObject(oVaporDown, "vapordown");
 newSkinnableObject(oBoosterUp, "boosterup");
 newSkinnableObject(oBoosterUpRefresher, "boosteruprefresher");
 newSkinnableObject(oBoosterUpApple, "boosterupapple");
+
+newSkinnableObject(oBoosterDown, "boosterdown");
+newSkinnableObject(oBoosterDownRefresher, "boosterdownrefresher");
+newSkinnableObject(oBoosterDownApple, "boosterdownapple");
 
 
 // Vines.

@@ -91,8 +91,8 @@
         <sprites name="mask">
           <sprite>sprites\sPlayerMask</sprite>
           <sprite>sprites\sPlayerMaskFlip</sprite>
-          <sprite>sprites\sprPlayerMaskX</sprite>
-          <sprite>sprites\sprPlayerMaskXFlip</sprite>
+          <sprite>sprites\sPlayerMaskX</sprite>
+          <sprite>sprites\sPlayerMaskXFlip</sprite>
         </sprites>
       </sprites>
       <sprites name="block">
@@ -232,7 +232,7 @@
         <sprites name="fruit">
           <sprite>sprites\sApple</sprite>
           <sprite>sprites\sEggplant</sprite>
-          <sprite>sprites\sBanana</sprite>
+          <sprite>sprites\sBananas</sprite>
         </sprites>
         <sprites name="lines">
           <sprite>sprites\sKillerLineV</sprite>
@@ -262,6 +262,7 @@
         <sprites name="vapor">
           <sprite>sprites\sVaporUp</sprite>
           <sprite>sprites\sVaporDown</sprite>
+          <sprite>sprites\sUpdraft</sprite>
         </sprites>
         <sprites name="booster">
           <sprites name="up">
@@ -269,11 +270,50 @@
             <sprite>sprites\sBoosterUpRefresher</sprite>
             <sprite>sprites\sBoosterUpApple</sprite>
           </sprites>
+          <sprites name="down">
+            <sprite>sprites\sBoosterDown</sprite>
+            <sprite>sprites\sBoosterDownRefresher</sprite>
+            <sprite>sprites\sBoosterDownApple</sprite>
+          </sprites>
         </sprites>
         <sprites name="vine">
           <sprites name="standard">
             <sprite>sprites\sVineL</sprite>
             <sprite>sprites\sVineR</sprite>
+          </sprites>
+          <sprites name="upwards">
+            <sprite>sprites\sprRedVineL</sprite>
+            <sprite>sprites\sprRedVineR</sprite>
+          </sprites>
+          <sprites name="iced">
+            <sprite>sprites\sprIceVineL</sprite>
+            <sprite>sprites\sprIceVineR</sprite>
+          </sprites>
+          <sprites name="flip-gravity">
+            <sprite>sprites\sprBlueVineL</sprite>
+            <sprite>sprites\sprBlueVineR</sprite>
+          </sprites>
+          <sprites name="sticky">
+            <sprite>sprites\sprYellowVineL</sprite>
+            <sprite>sprites\sprYellowVineR</sprite>
+          </sprites>
+          <sprites name="low-gravity">
+            <sprite>sprites\sPurpleVineL</sprite>
+            <sprite>sprites\sPurpleVineR</sprite>
+          </sprites>
+          <sprites name="toggle">
+            <sprites name="white">
+              <sprite>sprites\sprWhiteVineL</sprite>
+              <sprite>sprites\sprWhiteVineR</sprite>
+            </sprites>
+            <sprites name="black">
+              <sprite>sprites\sprBlackVineL</sprite>
+              <sprite>sprites\sprBlackVineR</sprite>
+            </sprites>
+          </sprites>
+          <sprites name="fire">
+            <sprite>sprites\sprFireVineL</sprite>
+            <sprite>sprites\sprFireVineR</sprite>
           </sprites>
         </sprites>
         <sprites name="refresher">
@@ -1094,7 +1134,7 @@
         <objects name="fruit">
           <object>objects\oApple</object>
           <object>objects\oEggplant</object>
-          <object>objects\oBanana</object>
+          <object>objects\oBananas</object>
         </objects>
         <objects name="lines">
           <object>objects\oKillerLineV</object>
@@ -1127,11 +1167,19 @@
         <objects name="vapor">
           <object>objects\oVaporUp</object>
           <object>objects\oVaporDown</object>
+          <object>objects\oUpdraft</object>
         </objects>
         <objects name="booster">
-          <object>objects\oBoosterUp</object>
-          <object>objects\oBoosterUpRefresher</object>
-          <object>objects\oBoosterUpApple</object>
+          <objects name="up">
+            <object>objects\oBoosterUp</object>
+            <object>objects\oBoosterUpRefresher</object>
+            <object>objects\oBoosterUpApple</object>
+          </objects>
+          <objects name="down">
+            <object>objects\oBoosterDown</object>
+            <object>objects\oBoosterDownRefresher</object>
+            <object>objects\oBoosterDownApple</object>
+          </objects>
         </objects>
         <objects name="vine">
           <objects name="standard">

@@ -151,7 +151,7 @@ for (var i = 0; i < ds_list_size(global.depthList); i+=1)
             // Fruit.
             ds_list_add(objectList, oApple);
             ds_list_add(objectList, oEggplant);
-            ds_list_add(objectList, oBanana);
+            ds_list_add(objectList, oBananas);
             
             
             // Killer Lines.

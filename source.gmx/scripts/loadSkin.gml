@@ -34,6 +34,7 @@ else
 global.color_button = colorFromHsvDelimString(ini_read_string("ui","button_idle_color","0,0,175"),",");
 global.color_buttonhover = colorFromHsvDelimString(ini_read_string("ui","button_active_color","0,0,255"),",");
 global.color_palettepressed = colorFromHsvDelimString(ini_read_string("ui","button_palette_pressed_color","0,0,0"),",");
+
 global.buttonhoveralpha = FSIniReadReal("ui","button_active_alpha",0.5);
 global.buttonpalettepressedalpha = FSIniReadReal("ui","button_palette_pressed_alpha",0.5);
 global.buttonhoverborder = FSIniReadReal("ui","button_active_border",false);
@@ -44,11 +45,13 @@ global.color_killerhue = real(splitDelimString(colorstring,",",0));
 global.color_killersat = real(splitDelimString(colorstring,",",1));
 global.color_killerval = real(splitDelimString(colorstring,",",2));
 global.color_killer = colorFromHsvDelimString(colorstring,",");
+
 var colorstring = ini_read_string("objects","killer_active_color","0,128,255");
 global.color_killer2hue = real(splitDelimString(colorstring,",",0));
 global.color_killer2sat = real(splitDelimString(colorstring,",",1));
 global.color_killer2val = real(splitDelimString(colorstring,",",2));
 global.color_killer2 = colorFromHsvDelimString(colorstring,",");
+
 global.color_warp = colorFromHsvDelimString(ini_read_string("objects","warp_color","67,196,239"),",");
 global.bulletblockeralpha = FSIniReadReal("objects","bulletblocker_alpha",0.3)
 
@@ -56,6 +59,9 @@ global.bulletblockeralpha = FSIniReadReal("objects","bulletblocker_alpha",0.3)
 var bg_type = ini_read_string("bg","type","stretch");
 var bg_hspeed = FSIniReadReal("bg","hspeed",0);
 var bg_vspeed = FSIniReadReal("bg","vspeed",0);
+var bg_x = FSIniReadReal("bg","x",0);
+var bg_y = FSIniReadReal("bg","y",0);
+
 ini_close();
 file_delete(missing_ini_filename);
 
@@ -155,8 +161,8 @@ switch(bg_type)
 
 background_hspeed = bg_hspeed;
 background_vspeed = bg_vspeed;
-background_x = 0;
-background_y = 0;
+background_x = bg_x;
+background_y = bg_y;
 
 if (resource_add_errors != "") {
     inputOverlay(input_info,false,"Error when adding resources:#"+resource_add_errors+"#Try double checking everything.");

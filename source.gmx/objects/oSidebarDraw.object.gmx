@@ -83,7 +83,7 @@ combobox_selected = false;
 global.palette = ds_list_create();
 //event_user(0);
 
-
+/*
 //hybrid page
 
     //1st row
@@ -109,11 +109,15 @@ global.palette = ds_list_create();
     cyclePaletteObjects(oEditMiniBlock), 
     false, "Block", false);
     
+    newPaletteObject(oPlatform,
+    cyclePaletteObjects(oPlatformSideways),
+    false, "Platform", false);
+    
     newPaletteObject(oSlipBlock,
     undefined,
     false, "Slip Block", false)
     
-    newPaletteObject(oSlope,
+    /*newPaletteObject(oSlope,
     cyclePaletteObjects(oSlopeUpRight,oSlopeDownRight,oSlopeDownLeft,oSlopeUpLeft),
     false, "Slopes", false);
     
@@ -123,9 +127,6 @@ global.palette = ds_list_create();
     
     
     //3rd row
-    newPaletteObject(oPlatform,
-    cyclePaletteObjects(oPlatformSideways),
-    false, "Platform", false);
     
     
     //4th row
@@ -162,10 +163,10 @@ global.palette = ds_list_create();
     newPaletteObject(oGravityArrowDown,
     cyclePaletteObjects(oGravityArrowUp), 
     false, "Gravity Arrow", false);
-
+*/
 
 //palette page
-/*
+
     // Spikes.
     newPaletteObject(oSpikeUp, 
     cyclePaletteObjects(oSpikeRight,oSpikeDown,oSpikeLeft), 
@@ -221,7 +222,7 @@ global.palette = ds_list_create();
     undefined,
     true, "Eggplant", false, "Fruit");
     
-    newPaletteObject(oBanana,
+    newPaletteObject(oBananas,
     undefined,
     true, "Bananas", false, "Fruit");
     
@@ -333,13 +334,19 @@ global.palette = ds_list_create();
     undefined,
     false, "Vapor Down", false, "Vapor");
     
+    newPaletteObject(oUpdraft,
+    undefined,
+    false, "Updraft", false, "Vapor");
+    
     
     // Booster.
     newPaletteObject(oBoosterUp,
     cyclePaletteObjects(oBoosterUpRefresher,oBoosterUpApple),
-    false, "Booster Up", false, "Booster");
+    false, "Booster Up", false, "Boosters");
     
-    
+    newPaletteObject(oBoosterDown,
+    cyclePaletteObjects(oBoosterDownRefresher,oBoosterDownApple),
+    false, "Booster Down", false, "Boosters");
     
     
     // Vines.
