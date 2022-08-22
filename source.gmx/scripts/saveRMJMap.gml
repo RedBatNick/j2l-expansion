@@ -20,7 +20,7 @@ var non_rmj_object = false;
 with (all) {
     var rmjcode = objectToRmjCode(object_index);
     if (rmjcode == -1) {
-        if (controlObject("inPalette",object_index)) 
+        if (objectInPalette(object_index)) 
             non_rmj_object = true;
         continue;
     }

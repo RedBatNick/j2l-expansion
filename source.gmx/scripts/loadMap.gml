@@ -126,7 +126,7 @@ with (oEdit)
 
 with (all) 
 {
-    if (controlObject("inPalette", object_index)) {
+    if (objectInPalette(object_index)) {
         instance_destroy();
     }
 }
@@ -156,7 +156,7 @@ for (var i = 0; i < ds_list_size(objects); i+=1)
     
     //final load
     var load_id = object[? "ID"];
-    o = instance_create(xx, yy, controlObject("loadID", load_id));
+    o = instance_create(xx, yy, saveIDToObject(load_id));
     
     if (!is_undefined(xscale))
         o.image_xscale = xscale; 

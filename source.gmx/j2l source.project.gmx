@@ -713,10 +713,6 @@
               <script>scripts\objectInPalette.gml</script>
             </scripts>
           </scripts>
-          <scripts name="cmap">
-            <script>scripts\saveCMapName.gml</script>
-            <script>scripts\loadCMap.gml</script>
-          </scripts>
           <scripts name="rmj">
             <script>scripts\loadRMJMap.gml</script>
             <script>scripts\saveRMJMap.gml</script>
@@ -728,7 +724,6 @@
         </scripts>
       </scripts>
       <scripts name="palette">
-        <script>scripts\controlObject.gml</script>
         <script>scripts\reloadObjects.gml</script>
         <script>scripts\newPaletteObject.gml</script>
         <script>scripts\cyclePaletteObjects.gml</script>
@@ -966,6 +961,7 @@
         <script>scripts\nudgePlayerHalf.gml</script>
         <script>scripts\deleteBackup.gml</script>
         <script>scripts\exitPressed.gml</script>
+        <script>scripts\findAllDirectories.gml</script>
       </scripts>
     </scripts>
     <scripts name="functions">

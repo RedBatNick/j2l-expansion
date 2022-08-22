@@ -19,7 +19,7 @@ with (oEdit) { clearUndoStack(); }
 oEdit.undo_nochanges = true;
 
 with (all) {
-    if (controlObject("inPalette",object_index)) { instance_destroy(); }
+    if (objectInPalette(object_index)) { instance_destroy(); }
 }
 
 with (oPatBall) { instance_destroy(); }

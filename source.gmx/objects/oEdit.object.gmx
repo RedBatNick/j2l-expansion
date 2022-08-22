@@ -129,7 +129,7 @@ if (shouldCaptureControls) {
             x = -1000;
             y = -1000;
             var inst = instance_position(mouse_x,mouse_y,all);
-            if (inst != noone &amp;&amp; controlObject("inPalette",inst.object_index)) {//objectInPalette(inst.object_index) {
+            if (inst != noone &amp;&amp; objectInPalette(inst.object_index)) {//objectInPalette(inst.object_index) {
                 if (scrValidMini(inst.object_index) == 2)
                     usingMini = 1;
                 else
@@ -151,7 +151,7 @@ if (shouldCaptureControls) {
             var inst = instance_position(mouse_x,mouse_y,all);
             if (inst != noone) 
             {
-                if (inst.object_index == oSave &amp;&amp; controlObject("inPalette",oSave)) {
+                if (inst.object_index == oSave &amp;&amp; objectInPalette(oSave)) {
                     canSign = 1;
                     for (i = 0; i &lt; instance_number(oSave); i+=1)
                     {
@@ -173,7 +173,7 @@ if (shouldCaptureControls) {
                             keyboard_string = inst.textSplit;
                     }
                 }
-                else if (controlObject("inPalette",inst.object_index) &amp;&amp; codable_is_codable(inst)) {//objectInPalette(inst.object_index) and codable_is_codable(inst) {
+                else if (objectInPalette(inst.object_index) &amp;&amp; codable_is_codable(inst)) {//objectInPalette(inst.object_index) and codable_is_codable(inst) {
                     inputOverlay(input_textarea,inputCallback_addCodeToObject,"Enter Code for Step Event:");
                     selected_instance = inst;
                     if (inst.code_step_written != "") then keyboard_string = inst.code_step_written;
@@ -232,7 +232,7 @@ if (shouldCaptureControls) {
         }
         if (right &amp;&amp; !left &amp;&amp; undo_rightpressedinedit) {
             with (all) {
-                if (!controlObject("inPalette",object_index)) {
+                if (!objectInPalette(object_index)) {
                     continue;
                 }
                 

@@ -15,7 +15,7 @@ switch(filetype)
     if (filename == "") 
         return false;
     
-    success = saveCMapName(filename);
+    success = saveOldJMapName(filename, "ctool");
     break;
 
     case "legacy":
@@ -23,7 +23,7 @@ switch(filetype)
     if (filename == "") 
         return false;
     
-    success = saveOldJMapName(filename);
+    success = saveOldJMapName(filename, "jtool");
     break;
     
     case "jtool":

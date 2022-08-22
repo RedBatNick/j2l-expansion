@@ -299,7 +299,7 @@ xx += sdx;
 if (menuButtonShift(xx, yy, sw, sh, "&gt;", buttons_enabled, 0)) {
     with (oEdit) { clearUndoStack(); }
     with (all) {
-        if (controlObject("inPalette",object_index) || object_index = oPlayer)
+        if (objectInPalette(object_index) || object_index = oPlayer)
             x += oEdit.snap;
     }
 }
@@ -308,7 +308,7 @@ yy += sdy;
 if (menuButtonShift(xx, yy, sw, sh, "v", buttons_enabled, 0)) {
     with (oEdit) { clearUndoStack(); }
     with (all) {
-        if (controlObject("inPalette",object_index) || object_index = oPlayer)
+        if (objectInPalette(object_index) || object_index = oPlayer)
             y += oEdit.snap;
     }
 }
@@ -316,7 +316,7 @@ yy -= sdy*2;
 if (menuButtonShift(xx, yy, sw, sh, "^", buttons_enabled, 0)) {
     with (oEdit) { clearUndoStack(); }
     with (all) {
-        if (controlObject("inPalette",object_index) || object_index = oPlayer)
+        if (objectInPalette(object_index) || object_index = oPlayer)
             y -= oEdit.snap;
     }
 }
@@ -325,7 +325,7 @@ yy += sdy;
 if (menuButtonShift(xx, yy, sw, sh, "&lt;", buttons_enabled, 0)) {
     with (oEdit) { clearUndoStack(); }
     with (all) {
-        if (controlObject("inPalette",object_index) || object_index = oPlayer)
+        if (objectInPalette(object_index) || object_index = oPlayer)
             x -= oEdit.snap;
     }
 }

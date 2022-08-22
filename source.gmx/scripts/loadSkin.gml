@@ -1,3 +1,4 @@
+///loadSkin(skin)
 // Load the specified skin from file into the game.
 
 var skin_name = argument[0];
@@ -5,7 +6,6 @@ var skin_name = argument[0];
 var skinfolder = prefix_project_path_if_needed("skins\"+skin_name+"\");
 var ini_filename = skinfolder+"skin_config.ini";
 var missing_ini_filename = prefix_project_path_if_needed("skin_config_missing.ini");
-
 if (!directory_exists(skinfolder)) 
 {
     inputOverlay(input_info,false,"Couldn't find skin folder#"+skinfolder);
@@ -16,7 +16,6 @@ else if (!file_exists(ini_filename))
     inputOverlay(input_info,false,"Warning: "+ini_filename+" does not exist.");
 }
 ini_open(ini_filename);
-
 // meta
 var skinver_string = ini_read_string("meta","version","");
 if (skinver_string == "") {
@@ -29,43 +28,34 @@ else
         //inputOverlay(input_info,false,"Warning: may not be not compatible with skin;#it has a new major version.")
     }
 }
-
 // ui
 global.color_button = colorFromHsvDelimString(ini_read_string("ui","button_idle_color","0,0,175"),",");
 global.color_buttonhover = colorFromHsvDelimString(ini_read_string("ui","button_active_color","0,0,255"),",");
 global.color_palettepressed = colorFromHsvDelimString(ini_read_string("ui","button_palette_pressed_color","0,0,0"),",");
-
 global.buttonhoveralpha = FSIniReadReal("ui","button_active_alpha",0.5);
 global.buttonpalettepressedalpha = FSIniReadReal("ui","button_palette_pressed_alpha",0.5);
 global.buttonhoverborder = FSIniReadReal("ui","button_active_border",false);
-
 // objects
 var colorstring = ini_read_string("objects","killer_idle_color","0,0,255");
 global.color_killerhue = real(splitDelimString(colorstring,",",0));
 global.color_killersat = real(splitDelimString(colorstring,",",1));
 global.color_killerval = real(splitDelimString(colorstring,",",2));
 global.color_killer = colorFromHsvDelimString(colorstring,",");
-
 var colorstring = ini_read_string("objects","killer_active_color","0,128,255");
 global.color_killer2hue = real(splitDelimString(colorstring,",",0));
 global.color_killer2sat = real(splitDelimString(colorstring,",",1));
 global.color_killer2val = real(splitDelimString(colorstring,",",2));
 global.color_killer2 = colorFromHsvDelimString(colorstring,",");
-
 global.color_warp = colorFromHsvDelimString(ini_read_string("objects","warp_color","67,196,239"),",");
 global.bulletblockeralpha = FSIniReadReal("objects","bulletblocker_alpha",0.3)
-
 // bg
 var bg_type = ini_read_string("bg","type","stretch");
 var bg_hspeed = FSIniReadReal("bg","hspeed",0);
 var bg_vspeed = FSIniReadReal("bg","vspeed",0);
 var bg_x = FSIniReadReal("bg","x",0);
 var bg_y = FSIniReadReal("bg","y",0);
-
 ini_close();
 file_delete(missing_ini_filename);
-
-
 // assign sprites from file
 var resource_add_errors = "";
 for (var key = ds_map_find_first(global.skinnable_objects); key != undefined; key = ds_map_find_next(global.skinnable_objects, key)) 
@@ -116,10 +106,8 @@ for (var key = ds_map_find_first(global.skinnable_objects); key != undefined; ke
         skinnable[? "Speed"] = skinnable[? "DefaultSpeed"];
     }
 }
-
 // assign background from file
 file = "bg.png";
-
 if (file_exists(skinfolder+file)) 
 {
     var copied_png = working_directory+"copied_skin_image.png";
@@ -141,7 +129,6 @@ if (file_exists(skinfolder+file))
 else {
     background_assign(bgBackground,bgBackgroundDefault);
 }
-
 switch(bg_type)
 {
     case "stretch":
@@ -150,7 +137,6 @@ switch(bg_type)
     background_htiled = false;
     background_vtiled = false;
     break;
-
     case "tile": 
     background_xscale = 1;
     background_yscale = 1;
@@ -158,12 +144,10 @@ switch(bg_type)
     background_vtiled = true;
     break;
 }
-
 background_hspeed = bg_hspeed;
 background_vspeed = bg_vspeed;
 background_x = bg_x;
 background_y = bg_y;
-
 if (resource_add_errors != "") {
     inputOverlay(input_info,false,"Error when adding resources:#"+resource_add_errors+"#Try double checking everything.");
 }

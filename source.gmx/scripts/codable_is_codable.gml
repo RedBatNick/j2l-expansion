@@ -5,7 +5,7 @@
 if (ds_list_find_index(global.dynamic_instance_list,argument[0]) > -1) 
     return false;
 
-//if (controlObject("inPalette",argument[0].object_index))
+//if (objectInPalette(argument[0].object_index))
 //Otherwise, check to see if it's a codable type
 switch (argument[0].object_index) {
     case oEditBlock:

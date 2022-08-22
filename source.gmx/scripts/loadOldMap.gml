@@ -1,6 +1,15 @@
+///loadOldMap(filename, app)
 // Deletes all palette objects and loads a map from file.
-
 var filename = argument[0];
+var app = argument[1];
+var readid = 0;
+var base = 32;
+
+if (app == "ctool") {
+    readid = 1;
+    base = 64;
+}
+
 var f = file_text_open_read(filename);
 
 var content = file_text_read_string(f);
@@ -22,13 +31,13 @@ global.saveGrav = 1;
 while (index <= string_length(content)) {
     var nextchar = string_char_at(content,index);
     if (nextchar != delim) {
-         currentstring += nextchar;
+        currentstring += nextchar;
     }
     
     if (nextchar == delim || index == string_length(content)) {
         // jtool
-        if (section_number == 0 && currentstring != "jtool") {
-            inputOverlay(input_info,false,"Not a valid jtool map.");
+        if (section_number == 0 && currentstring != app) {
+            inputOverlay(input_info,false,"Not a valid "+app+" map.");
             exit;
         }
         
@@ -48,8 +57,8 @@ while (index <= string_length(content)) {
                 with (oEdit) { clearUndoStack(); }
                 oEdit.undo_nochanges = true;
                 
-                with (all) { 
-                    if (controlObject("inPalette",object_index)) 
+                with (all) {
+                    if (objectInPalette(object_index))
                         instance_destroy();
                 }
                 
@@ -63,9 +72,9 @@ while (index <= string_length(content)) {
                         i += 3;
                     }
                     else {
-                        var objectid = saveXToObject(base32StringToInt(string_copy(objectstring,i,1)));
+                        var objectid = saveXToObject(baseXStringToInt(string_copy(objectstring,i,1), base), readid);
                         if (objectid != noone) {
-                            var xx = base32StringToInt(string_copy(objectstring,i+1,2));
+                            var xx = baseXStringToInt(string_copy(objectstring,i+1,2));
                             var inst = instance_create(xx-128,yy-128,objectid);
                         }
                         i += 3;
@@ -102,6 +111,76 @@ while (index <= string_length(content)) {
     }
     index += 1;
 }
+
+if (app == "ctool") {
+    // save signs
+    f = file_text_open_read(filename);
+    
+    var textstr = "";
+    var textstr2 = "";
+    var substr = "";
+    
+    for (i = 0; i < 3; i+=1)
+        it[i] = 0;
+    
+    var i = 0;
+    var ent = -1;
+    var found = 0;
+    
+    while (!file_text_eof(f))
+    {
+        textstr = file_text_read_string(f);
+        show_debug_message(textstr);
+        if (found)
+        {
+            i = 0;
+            for (i = 1; i <= string_length(textstr); i+=1)
+            {
+                if (ent < 2)
+                {
+                    var next_char = string_char_at(textstr,i);
+                    if (next_char != " ") {
+                        substr += next_char;
+                    }
+                    else {
+                        it[++ent] = substr;
+                        substr = "";
+                    }
+                }
+                else
+                {
+                    var xxx = int64(it[0]);
+                    var yyy = int64(it[1]);
+                    textstr = string_copy(textstr,string_pos("|",textstr)+1,string_length(textstr));
+                    textstr = string_replace(textstr,"|","");
+                    
+                    var instance = instance_position(xxx, yyy, oSave);
+                    if (instance != noone) {
+                        with (instance)
+                        {
+                            textline[0] = other.textstr;
+                            textSplit = textline[0];
+                            event_user(11);
+                        }
+                    }
+                    show_debug_message("x: "+string(xxx)+"#y: "+string(yyy)+"#textstr: "+string(textstr));
+                }
+            }
+            file_text_read_string(f);
+        }
+        
+        if (!found) {
+            if (string_count("savestrings",textstr) == 1)
+            {
+                show_debug_message("found");
+                found = true;
+            }
+            file_text_read_string(f);
+        }
+    }
+    file_text_close(f);
+}
+
 room_speed = 50;
 global.death_count = 0;
 loadPlayer();

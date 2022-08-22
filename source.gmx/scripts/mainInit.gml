@@ -8,7 +8,8 @@
    but I think that"s a safe assumption.
 */
 global.run_from_editor = string_pos("gm_ttt",working_directory) != 0;
-global.editor_project_path = "C:\Users\redba\Downloads\j2l-expansion\source.gmx";
+//global.editor_project_path = "C:\Users\redba\Downloads\j2l-expansion\source.gmx";
+global.editor_project_path = "F:\King Files\Game Maker\Projects\I Wannas\j2l\j2l-expansion";
 
 // add backslash to end
 if (string_char_at(global.editor_project_path,string_length(global.editor_project_path)) != "\") {

@@ -104,7 +104,7 @@ var objects = ds_list_create();
 var index = 0;
 
 with (all) {
-    if (!controlObject("inPalette", object_index)) {
+    if (!objectInPalette(object_index)) {
         continue;
     }
     
@@ -113,7 +113,7 @@ with (all) {
         continue;
     }
     
-    var save_id = controlObject("saveID", object_index);
+    var save_id = objectToSaveID(object_index);
     
     if (save_id == -1) {
         objects_unrecognized = true;

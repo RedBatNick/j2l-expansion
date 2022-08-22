@@ -1,39 +1,24 @@
-// Returns whether or not an object is a special palette object.
-// Mainly used in oEdit to differentiate objects placed by the user
-// from other misc objects.
+///objectInPalette(object)
+var obj = argument[0];
 
-var objectindex = argument0
+for (var i = 0; i < ds_list_size(global.palette); i++) {
+    var obj_palette = global.palette[| i];
 
-switch objectindex {
-    case oSpikeUp:
-    case oSpikeRight:
-    case oSpikeLeft:
-    case oSpikeDown:
-    case oMiniSpikeUp:
-    case oMiniSpikeRight:
-    case oMiniSpikeLeft:
-    case oMiniSpikeDown:
-    case oEditBlock:
-    case oEditMiniBlock:
-    case oApple:
-    case oSave:
-    case oPlatform:
-    case oKillerBlock:
-    case oWater:
-    case oWater2:
-    case oWater3:
-    case oVineL:
-    case oVineR:
-    case oBulletBlocker:
-    case oPlayerStart:
-    case oWarp:
-    case oJumpRefresher:
-    case oGravityArrowUp:
-    case oGravityArrowDown:
-    case oSaveFlip:
-    case oTrg:
-    case oMiniKillerBlock:
-    
-    return true
+    if (obj_palette[? "Object"] == obj) {
+        return true;
+    }
+
+    var cycle = obj_palette[? "Cycle"];
+
+    if (cycle == undefined) {
+        continue;
+    }
+
+    for (var j = 0; j < array_length_1d(cycle); j++) {
+        if (cycle[j] == obj) {
+            return true;
+        }
+    }
 }
-return false
+
+return false;

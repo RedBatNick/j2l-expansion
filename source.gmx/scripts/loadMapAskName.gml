@@ -12,7 +12,7 @@ switch(filetype)
     if (filename == "") 
         exit;
     
-    loadCMap(filename);
+    loadOldMap(filename, "ctool");
     break;
     
     case "legacy":
@@ -20,7 +20,7 @@ switch(filetype)
     if (filename == "") 
         exit;
         
-    loadOldMap(filename); 
+    loadOldMap(filename, "jtool"); 
     break;
      
     case "jtool":

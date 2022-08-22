@@ -2,7 +2,7 @@ var instanceX = argument[0];
 var instanceY = argument[1];
 
 with (all) {
-    if (!controlObject("inPalette", object_index)) {
+    if (!objectInPalette(object_index)) {
         continue;
     }
     
