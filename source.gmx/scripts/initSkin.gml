@@ -213,6 +213,15 @@ newSkinnableObject(oVineL, "walljumpL");
 
 // Refreshers.
 newSkinnableObject(oJumpRefresher, "jumprefresher");
+newSkinnableObject(oJumpDefresher, "jumpdefresher", 1/15);
+newSkinnableObject(oJumpHighRefresher, "jumphighrefresher", 1/15);
+newSkinnableObject(oJumpLowRefresher, "jumplowrefresher", 1/15);
+newSkinnableObject(oJumpFlipRefresher, "jumpfliprefresher", 1/15);
+newSkinnableObject(oJumpTelefresher, "jumptelerefresher", 1/15);
+newSkinnableObject(oJumpFastRefresher, "jumpfastrefresher", 1/15);
+newSkinnableObject(oJumpSwitchRefresher, "jumpswitchrefresher", 1/15);
+newSkinnableObject(oJumpSlowRefresher, "jumpslowrefresher", 1/15);
+
 
 //newSkinnableObject(oShootRefresherR, "shootrefresherR", 0);
 //newSkinnableObject(oShootRefresherL, "shootrefresherL", 0);

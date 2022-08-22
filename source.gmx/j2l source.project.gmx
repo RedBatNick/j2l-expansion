@@ -59,6 +59,8 @@
       <sound>sound\sndNoSigning</sound>
     </sounds>
     <sound>sound\sndWall</sound>
+    <sound>sound\sndPew</sound>
+    <sound>sound\sndRedCoin</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="skin">
@@ -71,6 +73,9 @@
             <sprite>sprites\sPlayerJump</sprite>
             <sprite>sprites\sPlayerFall</sprite>
             <sprite>sprites\sPlayerSliding</sprite>
+            <sprite>sprites\sPlayerClimbBack</sprite>
+            <sprite>sprites\sPlayerClimbVer</sprite>
+            <sprite>sprites\sPlayerClimbHor</sprite>
           </sprites>
           <sprites name="dotkid">
             <sprite>sprites\sDotkid</sprite>
@@ -276,6 +281,11 @@
             <sprite>sprites\sBoosterDownApple</sprite>
           </sprites>
         </sprites>
+        <sprites name="ladder">
+          <sprite>sprites\sLadderCen</sprite>
+          <sprite>sprites\sLadderVer</sprite>
+          <sprite>sprites\sLadderHor</sprite>
+        </sprites>
         <sprites name="vine">
           <sprites name="standard">
             <sprite>sprites\sVineL</sprite>
@@ -351,11 +361,6 @@
             <sprite>sprites\sGravityBlockLeft</sprite>
             <sprite>sprites\sGravityBlockDown</sprite>
           </sprites>
-        </sprites>
-        <sprites name="ladder">
-          <sprite>sprites\sLadderCen</sprite>
-          <sprite>sprites\sLadderVer</sprite>
-          <sprite>sprites\sLadderHor</sprite>
         </sprites>
         <sprites name="field">
           <sprites name="dotkid">
@@ -1194,6 +1199,11 @@
             <object>objects\oBoosterDownRefresher</object>
             <object>objects\oBoosterDownApple</object>
           </objects>
+        </objects>
+        <objects name="ladder">
+          <object>objects\oLadder</object>
+          <object>objects\oLadderVer</object>
+          <object>objects\oLadderHor</object>
         </objects>
         <objects name="vine">
           <objects name="standard">

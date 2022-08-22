@@ -54,6 +54,74 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="oPlayer">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with (other) {
+    switch(other.object_index)
+    {
+        case oGravityArrowUp:
+        if (sign(global.grav) != -1)
+            flipGravity();
+        break;
+        
+        case oGravityBlockUp:
+        if (sign(global.grav) != -1)
+            flipGravity(0);
+        break;
+        
+        case oGravityArrowDown:
+        if (sign(global.grav) != 1)
+            flipGravity();
+        break;
+        
+        case oGravityBlockDown:
+        if (sign(global.grav) != 1)
+            flipGravity(0);
+        break;
+        
+        /*case oGravityArrowLeft:
+        if (sign(global.grav) != -2)
+            flipGravity();
+        break;
+        
+        case oGravityBlockRight:
+        if (sign(global.grav) != -2)
+            flipGravity(0);
+        break;
+        
+        case oGravityArrowRight:
+        if (sign(global.grav) != 2)
+            flipGravity();
+        break;
+        
+        case oGravityBlockRight:
+        if (sign(global.grav) != 2)
+            flipGravity(0);
+        break;*/
+        
+        
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>

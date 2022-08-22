@@ -349,6 +349,12 @@ global.palette = ds_list_create();
     false, "Booster Down", false, "Boosters");
     
     
+    // Ladders.
+    newPaletteObject(oLadder,
+    cyclePaletteObjects(oLadderVer,oLadderHor),
+    false, "Ladder", false, "Ladders");
+    
+    
     // Vines.
     newPaletteObject(oVineR,
     cyclePaletteObjects(oVineL), 
@@ -384,6 +390,38 @@ global.palette = ds_list_create();
     newPaletteObject(oJumpRefresher,
     undefined, 
     false, "Jump Refresher", false, "Refreshers");
+    
+    newPaletteObject(oJumpDefresher,
+    undefined, 
+    false, "Jump Defresher", false, "Refreshers");
+    
+    newPaletteObject(oJumpHighRefresher,
+    undefined, 
+    false, "Jump High Refresher", false, "Refreshers");
+    
+    newPaletteObject(oJumpLowRefresher,
+    undefined, 
+    false, "Jump Low Refresher", false, "Refreshers");
+    
+    newPaletteObject(oJumpFlipRefresher,
+    undefined, 
+    false, "Jump Flip Refresher", false, "Refreshers");
+    
+    newPaletteObject(oJumpTelefresher,
+    undefined, 
+    false, "Jump Telefresher", false, "Refreshers");
+    
+    newPaletteObject(oJumpFastRefresher,
+    undefined, 
+    false, "Jump Fast Refresher", false, "Refreshers");
+    
+    newPaletteObject(oJumpSwitchRefresher,
+    undefined, 
+    false, "Jump Switch Refresher", false, "Refreshers");
+    
+    newPaletteObject(oJumpSlowRefresher,
+    undefined, 
+    false, "Jump Slow Refresher", false, "Refreshers");
     
     newPaletteObject(oShootRefresherR,
     cyclePaletteObjects(oShootRefresherL),

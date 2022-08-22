@@ -28,8 +28,8 @@
             <string>global.tasAD = false; //sets whether TAS mode input is active
 
 
-jump = 8.5 * global.grav; //sets the primary jump height
-jump2 = 7 * global.grav; //sets the secondary jump height
+jump = 8.5 * sign(global.grav); //sets the primary jump speed
+jump2 = 7 * sign(global.grav); //sets the secondary jump speed
 maxSpeed = 3; //sets the max relative horizontal speed
 maxVspeed = 9; //sets the max relative vertical speed
 
@@ -45,7 +45,7 @@ if (global.lunarkid) {
     friction = 0.0005;
 }
 else { 
-    gravity = 0.4 * global.grav; //sets the player's constant falling speed
+    gravity = 0.4 * sign(global.grav); //sets the player's constant falling speed
 }
 start = false; //sets whether lunarkid is in motion
 
@@ -56,6 +56,43 @@ djump = numJumps-1; //sets whether the player has a secondary jump
 onPlatform = false; //sets whether the player is on a platform
 image_speed = 0.2; //sets the animation speed of the player's idle animation
 nudgeBlockCheck = false; //sets whether the player is standing on a block
+
+
+//ladder variables
+onLadder = false; //sets if player climbs onto a ladder
+ladderJump = false; //sets if player jumps off a ladder
+ladderV = false; //sets if player is moving up/down a ladder
+ladderH = false; //sets if player is movuing left/right on a ladder
+
+
+//gravity variables
+lowGrav = false; //low-gravity for the player
+highGrav = false; //high-gravity for the player
+noGrav = false; //zero-gravity for the player
+antiGrav = false; //anti-gravity for the player
+
+
+//speed variables
+lowSpeed = false; //slow-speed for the player
+highSpeed = false; //high-speed for the player
+autoSpeed = false; //auto-run for the player
+buffSpeed = false; //buffer-run for the player
+
+
+//vine variables
+vineJump = 0; //sets if player is interacting with a red vine
+vineSlip = 0; //sets if player is interacting with an ice vine / pressure vine
+vineGrav = 0; //sets if player is interacting with a purple vine / orange vine
+vineSpeed = 0; //sets if player is interacting with a fire vine / plasma vine
+//vineOsc = 0; //sets if player is interacting with a mercury vine
+vineAuto = 0; //sets if player is interacting with an auto vine
+vineBuff = 0; //sets if player is interacting with a buffer vine
+
+lowGravVine = false; //secondary variable for vineGrav to tell if you should have low-grav
+highGravVine = false; //secondary variable for vineGrav to tell if you should have high-grav
+noGravVine = false; //secondary variable for vineGrav to tell if you should have no-grav
+antiGravVine = false; //secondary variable for vineGrav to tell if you should have anti-grav
+//speedOsc = 0; //the current speed the player is oscillating with the vineOsc effect
 
 
 //Jumple Refrenture variables
@@ -227,6 +264,45 @@ if (yyU &lt; 0 || yyD &gt; 608)
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Player animations
+ladderJump = false;
+
+if (onLadder)
+{
+    playerSprite(sPlayerClimbBack);
+    image_speed = 0.1;
+}
+    
+if (ladderV)
+{
+    playerSprite(sPlayerClimbVer);
+    image_speed = 0.2;
+}
+else if (ladderH)
+{
+    playerSprite(sPlayerClimbHor);
+    image_speed = 0.2;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="1">
       <action>
@@ -356,7 +432,7 @@ if (!global.lunarkid)
         nudgeBlockCheck = place_meeting(x,y+global.grav,oBlock);
     else
         nudgeBlockCheck = false;
-    
+
     //vine checks
     if (!global.linekid)
         xOff = 1;
@@ -365,11 +441,53 @@ if (!global.lunarkid)
     
     onVineL = (place_meeting(x-xOff,y,oVineL) &amp;&amp; notOnBlock);
     onVineR = (place_meeting(x+xOff,y,oVineR) &amp;&amp; notOnBlock);
+
         
+    //jump checks
+    if (highd = 1) { 
+        jump2 = (12 * global.grav); 
+    }
+    
+    if (lowd = 1) { 
+        jump2 = (5 * global.grav); 
+    }
+    
+    if (highd != 1 &amp;&amp; lowd != 1) { 
+        jump2 = (7 * global.grav); 
+    }
+    
+    if (!place_free(x,y+global.grav) || onPlatform) 
+    {
+        highd = 0;
+        lowd = 0;
+        flipd = 0;
+        teled = 0;
+        fastd = 0;
+        switchd = 0;
+        slowd = 0;
+
+        if (instance_exists(oJumpSlowEffect))
+            with (oJumpSlowEffect) { instance_destroy(); }
+    }
+    
     //gravity checks
-    gravity = 0.4 * global.grav;
+    if (!onLadder)
+    {
+        gravity = 0.4 * sign(global.grav);
+    
+        if (abs(global.grav) == 1) { gravity_direction = 270; }
+        else if (abs(global.grav) == 2) { gravity_direction = 0; }
+    }
     
     //speed checks
+    maxSpeed = 3;
+    
+    if (lowSpeed)
+        maxSpeed = 1;
+    else if (highSpeed || fastd = 2)
+        maxSpeed = 6;
+    
+    //ice checks
     if (global.icetype == icetype_pressure)
         global.slippage = 0.07;
     else
@@ -770,6 +888,90 @@ if (!frozen)
 
 if (global.adjustTAS) 
     adjustPlayerPosition_EndStep();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///ladders
+ladderV = false;
+ladderH = false;
+
+//var vertical = (scrButtonCheck(KEY.DOWN) - scrButtonCheck(KEY.UP))
+if (scrButtonCheck(KEY.UP) || scrButtonCheck(KEY.DOWN))
+{
+    if (!onLadder &amp;&amp; place_meeting(x,y,oLadder))
+    {
+        onLadder = true;
+        djump = numJumps-1;
+    }
+}
+if (onLadder)
+{
+    if (!place_meeting(x,y,oLadder))
+        onLadder = false;
+    else
+    {
+        if (scrButtonCheck(KEY.UP))
+        {
+            y -= maxSpeed;
+            gravity = 0;
+            vspeed = 0;
+
+            ladderV = true;
+            ladderH = false;
+        }
+        else if (scrButtonCheck(KEY.DOWN))
+        {
+            y += maxSpeed;
+            gravity = 0;
+            vspeed = 0;
+
+            ladderV = true;
+            ladderH = false;
+        }
+        
+        if (scrButtonCheck(KEY.RIGHT))
+        {
+            x += maxSpeed;
+            gravity = 0;
+            hspeed = 0;
+            
+            ladderH = true;
+            ladderV = false;
+        }
+        else if (scrButtonCheck(KEY.LEFT))
+        {
+            x -= maxSpeed;
+            gravity = 0;
+            hspeed = 0;
+                
+            ladderH = true;
+            ladderV = false;
+        }
+        
+        if (scrButtonCheckPressed(KEY.JUMP))
+        {
+            ladderJump = true;
+            onLadder = false;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -1296,6 +1498,11 @@ if (global.showhitbox != 0)
 if (mask_index = sDotkid &amp;&amp; global.dotkidoutline)
     draw_sprite_ext(sDotkidOutline,0,x,y,1,1,image_angle,pCol,1);
 
+if (teled) { 
+    var telex = 96 * global.player_xscale;
+    draw_sprite_ext(mask_index, image_index, x+telex, y, global.player_xscale, sign(global.grav), image_angle, image_blend, 0.5);
+}
+    
 if (hit &gt; 0)
     draw_sprite_ext(sPlayerHit,0,hitX,hitY,1,1,0,c_white,hit/floor(50/2));
 </string>
