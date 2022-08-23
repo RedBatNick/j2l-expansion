@@ -12,7 +12,6 @@ global.savesubpixel = FSIniReadReal("prefs","savesubpixel",true);
 //sidebar
 global.hidesidebar = FSIniReadReal("prefs","hidesidebar",false);
 global.editorinstructions = FSIniReadReal("prefs","editorinstructions",true);
-global.sidebarstate = FSIniReadReal("prefs","sidebarstate",sidebar_standard);
 oEdit.snap = FSIniReadReal("prefs","gridsnap",32);
 global.sidebarlevel = FSIniReadReal("prefs","sidebarlevel",0);
 //global.playerpos_extended = FSIniReadReal("prefs","playerpos_extended",false);

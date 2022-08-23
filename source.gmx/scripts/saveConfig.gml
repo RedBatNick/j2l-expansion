@@ -20,7 +20,6 @@ ini_write_real("prefs","savesubpixel",global.savesubpixel);
 //sidebar
 ini_write_real("prefs","hidesidebar",global.hidesidebar);
 ini_write_real("prefs","editorinstructions",global.editorinstructions);
-ini_write_real("prefs","sidebarstate",global.sidebarstate);
 ini_write_real("prefs","gridsnap",oEdit.snap);
 ini_write_real("prefs","sidebarlevel",global.sidebarlevel);
 //ini_write_real("prefs","playerpos_extended",global.playerpos_extended);
