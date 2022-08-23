@@ -6,7 +6,7 @@
   <depth>-10</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>sPlayerMask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.tasAD = false; //sets whether TAS mode input is active
+            <string>///create
+global.tasAD = false; //sets whether TAS mode input is active
 
 
 jump = 8.5 * sign(global.grav); //sets the primary jump speed
@@ -115,12 +116,64 @@ hitX = x; //sets the x position of the player's hit X coordinate
 hitY = y; //sets the y position of the player's hit X coordinate
 
 playerSprite(sPlayerIdle);
+dynamicCollision(true);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Resolve collisions between step and now, collide with dynamic blocks
+
+/*if (!place_free(x, y))
+{
+    var dirX = sign(x-xsafe);
+    var dirY = sign(y-ysafe);
+    var epsilon = 0.001; //Appease the floating point gods
+    
+    //If something moved the player into a block since Step, move back towards where we were until we're out of a block.
+    while(!place_free(x, y))
+    {
+        if (dirX * (x - xsafe) &gt;= epsilon)
+        {
+            x -= sign(x-xsafe) * min( abs(x-xsafe), 1 );
+        }
+        else if (dirY * (y - ysafe) &gt;= epsilon)
+        {
+            y -= sign(y-ysafe) * min( abs(y-ysafe), 1 );
+        }
+        else break;
+    }
+}
+
+if (global.blocksCrush)
+{
+    dynamicCollision(false, killPlayer);
+}
+else
+{
+    dynamicCollision(false);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -322,7 +375,8 @@ else if (ladderH)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.frameaction_jump = false;
+            <string>///jump actions
+global.frameaction_jump = false;
 global.frameaction_djump = false;
 global.frameaction_jumpslow = false;
 </string>
@@ -468,15 +522,15 @@ if (!global.lunarkid)
         
     //jump checks
     if (highd = 1) { 
-        jump2 = (12 * global.grav); 
+        jump2 = (12 * sign(global.grav)); 
     }
     
     if (lowd = 1) { 
-        jump2 = (5 * global.grav); 
+        jump2 = (5 * sign(global.grav)); 
     }
     
     if (highd != 1 &amp;&amp; lowd != 1) { 
-        jump2 = (7 * global.grav); 
+        jump2 = (7 * sign(global.grav)); 
     }
     
     if (!place_free(x,y+global.grav) || onPlatform) 
@@ -627,7 +681,7 @@ if (!global.lunarkid)
             lineCollisionBlock = scrInstancePlaceList(x, y, oBlock);
             if (lineCollisionBlock != -4)
             {
-                num = ds_list_size(lineCollisionBlock)
+                num = ds_list_size(lineCollisionBlock);
                 for (i = 0; i &lt; num; i++)
                 {
                     if (ds_list_find_value(lineCollisionBlock, i)).solid
@@ -872,18 +926,10 @@ if (!global.lunarkid)
     // jump, shoot, suicide
     if (!frozen)
     {
-        if (scrButtonCheckPressed(KEY.JUMP))
+        if (scrButtonCheckPressed(KEY.JUMP))//|| (keyboard_check(ord("J")))
             playerJump();
-        if (scrButtonCheckReleased(KEY.JUMP))
+        if (scrButtonCheckReleased(KEY.JUMP))//|| (keyboard_check(ord("K")))
             playerVJump();
-
-        /*if (keyboard_check(ord("J")))
-        {
-            global.tasAD = true;
-            playerJump();
-        }
-        if (keyboard_check(ord("K"))) 
-            playerVJump();*/
     }
 } 
 else 
@@ -946,66 +992,69 @@ if (global.adjustTAS)
           <argument>
             <kind>1</kind>
             <string>///ladders
-ladderV = false;
-ladderH = false;
-
-//var vertical = (scrButtonCheck(KEY.DOWN) - scrButtonCheck(KEY.UP))
-if (scrButtonCheck(KEY.UP) || scrButtonCheck(KEY.DOWN))
+if (!global.lunarkid)
 {
-    if (!onLadder &amp;&amp; place_meeting(x,y,oLadder))
+    ladderV = false;
+    ladderH = false;
+    
+    //var vertical = (scrButtonCheck(KEY.DOWN) - scrButtonCheck(KEY.UP))
+    if (scrButtonCheck(KEY.UP) || scrButtonCheck(KEY.DOWN))
     {
-        onLadder = true;
-        djump = numJumps-1;
+        if (!onLadder &amp;&amp; place_meeting(x,y,oLadder))
+        {
+            onLadder = true;
+            djump = numJumps-1;
+        }
     }
-}
-if (onLadder)
-{
-    if (!place_meeting(x,y,oLadder))
-        onLadder = false;
-    else
+    if (onLadder)
     {
-        if (scrButtonCheck(KEY.UP))
-        {
-            y -= maxSpeed;
-            gravity = 0;
-            vspeed = 0;
-
-            ladderV = true;
-            ladderH = false;
-        }
-        else if (scrButtonCheck(KEY.DOWN))
-        {
-            y += maxSpeed;
-            gravity = 0;
-            vspeed = 0;
-
-            ladderV = true;
-            ladderH = false;
-        }
-        
-        if (scrButtonCheck(KEY.RIGHT))
-        {
-            x += maxSpeed;
-            gravity = 0;
-            hspeed = 0;
-            
-            ladderH = true;
-            ladderV = false;
-        }
-        else if (scrButtonCheck(KEY.LEFT))
-        {
-            x -= maxSpeed;
-            gravity = 0;
-            hspeed = 0;
-                
-            ladderH = true;
-            ladderV = false;
-        }
-        
-        if (scrButtonCheckPressed(KEY.JUMP))
-        {
-            ladderJump = true;
+        if (!place_meeting(x,y,oLadder))
             onLadder = false;
+        else
+        {
+            if (scrButtonCheck(KEY.UP))
+            {
+                y -= maxSpeed;
+                gravity = 0;
+                vspeed = 0;
+    
+                ladderV = true;
+                ladderH = false;
+            }
+            else if (scrButtonCheck(KEY.DOWN))
+            {
+                y += maxSpeed;
+                gravity = 0;
+                vspeed = 0;
+    
+                ladderV = true;
+                ladderH = false;
+            }
+            
+            if (scrButtonCheck(KEY.RIGHT))
+            {
+                x += maxSpeed;
+                gravity = 0;
+                hspeed = 0;
+                
+                ladderH = true;
+                ladderV = false;
+            }
+            else if (scrButtonCheck(KEY.LEFT))
+            {
+                x -= maxSpeed;
+                gravity = 0;
+                hspeed = 0;
+                    
+                ladderH = true;
+                ladderV = false;
+            }
+            
+            if (scrButtonCheckPressed(KEY.JUMP))
+            {
+                ladderJump = true;
+                onLadder = false;
+            }
         }
     }
 }
@@ -1030,68 +1079,72 @@ if (onLadder)
           <argument>
             <kind>1</kind>
             <string>///vines
-
-if (onVineL || onVineR) 
+if (!global.lunarkid)
 {
-    //Jungle adventure vines
-    var onRise = ((onVineR &amp;&amp; vineR.object_index == oRiseVineR) || (onVineL &amp;&amp; vineL.object_index == oRiseVineL)); 
-    var onIce = ((onVineR &amp;&amp; vineR.object_index == oIceVineR) || (onVineL &amp;&amp; vineL.object_index == oIceVineL)); 
-    var onFlip = ((onVineR &amp;&amp; vineR.object_index == oFlipVineR) || (onVineL &amp;&amp; vineL.object_index == oFlipVineL)); 
-    var onSticky = ((onVineR &amp;&amp; vineR.object_index == oStickyVineR) || (onVineL &amp;&amp; vineL.object_index == oStickyVineL));
-    var onLowGrav = ((onVineR &amp;&amp; vineR.object_index == oLowGravVineR) || (onVineL &amp;&amp; vineL.object_index == oLowGravVineL));
-    //var onWhite = ((onVineR &amp;&amp; vineR.object_index == oTwinWhiteVineR) || (onVineL &amp;&amp; vineL.object_index == oTwinWhiteVineL));
-    //var onBlack = ((onVineR &amp;&amp; vineR.object_index == oTwinBlackVineR) || (onVineL &amp;&amp; vineL.object_index == oTwinBlackVineL));
-    var onFire = ((onVineR &amp;&amp; vineR.object_index == oFireVineR) || (onVineL &amp;&amp; vineL.object_index == oFireVineL));
-
-    if (onVineL) 
-        global.player_xscale = -1;
-    else 
-        global.player_xscale = 1;
-        
-    if (!onIce) {
-        if (onRise) {
-            vspeed = -2*global.grav; 
-        } 
-        else if (onSticky) { 
-            vspeed = 0; 
-            vineStick = true; 
-        } 
-        else { 
-            vspeed = 2*global.grav; 
-        }
-    }
+    if (onVineL || onVineR) 
+    {
+        //Jungle adventure vines
+        var onRise = ((onVineR &amp;&amp; vineR.object_index == oRiseVineR) || (onVineL &amp;&amp; vineL.object_index == oRiseVineL)); 
+        var onIce = ((onVineR &amp;&amp; vineR.object_index == oIceVineR) || (onVineL &amp;&amp; vineL.object_index == oIceVineL)); 
+        var onFlip = ((onVineR &amp;&amp; vineR.object_index == oFlipVineR) || (onVineL &amp;&amp; vineL.object_index == oFlipVineL)); 
+        var onSticky = ((onVineR &amp;&amp; vineR.object_index == oStickyVineR) || (onVineL &amp;&amp; vineL.object_index == oStickyVineL));
+        var onLowGrav = ((onVineR &amp;&amp; vineR.object_index == oLowGravVineR) || (onVineL &amp;&amp; vineL.object_index == oLowGravVineL));
+        //var onWhite = ((onVineR &amp;&amp; vineR.object_index == oTwinWhiteVineR) || (onVineL &amp;&amp; vineL.object_index == oTwinWhiteVineL));
+        //var onBlack = ((onVineR &amp;&amp; vineR.object_index == oTwinBlackVineR) || (onVineL &amp;&amp; vineL.object_index == oTwinBlackVineL));
+        var onFire = ((onVineR &amp;&amp; vineR.object_index == oFireVineR) || (onVineL &amp;&amp; vineL.object_index == oFireVineL));
     
-    playerSprite(sPlayerSliding);
-    image_speed = 0.5;
-    
-    // pressed away from the vine
-    if (onVineR &amp;&amp; scrButtonCheckPressed(KEY.RIGHT)) || keyboard_check(ord('P'))
-    || (onVineL &amp;&amp; scrButtonCheckPressed(KEY.LEFT)) || keyboard_check(ord('O')) 
-    {       
-        if (scrButtonCheck(KEY.JUMP)) // jumping off vine
-        {
-            if (onVineL) 
-                hspeed = -15;
-            else 
-                hspeed = 15;
-    
-            if (onFlip) { flipGravity(0); }
-                
-            vspeed = -9 * global.grav;
-            audio_play_sound(sndWallJump,0,0);
-            playerSprite(sPlayerJump);
+        if (onVineL) 
+            global.player_xscale = -1;
+        else 
+            global.player_xscale = 1;
             
-            /*if (onWhite || onBlack) { 
-                global.vineToggle = !global.vineToggle 
-            }*/
+        if (!onIce) {
+            if (onRise) {
+                vspeed = -2*sign(global.grav); 
+            } 
+            else if (onSticky) { 
+                vspeed = 0; 
+                vineStick = true; 
+            } 
+            else { 
+                vspeed = 2*sign(global.grav); 
+            }
         }
-        else // walking off vine
-        {
-            if (onVineL) 
-                hspeed = -3;
-            else 
-                hspeed = 3;
+        
+        playerSprite(sPlayerSliding);
+        image_speed = 0.5;
+        
+        // pressed away from the vine
+        if (onVineR &amp;&amp; scrButtonCheckPressed(KEY.RIGHT)) || keyboard_check(ord('P'))
+        || (onVineL &amp;&amp; scrButtonCheckPressed(KEY.LEFT)) || keyboard_check(ord('O')) 
+        {       
+            if (scrButtonCheck(KEY.JUMP)) // jumping off vine
+            {
+                if (onVineL) 
+                    hspeed = -15;
+                else 
+                    hspeed = 15;
+        
+                if (onFlip) { flipGravity(0); }
+                    
+                vspeed = -9 * sign(global.grav);
+                audio_play_sound(sndWallJump,0,0);
+                playerSprite(sPlayerJump);
                 
+                /*if (onWhite || onBlack) { 
+                    global.vineToggle = !global.vineToggle 
+                }*/
+            }
+            else // walking off vine
+            {
+                if (onVineL) 
+                    hspeed = -3;
+                else 
+                    hspeed = 3;
+                    
+                playerSprite(sPlayerFall);
+            }
+            
             if (onLowGrav) { 
                 vineGrav = 1; 
             }
@@ -1099,17 +1152,16 @@ if (onVineL || onVineR)
                 maxSpeed = 6; 
                 vineSpeed = 1; 
             }
-            playerSprite(sPlayerFall);
         }
     }
-}
-
-//Particles for low grav / fire vines
-/*if (vineGrav &amp;&amp; global.count mod 10 == 1) {
-    part_particles_create(global.partSys,x,y,global.vinePart,2); 
-}*/
-if (vineSpeed &amp;&amp; global.count mod 3 == 1) {
-    instance_create(x,y,oFireVinePart);
+    
+    //Particles for low grav / fire vines
+    /*if (vineGrav &amp;&amp; global.count mod 10 == 1) {
+        part_particles_create(global.partSys,x,y,global.vinePart,2); 
+    }*/
+    if (vineSpeed &amp;&amp; global.count mod 3 == 1) {
+        instance_create(x,y,oFireVinePart);
+    }
 }
 </string>
           </argument>
@@ -1132,76 +1184,130 @@ if (vineSpeed &amp;&amp; global.count mod 3 == 1) {
           <argument>
             <kind>1</kind>
             <string>///slopes 
-
-if (instance_exists(oSlope) &amp;&amp; hspeed != 0)
+if (!global.lunarkid)
 {
-    var moveLimit = abs(hspeed);   //Sets how high/low the player can go to snap onto a slope, this can be increased to make the player able to run over steeper slopes (ie setting it to abs(hspeed)*2 allows the player to run over slopes twice as steep)
-    
-    var slopeCheck;
-    var hTest;
-    
-    var ySlope;
-    
-    //falling onto a slope
-    if (place_meeting(x+hspeed, y+vspeed+gravity, oSlope) &amp;&amp; (vspeed+gravity)*global.grav &gt; 0 &amp;&amp; notOnBlock)
+    if (instance_exists(oSlope) &amp;&amp; hspeed != 0)
     {
-        var xLast = x;
-        var yLast = y;
-        var hLast = hspeed;
-        var vLast = vspeed;
+        var moveLimit = abs(hspeed);   //Sets how high/low the player can go to snap onto a slope, this can be increased to make the player able to run over steeper slopes (ie setting it to abs(hspeed)*2 allows the player to run over slopes twice as steep)
         
-        vspeed += gravity;
+        var slopeCheck;
+        var hTest;
         
-        x += hspeed;
-        hspeed = 0;
+        var ySlope;
         
-        if(!place_free(x, y+vspeed))
+        //falling onto a slope
+        if (place_meeting(x+hspeed, y+vspeed+gravity, oSlope) &amp;&amp; (vspeed+gravity)*global.grav &gt; 0 &amp;&amp; notOnBlock)
         {
-            if (global.grav == 1)    //Normal
-                move_contact_solid(270, abs(vspeed));
-            else    //Flipped
-                move_contact_solid(90, abs(vspeed));
-            vspeed = 0;
-        }
-        
-        y += vspeed;            
-        
-        if (!place_free(x, y + global.grav) &amp;&amp; place_free(x, y))  //Snapped onto the slope properly
-        {
-            djump = 1;
-            notOnBlock = false;
-        }
-        else    //Did not snap onto the slope, return to previous position
-        {
-            x = xLast;
-            y = yLast;
-            hspeed = hLast;
-            vspeed = vLast;
-        }
-    }
-    
-    //Moving down a slope
-    if (!notOnBlock)
-    {                                              
-        var onSlope = (place_meeting(x, y + global.grav, oSlope));    //Treat normal blocks the same as slopes if we're standing on a slope
-        
-        slopeCheck = true;
-        hTest = hspeed;
-        
-        while (slopeCheck)
-        {
-            ySlope = 0;
-            //Check how far we should move down
-            while ((!place_meeting(x + hTest, y - ySlope + global.grav, oSlope) || (onSlope &amp;&amp; place_free(x + hTest, y - ySlope + global.grav))) &amp;&amp; (ySlope*global.grav &gt; -floor(moveLimit * (hTest/hspeed))))
+            var xLast = x;
+            var yLast = y;
+            var hLast = hspeed;
+            var vLast = vspeed;
+            
+            vspeed += gravity;
+            
+            x += hspeed;
+            hspeed = 0;
+            
+            if(!place_free(x, y+vspeed))
             {
-                ySlope -= global.grav;
+                if (global.grav == 1)    //Normal
+                    move_contact_solid(270, abs(vspeed));
+                else    //Flipped
+                    move_contact_solid(90, abs(vspeed));
+                vspeed = 0;
             }
             
-            //Check if we actually need to move down
-            if (place_meeting(x + hTest, y - ySlope + global.grav, oSlope) || (onSlope &amp;&amp; place_free(x + hTest, y - ySlope + global.grav)))
+            y += vspeed;            
+            
+            if (!place_free(x, y + global.grav) &amp;&amp; place_free(x, y))  //Snapped onto the slope properly
             {
-                if (ySlope != 0 &amp;&amp; place_free(x + hTest, y - ySlope))
+                djump = 1;
+                notOnBlock = false;
+            }
+            else    //Did not snap onto the slope, return to previous position
+            {
+                x = xLast;
+                y = yLast;
+                hspeed = hLast;
+                vspeed = vLast;
+            }
+        }
+        
+        //Moving down a slope
+        if (!notOnBlock)
+        {                                              
+            var onSlope = (place_meeting(x, y + global.grav, oSlope));    //Treat normal blocks the same as slopes if we're standing on a slope
+            
+            slopeCheck = true;
+            hTest = hspeed;
+            
+            while (slopeCheck)
+            {
+                ySlope = 0;
+                //Check how far we should move down
+                while ((!place_meeting(x + hTest, y - ySlope + global.grav, oSlope) || (onSlope &amp;&amp; place_free(x + hTest, y - ySlope + global.grav))) &amp;&amp; (ySlope*global.grav &gt; -floor(moveLimit * (hTest/hspeed))))
                 {
+                    ySlope -= global.grav;
+                }
+                
+                //Check if we actually need to move down
+                if (place_meeting(x + hTest, y - ySlope + global.grav, oSlope) || (onSlope &amp;&amp; place_free(x + hTest, y - ySlope + global.grav)))
+                {
+                    if (ySlope != 0 &amp;&amp; place_free(x + hTest, y - ySlope))
+                    {
+                        y -= ySlope;
+                        
+                        x += hTest;
+                        hspeed = 0;
+                        
+                        slopeCheck = false;
+                    }
+                    else
+                    {
+                        if (hTest &gt; 0)
+                        {
+                            hTest -= 1;
+                            if (hTest &lt;= 0)
+                                slopeCheck = false;
+                        }
+                        else if (hTest &lt; 0)
+                        {
+                            hTest += 1;
+                            if (hTest &gt;= 0)
+                                slopeCheck = false;
+                        }
+                        else
+                        {
+                            slopeCheck = false;
+                        }
+                    }
+                }
+                else
+                {
+                    slopeCheck = false;
+                }
+            }
+        }
+        
+        //Moving up a slope
+        if (place_meeting(x + hspeed, y, oSlope))
+        {                                           
+            slopeCheck = true;
+            hTest = hspeed;
+            
+            while (slopeCheck)
+            {
+                ySlope = 0;
+                
+                //Check how far we have to move up
+                while ( place_meeting(x + hTest, y - ySlope, oSlope) &amp;&amp; (ySlope*global.grav &lt; floor(moveLimit * (hTest/hspeed))) )
+                {
+                    ySlope += global.grav;
+                }                                                 
+                
+                //Check if we actually need to move up
+                if (place_free(x + hTest, y - ySlope))
+                {            
                     y -= ySlope;
                     
                     x += hTest;
@@ -1229,65 +1335,99 @@ if (instance_exists(oSlope) &amp;&amp; hspeed != 0)
                     }
                 }
             }
-            else
-            {
-                slopeCheck = false;
-            }
         }
-    }
-    
-    //Moving up a slope
-    if (place_meeting(x + hspeed, y, oSlope))
-    {                                           
-        slopeCheck = true;
-        hTest = hspeed;
         
-        while (slopeCheck)
+        //Set xprevious/yprevious coordinates for future solid collisions
+        xprevious = x;
+        yprevious = y;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Block collision (Keep this last)
+
+vspeed += gravity;
+
+if (!place_free(x + hspeed, y + vspeed))
+{
+    if (!global.lunarkid)
+    {
+        //Block collision moves push blocks back, so let's undo that
+        /*with (objPushBlock) {
+            x = xMoved;
+            y = yMoved;
+        }*/
+    
+        if (!place_free(x + hspeed, y) &amp;&amp; hspeed != 0)
         {
-            ySlope = 0;
+            var maxDist = abs(hspeed);
+            var dir = 180 * (hspeed &lt; 0);
+            move_contact_solid(dir, maxDist);
             
-            //Check how far we have to move up
-            while ( place_meeting(x + hTest, y - ySlope, oSlope) &amp;&amp; (ySlope*global.grav &lt; floor(moveLimit * (hTest/hspeed))) )
+            hspeed = 0;
+        }
+         
+        if (!place_free(x, y + vspeed) &amp;&amp; vspeed != 0)
+        {
+            //Reset vine variables
+            if (vspeed &gt; 0 &amp;&amp; sign(global.grav) == 1) || (vspeed &lt; 0 &amp;&amp; sign(global.grav) == -1) {
+                vineGrav = false;
+                if (vineSpeed) {
+                    maxSpeed = 3;
+                    vineSpeed = false;
+                }
+            }
+        
+            var maxDist = abs(vspeed);
+            var dir = 270 - 180 * (vspeed &lt; 0);
+            move_contact_solid(dir, maxDist);
+            
+            if (dir == 180 + sign(global.grav) * 90)
+                { djump = numJumps-1; }
+            vspeed = 0;
+        }
+        
+        if (!place_free(x + hspeed, y + vspeed))
+        {
+            //hspeed = 0;
+            //Traditional behavior when resolving corner collision is to stop hspeed. When on a platform, this can cause horizontal stutter, so we stop vspeed instead.
+            var p = instance_place(x, y+vspeed, oPlatform);
+            if (!p || place_meeting(x, y, p))
             {
-                ySlope += global.grav;
-            }                                                 
-            
-            //Check if we actually need to move up
-            if (place_free(x + hTest, y - ySlope))
-            {            
-                y -= ySlope;
-                
-                x += hTest;
                 hspeed = 0;
-                
-                slopeCheck = false;
             }
             else
             {
-                if (hTest &gt; 0)
-                {
-                    hTest -= 1;
-                    if (hTest &lt;= 0)
-                        slopeCheck = false;
-                }
-                else if (hTest &lt; 0)
-                {
-                    hTest += 1;
-                    if (hTest &gt;= 0)
-                        slopeCheck = false;
-                }
-                else
-                {
-                    slopeCheck = false;
-                }
+                vspeed = 0;
             }
         }
     }
-    
-    //Set xprevious/yprevious coordinates for future solid collisions
-    xprevious = x;
-    yprevious = y;
-}                 
+    else
+        killPlayer();
+}
+
+xsafe = x + hspeed;
+ysafe = y + vspeed;
+
+vspeed -= gravity;
 </string>
           </argument>
         </arguments>
@@ -1310,7 +1450,8 @@ if (instance_exists(oSlope) &amp;&amp; hspeed != 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var pd = 2, py = 9, phy = 1, pyc = 8;
+            <string>///platform collision
+var pd = 2, py = 9, phy = 1, pyc = 8;
 
 if (global.dotkid)
 {
@@ -1361,77 +1502,6 @@ else
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="oBlock">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// push against blocks horizontally
-if (!global.lunarkid)
-{
-    if (!place_free(x+hspeed,y)) 
-    {
-        if (sign(global.grav) == 1) 
-        {
-            var dir;
-            if (hspeed &lt;= 0) { dir = 180; }
-            if (hspeed &gt; 0) { dir = 0; }
-            move_contact_solid(dir, abs(hspeed));
-        }
-        else if (sign(global.grav) == -1)
-        {
-            var dir;
-            if (hspeed &lt; 0) { dir = 180; }
-            if (hspeed &gt;= 0) { dir = 0; }
-            move_contact_solid(dir, abs(hspeed));
-        }
-        hspeed = 0;
-    }
-    
-    // push against blocks vertically
-    if (!place_free(x,y+vspeed))
-    {
-        if (sign(global.grav) == 1) 
-        {
-            var dir;
-            if (vspeed &lt;= 0) { dir = 90; }
-            if (vspeed &gt; 0) { dir = 270; djump = true; }
-            move_contact_solid(dir, abs(vspeed));
-        }
-        else if (sign(global.grav) == -1)
-        {
-            var dir;
-            if (vspeed &lt;= 0) { dir = 90; djump = true; }
-            if (vspeed &gt; 0) { dir = 270; }
-            move_contact_solid(dir, abs(vspeed));
-        }
-        vspeed = 0;
-    }
-    
-    if (!place_free(x+hspeed,y+vspeed))
-        hspeed = 0;
-} 
-else 
-{
-    killPlayer();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -1449,7 +1519,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!place_free(x, y)) //If stuck, try to free myself
+            <string>///unstuck algorithm
+if (!place_free(x, y)) //If stuck, try to free myself
 {
     var maxDist = 16; //How many pixels on each side did the sprite get wider by.
     for(var i = 0; i &lt;= maxDist; i+=1)
@@ -1501,7 +1572,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if (global.grav == 1) {
+            <string>///draw
+/*if (global.grav == 1) {
     draw_sprite_ext(sprite_index,image_index,round(x),round(y),
     global.player_xscale,1,image_angle,image_blend,image_alpha)
 }

@@ -105,6 +105,7 @@ global.screenwraptype = wraptype_none;
 global.dotclip = true;
 global.dotplatfix = false;
 global.telerange = 12;
+global.blocksCrush = false;
 
 
 //preference options

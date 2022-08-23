@@ -673,6 +673,7 @@
         <script>scripts\adjustPlayerPosition_EndStep_Record.gml</script>
         <script>scripts\flipGravityRecord.gml</script>
       </scripts>
+      <script>scripts\dynamicCollision.gml</script>
     </scripts>
     <scripts name="world">
       <scripts name="initialization">
@@ -1416,7 +1417,7 @@
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="49">
+  <constants number="48">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
     <constant name="globalstate_input">3</constant>
@@ -1425,9 +1426,8 @@
     <constant name="jstate_2hold">3</constant>
     <constant name="jstate_2wait">4</constant>
     <constant name="jstate_done">5</constant>
-    <constant name="sidebar_palette">0</constant>
-    <constant name="sidebar_analysis">1</constant>
-    <constant name="sidebar_hybrid">2</constant>
+    <constant name="sidebar_classic">0</constant>
+    <constant name="sidebar_standard">1</constant>
     <constant name="input_textbox">1</constant>
     <constant name="input_textarea">2</constant>
     <constant name="input_yesno">3</constant>
