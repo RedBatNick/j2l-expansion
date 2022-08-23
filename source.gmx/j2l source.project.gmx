@@ -288,43 +288,61 @@
         </sprites>
         <sprites name="vine">
           <sprites name="standard">
-            <sprite>sprites\sVineL</sprite>
+            <sprite>sprites\sVineU</sprite>
             <sprite>sprites\sVineR</sprite>
+            <sprite>sprites\sVineL</sprite>
+            <sprite>sprites\sVineD</sprite>
           </sprites>
           <sprites name="rise">
-            <sprite>sprites\sRiseVineL</sprite>
+            <sprite>sprites\sRiseVineU</sprite>
             <sprite>sprites\sRiseVineR</sprite>
+            <sprite>sprites\sRiseVineL</sprite>
+            <sprite>sprites\sRiseVineD</sprite>
           </sprites>
-          <sprites name="iced">
-            <sprite>sprites\sIceVineL</sprite>
+          <sprites name="ice">
+            <sprite>sprites\sIceVineU</sprite>
             <sprite>sprites\sIceVineR</sprite>
+            <sprite>sprites\sIceVineL</sprite>
+            <sprite>sprites\sIceVineD</sprite>
           </sprites>
-          <sprites name="flip-gravity">
-            <sprite>sprites\sFlipVineL</sprite>
+          <sprites name="flip">
+            <sprite>sprites\sFlipVineU</sprite>
             <sprite>sprites\sFlipVineR</sprite>
+            <sprite>sprites\sFlipVineL</sprite>
+            <sprite>sprites\sFlipVineD</sprite>
           </sprites>
           <sprites name="sticky">
-            <sprite>sprites\sStickyVineL</sprite>
+            <sprite>sprites\sStickyVineU</sprite>
             <sprite>sprites\sStickyVineR</sprite>
+            <sprite>sprites\sStickyVineL</sprite>
+            <sprite>sprites\sStickyVineD</sprite>
           </sprites>
           <sprites name="low-gravity">
-            <sprite>sprites\sLowGravVineL</sprite>
+            <sprite>sprites\sLowGravVineU</sprite>
             <sprite>sprites\sLowGravVineR</sprite>
+            <sprite>sprites\sLowGravVineL</sprite>
+            <sprite>sprites\sLowGravVineD</sprite>
           </sprites>
           <sprites name="twin">
             <sprites name="white">
-              <sprite>sprites\sWhiteVineL</sprite>
+              <sprite>sprites\sWhiteVineU</sprite>
               <sprite>sprites\sWhiteVineR</sprite>
+              <sprite>sprites\sWhiteVineL</sprite>
+              <sprite>sprites\sWhiteVineD</sprite>
             </sprites>
             <sprites name="black">
-              <sprite>sprites\sBlackVineL</sprite>
+              <sprite>sprites\sBlackVineU</sprite>
               <sprite>sprites\sBlackVineR</sprite>
+              <sprite>sprites\sBlackVineL</sprite>
+              <sprite>sprites\sBlackVineD</sprite>
             </sprites>
           </sprites>
           <sprites name="fire">
-            <sprite>sprites\sFireVineL</sprite>
+            <sprite>sprites\sFireVineU</sprite>
             <sprite>sprites\sFireVineR</sprite>
-            <sprite>sprites\sprFirePart</sprite>
+            <sprite>sprites\sFireVineL</sprite>
+            <sprite>sprites\sFireVineD</sprite>
+            <sprite>sprites\sFireVinePart</sprite>
           </sprites>
         </sprites>
         <sprites name="refresher">
@@ -687,30 +705,26 @@
             <script>scripts\encode_real_double.gml</script>
             <script>scripts\decode_real_double.gml</script>
           </scripts>
-          <scripts name="variable object ids">
-            <script>scripts\objectToSaveX.gml</script>
-            <script>scripts\saveXToObject.gml</script>
-          </scripts>
         </scripts>
         <scripts name="formats">
           <script>scripts\saveMapAskName.gml</script>
           <script>scripts\loadMapAskName.gml</script>
+          <script>scripts\loadStartupMap.gml</script>
           <scripts name="new format (use this one for new stuff)">
-            <scripts name="save map">
-              <script>scripts\saveMap.gml</script>
-            </scripts>
-            <scripts name="load map">
-              <script>scripts\loadMap.gml</script>
-              <script>scripts\loadStartupMap.gml</script>
+            <script>scripts\saveMap.gml</script>
+            <script>scripts\loadMap.gml</script>
+            <scripts name="object ids">
+              <script>scripts\objectToSaveID.gml</script>
+              <script>scripts\saveIDToObject.gml</script>
+              <script>scripts\objectInPalette.gml</script>
             </scripts>
           </scripts>
           <scripts name="legacy formats">
             <script>scripts\saveOldMap.gml</script>
             <script>scripts\loadOldMap.gml</script>
-            <scripts name="object ids">
-              <script>scripts\objectToSaveID.gml</script>
-              <script>scripts\saveIDToObject.gml</script>
-              <script>scripts\objectInPalette.gml</script>
+            <scripts name="variable object ids">
+              <script>scripts\objectToSaveX.gml</script>
+              <script>scripts\saveXToObject.gml</script>
             </scripts>
           </scripts>
           <scripts name="rmj">
@@ -1203,8 +1217,61 @@
         </objects>
         <objects name="vine">
           <objects name="standard">
-            <object>objects\oVineL</object>
+            <object>objects\oVineU</object>
             <object>objects\oVineR</object>
+            <object>objects\oVineL</object>
+            <object>objects\oVineD</object>
+          </objects>
+          <objects name="rise">
+            <object>objects\oRiseVineU</object>
+            <object>objects\oRiseVineR</object>
+            <object>objects\oRiseVineL</object>
+            <object>objects\oRiseVineD</object>
+          </objects>
+          <objects name="ice">
+            <object>objects\oIceVineU</object>
+            <object>objects\oIceVineR</object>
+            <object>objects\oIceVineL</object>
+            <object>objects\oIceVineD</object>
+          </objects>
+          <objects name="flip">
+            <object>objects\oFlipVineU</object>
+            <object>objects\oFlipVineR</object>
+            <object>objects\oFlipVineL</object>
+            <object>objects\oFlipVineD</object>
+          </objects>
+          <objects name="sticky">
+            <object>objects\oStickyVineU</object>
+            <object>objects\oStickyVineR</object>
+            <object>objects\oStickyVineL</object>
+            <object>objects\oStickyVineD</object>
+          </objects>
+          <objects name="low-gravity">
+            <object>objects\oLowGravVineU</object>
+            <object>objects\oLowGravVineR</object>
+            <object>objects\oLowGravVineL</object>
+            <object>objects\oLowGravVineD</object>
+          </objects>
+          <objects name="twin">
+            <objects name="white">
+              <object>objects\oWhiteVineU</object>
+              <object>objects\oWhiteVineR</object>
+              <object>objects\oWhiteVineL</object>
+              <object>objects\oWhiteVineD</object>
+            </objects>
+            <objects name="black">
+              <object>objects\oBlackVineU</object>
+              <object>objects\oBlackVineR</object>
+              <object>objects\oBlackVineL</object>
+              <object>objects\oBlackVineD</object>
+            </objects>
+          </objects>
+          <objects name="fire">
+            <object>objects\oFireVineU</object>
+            <object>objects\oFireVineR</object>
+            <object>objects\oFireVineL</object>
+            <object>objects\oFireVineD</object>
+            <object>objects\oFireVinePart</object>
           </objects>
         </objects>
         <objects name="refresher">

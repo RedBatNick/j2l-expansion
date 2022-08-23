@@ -20,8 +20,8 @@
   <width>6</width>
   <height>4</height>
   <frames>
-    <frame index="0">images\sprFirePart_0.png</frame>
-    <frame index="1">images\sprFirePart_1.png</frame>
-    <frame index="2">images\sprFirePart_2.png</frame>
+    <frame index="0">images\sFireVinePart_0.png</frame>
+    <frame index="1">images\sFireVinePart_1.png</frame>
+    <frame index="2">images\sFireVinePart_2.png</frame>
   </frames>
 </sprite>

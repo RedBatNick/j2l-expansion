@@ -426,7 +426,7 @@ if (!global.lunarkid)
     h = 0;
     
     // Check for block underneath for nudging.
-    var notOnBlock = (place_free(x, y + global.grav));
+    var notOnBlock = (place_free(x, y+global.grav));
     
     if (global.checkNudgeEarly)
         nudgeBlockCheck = place_meeting(x,y+global.grav,oBlock);
@@ -435,13 +435,15 @@ if (!global.lunarkid)
 
     //vine checks
     if (!global.linekid)
-        xOff = 1;
+        vOff = 1;
     else
-        xOff = 2;
+        vOff = 2;
     
-    onVineL = (place_meeting(x-xOff,y,oVineL) &amp;&amp; notOnBlock);
-    onVineR = (place_meeting(x+xOff,y,oVineR) &amp;&amp; notOnBlock);
-
+    onVineD = (place_meeting(x,y+vOff,oVineD) &amp;&amp; notOnBlock);
+    onVineL = (place_meeting(x+vOff,y,oVineL) &amp;&amp; notOnBlock);
+    onVineR = (place_meeting(x-vOff,y,oVineR) &amp;&amp; notOnBlock);
+    onVineU = (place_meeting(x,y-vOff,oVineU) &amp;&amp; notOnBlock);
+    
         
     //jump checks
     if (highd = 1) { 
@@ -995,21 +997,25 @@ if (onLadder)
             <string>///vines
 
 if (!global.linekid)
-    var xOff = 1;
+    var vOff = 1;
 else
-    var xOff = 2;
+    var vOff = 2;
     
-var onVineL = (place_meeting(x-xOff,y,oVineL))// &amp;&amp; notOnBlock);
-var onVineR = (place_meeting(x+xOff,y,oVineR))// &amp;&amp; notOnBlock);
+var onVineD = (place_meeting(x,y+vOff,oVineD));// &amp;&amp; notOnBlock);
+var onVineL = (place_meeting(x+vOff,y,oVineL));// &amp;&amp; notOnBlock);
+var onVineR = (place_meeting(x-vOff,y,oVineR));// &amp;&amp; notOnBlock);
+var onVineD = (place_meeting(x,y-vOff,oVineU));// &amp;&amp; notOnBlock);
 
 if (global.jtoolphysics) {
-    onVineL = distance_to_object(oVineL) &lt;= 1 &amp;&amp; place_free(x,y+global.grav);
-    onVineR = distance_to_object(oVineR) &lt;= 1 &amp;&amp; place_free(x,y+global.grav);
+    onVineD = distance_to_object(oVineD) &lt;= 1 &amp;&amp; place_free(x+sign(global.grav),y);
+    onVineL = distance_to_object(oVineL) &lt;= 1 &amp;&amp; place_free(x,y+sign(global.grav));
+    onVineR = distance_to_object(oVineR) &lt;= 1 &amp;&amp; place_free(x,y+sign(global.grav));
+    onVineU = distance_to_object(oVineU) &lt;= 1 &amp;&amp; place_free(x+sign(global.grav),y);
 }
 
 if (onVineL || onVineR) 
 {
-    if (onVineR) 
+    if (onVineL) 
         global.player_xscale = -1;
     else 
         global.player_xscale = 1;
@@ -1020,12 +1026,12 @@ if (onVineL || onVineR)
     image_speed = 0.5;
     
     // pressed away from the vine
-    if (onVineL &amp;&amp; scrButtonCheckPressed(KEY.RIGHT)) || keyboard_check(ord('P'))
-    || (onVineR &amp;&amp; scrButtonCheckPressed(KEY.LEFT)) || keyboard_check(ord('O')) 
+    if (onVineR &amp;&amp; scrButtonCheckPressed(KEY.RIGHT)) || keyboard_check(ord('P'))
+    || (onVineL &amp;&amp; scrButtonCheckPressed(KEY.LEFT)) || keyboard_check(ord('O')) 
     {       
         if (scrButtonCheck(KEY.JUMP)) // jumping off vine
         {
-            if (onVineR) 
+            if (onVineL) 
                 hspeed = -15;
             else 
                 hspeed = 15;
@@ -1037,7 +1043,7 @@ if (onVineL || onVineR)
         }
         else // walking off vine
         {
-            if (onVineR) 
+            if (onVineL) 
                 hspeed = -3;
             else 
                 hspeed = 3;

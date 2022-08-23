@@ -25,8 +25,8 @@ if (readid >= 0)
         case 13: return oPlatform;
         case 14: return oWater;
         case 15: return oWater2;
-        case 16: return oVineL;
-        case 17: return oVineR;
+        case 16: return oVineR;
+        case 17: return oVineL;
         case 18: return oKillerBlock;
         case 19: return oBulletBlocker;
         case 20: return oPlayerStart;

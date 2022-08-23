@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sPlatform, image_index, x+16, y, 1, 1, 270, image_blend, image_alpha);
+            <string>draw_sprite_ext(sPlatform, image_index, x, y, -1, 1, 90, image_blend, image_alpha);
 codable_draw(false);
 </string>
           </argument>

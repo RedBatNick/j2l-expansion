@@ -153,7 +153,7 @@ global.palette = ds_list_create();
     false, "Water", false);
     
     newPaletteObject(oVineR,
-    cyclePaletteObjects(oVineL), 
+    cyclePaletteObjects(oVineD,oVineL,oVineU), 
     false, "Vine", false);
     
     newPaletteObject(oJumpRefresher,
@@ -357,32 +357,32 @@ global.palette = ds_list_create();
     
     // Vines.
     newPaletteObject(oVineR,
-    cyclePaletteObjects(oVineL), 
+    cyclePaletteObjects(oVineD,oVineL,oVineU), 
     false, "Vine", false, "Vines");
     
-    /*newPaletteObject(oRiseVineR,
-    cyclePaletteObjects(oRiseVineL),
+    newPaletteObject(oRiseVineR,
+    cyclePaletteObjects(oRiseVineD,oRiseVineL,oRiseVineU), 
     false, "Rise Vine", false, "Vines");
     
     newPaletteObject(oIceVineR,
-    cyclePaletteObjects(oIceVineL),
-    false, "Iced Vine", false, "Vines");
+    cyclePaletteObjects(oIceVineD,oIceVineL,oIceVineU), 
+    false, "Ice Vine", false, "Vines");
     
     newPaletteObject(oFlipVineR,
-    cyclePaletteObjects(oFlipVineL),
+    cyclePaletteObjects(oFlipVineD,oFlipVineL,oFlipVineU), 
     false, "Flip Vine", false, "Vines");
     
     newPaletteObject(oStickyVineR,
-    cyclePaletteObjects(oStickyVineL),
+    cyclePaletteObjects(oStickyVineD,oStickyVineL,oStickyVineU), 
     false, "Sticky Vine", false, "Vines");
     
     newPaletteObject(oLowGravVineR,
-    cyclePaletteObjects(oLowGravVineL),
-    false, "Low-Grav Vine", false, "Vines");
+    cyclePaletteObjects(oLowGravVineD,oLowGravVineL,oLowGravVineU), 
+    false, "Low-Gravity Vine", false, "Vines");
     
     newPaletteObject(oFireVineR,
-    cyclePaletteObjects(oFireVineL),
-    false, "Fire Vine", false, "Vines");*/
+    cyclePaletteObjects(oFireVineD,oFireVineL,oFireVineU), 
+    false, "Fire Vine", false, "Vines");
     
     
     
