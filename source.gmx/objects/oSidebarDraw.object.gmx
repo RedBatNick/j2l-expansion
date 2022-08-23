@@ -37,7 +37,7 @@ selected = false;
 
 global.scrollY = 0;
 global.scrollYTarget = 0;
-global.scrollMax = 1216;
+global.scrollMax = 0;
 </string>
           </argument>
         </arguments>
@@ -164,6 +164,49 @@ global.palette = ds_list_create();
 */
 
 //palette page
+    // Markers.
+    newPaletteObject(oSave, 
+    cyclePaletteObjects(oSaveFlip),
+    false, "Save", false, "Markers");
+    
+    newPaletteObject(oPlayerStart,
+    cyclePaletteObjects(oWarp), 
+    false, "Player Start", false, "Markers");
+    
+    newPaletteObject(oWarp,
+    cyclePaletteObjects(oPlayerStart),
+    false, "Goal", false, "Markers");
+    
+    newPaletteObject(oBulletBlocker,
+    cyclePaletteObjects(oAlignMarker),
+    false, "Bullet Blocker", false, "Markers");
+    
+    
+    // Blocks.
+    newPaletteObject(oEditBlock,
+    cyclePaletteObjects(oEditMiniBlock), 
+    false, "Block", false, "Blocks");
+    
+    newPaletteObject(oSlipBlock,
+    undefined,
+    false, "Slip Block", false, "Blocks")
+    
+    newPaletteObject(oSolidLineU,
+    cyclePaletteObjects(oSolidLineR,oSolidLineD,oSolidLineL),
+    false, "Solid Line", false, "Blocks");
+    
+    newPaletteObject(oMiniSolidLineU,
+    cyclePaletteObjects(oMiniSolidLineR,oMiniSolidLineD,oMiniSolidLineL),
+    false, "Mini Solid Line", false, "Blocks");
+    
+    newPaletteObject(oSlope,
+    cyclePaletteObjects(oSlopeUpRight,oSlopeDownRight,oSlopeDownLeft,oSlopeUpLeft),
+    false, "Slopes", false, "Blocks");
+    
+    newPaletteObject(oSlideBlockR,
+    cyclePaletteObjects(oSlideBlockD,oSlideBlockL,oSlideBlockU), 
+    false, "Conveyors", false, "Blocks");
+
 
     // Spikes.
     newPaletteObject(oSpikeUp, 
@@ -233,32 +276,6 @@ global.palette = ds_list_create();
     newPaletteObject(oKillerBlock,
     cyclePaletteObjects(oMiniKillerBlock), 
     true, "Killer Block", false, "Other Killers");
-        
-    
-    // Blocks.
-    newPaletteObject(oEditBlock,
-    cyclePaletteObjects(oEditMiniBlock), 
-    false, "Block", false, "Blocks");
-    
-    newPaletteObject(oSlipBlock,
-    undefined,
-    false, "Slip Block", false, "Blocks")
-    
-    newPaletteObject(oSolidLineU,
-    cyclePaletteObjects(oSolidLineR,oSolidLineD,oSolidLineL),
-    false, "Solid Line", false, "Blocks");
-    
-    newPaletteObject(oMiniSolidLineU,
-    cyclePaletteObjects(oMiniSolidLineR,oMiniSolidLineD,oMiniSolidLineL),
-    false, "Mini Solid Line", false, "Blocks");
-    
-    newPaletteObject(oSlope,
-    cyclePaletteObjects(oSlopeUpRight,oSlopeDownRight,oSlopeDownLeft,oSlopeUpLeft),
-    false, "Slopes", false, "Blocks");
-    
-    newPaletteObject(oSlideBlockR,
-    cyclePaletteObjects(oSlideBlockD,oSlideBlockL,oSlideBlockU), 
-    false, "Conveyors", false, "Blocks");
     
 
     // Platforms.
@@ -277,24 +294,6 @@ global.palette = ds_list_create();
     newPaletteObject(oDisappearPlatform,
     cyclePaletteObjects(oDisappearPlatformSideways),
     false, "Disappear Platform", false, "Platforms");
-
-
-    // Markers.
-    newPaletteObject(oSave, 
-    cyclePaletteObjects(oSaveFlip),
-    false, "Save", false, "Markers");
-    
-    newPaletteObject(oPlayerStart,
-    cyclePaletteObjects(oWarp), 
-    false, "Player Start", false, "Markers");
-    
-    newPaletteObject(oWarp,
-    cyclePaletteObjects(oPlayerStart),
-    false, "Goal", false, "Markers");
-    
-    newPaletteObject(oBulletBlocker,
-    cyclePaletteObjects(oAlignMarker),
-    false, "Bullet Blocker", false, "Markers");
 
     
     // Water.
@@ -458,6 +457,23 @@ global.palette = ds_list_create();
     newPaletteObject(oTrg,
     undefined,
     false, "Trigger", false, "Triggers");
+    
+groups = ds_map_create();
+group_order = ds_list_create();
+
+for (var i = 0; i &lt; ds_list_size(global.palette); i++) {
+    var obj_palette = global.palette[| i];
+    var group = obj_palette[? "Group"];
+    
+    if (!ds_map_exists(groups, group)) {
+        ds_map_add_list(groups, group, ds_list_create());
+        ds_list_add(group_order, group);
+    }
+
+    ds_list_add(groups[? group], obj_palette);
+}
+
+group_hidden = array_create(ds_list_size(group_order));
 </string>
           </argument>
         </arguments>
@@ -515,6 +531,8 @@ bhopHint_Create();
           <argument>
             <kind>1</kind>
             <string>ds_list_destroy(global.palette);
+ds_map_destroy(groups);
+ds_list_destroy(group_order);
 </string>
           </argument>
         </arguments>
@@ -571,22 +589,10 @@ bhopHint_EndStep(choose_player);
           <argument>
             <kind>1</kind>
             <string>///scrolling functions
-if (global.state == globalstate_idle &amp;&amp; point_in_rect(mouse_x,mouse_y,800,0,1056,608))
-{
-    if (mouse_wheel_down())
-    {
-        if (global.scrollYTarget &lt; global.scrollMax)
-            global.scrollYTarget += 64;
-        else { global.scrollYTarget = global.scrollMax; }
-    }
-    else if (mouse_wheel_up())
-    {
-        if (global.scrollYTarget &gt; 0)
-            global.scrollYTarget -= 64
-        else { global.scrollYTarget = 0; }
-    }
-
-    global.scrollY = lerp(global.scrollY,global.scrollYTarget,0.25);
+if (global.state == globalstate_idle &amp;&amp; point_in_rect(mouse_x, mouse_y, 800, 0, 1056, 608)) {
+    global.scrollYTarget += (mouse_wheel_down() - mouse_wheel_up()) * 64;
+    global.scrollYTarget = clamp(global.scrollYTarget, 0, global.scrollMax);
+    global.scrollY = lerp(global.scrollY, global.scrollYTarget, 0.25);
 }
 </string>
           </argument>
@@ -673,7 +679,146 @@ var h = 50;
 dy = h+8;
 var tooltip_to_draw = "";
 
-for (var i = 0; i &lt; ds_list_size(global.palette); i += 1) {
+var xxx = xpos;
+var yyy = ypos - global.scrollY;
+
+for (var i = 0; i &lt; ds_list_size(group_order); i++) {
+    var name = group_order[| i];
+    var group = groups[? name];
+    var group_w = (dx * 4) - 8;
+    var group_h = h * 0.5;
+    drawButton(xxx, yyy, group_w, group_h, false);
+    draw_set_font(font_small);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_text(xxx + group_w * 0.5, yyy + group_h * 0.5, name);
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_center);
+    
+    // Draw highlight
+    var button_highlighted = point_in_rect(mouse_x, mouse_y, xxx, yyy, xxx + group_w, yyy + group_h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
+        
+    if (button_highlighted) {
+        draw_set_alpha(global.buttonhoveralpha);
+        draw_set_color(global.color_buttonhover);
+        draw_rectangle(xxx + 1, yyy + 1, xxx + group_w - 2, yyy + group_h - 2, false);
+        
+        if (global.buttonhoverborder) {
+            draw_set_alpha(0.3);
+            draw_set_color(c_black);
+            draw_rectangle(xxx - 1, yyy - 1, xxx + group_w, yyy + group_h, true);
+        }
+    }
+        
+    // Pressing button
+    if (button_highlighted) {
+        if (mouse_check_button_pressed(mb_left)) {
+            group_hidden[i] ^= true;
+            var flash = instance_create(xxx, yyy, oPaletteButtonFlash);
+            flash.w = group_w;
+            flash.h = group_h;
+        }
+    }
+    
+    yyy += group_h + 8;
+    
+    if (group_hidden[i]) {
+        continue;
+    }
+    
+    xxs = xxx;
+    yys = yyy;
+    
+    for (var j = 0; j &lt; ds_list_size(group); j++) {
+        xxx = xxs + dx * (j mod 4);
+        yyy = yys + dy * (j div 4);
+        var obj_palette = group[| j];
+        var obj = obj_palette[? "Object"];
+        var spr = object_get_sprite(obj);
+        var killer = obj_palette[? "Killer"];
+        var tooltip = obj_palette[? "ToolTip"];
+        var combo = obj_palette[? "Combo"];
+        drawButton(xxx, yyy, w, h, false);
+    
+        var color = c_white;
+        
+        if (killer) {
+            color = global.color_killer;
+        }
+        
+        // Draw object animations
+        var frame = skinnableImage(obj);
+        draw_sprite_ext(spr, frame, xxx + w / 2 - sprite_get_width(spr) / 2 + sprite_get_xoffset(spr), yyy + h / 2 - sprite_get_height(spr) / 2 + sprite_get_yoffset(spr), 1, 1, 0, color, 1);
+    
+        // Draw highlight and set tooltip
+        var button_highlighted = point_in_rect(mouse_x, mouse_y, xxx, yyy, xxx + w, yyy + h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
+        
+        if (button_highlighted) {
+            draw_set_alpha(global.buttonhoveralpha);
+            draw_set_color(global.color_buttonhover);
+            draw_rectangle(xxx + 1, yyy + 1, xxx + w - 2, yyy + h - 2, false);
+            
+            if (global.buttonhoverborder) {
+                draw_set_alpha(0.3);
+                draw_set_color(c_black);
+                draw_rectangle(xxx - 1, yyy - 1, xxx + w, yyy + h, true);
+            }
+            
+            if (tooltip != "") {
+                tooltip_to_draw = tooltip;
+            }
+        }
+        
+        // Pressing button
+        var is_comboboxtoggle = (combo == true);
+        
+        if (button_highlighted) {
+            if (mouse_check_button_pressed(mb_left)) {
+                with (oEdit) {
+                    selected_object = obj;
+                    selected_sprite = spr;
+                    selected_killer = killer;
+                    
+                    for (var k = 0; k &lt; ds_list_size(global.palette); k++) {
+                        var check_palette = global.palette[| k];
+                    
+                        if (obj == check_palette[? "Object"]) {
+                            selected_index = k;
+                            break;
+                        }
+                    }
+                    
+                    selected_cycle = 0;
+                }
+    
+                var flash = instance_create(xxx, yyy, oPaletteButtonFlash);
+                flash.w = w;
+                flash.h = h;
+            }
+            
+            if (mouse_check_button_pressed(mb_right) &amp;&amp; is_comboboxtoggle) {
+                combobox_selected = !combobox_selected;
+                global.comboboxselected = combobox_selected;
+            
+                var flash = instance_create(xxx, yyy, oPaletteButtonFlash);
+                flash.w = w;
+                flash.h = h;
+            }
+        }
+    }
+    
+    xxx = xxs;
+    yyy = yys + (dy * ceil(ds_list_size(group) / 4)) + 8;
+}
+
+if (tooltip_to_draw != "") {
+    draw_set_font(font_small);
+    var w = string_width(tooltip_to_draw) + 10;
+    var xx = min(mouse_x, room_width - 5 - w);
+    menuButton(xx, mouse_y + 20, w, 25, tooltip_to_draw, false, false);
+}
+
+//for (var i = 0; i &lt; ds_list_size(global.palette); i += 1) {
     /*
         xx - x coordinate of the button location
         yy - y coordinate of the button location
@@ -682,7 +827,7 @@ for (var i = 0; i &lt; ds_list_size(global.palette); i += 1) {
         off - offset to draw sprite at if origin is not centered
         killer - whether or not to draw the object with the killer tint
     */
-    
+/*    
     var obj_palette = global.palette[| i];
     var xx = i mod 4;
     var yy = i div 4;
@@ -802,7 +947,7 @@ if (tooltip_to_draw != "") {
             <kind>1</kind>
             <string>///death display
 var xx = 808;
-var yy = 1264-global.scrollY[1];
+var yy = yyy;
 
 var w = 136;
 var h = 32;
@@ -839,7 +984,7 @@ if (menuButton(xx+xo,yy,w-xo,32,"Reset",buttons_active,false)) {
             <kind>1</kind>
             <string>///fps display
 var xx = 952;
-var yy = 1264-global.scrollY[1];
+var yy = yyy;
 
 var w = 96;
 var h = 32;
@@ -850,63 +995,8 @@ draw_text(xx+12, yy+16, "FPS: "+string(fps));
 if (global.FrameCounterOn = true || global.record &gt; 0) {
     draw_text(xx+70, yy+16, string(global.PlayerFrameCounter));
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///cancel hints
-var xx = 952;
-var yy = 1392-global.scrollY[1];
 
-drawButton(xx,yy,96,80,false);
-drawHint(xx,yy,96,"Cancel",jc_duration,jc_show);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///bhop hint
-var xx = 952;
-var yy = 1480-global.scrollY[1];
-var h = 64;
-
-if (global.sidebarlevel == 1) {
-    h = 96;
-}    
-
-drawButton(xx,yy,96,h,false);
-drawHint(xx,yy,96,"Bhop",bhop_offset,bhop_show);
+yyy += 32 + 8;
 </string>
           </argument>
         </arguments>
@@ -929,7 +1019,7 @@ drawHint(xx,yy,96,"Bhop",bhop_offset,bhop_show);
             <kind>1</kind>
             <string>///player position
 var xx = 808;
-var yy = 1304-global.scrollY[1];
+var yy = yyy;
 var w = 136;
 var char = 9;
     
@@ -1008,10 +1098,10 @@ if (menuButton(x,buttony,buttonw,buttonh,"",buttons_active,false)) {
 }
 
 fontSetup(font_small,c_black,fa_center,fa_center,1);
-if (global.sidebarstate == sidebar_classic) {
-    draw_text(buttonx+buttonw/2,buttony+buttonh/2-5,". . .");
-    draw_text(buttonx+buttonw/2-1,buttony+buttonh/2-5,". . .");
-}
+//if (global.sidebarstate == sidebar_classic) {
+//    draw_text(buttonx+buttonw/2,buttony+buttonh/2-5,". . .");
+//    draw_text(buttonx+buttonw/2-1,buttony+buttonh/2-5,". . .");
+//}
 draw_text(x+buttonw/2,buttony+buttonh/2-5,". . .");
 draw_text(x+buttonw/2-1,buttony+buttonh/2-5,". . .");
 
@@ -1027,6 +1117,8 @@ draw_text(x+buttonw/2-1,buttony+buttonh/2-5,". . .");
         nudgePlayerHalf(1)
     }
 }*/
+
+yyy += 80 + 8;
 </string>
           </argument>
         </arguments>
@@ -1049,7 +1141,7 @@ draw_text(x+buttonw/2-1,buttony+buttonh/2-5,". . .");
             <kind>1</kind>
             <string>///player speed
 var xx = 808;
-var yy = 1392-global.scrollY[1];//416
+var yy = yyy;
 var w = 136;
 var char = 9;
 
@@ -1127,9 +1219,37 @@ for (i = 0; i &lt; 3; i+=1)
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///cancel hints
+var xx = 952;
+var yy = yyy;
+
+drawButton(xx,yy,96,80,false);
+drawHint(xx,yy,96,"Cancel",jc_duration,jc_show);
+
+yyy += 80 + 8;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///jump durations
 var xx = 808;
-var yy = 1480-global.scrollY[1];
+var yy = yyy;
 
 var xo = 8;
 var yo = 5;
@@ -1138,6 +1258,40 @@ var w = 136;
 var h = 96;
 drawButton(xx,yy,w,h,false);
 jumpDurations_Draw(xx+xo,yy+yo,dy);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///bhop hint
+var xx = 952;
+var yy = yyy;
+var h = 64;
+
+if (global.sidebarlevel == 1) {
+    h = 96;
+}    
+
+drawButton(xx,yy,96,h,false);
+drawHint(xx,yy,96,"Bhop",bhop_offset,bhop_show);
+
+yyy += h;
+global.scrollMax = yyy + global.scrollY - 526;
 </string>
           </argument>
         </arguments>

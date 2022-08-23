@@ -29,7 +29,7 @@ global.hotkeylock = FSIniReadReal("prefs","hotkeylock",0);
 global.airsaving = FSIniReadReal("prefs","airsaving",true);
 global.worldtime = FSIniReadReal("prefs","worldtime",false);
 global.backup = FSIniReadReal("prefs","backup",true);
-global.checkupdates = FSIniReadReal("prefs","checkupdates",true);
+global.checkupdates = FSIniReadReal("prefs","checkupdates",false);
 
 //keyboard controls
 scrControls("loadKeyboardConfig");
