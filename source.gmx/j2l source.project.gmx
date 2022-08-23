@@ -349,13 +349,13 @@
           <sprites name="jump">
             <sprite>sprites\sJumpRefresher</sprite>
             <sprite>sprites\sJumpDefresher</sprite>
-            <sprite>sprites\sJumpHighRefresher</sprite>
-            <sprite>sprites\sJumpLowRefresher</sprite>
-            <sprite>sprites\sJumpFlipRefresher</sprite>
+            <sprite>sprites\sHighJumpRefresher</sprite>
+            <sprite>sprites\sLowJumpRefresher</sprite>
+            <sprite>sprites\sFlipJumpRefresher</sprite>
             <sprite>sprites\sJumpTelefresher</sprite>
-            <sprite>sprites\sJumpFastRefresher</sprite>
-            <sprite>sprites\sJumpSwitchRefresher</sprite>
-            <sprite>sprites\sJumpSlowRefresher</sprite>
+            <sprite>sprites\sFastJumpRefresher</sprite>
+            <sprite>sprites\sSwitchJumpRefresher</sprite>
+            <sprite>sprites\sSlowJumpRefresher</sprite>
           </sprites>
           <sprites name="shoot">
             <sprite>sprites\sShootRefresherL</sprite>
@@ -1278,15 +1278,15 @@
           <objects name="jump">
             <object>objects\oJumpRefresher</object>
             <object>objects\oJumpDefresher</object>
-            <object>objects\oJumpHighRefresher</object>
-            <object>objects\oJumpLowRefresher</object>
-            <object>objects\oJumpFlipRefresher</object>
+            <object>objects\oHighJumpRefresher</object>
+            <object>objects\oLowJumpRefresher</object>
+            <object>objects\oFlipJumpRefresher</object>
             <object>objects\oJumpTelefresher</object>
-            <object>objects\oJumpFastRefresher</object>
-            <object>objects\oJumpSwitchRefresher</object>
+            <object>objects\oFastJumpRefresher</object>
+            <object>objects\oSwitchJumpRefresher</object>
             <objects name="slow">
-              <object>objects\oJumpSlowRefresher</object>
-              <object>objects\oJumpSlowEffect</object>
+              <object>objects\oSlowJumpRefresher</object>
+              <object>objects\oSlowJumpEffect</object>
             </objects>
           </objects>
           <objects name="shoot">

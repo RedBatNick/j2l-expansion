@@ -205,22 +205,52 @@ newSkinnableObject(oBoosterDownApple, "boosterdownapple");
 
 
 // Vines.
+newSkinnableObject(oVineU, "walljumpU");
 newSkinnableObject(oVineR, "walljumpR");
 newSkinnableObject(oVineL, "walljumpL");
+newSkinnableObject(oVineD, "walljumpD");
 
+newSkinnableObject(oRiseVineU, "risevineU");
+newSkinnableObject(oRiseVineR, "risevineR");
+newSkinnableObject(oRiseVineL, "risevineL");
+newSkinnableObject(oRiseVineD, "risevineD");
 
+newSkinnableObject(oIceVineU, "icevineU");
+newSkinnableObject(oIceVineR, "icevineR");
+newSkinnableObject(oIceVineL, "icevineL");
+newSkinnableObject(oIceVineD, "icevineD");
+
+newSkinnableObject(oFlipVineU, "flipvineU");
+newSkinnableObject(oFlipVineR, "flipvineR");
+newSkinnableObject(oFlipVineL, "flipvineL");
+newSkinnableObject(oFlipVineD, "flipvineD");
+
+newSkinnableObject(oStickyVineU, "stickyvineU");
+newSkinnableObject(oStickyVineR, "stickyvineR");
+newSkinnableObject(oStickyVineL, "stickyvineL");
+newSkinnableObject(oStickyVineD, "stickyvineD");
+
+newSkinnableObject(oLowGravVineU, "lowgravvineU");
+newSkinnableObject(oLowGravVineR, "lowgravvineR");
+newSkinnableObject(oLowGravVineL, "lowgravvineL");
+newSkinnableObject(oLowGravVineD, "lowgravvineD");
+
+newSkinnableObject(oFireVineU, "firevineU", 1/5);
+newSkinnableObject(oFireVineR, "firevineR", 1/5);
+newSkinnableObject(oFireVineL, "firevineL", 1/5);
+newSkinnableObject(oFireVineD, "firevineD", 1/5);
 
 
 // Refreshers.
 newSkinnableObject(oJumpRefresher, "jumprefresher");
 newSkinnableObject(oJumpDefresher, "jumpdefresher", 1/15);
-newSkinnableObject(oJumpHighRefresher, "jumphighrefresher", 1/15);
-newSkinnableObject(oJumpLowRefresher, "jumplowrefresher", 1/15);
-newSkinnableObject(oJumpFlipRefresher, "jumpfliprefresher", 1/15);
+newSkinnableObject(oHighJumpRefresher, "jumphighrefresher", 1/15);
+newSkinnableObject(oLowJumpRefresher, "jumplowrefresher", 1/15);
+newSkinnableObject(oFlipJumpRefresher, "jumpfliprefresher", 1/15);
 newSkinnableObject(oJumpTelefresher, "jumptelerefresher", 1/15);
-newSkinnableObject(oJumpFastRefresher, "jumpfastrefresher", 1/15);
-newSkinnableObject(oJumpSwitchRefresher, "jumpswitchrefresher", 1/15);
-newSkinnableObject(oJumpSlowRefresher, "jumpslowrefresher", 1/15);
+newSkinnableObject(oFastJumpRefresher, "jumpfastrefresher", 1/15);
+newSkinnableObject(oSwitchJumpRefresher, "jumpswitchrefresher", 1/15);
+newSkinnableObject(oSlowJumpRefresher, "jumpslowrefresher", 1/15);
 
 
 //newSkinnableObject(oShootRefresherR, "shootrefresherR", 0);

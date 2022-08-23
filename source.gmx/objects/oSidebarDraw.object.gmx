@@ -395,33 +395,33 @@ global.palette = ds_list_create();
     undefined, 
     false, "Jump Defresher", false, "Refreshers");
     
-    newPaletteObject(oJumpHighRefresher,
+    newPaletteObject(oHighJumpRefresher,
     undefined, 
-    false, "Jump High Refresher", false, "Refreshers");
+    false, "High Jump Refresher", false, "Refreshers");
     
-    newPaletteObject(oJumpLowRefresher,
+    newPaletteObject(oLowJumpRefresher,
     undefined, 
-    false, "Jump Low Refresher", false, "Refreshers");
+    false, "Low Jump Refresher", false, "Refreshers");
     
-    newPaletteObject(oJumpFlipRefresher,
+    newPaletteObject(oFlipJumpRefresher,
     undefined, 
-    false, "Jump Flip Refresher", false, "Refreshers");
+    false, "Flip Jump Refresher", false, "Refreshers");
     
     newPaletteObject(oJumpTelefresher,
     undefined, 
     false, "Jump Telefresher", false, "Refreshers");
     
-    newPaletteObject(oJumpFastRefresher,
+    newPaletteObject(oFastJumpRefresher,
     undefined, 
-    false, "Jump Fast Refresher", false, "Refreshers");
+    false, "Fast Jump Refresher", false, "Refreshers");
     
-    newPaletteObject(oJumpSwitchRefresher,
+    newPaletteObject(oSwitchJumpRefresher,
     undefined, 
-    false, "Jump Switch Refresher", false, "Refreshers");
+    false, "Switch Jump Refresher", false, "Refreshers");
     
-    newPaletteObject(oJumpSlowRefresher,
+    newPaletteObject(oSlowJumpRefresher,
     undefined, 
-    false, "Jump Slow Refresher", false, "Refreshers");
+    false, "Slow Jump Refresher", false, "Refreshers");
     
     newPaletteObject(oShootRefresherR,
     cyclePaletteObjects(oShootRefresherL),

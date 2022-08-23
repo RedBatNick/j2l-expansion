@@ -468,8 +468,8 @@ if (!global.lunarkid)
         switchd = 0;
         slowd = 0;
 
-        if (instance_exists(oJumpSlowEffect))
-            with (oJumpSlowEffect) { instance_destroy(); }
+        if (instance_exists(oSlowJumpEffect))
+            with (oSlowJumpEffect) { instance_destroy(); }
     }
     
     //gravity checks

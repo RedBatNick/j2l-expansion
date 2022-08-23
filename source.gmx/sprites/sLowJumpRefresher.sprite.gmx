@@ -20,7 +20,7 @@
   <width>16</width>
   <height>16</height>
   <frames>
-    <frame index="0">images\sJumpLowRefresher_0.png</frame>
-    <frame index="1">images\sJumpLowRefresher_1.png</frame>
+    <frame index="0">images\sLowJumpRefresher_0.png</frame>
+    <frame index="1">images\sLowJumpRefresher_1.png</frame>
   </frames>
 </sprite>
