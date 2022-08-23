@@ -115,7 +115,7 @@ while (index <= string_length(content)) {
     index += 1;
 }
 
-if (app == "ctool") {
+/*if (app == "ctool") {
     // save signs
     f = file_text_open_read(filename);
     
@@ -182,7 +182,7 @@ if (app == "ctool") {
         }
     }
     file_text_close(f);
-}
+}*/
 
 room_speed = 50;
 global.death_count = 0;

@@ -704,7 +704,7 @@
               <script>scripts\loadStartupMap.gml</script>
             </scripts>
           </scripts>
-          <scripts name="legacy format">
+          <scripts name="legacy formats">
             <script>scripts\saveOldMap.gml</script>
             <script>scripts\loadOldMap.gml</script>
             <scripts name="object ids">
