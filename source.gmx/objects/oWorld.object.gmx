@@ -165,8 +165,8 @@ texture_set_interpolation(window_get_fullscreen());
           <argument>
             <kind>1</kind>
             <string>// prevent spawn glitch
-scrButtonCheck(KEY.LEFT);
-scrButtonCheck(KEY.RIGHT);
+scrButtonCheck(KEY.LEFT,1);
+scrButtonCheck(KEY.RIGHT,1);
 
 if (!global.paused &amp;&amp; scrButtonCheckPressed(KEY.RESTART))
 {

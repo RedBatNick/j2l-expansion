@@ -1,7 +1,10 @@
 ///loadOldMap(filename, app)
 // Deletes all palette objects and loads a map from file.
 var filename = argument[0];
-var app = argument[1];
+
+var app = "jtool";
+if (argument_count = 2)
+    app = argument[1];
 var readid = 0;
 var base = 32;
 

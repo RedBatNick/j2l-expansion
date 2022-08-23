@@ -108,6 +108,7 @@ global.telerange = 12;
 
 
 //preference options
+global.jtoolphysics = false;
 global.depthList = ds_list_create();
 global.waterlocked = false;
 

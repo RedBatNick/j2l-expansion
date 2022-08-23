@@ -412,8 +412,8 @@ if (global.record == 1)
           <argument>
             <kind>1</kind>
             <string>/// player actions and movement
-var L = scrButtonCheck(KEY.LEFT);//keyboard_check_direct(KEY.LEFT);
-var R = scrButtonCheck(KEY.RIGHT);//keyboard_check_direct(KEY.RIGHT);
+var L = scrButtonCheck(KEY.LEFT,1);
+var R = scrButtonCheck(KEY.RIGHT,1);
 var U = scrButtonCheck(KEY.UP);
 var D = scrButtonCheck(KEY.DOWN);
 
@@ -1001,6 +1001,11 @@ else
     
 var onVineL = (place_meeting(x-xOff,y,oVineL))// &amp;&amp; notOnBlock);
 var onVineR = (place_meeting(x+xOff,y,oVineR))// &amp;&amp; notOnBlock);
+
+if (global.jtoolphysics) {
+    onVineL = distance_to_object(oVineL) &lt;= 1 &amp;&amp; place_free(x,y+global.grav);
+    onVineR = distance_to_object(oVineR) &lt;= 1 &amp;&amp; place_free(x,y+global.grav);
+}
 
 if (onVineL || onVineR) 
 {

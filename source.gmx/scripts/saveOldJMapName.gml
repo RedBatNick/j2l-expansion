@@ -1,6 +1,9 @@
 ///saveOldJMapName(filename, app)
 var filename = argument[0];
-var app = argument[1];
+
+var app = "jtool";
+if (argument_count == 2)
+    app = argument[1];
 var readid = 0;
 var base = 32;
 
