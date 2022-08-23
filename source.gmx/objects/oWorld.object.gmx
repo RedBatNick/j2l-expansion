@@ -55,7 +55,7 @@ var backup = prefix_project_path_if_needed("backup.jmap");
 if (global.backup) 
 {
    global.BackupFailSafe = true;
-   saveMapName(backup);
+   saveMap(backup);
 }
 alarm[3] = global.backup_period;
 </string>

@@ -1,4 +1,4 @@
-///saveOldJMapName(filename, app)
+///saveOldMap(filename, app)
 var filename = argument[0];
 
 var app = "jtool";
