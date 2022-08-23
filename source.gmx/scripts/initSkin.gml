@@ -270,6 +270,10 @@ newSkinnableObject(oGravityBlockDown, "gravblockdown");
 
 
 // Fields.
+newSkinnableObject(oFieldLowGrav, "fieldlowgrav", 0.3);
+newSkinnableObject(oFieldHighGrav, "fieldhighgrav", 0.3);
+newSkinnableObject(oFieldHighSpeed, "fieldhighspeed", 0.3);
+newSkinnableObject(oFieldLowSpeed, "fieldlowspeed", 0.3);
 newSkinnableObject(oFieldDotkidOn, "fielddotkidon");
 newSkinnableObject(oFieldDotkidOff, "fielddotkidoff");
 newSkinnableObject(oFieldTripleOn, "fieldtripleon");

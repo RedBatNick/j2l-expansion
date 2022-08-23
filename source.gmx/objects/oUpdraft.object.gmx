@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>drafted = false;
-skinnableImage();
 </string>
           </argument>
         </arguments>

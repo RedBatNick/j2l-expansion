@@ -439,6 +439,14 @@ global.palette = ds_list_create();
     
     
     // Fields.
+    newPaletteObject(oFieldLowGrav,
+    cyclePaletteObjects(oFieldHighGrav),
+    false, "Gravity Field", false, "Fields");
+    
+    newPaletteObject(oFieldHighSpeed,
+    cyclePaletteObjects(oFieldLowSpeed),
+    false, "Speed Field", false, "Fields");
+    
     newPaletteObject(oFieldDotkidOn,
     cyclePaletteObjects(oFieldDotkidOff),
     false, "Dotkid Field", false, "Fields");

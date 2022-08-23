@@ -44,13 +44,13 @@ if (!global.vkid)
         if (slowd = 1) //slow djump
         {
             slowd = 2;
-            if (!instance_exists(oJumpSlowEffect))
-                instance_create(0,0,oJumpSlowEffect);
+            if (!instance_exists(oSlowJumpEffect))
+                instance_create(0,0,oSlowJumpEffect);
         }
         else
         {
-            if (instance_exists(oJumpSlowEffect))
-                with (oJumpSlowEffect) { instance_destroy(); }
+            if (instance_exists(oSlowJumpEffect))
+                with (oSlowJumpEffect) { instance_destroy(); }
         }
         
         if (flipd = 1) //flip djump

@@ -381,6 +381,14 @@
           </sprites>
         </sprites>
         <sprites name="field">
+          <sprites name="gravity">
+            <sprite>sprites\sFieldLowGrav</sprite>
+            <sprite>sprites\sFieldHighGrav</sprite>
+          </sprites>
+          <sprites name="speed">
+            <sprite>sprites\sFieldHighSpeed</sprite>
+            <sprite>sprites\sFieldLowSpeed</sprite>
+          </sprites>
           <sprites name="dotkid">
             <sprite>sprites\sFieldDotOn</sprite>
             <sprite>sprites\sFieldDotOff</sprite>
@@ -637,6 +645,7 @@
       <script>scripts\playerJump.gml</script>
       <script>scripts\playerVJump.gml</script>
       <script>scripts\playerShoot.gml</script>
+      <script>scripts\vineCheck.gml</script>
       <script>scripts\TASwatercheck.gml</script>
       <script>scripts\TASNudgeCheck.gml</script>
       <script>scripts\killPlayer.gml</script>
@@ -1311,6 +1320,14 @@
           </objects>
         </objects>
         <objects name="field">
+          <objects name="gravity">
+            <object>objects\oFieldLowGrav</object>
+            <object>objects\oFieldHighGrav</object>
+          </objects>
+          <objects name="speed">
+            <object>objects\oFieldHighSpeed</object>
+            <object>objects\oFieldLowSpeed</object>
+          </objects>
           <objects name="dotkid">
             <object>objects\oFieldDotkidOn</object>
             <object>objects\oFieldDotkidOff</object>
