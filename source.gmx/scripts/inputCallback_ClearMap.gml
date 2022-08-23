@@ -3,7 +3,7 @@ if (global.input_cancel)
 
 var should_load = true;
 if (global.input_bool) {
-    should_load = saveMap();
+    should_load = saveMapAskName();
 }
 
 if (should_load) {

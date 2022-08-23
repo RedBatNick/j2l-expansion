@@ -693,7 +693,7 @@
           </scripts>
         </scripts>
         <scripts name="formats">
-          <script>scripts\saveMap.gml</script>
+          <script>scripts\saveMapAskName.gml</script>
           <script>scripts\loadMapAskName.gml</script>
           <scripts name="new format (use this one for new stuff)">
             <scripts name="save map">

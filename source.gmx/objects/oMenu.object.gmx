@@ -174,7 +174,7 @@ if (clicked || shortcut) {
     }
     else 
     { 
-        saveMap(); 
+        saveMapAskName(); 
     }
 }
 

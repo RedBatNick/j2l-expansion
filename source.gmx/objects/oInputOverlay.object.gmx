@@ -429,7 +429,7 @@ if (mode == input_fileformat)
                     oWorld.buffertype = "legacy";
                     oWorld.alarm[2] = 2;
                 }
-                else { saveMap("legacy"); }
+                else { saveMapAskName("legacy"); }
             } break;
             
             
@@ -459,7 +459,7 @@ if (mode == input_fileformat)
                     oWorld.buffertype = "ctool";
                     oWorld.alarm[2] = 2;
                 }
-                else { saveMap("ctool"); }
+                else { saveMapAskName("ctool"); }
             } break;
                         
             
