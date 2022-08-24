@@ -367,7 +367,7 @@ if (mode == input_attributes)
     
     fontSetup(font_small,c_black,fa_center,fa_center,1);
     draw_text(528,yy-32,label);
-    
+
     var button_yo = 30;
     var button_w = 80;
     var button_h = 32;
@@ -722,6 +722,9 @@ if (mode == input_maptransform)
     var w = 130;
     var h = 32;
     
+    var up = "[ "+scrGetKeybind(global.controls[KEY.UP, 0])+" ]";
+    var down = "[ "+scrGetKeybind(global.controls[KEY.DOWN, 0])+" ]";
+    
     for (var i = 0; i &lt; 7; i+=1) 
     {
         var yy = 304-back_h/2+41+i*(h+8);
@@ -730,7 +733,10 @@ if (mode == input_maptransform)
         switch (i)
         {
             case 0: //dotkid
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuDotkid,"[ Dotkid ]","Dotkid",global.dotkid)) {
+            var tt = "Toggles Dotkid.
+            Hitbox is a 2x2 rectangle.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuDotkid,"[ Dotkid ]","Dotkid",global.dotkid,tt)) {
                 global.dotkid = !global.dotkid;
             } break;
         
@@ -742,7 +748,11 @@ if (mode == input_maptransform)
             //vkid[2] = "Purple";
             vkid_spr = asset_get_index("sMenuVkid"+string(vkid[global.vkid]));
             
-            if (menuButtonToggle(xx,yy,w,h,true,vkid_spr,"[ "+vkid[global.vkid]+" Vkid ]","Vkid",global.vkid))  
+            var tt = "Toggles Vkid.
+            Blue Vkid == 180-degree flipping.
+            Purple Vkid == 90-degree flipping.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,vkid_spr,"[ "+vkid[global.vkid]+" Vkid ]","Vkid",global.vkid,tt))  
             {
                 global.vkid += 1;
                 
@@ -752,14 +762,23 @@ if (mode == input_maptransform)
             
             
             case 2: //Telekid
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuTelekid,"[ Telekid ]","Telekid",global.telekid)) 
+            var tt = "Toggles Telekid.
+            Collision with blocks will teleport the player.
+            Collision with killers will kill the player.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuTelekid,"[ Telekid ]","Telekid",global.telekid,tt)) 
             {
                 global.telekid = !global.telekid;
             } break;
         
             
             case 3: //lunarkid
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuLunarkid,"[ Lunarkid ]","Lunarkid",global.lunarkid)) 
+            var tt = "Toggles Lunarkid / Rocket.
+            Movement is based on inertia.#"
+            +string(up)+" to accelerate.
+            Hitbox is a 11x21 oval.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuLunarkid,"[ Lunarkid ]","Lunarkid",global.lunarkid,tt)) 
             {
                 global.lunarkid = !global.lunarkid;
 
@@ -771,7 +790,12 @@ if (mode == input_maptransform)
             
             
             case 4: //linekid
-            if menuButtonToggle(xx,yy,w,h,true,sMenuLinekid,"[ Linekid ]","Linekid",global.linekid) 
+            var tt = "Toggles Linekid.#"
+            +string(up)+" to rotate CCW.#"
+            +string(down)+" to rotate CW.
+            Hitbox is a 3x25 rectangle.";
+
+            if menuButtonToggle(xx,yy,w,h,true,sMenuLinekid,"[ Linekid ]","Linekid",global.linekid,tt) 
             {
                 global.linekid = !global.linekid;
                 

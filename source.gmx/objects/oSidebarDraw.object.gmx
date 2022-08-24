@@ -79,384 +79,300 @@ combobox_selected = false;
 */
 
 global.palette = ds_list_create();
-//event_user(0);
 
-/*
-//hybrid page
+// Markers.
+newPaletteObject(oSave, 
+cyclePaletteObjects(oSaveFlip),
+false, "Save", false, "Markers");
 
-    //1st row
-    newPaletteObject(oSpikeUp, 
-    cyclePaletteObjects(oSpikeRight,oSpikeDown,oSpikeLeft), 
-    true, "Spike", false);
-    
-    newPaletteObject(oMiniSpikeUp,
-    cyclePaletteObjects(oMiniSpikeRight,oMiniSpikeDown,oMiniSpikeLeft),
-    true, "Mini Spike", false);
-    
-    newPaletteObject(oApple,
-    undefined,
-    true, "Fruit", false);
-    
-    newPaletteObject(oKillerBlock,
-    cyclePaletteObjects(oMiniKillerBlock), 
-    true, "Killer Block", false);
-    
-    
-    //2nd row
-    newPaletteObject(oEditBlock,
-    cyclePaletteObjects(oEditMiniBlock), 
-    false, "Block", false);
-    
-    newPaletteObject(oPlatform,
-    cyclePaletteObjects(oPlatformSideways),
-    false, "Platform", false);
-    
-    newPaletteObject(oSlipBlock,
-    undefined,
-    false, "Slip Block", false)
-    
-    /*newPaletteObject(oSlope,
-    cyclePaletteObjects(oSlopeUpRight,oSlopeDownRight,oSlopeDownLeft,oSlopeUpLeft),
-    false, "Slopes", false);
-    
-    newPaletteObject(oSlideBlockR,
-    cyclePaletteObjects(oSlideBlockD,oSlideBlockL,oSlideBlockU), 
-    false, "Conveyors", false);
-    
-    
-    //3rd row
-    
-    
-    //4th row
-    newPaletteObject(oSave, 
-    cyclePaletteObjects(oSaveFlip),
-    false, "Save", false);
-    
-    newPaletteObject(oPlayerStart,
-    cyclePaletteObjects(oWarp), 
-    false, "Player Start", false);
-    
-    newPaletteObject(oWarp,
-    cyclePaletteObjects(oPlayerStart),
-    false, "Goal", false);
-    
-    newPaletteObject(oBulletBlocker,
-    cyclePaletteObjects(oAlignMarker), 
-    false, "Bullet Blocker", false);
-    
-    
-    //5th row
-    newPaletteObject(oWater,
-    cyclePaletteObjects(oWater2,oWater3,oWaterNekoron),
-    false, "Water", false);
-    
-    newPaletteObject(oVineR,
-    cyclePaletteObjects(oVineD,oVineL,oVineU), 
-    false, "Vine", false);
-    
-    newPaletteObject(oJumpRefresher,
-    undefined, 
-    false, "Jump Refresher", false);
-    
-    newPaletteObject(oGravityArrowDown,
-    cyclePaletteObjects(oGravityArrowUp), 
-    false, "Gravity Arrow", false);
-*/
+newPaletteObject(oPlayerStart,
+cyclePaletteObjects(oWarp), 
+false, "Player Start", false, "Markers");
 
-//palette page
-    // Markers.
-    newPaletteObject(oSave, 
-    cyclePaletteObjects(oSaveFlip),
-    false, "Save", false, "Markers");
-    
-    newPaletteObject(oPlayerStart,
-    cyclePaletteObjects(oWarp), 
-    false, "Player Start", false, "Markers");
-    
-    newPaletteObject(oWarp,
-    cyclePaletteObjects(oPlayerStart),
-    false, "Goal", false, "Markers");
-    
-    newPaletteObject(oBulletBlocker,
-    cyclePaletteObjects(oAlignMarker),
-    false, "Bullet Blocker", false, "Markers");
-    
-    
-    // Blocks.
-    newPaletteObject(oEditBlock,
-    cyclePaletteObjects(oEditMiniBlock), 
-    false, "Block", false, "Blocks");
-    
-    newPaletteObject(oSlipBlock,
-    undefined,
-    false, "Slip Block", false, "Blocks")
-    
-    newPaletteObject(oSolidLineU,
-    cyclePaletteObjects(oSolidLineR,oSolidLineD,oSolidLineL),
-    false, "Solid Line", false, "Blocks");
-    
-    newPaletteObject(oMiniSolidLineU,
-    cyclePaletteObjects(oMiniSolidLineR,oMiniSolidLineD,oMiniSolidLineL),
-    false, "Mini Solid Line", false, "Blocks");
-    
-    newPaletteObject(oSlope,
-    cyclePaletteObjects(oSlopeUpRight,oSlopeDownRight,oSlopeDownLeft,oSlopeUpLeft),
-    false, "Slopes", false, "Blocks");
-    
-    newPaletteObject(oSlideBlockR,
-    cyclePaletteObjects(oSlideBlockD,oSlideBlockL,oSlideBlockU), 
-    false, "Conveyors", false, "Blocks");
+newPaletteObject(oWarp,
+cyclePaletteObjects(oPlayerStart),
+false, "Goal", false, "Markers");
+
+newPaletteObject(oBulletBlocker,
+cyclePaletteObjects(oAlignMarker),
+false, "Bullet Blocker", false, "Markers");
 
 
-    // Spikes.
-    newPaletteObject(oSpikeUp, 
-    cyclePaletteObjects(oSpikeRight,oSpikeDown,oSpikeLeft), 
-    true, "Spike", false, "Spikes");
-    
-    newPaletteObject(oMiniSpikeUp,
-    cyclePaletteObjects(oMiniSpikeRight,oMiniSpikeDown,oMiniSpikeLeft),
-    true, "Mini Spike", false, "Spikes");
-    
-    newPaletteObject(oSpikeUpThin,
-    cyclePaletteObjects(oSpikeRightThin,oSpikeDownThin,oSpikeLeftThin),
-    true, "Thin Spike", false, "Spikes");
-    
-    newPaletteObject(oMiniSpikeUpThin,
-    cyclePaletteObjects(oMiniSpikeRightThin,oMiniSpikeDownThin,oMiniSpikeLeftThin),
-    true, "Mini Thin Spike", false, "Spikes");
-    
-    newPaletteObject(oSpikeUpRightFlat,
-    cyclePaletteObjects(oSpikeDownRightFlat,oSpikeDownLeftFlat,oSpikeUpLeftFlat),
-    true, "Flat Spikes", false, "Spikes");
-    
-    newPaletteObject(oMiniSpikeUpFlat,
-    cyclePaletteObjects(oMiniSpikeRightFlat,oMiniSpikeDownFlat,oMiniSpikeLeftFlat),
-    true, "Mini Flat Spikes", false, "Spikes");
-    
-    newPaletteObject(oSpikeUpLine,
-    cyclePaletteObjects(oSpikeUpLineHalf,oSpikeRightLine,oSpikeRightLineHalf,oSpikeDownLine,oSpikeDownLineHalf,oSpikeLeftLine,oSpikeLeftLineHalf),
-    true, "Line Spikes", false, "Spikes");
-    
-    newPaletteObject(oMiniSpikeUpLine,
-    cyclePaletteObjects(oMiniSpikeUpLineHalf,oMiniSpikeRightLine,oMiniSpikeRightLineHalf,oMiniSpikeDownLine,oMiniSpikeDownLineHalf,oMiniSpikeLeftLine,oMiniSpikeLeftLineHalf),
-    true, "Mini Line Spikes", false, "Spikes");
-    
-    newPaletteObject(oSpikeUpHole,
-    cyclePaletteObjects(oSpikeRightHole,oSpikeDownHole,oSpikeLeftHole),
-    true, "Hole Spikes", false, "Spikes");
-    
-    newPaletteObject(oSpikeUpRightBox,
-    cyclePaletteObjects(oSpikeDownRightBox,oSpikeDownLeftBox,oSpikeUpLeftBox),
-    true, "Box Spikes", false, "Spikes");
-    
-    newPaletteObject(oSpikeUpRightCurved,
-    cyclePaletteObjects(oSpikeRightUpCurved,oSpikeRightDownCurved,oSpikeDownRightCurved,oSpikeDownLeftCurved,oSpikeLeftDownCurved,oSpikeLeftUpCurved,oSpikeUpLeftCurved),
-    true, "Curved Spikes", false, "Spikes");
-    
-    
-    // Fruit.
-    newPaletteObject(oApple,
-    undefined,
-    true, "Fruit", false, "Fruit");
-    
-    newPaletteObject(oEggplant,
-    undefined,
-    true, "Eggplant", false, "Fruit");
-    
-    newPaletteObject(oBananas,
-    undefined,
-    true, "Bananas", false, "Fruit");
-    
+// Blocks.
+newPaletteObject(oEditBlock,
+cyclePaletteObjects(oEditMiniBlock), 
+false, "Block", false, "Blocks");
 
-    // Other Killers.
-    newPaletteObject(oKillerLineV,
-    cyclePaletteObjects(oKillerLineDB,oKillerLineH,oKillerLineDA),
-    true, "Killer Line", false, "Other Killers");
-    
-    newPaletteObject(oKillerBlock,
-    cyclePaletteObjects(oMiniKillerBlock), 
-    true, "Killer Block", false, "Other Killers");
-    
+newPaletteObject(oSlipBlock,
+undefined,
+false, "Slip Block", false, "Blocks")
 
-    // Platforms.
-    newPaletteObject(oPlatform,
-    cyclePaletteObjects(oPlatformSideways),
-    false, "Platform", false, "Platforms");
- 
-    newPaletteObject(oSnaplessPlatform,
-    cyclePaletteObjects(oSnaplessPlatformSideways),
-    false, "Snapless Platform", false, "Platforms");
-    
-    newPaletteObject(oSnapform,
-    cyclePaletteObjects(oSnapformSideways),
-    false, "Snapform", false, "Platforms");
-    
-    newPaletteObject(oDisappearPlatform,
-    cyclePaletteObjects(oDisappearPlatformSideways),
-    false, "Disappear Platform", false, "Platforms");
+newPaletteObject(oSolidLineU,
+cyclePaletteObjects(oSolidLineR,oSolidLineD,oSolidLineL),
+false, "Solid Line", false, "Blocks");
 
-    
-    // Water.
-    newPaletteObject(oWater,
-    undefined,
-    false, "Water1", false, "Water");
-    
-    newPaletteObject(oWater2,
-    undefined,
-    false, "Water2", false, "Water");
-    
-    newPaletteObject(oWater3,
-    undefined,
-    false, "Water3", false, "Water");
-    
-    newPaletteObject(oWaterNekoron,
-    undefined,
-    false, "Nekoron Water", false, "Water");
-    
-    newPaletteObject(oWaterCatharsis,
-    undefined,
-    false, "Catharsis Water", false, "Water");
-    
-    newPaletteObject(oWaterDisappear,
-    undefined,
-    false, "Disappear Water", false, "Water");
-    
-    
-    // Vapor.
-    newPaletteObject(oVaporUp,
-    undefined,
-    false, "Vapor Up", false, "Vapor");
-    
-    newPaletteObject(oVaporDown,
-    undefined,
-    false, "Vapor Down", false, "Vapor");
-    
-    newPaletteObject(oUpdraft,
-    undefined,
-    false, "Updraft", false, "Vapor");
-    
-    
-    // Booster.
-    newPaletteObject(oBoosterUp,
-    cyclePaletteObjects(oBoosterUpRefresher,oBoosterUpApple),
-    false, "Booster Up", false, "Boosters");
-    
-    newPaletteObject(oBoosterDown,
-    cyclePaletteObjects(oBoosterDownRefresher,oBoosterDownApple),
-    false, "Booster Down", false, "Boosters");
-    
-    
-    // Ladders.
-    newPaletteObject(oLadder,
-    cyclePaletteObjects(oLadderVer,oLadderHor),
-    false, "Ladder", false, "Ladders");
-    
-    
-    // Vines.
-    newPaletteObject(oVineR,
-    cyclePaletteObjects(oVineD,oVineL,oVineU), 
-    false, "Vine", false, "Vines");
-    
-    newPaletteObject(oRiseVineR,
-    cyclePaletteObjects(oRiseVineD,oRiseVineL,oRiseVineU), 
-    false, "Rise Vine", false, "Vines");
-    
-    newPaletteObject(oIceVineR,
-    cyclePaletteObjects(oIceVineD,oIceVineL,oIceVineU), 
-    false, "Ice Vine", false, "Vines");
-    
-    newPaletteObject(oFlipVineR,
-    cyclePaletteObjects(oFlipVineD,oFlipVineL,oFlipVineU), 
-    false, "Flip Vine", false, "Vines");
-    
-    newPaletteObject(oStickyVineR,
-    cyclePaletteObjects(oStickyVineD,oStickyVineL,oStickyVineU), 
-    false, "Sticky Vine", false, "Vines");
-    
-    newPaletteObject(oLowGravVineR,
-    cyclePaletteObjects(oLowGravVineD,oLowGravVineL,oLowGravVineU), 
-    false, "Low-Gravity Vine", false, "Vines");
-    
-    newPaletteObject(oFireVineR,
-    cyclePaletteObjects(oFireVineD,oFireVineL,oFireVineU), 
-    false, "Fire Vine", false, "Vines");
-    
-    
-    
-    // Refreshers.
-    newPaletteObject(oJumpRefresher,
-    undefined, 
-    false, "Jump Refresher", false, "Refreshers");
-    
-    newPaletteObject(oJumpDefresher,
-    undefined, 
-    false, "Jump Defresher", false, "Refreshers");
-    
-    newPaletteObject(oHighJumpRefresher,
-    undefined, 
-    false, "High Jump Refresher", false, "Refreshers");
-    
-    newPaletteObject(oLowJumpRefresher,
-    undefined, 
-    false, "Low Jump Refresher", false, "Refreshers");
-    
-    newPaletteObject(oFlipJumpRefresher,
-    undefined, 
-    false, "Flip Jump Refresher", false, "Refreshers");
-    
-    newPaletteObject(oJumpTelefresher,
-    undefined, 
-    false, "Jump Telefresher", false, "Refreshers");
-    
-    newPaletteObject(oFastJumpRefresher,
-    undefined, 
-    false, "Fast Jump Refresher", false, "Refreshers");
-    
-    newPaletteObject(oSwitchJumpRefresher,
-    undefined, 
-    false, "Switch Jump Refresher", false, "Refreshers");
-    
-    newPaletteObject(oSlowJumpRefresher,
-    undefined, 
-    false, "Slow Jump Refresher", false, "Refreshers");
-    
-    newPaletteObject(oShootRefresherR,
-    cyclePaletteObjects(oShootRefresherL),
-    false, "Shoot Refresher", false, "Refreshers");
-    
-    
-    // Gravity.
-    newPaletteObject(oGravityArrowDown,
-    cyclePaletteObjects(oGravityArrowUp), 
-    false, "Gravity Arrow", false, "Gravity");
-    
-    newPaletteObject(oGravityBlockDown,
-    cyclePaletteObjects(oGravityBlockUp),
-    false, "Gravity Block", false, "Gravity");
-    
-    
-    // Fields.
-    newPaletteObject(oFieldLowGrav,
-    cyclePaletteObjects(oFieldHighGrav),
-    false, "Gravity Field", false, "Fields");
-    
-    newPaletteObject(oFieldHighSpeed,
-    cyclePaletteObjects(oFieldLowSpeed),
-    false, "Speed Field", false, "Fields");
-    
-    newPaletteObject(oFieldDotkidOn,
-    cyclePaletteObjects(oFieldDotkidOff),
-    false, "Dotkid Field", false, "Fields");
-    
-    newPaletteObject(oFieldTripleOn,
-    cyclePaletteObjects(oFieldTripleOff),
-    false, "Triple Field", false, "Fields");
-    
-    
-    // Triggers.
-    newPaletteObject(oTrg,
-    undefined,
-    false, "Trigger", false, "Triggers");
+newPaletteObject(oMiniSolidLineU,
+cyclePaletteObjects(oMiniSolidLineR,oMiniSolidLineD,oMiniSolidLineL),
+false, "Mini Solid Line", false, "Blocks");
+
+newPaletteObject(oSlope,
+cyclePaletteObjects(oSlopeUpRight,oSlopeDownRight,oSlopeDownLeft,oSlopeUpLeft),
+false, "Slopes", false, "Blocks");
+
+newPaletteObject(oSlideBlockR,
+cyclePaletteObjects(oSlideBlockD,oSlideBlockL,oSlideBlockU), 
+false, "Conveyors", false, "Blocks");
+
+
+// Spikes.
+newPaletteObject(oSpikeUp, 
+cyclePaletteObjects(oSpikeRight,oSpikeDown,oSpikeLeft), 
+true, "Spike", false, "Spikes");
+
+newPaletteObject(oMiniSpikeUp,
+cyclePaletteObjects(oMiniSpikeRight,oMiniSpikeDown,oMiniSpikeLeft),
+true, "Mini Spike", false, "Spikes");
+
+newPaletteObject(oSpikeUpThin,
+cyclePaletteObjects(oSpikeRightThin,oSpikeDownThin,oSpikeLeftThin),
+true, "Thin Spike", false, "Spikes");
+
+newPaletteObject(oMiniSpikeUpThin,
+cyclePaletteObjects(oMiniSpikeRightThin,oMiniSpikeDownThin,oMiniSpikeLeftThin),
+true, "Mini Thin Spike", false, "Spikes");
+
+newPaletteObject(oSpikeUpRightFlat,
+cyclePaletteObjects(oSpikeDownRightFlat,oSpikeDownLeftFlat,oSpikeUpLeftFlat),
+true, "Flat Spikes", false, "Spikes");
+
+newPaletteObject(oMiniSpikeUpFlat,
+cyclePaletteObjects(oMiniSpikeRightFlat,oMiniSpikeDownFlat,oMiniSpikeLeftFlat),
+true, "Mini Flat Spikes", false, "Spikes");
+
+newPaletteObject(oSpikeUpLine,
+cyclePaletteObjects(oSpikeUpLineHalf,oSpikeRightLine,oSpikeRightLineHalf,oSpikeDownLine,oSpikeDownLineHalf,oSpikeLeftLine,oSpikeLeftLineHalf),
+true, "Line Spikes", false, "Spikes");
+
+newPaletteObject(oMiniSpikeUpLine,
+cyclePaletteObjects(oMiniSpikeUpLineHalf,oMiniSpikeRightLine,oMiniSpikeRightLineHalf,oMiniSpikeDownLine,oMiniSpikeDownLineHalf,oMiniSpikeLeftLine,oMiniSpikeLeftLineHalf),
+true, "Mini Line Spikes", false, "Spikes");
+
+newPaletteObject(oSpikeUpHole,
+cyclePaletteObjects(oSpikeRightHole,oSpikeDownHole,oSpikeLeftHole),
+true, "Hole Spikes", false, "Spikes");
+
+newPaletteObject(oSpikeUpRightBox,
+cyclePaletteObjects(oSpikeDownRightBox,oSpikeDownLeftBox,oSpikeUpLeftBox),
+true, "Box Spikes", false, "Spikes");
+
+newPaletteObject(oSpikeUpRightCurved,
+cyclePaletteObjects(oSpikeRightUpCurved,oSpikeRightDownCurved,oSpikeDownRightCurved,oSpikeDownLeftCurved,oSpikeLeftDownCurved,oSpikeLeftUpCurved,oSpikeUpLeftCurved),
+true, "Curved Spikes", false, "Spikes");
+
+
+// Fruit.
+newPaletteObject(oApple,
+undefined,
+true, "Fruit", false, "Fruit");
+
+newPaletteObject(oEggplant,
+undefined,
+true, "Eggplant", false, "Fruit");
+
+newPaletteObject(oBananas,
+undefined,
+true, "Bananas", false, "Fruit");
+
+
+// Other Killers.
+newPaletteObject(oKillerLineV,
+cyclePaletteObjects(oKillerLineDB,oKillerLineH,oKillerLineDA),
+true, "Killer Line", false, "Other Killers");
+
+newPaletteObject(oKillerBlock,
+cyclePaletteObjects(oMiniKillerBlock), 
+true, "Killer Block", false, "Other Killers");
+
+
+// Platforms.
+newPaletteObject(oPlatform,
+cyclePaletteObjects(oPlatformSideways),
+false, "Platform", false, "Platforms");
+
+newPaletteObject(oSnaplessPlatform,
+cyclePaletteObjects(oSnaplessPlatformSideways),
+false, "Snapless Platform", false, "Platforms");
+
+newPaletteObject(oSnapform,
+cyclePaletteObjects(oSnapformSideways),
+false, "Snapform", false, "Platforms");
+
+newPaletteObject(oDisappearPlatform,
+cyclePaletteObjects(oDisappearPlatformSideways),
+false, "Disappear Platform", false, "Platforms");
+
+
+// Water.
+newPaletteObject(oWater,
+undefined,
+false, "Water1", false, "Water");
+
+newPaletteObject(oWater2,
+undefined,
+false, "Water2", false, "Water");
+
+newPaletteObject(oWater3,
+undefined,
+false, "Water3", false, "Water");
+
+newPaletteObject(oWaterNekoron,
+undefined,
+false, "Nekoron Water", false, "Water");
+
+newPaletteObject(oWaterCatharsis,
+undefined,
+false, "Catharsis Water", false, "Water");
+
+newPaletteObject(oWaterDisappear,
+undefined,
+false, "Disappear Water", false, "Water");
+
+
+// Vapor.
+newPaletteObject(oVaporUp,
+undefined,
+false, "Vapor Up", false, "Vapor");
+
+newPaletteObject(oVaporDown,
+undefined,
+false, "Vapor Down", false, "Vapor");
+
+newPaletteObject(oUpdraft,
+undefined,
+false, "Updraft", false, "Vapor");
+
+
+// Booster.
+newPaletteObject(oBoosterUp,
+cyclePaletteObjects(oBoosterUpRefresher,oBoosterUpApple),
+false, "Booster Up", false, "Boosters");
+
+newPaletteObject(oBoosterDown,
+cyclePaletteObjects(oBoosterDownRefresher,oBoosterDownApple),
+false, "Booster Down", false, "Boosters");
+
+
+// Ladders.
+newPaletteObject(oLadder,
+cyclePaletteObjects(oLadderVer,oLadderHor),
+false, "Ladder", false, "Ladders");
+
+
+// Vines.
+newPaletteObject(oVineR,
+cyclePaletteObjects(oVineD,oVineL,oVineU), 
+false, "Vine", false, "Vines");
+
+newPaletteObject(oRiseVineR,
+cyclePaletteObjects(oRiseVineD,oRiseVineL,oRiseVineU), 
+false, "Rise Vine", false, "Vines");
+
+newPaletteObject(oIceVineR,
+cyclePaletteObjects(oIceVineD,oIceVineL,oIceVineU), 
+false, "Ice Vine", false, "Vines");
+
+newPaletteObject(oFlipVineR,
+cyclePaletteObjects(oFlipVineD,oFlipVineL,oFlipVineU), 
+false, "Flip Vine", false, "Vines");
+
+newPaletteObject(oStickyVineR,
+cyclePaletteObjects(oStickyVineD,oStickyVineL,oStickyVineU), 
+false, "Sticky Vine", false, "Vines");
+
+newPaletteObject(oLowGravVineR,
+cyclePaletteObjects(oLowGravVineD,oLowGravVineL,oLowGravVineU), 
+false, "Low-Gravity Vine", false, "Vines");
+
+newPaletteObject(oFireVineR,
+cyclePaletteObjects(oFireVineD,oFireVineL,oFireVineU), 
+false, "Fire Vine", false, "Vines");
+
+
+
+// Refreshers.
+newPaletteObject(oJumpRefresher,
+undefined, 
+false, "Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oJumpDefresher,
+undefined, 
+false, "Jump Defresher", false, "Refreshers");
+
+newPaletteObject(oHighJumpRefresher,
+undefined, 
+false, "High Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oLowJumpRefresher,
+undefined, 
+false, "Low Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oFlipJumpRefresher,
+undefined, 
+false, "Flip Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oJumpTelefresher,
+undefined, 
+false, "Jump Telefresher", false, "Refreshers");
+
+newPaletteObject(oFastJumpRefresher,
+undefined, 
+false, "Fast Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oSwitchJumpRefresher,
+undefined, 
+false, "Switch Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oSlowJumpRefresher,
+undefined, 
+false, "Slow Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oShootRefresherR,
+cyclePaletteObjects(oShootRefresherL),
+false, "Shoot Refresher", false, "Refreshers");
+
+
+// Gravity.
+newPaletteObject(oGravityArrowDown,
+cyclePaletteObjects(oGravityArrowUp), 
+false, "Gravity Arrow", false, "Gravity");
+
+newPaletteObject(oGravityBlockDown,
+cyclePaletteObjects(oGravityBlockUp),
+false, "Gravity Block", false, "Gravity");
+
+
+// Fields.
+newPaletteObject(oFieldLowGrav,
+cyclePaletteObjects(oFieldHighGrav),
+false, "Gravity Field", false, "Fields");
+
+newPaletteObject(oFieldHighSpeed,
+cyclePaletteObjects(oFieldLowSpeed),
+false, "Speed Field", false, "Fields");
+
+newPaletteObject(oFieldDotkidOn,
+cyclePaletteObjects(oFieldDotkidOff),
+false, "Dotkid Field", false, "Fields");
+
+newPaletteObject(oFieldTripleOn,
+cyclePaletteObjects(oFieldTripleOff),
+false, "Triple Field", false, "Fields");
+
+
+// Triggers.
+newPaletteObject(oTrg,
+undefined,
+false, "Free Trigger", false, "Triggers");
     
 groups = ds_map_create();
 group_order = ds_list_create();

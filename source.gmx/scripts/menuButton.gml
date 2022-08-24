@@ -1,4 +1,4 @@
-/// menuButton(x, y, w, h, text, enabled, icon)
+/// menuButton(x, y, w, h, text, enabled, icon, [tooltip])
 
 // Draws a button and returns whether or not it was clicked.
 
@@ -9,6 +9,10 @@ var h = argument[3];
 var text = argument[4];
 var enabled = argument[5];
 var icon = argument[6];
+
+var tooltip = "";
+if (argument_count == 8)
+    tooltip = argument[7];
 
 var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w-1,yy+h-1) && enabled;
 
@@ -22,6 +26,15 @@ if (icon)
 else 
 {
     draw_text(xx+w/2,yy+h/2,text);
+}
+
+if (mouse_hover && tooltip != "") {
+    var ttw = string_width(tooltip) + 10;
+    var tth = string_height(tooltip) + 10;
+    var ttx = min(mouse_x, room_width - 5 - ttw);
+    var tty = min(ttx, mouse_y + 20);
+    drawButton(ttx,tty,ttw,tth,false);
+    draw_text(ttx+ttw/2,tty+tth/2,tooltip);
 }
 
 return mouse_hover && mouse_check_button_pressed(mb_left);
