@@ -52,8 +52,9 @@
   </views>
   <instances>
     <instance objName="oSidebar" x="800" y="0" name="inst_F1401864" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oWorld" x="64" y="-80" name="inst_2E47D279" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSidebarDraw" x="808" y="8" name="inst_38B94F65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oEdit" x="96" y="-80" name="inst_12095817" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oWorld" x="64" y="-80" name="inst_2E47D279" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oMenu" x="128" y="-80" name="inst_AF137121" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBorderDeath" x="64" y="-32" name="inst_54B35928" locked="0" code="type = &quot;top&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBorderDeath" x="96" y="-32" name="inst_B6A669A0" locked="0" code="type = &quot;bottom&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -69,7 +70,6 @@
     <instance objName="oWakahaEasterEgg" x="320" y="-88" name="inst_51076564" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPause" x="72" y="72" name="inst_D2077139" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oRecord" x="232" y="-72" name="inst_B0C4FB4D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oSidebarDraw" x="808" y="8" name="inst_38B94F65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="816" y="0" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_F258A754" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

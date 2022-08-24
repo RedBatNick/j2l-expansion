@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>buttonConfig_Create();
+            <string>tooltip_to_draw = "";
+buttonConfig_Create();
 </string>
           </argument>
         </arguments>
@@ -54,6 +55,30 @@ for (var i = 0; i &lt; numberOfKeys - 1; i+=1)
 {
     bindName[i] = scrGetKeybind(global.controls[i, 0]);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///tooltip
+drawTooltip();
 </string>
           </argument>
         </arguments>
@@ -298,7 +323,7 @@ if (mode == input_attributes)
 
 var xx = 928-back_w/4;
 var yy = 304-back_h/2;
-var w = 120;
+var w = 160;
 var h = 32;
 </string>
           </argument>
@@ -1607,7 +1632,7 @@ if (mode == input_prefctrls)
             
         }
     }
-}  
+}
 </string>
           </argument>
         </arguments>
@@ -1654,7 +1679,7 @@ var h = 33;
 
 if (mode &gt;= input_fileformat &amp;&amp; mode &lt;= input_prefctrls)
 {
-    for (i = 0; i &lt; 2; i+=1)
+    /*for (i = 0; i &lt; 2; i+=1)
     {
         if (i = 1)
         {
@@ -1665,8 +1690,8 @@ if (mode &gt;= input_fileformat &amp;&amp; mode &lt;= input_prefctrls)
         draw_rectangle(xx,yy,xx+w,yy+(h+(i*19)),0);
         
         draw_set_color(c_black);
-        draw_rectangle(xx,yy,xx+w,yy+(h+(i*19)),1);
-    }
+       draw_rectangle(xx,yy,xx+w,yy+(h+(i*19)),1);
+    } */
     draw_text(928,16,head);
     
     // Ok button

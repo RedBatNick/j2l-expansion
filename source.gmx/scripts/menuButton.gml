@@ -29,12 +29,7 @@ else
 }
 
 if (mouse_hover && tooltip != "") {
-    var ttw = string_width(tooltip) + 10;
-    var tth = string_height(tooltip) + 10;
-    var ttx = min(mouse_x, room_width - 5 - ttw);
-    var tty = min(ttx, mouse_y + 20);
-    drawButton(ttx,tty,ttw,tth,false);
-    draw_text(round(ttx+ttw/2),round(tty+tth/2),tooltip);
+    tooltip_to_draw = tooltip;
 }
 
 return mouse_hover && mouse_check_button_pressed(mb_left);

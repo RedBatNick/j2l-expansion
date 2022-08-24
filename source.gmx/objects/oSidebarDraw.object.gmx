@@ -68,6 +68,7 @@ global.PlayerFrameCounter = 0;
 global.SavedPlayerFrameCounter = 0;
 
 combobox_selected = false;
+tooltip_to_draw = "";
 
 /*
     xx - x coordinate of the button location
@@ -373,7 +374,8 @@ false, "Triple Field", false, "Fields");
 newPaletteObject(oTrg,
 undefined,
 false, "Free Trigger", false, "Triggers");
-    
+
+
 groups = ds_map_create();
 group_order = ds_list_create();
 
@@ -388,8 +390,6 @@ for (var i = 0; i &lt; ds_list_size(global.palette); i++) {
 
     ds_list_add(groups[? group], obj_palette);
 }
-
-group_hidden = array_create(ds_list_size(group_order));
 </string>
           </argument>
         </arguments>
@@ -538,6 +538,35 @@ if (global.state == globalstate_idle &amp;&amp; point_in_rect(mouse_x, mouse_y, 
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (array_length_1d(global.group_hidden) == 0) {
+    global.group_hidden = array_create(ds_list_size(group_order));
+
+    for (var i = 0; i &lt; array_length_1d(global.group_hidden); i++) {
+        global.group_hidden[i] = true;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -593,7 +622,6 @@ var ypos = 48;
 var yo = 0;
 var h = 50;
 dy = h+8;
-var tooltip_to_draw = "";
 
 var xxx = xpos;
 var yyy = ypos - global.scrollY;
@@ -612,7 +640,7 @@ for (var i = 0; i &lt; ds_list_size(group_order); i++) {
     draw_set_halign(fa_center);
     
     // Draw highlight
-    var button_highlighted = point_in_rect(mouse_x, mouse_y, xxx, yyy, xxx + group_w, yyy + group_h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
+    var button_highlighted = point_in_rectangle(mouse_x, mouse_y, xxx, yyy, xxx + group_w, yyy + group_h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
         
     if (button_highlighted) {
         draw_set_alpha(global.buttonhoveralpha);
@@ -629,7 +657,7 @@ for (var i = 0; i &lt; ds_list_size(group_order); i++) {
     // Pressing button
     if (button_highlighted) {
         if (mouse_check_button_pressed(mb_left)) {
-            group_hidden[i] ^= true;
+            global.group_hidden[i] ^= true;
             var flash = instance_create(xxx, yyy, oPaletteButtonFlash);
             flash.w = group_w;
             flash.h = group_h;
@@ -638,7 +666,7 @@ for (var i = 0; i &lt; ds_list_size(group_order); i++) {
     
     yyy += group_h + 8;
     
-    if (group_hidden[i]) {
+    if (global.group_hidden[i]) {
         continue;
     }
     
@@ -667,7 +695,7 @@ for (var i = 0; i &lt; ds_list_size(group_order); i++) {
         draw_sprite_ext(spr, frame, xxx + w / 2 - sprite_get_width(spr) / 2 + sprite_get_xoffset(spr), yyy + h / 2 - sprite_get_height(spr) / 2 + sprite_get_yoffset(spr), 1, 1, 0, color, 1);
     
         // Draw highlight and set tooltip
-        var button_highlighted = point_in_rect(mouse_x, mouse_y, xxx, yyy, xxx + w, yyy + h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
+        var button_highlighted = point_in_rectangle(mouse_x, mouse_y, xxx, yyy, xxx + w, yyy + h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
         
         if (button_highlighted) {
             draw_set_alpha(global.buttonhoveralpha);
@@ -727,12 +755,13 @@ for (var i = 0; i &lt; ds_list_size(group_order); i++) {
     yyy = yys + (dy * ceil(ds_list_size(group) / 4)) + 8;
 }
 
-if (tooltip_to_draw != "") {
-    draw_set_font(global.systemfont);
-    var w = string_width(tooltip_to_draw) + 10;
-    var xx = min(mouse_x, room_width - 5 - w);
-    menuButton(xx, mouse_y + 20, w, 25, tooltip_to_draw, false, false);
-}
+//if (tooltip_to_draw != "") {
+    //draw_set_font(global.systemfont);
+    //var w = string_width(tooltip_to_draw) + 10;
+    //var xx = min(mouse_x, room_width - 5 - w);
+    //menuButton(xx, mouse_y + 20, w, 25, tooltip_to_draw, false, false);
+    drawTooltip();
+//}
 
 //for (var i = 0; i &lt; ds_list_size(global.palette); i += 1) {
     /*

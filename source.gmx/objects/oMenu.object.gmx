@@ -127,7 +127,7 @@ escape_button_just_clicked = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sMenu,0,0,y-(sprite_get_height(sMenu)-menu_height));
+            <string>draw_sprite_stretched(sMenu,0,0,y-(sprite_get_height(sMenu)-menu_height), 800, 320);
 
 var buttons_enabled = global.state == globalstate_menu &amp;&amp; steps_in_menu &gt; 0;
 var w = 130;
@@ -335,9 +335,9 @@ if (menuButton(xx, yy, sw, sh, "&lt;", buttons_enabled, 0, tt)) {
 }
 
 // close menu
-var xw;
-if (global.hidesidebar) { xw = 800; }
-else { xw = 1056; }
+var xw = 800;
+//if (global.hidesidebar) { xw = 800; }
+//else { xw = 1056; }
 
 xx = xw-w-8;
 yy = y+12;
@@ -358,7 +358,7 @@ if (menuButton(xx,yy,w,h,"Quit",buttons_enabled,false)) {
     exitPressed();
 }
 
-
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

@@ -23,6 +23,11 @@ ini_write_real("prefs","editorinstructions",global.editorinstructions);
 ini_write_real("prefs","gridsnap",oEdit.snap);
 ini_write_real("prefs","sidebarlevel",global.sidebarlevel);
 //ini_write_real("prefs","playerpos_extended",global.playerpos_extended);
+ini_write_real("prefs", "grouplength", array_length_1d(global.group_hidden));
+
+for (var i = 0; i < array_length_1d(global.group_hidden); i++) {
+    ini_write_real("prefs", "grouphidden[" + string(i) + "]", global.group_hidden[i]);
+}
 
 //screen
 ini_write_real("prefs","fullscreen",window_get_fullscreen());

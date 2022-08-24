@@ -15,6 +15,11 @@ global.editorinstructions = FSIniReadReal("prefs","editorinstructions",true);
 oEdit.snap = FSIniReadReal("prefs","gridsnap",32);
 global.sidebarlevel = FSIniReadReal("prefs","sidebarlevel",0);
 //global.playerpos_extended = FSIniReadReal("prefs","playerpos_extended",false);
+var length = FSIniReadReal("prefs", "grouplength", 0);
+
+for (var i = 0; i < length; i++) {
+    global.group_hidden[i] = FSIniReadReal("prefs", "grouphidden[" + string(i) + "]", true);
+}
 
 //screen
 window_set_fullscreen(FSIniReadReal("prefs","fullscreen",false)); oWorld.alarm[0] = 1;
@@ -93,8 +98,13 @@ if (str != "")
     {
         var char = string_char_at(str, i);
         
-        if (char == ",") 
+        if (char == "," || i == string_length(str)) 
         {
+            if (i == string_length(str))
+            {
+                name += char;
+            }
+        
             global.skinList[index++] = name;
             name = "";
             continue;

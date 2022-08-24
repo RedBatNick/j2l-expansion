@@ -8,8 +8,8 @@
    but I think that"s a safe assumption.
 */
 global.run_from_editor = string_pos("gm_ttt",working_directory) != 0;
-global.editor_project_path = "C:\Users\redba\Downloads\j2l-expansion\source.gmx";
-//global.editor_project_path = "F:\King Files\Game Maker\Projects\I Wannas\j2l\j2l-expansion\source.gmx";
+//global.editor_project_path = "C:\Users\redba\Downloads\j2l-expansion\source.gmx";
+global.editor_project_path = "F:\King Files\Game Maker\Projects\I Wannas\j2l\j2l-expansion\source.gmx";
 
 // add backslash to end
 if (string_char_at(global.editor_project_path,string_length(global.editor_project_path)) != "\") {
@@ -32,7 +32,7 @@ global.frameaction_jump = false; //keeps track of whether a single jump is happe
 global.frameaction_djump = false; //keeps track of whether a double jump is happening
 global.frameaction_jumpslow = false; //keeps track of whether a cancel is happening
 global.joketitleindex = 0; // used in buttonCallback_JokeTitle
-
+global.group_hidden = array_create(0);
 
 // version 
 global.version_name = "jtool";
