@@ -135,8 +135,8 @@ var h = 32;
 var dx = 140;
 var dy = 40;
 var dx2 = 40;
-var xo = 20;
-var yo = 50;
+var xo = 24;
+var yo = 52;
 
 
 //FILE
@@ -267,25 +267,31 @@ if (menuButton(xx,yy,w,h,"System",buttons_enabled,sMenuPrefsSystem)) {
     inputOverlay(input_prefsystem, false, "");
 }
 
-// depth
+// button binds
 yy += dy;
-if (menuButton(xx,yy,w,h,"Depth Order",buttons_enabled,sMenuDepth)) {
-    inputOverlay(input_prefdepth, false, "");
+if menuButton(xx,yy,w,h,"Controls",buttons_enabled,false) {
+    inputOverlay(input_prefctrls, false, "")
+}
+
+// position shift
+yy += dy;
+if menuButton(xx,yy,w,h,"Shift Position",buttons_enabled,false) {
+    inputOverlay(input_position, false, "")
 }
 
 // change skin
-yy += dy;
+xx += dx-1;
+yy = y+yo;
 var m = menuButtonTwoPart(xx,yy,w,h,"Change Skin",buttons_enabled,sMenuSkin);
 if (m != 0) {
     cycleSkin((m-1)*2-1);
 }
 
-// button binds
-/*xx += dx
-yy = y+yo
-if menuButton(xx,yy,w,h,"Controls",buttons_enabled,false) {
-    inputOverlay(input_prefctrls, false, "")
-}*/
+// depth
+yy += dy;
+if (menuButton(xx,yy,w,h,"Depth Order",buttons_enabled,sMenuDepth)) {
+    inputOverlay(input_prefdepth, false, "");
+}
 
 // shift all objects
 var sw = 18;
