@@ -4,7 +4,7 @@ var dy = argument[2];
 
 var rls = 0;
 
-fontSetup(font_small,c_black,fa_left,fa_top,1);
+fontSetup(global.systemfont,c_black,fa_left,fa_top,1);
 var xo = 53;
 //show_debug_message(string(framecount_jump1)+" "+string(framecount_jump1_jc1)+" "+string(framecount_jump1_jc2)+" "+string(framecount_jump1_jc3))
 

@@ -17,15 +17,15 @@ if (argument_count == 8)
 var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w-1,yy+h-1) && enabled;
 
 drawButton(xx,yy,w,h,mouse_hover);
-fontSetup(font_small,c_black,fa_center,fa_center,1);
+fontSetup(global.systemfont,c_black,fa_center,fa_center,1);
 if (icon) 
 {
-    draw_text(xx+w/2+12,yy+h/2,text);
+    draw_text(round(xx+w/2)+12,round(yy+h/2),text);
     draw_sprite(icon,0,xx+16,yy+h/2);
 }
 else 
 {
-    draw_text(xx+w/2,yy+h/2,text);
+    draw_text(round(xx+w/2),round(yy+h/2),text);
 }
 
 if (mouse_hover && tooltip != "") {
@@ -34,7 +34,7 @@ if (mouse_hover && tooltip != "") {
     var ttx = min(mouse_x, room_width - 5 - ttw);
     var tty = min(ttx, mouse_y + 20);
     drawButton(ttx,tty,ttw,tth,false);
-    draw_text(ttx+ttw/2,tty+tth/2,tooltip);
+    draw_text(round(ttx+ttw/2),round(tty+tth/2),tooltip);
 }
 
 return mouse_hover && mouse_check_button_pressed(mb_left);

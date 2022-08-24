@@ -604,7 +604,7 @@ for (var i = 0; i &lt; ds_list_size(group_order); i++) {
     var group_w = (dx * 4) - 8;
     var group_h = h * 0.5;
     drawButton(xxx, yyy, group_w, group_h, false);
-    draw_set_font(font_small);
+    draw_set_font(global.systemfont);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     draw_text(xxx + group_w * 0.5, yyy + group_h * 0.5, name);
@@ -728,7 +728,7 @@ for (var i = 0; i &lt; ds_list_size(group_order); i++) {
 }
 
 if (tooltip_to_draw != "") {
-    draw_set_font(font_small);
+    draw_set_font(global.systemfont);
     var w = string_width(tooltip_to_draw) + 10;
     var xx = min(mouse_x, room_width - 5 - w);
     menuButton(xx, mouse_y + 20, w, 25, tooltip_to_draw, false, false);
@@ -836,7 +836,7 @@ if (tooltip_to_draw != "") {
 }
 
 if (tooltip_to_draw != "") {
-    draw_set_font(font_small);
+    draw_set_font(global.systemfont);
     var w = string_width(tooltip_to_draw)+10;
     var xx = min(mouse_x, room_width-5-w);
     menuButton(xx, mouse_y+20, w, 25, tooltip_to_draw, false, false);
@@ -869,7 +869,7 @@ var w = 136;
 var h = 32;
 
 drawButton(xx,yy,w,h,false);
-fontSetup(font_small, c_black, fa_left, fa_center, 1);
+fontSetup(global.systemfont, c_black, fa_left, fa_center, 1);
 draw_text(xx+5, yy+16, "Deaths: "+string(global.death_count));
 
 var buttons_active = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
@@ -905,7 +905,7 @@ var yy = yyy;
 var w = 96;
 var h = 32;
 drawButton(xx,yy,w,h,false);
-fontSetup(font_small, c_black, fa_left, fa_center, 1);
+fontSetup(global.systemfont, c_black, fa_left, fa_center, 1);
 draw_text(xx+12, yy+16, "FPS: "+string(fps));
 
 if (global.FrameCounterOn = true || global.record &gt; 0) {
@@ -944,7 +944,7 @@ if (global.sidebarlevel == 1) {
 }
     
 drawButton(xx,yy,w,80,false);
-fontSetup(font_small,c_black,fa_left,fa_top,1);
+fontSetup(global.systemfont,c_black,fa_left,fa_top,1);
 
 if ((instance_exists(oRecordPlayer) || instance_exists(oRecordPlayerCopy)) &amp;&amp; global.RecordPlayerPosition = true)
 {
@@ -1013,7 +1013,7 @@ if (menuButton(x,buttony,buttonw,buttonh,"",buttons_active,false)) {
     global.RecordPlayerPosition = !global.RecordPlayerPosition;
 }
 
-fontSetup(font_small,c_black,fa_center,fa_center,1);
+fontSetup(global.systemfont,c_black,fa_center,fa_center,1);
 //if (global.sidebarstate == sidebar_classic) {
 //    draw_text(buttonx+buttonw/2,buttony+buttonh/2-5,". . .");
 //    draw_text(buttonx+buttonw/2-1,buttony+buttonh/2-5,". . .");
@@ -1062,7 +1062,7 @@ var w = 136;
 var char = 9;
 
 drawButton(xx,yy,w,80,false);
-fontSetup(font_small,c_black,fa_left,fa_top,1);
+fontSetup(global.systemfont,c_black,fa_left,fa_top,1);
 
 if ((instance_exists(oRecordPlayer) || instance_exists(oRecordPlayerCopy)) &amp;&amp; global.RecordPlayerPosition = true)
 {
@@ -1307,12 +1307,12 @@ if (global.editorinstructions) {
             global.instructionspage = 0;
     }
     
-    fontSetup(font_small,c_black,fa_center,fa_center,1);
+    fontSetup(global.systemfont,c_black,fa_center,fa_center,1);
     draw_text(xx+220,h,". . .");
     draw_text(xx+220,h,". . .");
     
     draw_sprite_ext(sPopup,0,xx-12,0,(800-(xx-12))/sprite_get_width(sPopup),(h-0)/sprite_get_height(sPopup),0,c_white,0.9);
-    fontSetup(font_small,c_black,fa_left,fa_top,1);
+    fontSetup(global.systemfont,c_black,fa_left,fa_top,1);
     draw_rectangle(xx-12,-1,800,h,true);
 
     switch (global.instructionspage) {

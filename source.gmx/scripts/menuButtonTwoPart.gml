@@ -39,7 +39,7 @@ draw_set_alpha(1);
 draw_set_color(c_black);
 draw_rectangle(xx,yy,xx+w-1,yy+h-1,true);
 
-fontSetup(font_small,c_black,fa_center,fa_center,1);
+fontSetup(global.systemfont,c_black,fa_center,fa_center,1);
 if (icon) {
     draw_text(xx+w/2+12,yy+h/2,text);
     draw_sprite(icon,0,xx+16,yy+h/2);

@@ -154,7 +154,7 @@ else if (mode == input_newversion)
     var label_yo = -20;
 }
 
-fontSetup(font_small,c_black,fa_center,fa_center,1);
+fontSetup(global.systemfont,c_black,fa_center,fa_center,1);
 back_w = floor(max(back_w,string_width(label)+30));
 
 if (back_w mod 2 == 1) 
@@ -218,7 +218,7 @@ if (mode == input_textbox)
     var ycenter = yy+textbox_h/2;
     
     drawButton(xx,yy,textbox_w,textbox_h,true);
-    fontSetup(font_small,c_black,fa_left,fa_center,1);
+    fontSetup(global.systemfont,c_black,fa_left,fa_center,1);
     draw_text(xx+6,ycenter,keyboard_string);
     
     if (floor(global.count/20) mod 2 == 0)
@@ -227,7 +227,7 @@ if (mode == input_textbox)
         draw_line(xxx,ycenter-cursor_h/2,xxx,ycenter+cursor_h/2);
     }
     
-    fontSetup(font_small,c_black,fa_right,fa_center,1);
+    fontSetup(global.systemfont,c_black,fa_right,fa_center,1);
     draw_text(xx-3,ycenter,textbox_label);
     
     var button_yo = 30;
@@ -272,7 +272,7 @@ if (mode == input_textarea)
     var ycenter = yy+textbox_h/2;
     
     drawButton(xx,yy,textbox_w,textbox_h,true);
-    fontSetup(font_small,c_black,fa_left,fa_top,1);
+    fontSetup(global.systemfont,c_black,fa_left,fa_top,1);
     draw_text(xx+6,yy+6,keyboard_string);
     
     // find cursor position and draw it
@@ -295,7 +295,7 @@ if (mode == input_textarea)
         var yyy = yy+6+6+string_height("1")*numlines;
         draw_line(xxx,yyy-cursor_h/2,xxx,yyy+cursor_h/2);
     }
-    fontSetup(font_small,c_black,fa_center,fa_center,1);
+    fontSetup(global.systemfont,c_black,fa_center,fa_center,1);
     draw_text(528,yy-32,label);
     
     var button_yo = 30;
@@ -356,7 +356,7 @@ if (mode == input_attributes)
     var ycenter = yy+textbox_h/2;
     
     drawButton(xx,yy,textbox_w,textbox_h,true);
-    fontSetup(font_small,c_black,fa_left,fa_top,1);
+    fontSetup(global.systemfont,c_black,fa_left,fa_top,1);
     draw_text(xx+6,yy+6,keyboard_string);
     
     if (floor(global.count/20) mod 2 == 0)
@@ -365,7 +365,7 @@ if (mode == input_attributes)
         draw_line(xxx,ycenter-cursor_h/2,xxx,ycenter+cursor_h/2);
     }
     
-    fontSetup(font_small,c_black,fa_center,fa_center,1);
+    fontSetup(global.systemfont,c_black,fa_center,fa_center,1);
     draw_text(528,yy-32,label);
 
     var button_yo = 30;
@@ -419,7 +419,7 @@ if (mode == input_attributes)
             <string>///map formatting
 if (mode == input_fileformat) 
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Parse Other Map Formats";
     var xx = 528-65;
     var w = 130;
@@ -433,7 +433,9 @@ if (mode == input_fileformat)
         switch (i)
         {
             case 0: //open RMJ map
-            if (menuButton(xx-69,yy,w,h,"Import RMJ",true,sMenuOpenRMJMap)) 
+            var tt = "Import a Record My Jumps .map file.";
+            
+            if (menuButton(xx-69,yy,w,h,"Import RMJ",true,sMenuOpenRMJMap,tt)) 
             {
                 if (!oEdit.undo_nochanges) 
                 {
@@ -449,7 +451,9 @@ if (mode == input_fileformat)
             }
             
             //save RMJ map
-            if (menuButton(xx+69,yy,w,h,"Export RMJ",true,sMenuSaveRMJMap))
+            var tt = "Export map as a Record My Jumps .map file.";
+            
+            if (menuButton(xx+69,yy,w,h,"Export RMJ",true,sMenuSaveRMJMap,tt))
             {
                 if (window_get_fullscreen()) 
                 {
@@ -463,7 +467,10 @@ if (mode == input_fileformat)
             
             
             case 1: //open old jmap
-            if (menuButton(xx-69,yy,w,h,"Import Legacy",true,sMenuOpenJMap)) 
+            var tt = "Import a legacy .jmap file.
+            Legacy jmaps are any official .jmaps made prior to version 2.0.0.";
+            
+            if (menuButton(xx-69,yy,w,h,"Import Legacy",true,sMenuOpenJMap,tt)) 
             {
                 if (!oEdit.undo_nochanges) 
                 {
@@ -479,7 +486,10 @@ if (mode == input_fileformat)
             }
             
             //save old jmap
-            if (menuButton(xx+69,yy,w,h,"Export Legacy",true,sMenuSaveJMap)) 
+            var tt = "Export map as a legacy .jmap file.
+            Legacy jmaps are any official .jmaps made prior to version 2.0.0.";
+            
+            if (menuButton(xx+69,yy,w,h,"Export Legacy",true,sMenuSaveJMap,tt)) 
             {
                 if (window_get_fullscreen()) 
                 {
@@ -493,7 +503,9 @@ if (mode == input_fileformat)
             
             
             case 2: //open cmap
-            if (menuButton(xx-69,yy,w,h,"Import Ctool",true,sMenuOpenCMap)) 
+            var tt = "Import a .cmap file.";
+            
+            if (menuButton(xx-69,yy,w,h,"Import Ctool",true,sMenuOpenCMap,tt)) 
             {
                 if (!oEdit.undo_nochanges) 
                 {
@@ -509,7 +521,9 @@ if (mode == input_fileformat)
             }
             
             //save cmap
-            if (menuButton(xx+69,yy,w,h,"Export Ctool",true,sMenuSaveCMap)) 
+            var tt = "Export map as a .cmap file.";
+            
+            if (menuButton(xx+69,yy,w,h,"Export Ctool",true,sMenuSaveCMap,tt)) 
             {
                 if (window_get_fullscreen()) 
                 {
@@ -523,39 +537,53 @@ if (mode == input_fileformat)
                         
             
             case 3: //open iwm map
-            if (menuButton(xx-69,yy,w,h,"Import IWM",true,sMenuOpenIWMMap)) 
+            var tt = "Import an I Wanna Maker .map file.
+            IWM maps are structurally very different from .jmaps, so a lot of information will be lost.";
+            
+            if (menuButton(xx-69,yy,w,h,"Import IWM",true,sMenuOpenIWMMap,tt)) 
             {
 
             }
             
             //save iwm map
-            if (menuButton(xx+69,yy,w,h,"Export IWM",true,sMenuSaveIWMMap)) 
+            var tt = "Export map as an I Wanna Maker .map file.
+            IWM maps are structurally very different from .jmaps, so a lot of information will be lost.";
+            
+            if (menuButton(xx+69,yy,w,h,"Export IWM",true,sMenuSaveIWMMap,tt)) 
             {
             
             } break;
             
             
             case 4: //open gmx room
-            if (menuButton(xx-69,yy,w,h,"Import GMX",true,sMenuOpenGMXRoom))
+            var tt = "Import a GameMaker: Studio .gmx room file.";
+            
+            if (menuButton(xx-69,yy,w,h,"Import GMX",true,sMenuOpenGMXRoom,tt))
             {
 
             }
             
             //save gmx room
-            if (menuButton(xx+69,yy,w,h,"Export GMX",true,sMenuSaveGMXRoom))
+            var tt = "Export map as a GameMaker: Studio .gmx room file.";
+            
+            if (menuButton(xx+69,yy,w,h,"Export GMX",true,sMenuSaveGMXRoom,tt))
             {
             
             } break;
             
             
             case 5: //open gm82 room
-            if (menuButton(xx-69,yy,w,h,"Import GM82",true,sMenuOpenGM82Room))
+            var tt = "Import a GameMaker 8.2 room folder as a map.";
+            
+            if (menuButton(xx-69,yy,w,h,"Import GM82",true,sMenuOpenGM82Room,tt))
             {
 
             }
             
             //save gm82 room
-            if (menuButton(xx+69,yy,w,h,"Export GM82",true,sMenuSaveGM82Room))
+            var tt = "Export map as a GameMaker 8.2 room folder.";
+            
+            if (menuButton(xx+69,yy,w,h,"Export GM82",true,sMenuSaveGM82Room,tt))
             {
             
             } break;
@@ -585,7 +613,7 @@ if (mode == input_fileformat)
             <string>///recording
 if (mode == input_filerecord) 
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Recording";
     var xx = 528-130;
     var w = 130;
@@ -599,7 +627,10 @@ if (mode == input_filerecord)
         switch (i)
         {        
             case 0: //start recording
-            if (menuButton(xx,yy,w,h,"Start",true,sMenuRecord)) 
+            var tt = "Start a recording
+            (Will restart the room once pressed).";
+            
+            if (menuButton(xx,yy,w,h,"Start",true,sMenuRecord,tt)) 
             {
                 global.PlayerFrameCounter = 0;
                 startRecord();
@@ -608,7 +639,9 @@ if (mode == input_filerecord)
             
             
             case 1: //stop recording
-            if (menuButton(xx,yy,w,h,"Stop",true,sMenuStop))
+            var tt = "Stop a currently active recording.";
+            
+            if (menuButton(xx,yy,w,h,"Stop",true,sMenuStop,tt))
             {
                 global.savecount = 0;
                 global.SavedPlayerFrameCounter = global.PlayerFrameCounter;
@@ -639,7 +672,9 @@ if (mode == input_filerecord)
             
             
             case 2: //erase recording
-            if (menuButton(xx,yy,w,h,"Erase",true,sMenuEraser))
+            var tt = "Erase a currently active recording.";
+            
+            if (menuButton(xx,yy,w,h,"Erase",true,sMenuEraser,tt))
             {
                 eraserRecord();
                 global.record = 0;
@@ -649,7 +684,10 @@ if (mode == input_filerecord)
             
             
             case 3: //continue recording
-            if (menuButton(xx,yy,w,h,"Continue",true,sMenuContinue)) 
+            var tt = "Continue a previous recording
+            (Will restart the room once pressed).";
+            
+            if (menuButton(xx,yy,w,h,"Continue",true,sMenuContinue,tt)) 
             {
                 escape_button_just_clicked = true;
                 
@@ -659,14 +697,18 @@ if (mode == input_filerecord)
             
             
             case 4: //save recording
-            if (!global.paused &amp;&amp; menuButton(xx,yy,w,h,"Save",true,sMenuSaveMap)) 
+            var tt = "Save a currently active recording.";
+            
+            if (!global.paused &amp;&amp; menuButton(xx,yy,w,h,"Save",true,sMenuSaveMap,tt)) 
             {
                 saveRecordAskName();
             } break;
             
             
             case 5: //load recording
-            if (!global.paused &amp;&amp; menuButton(xx,yy,w,h,"Load",true,sMenuOpenMap)) 
+            var tt = "Load a previous recording.";
+            
+            if (!global.paused &amp;&amp; menuButton(xx,yy,w,h,"Load",true,sMenuOpenMap,tt)) 
             {
                 loadRecordAskName();
             } break;
@@ -716,14 +758,20 @@ if (mode == input_filerecord)
             <string>///transformations
 if (mode == input_maptransform) 
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Transformations";
     var xx = 528-136;
     var w = 130;
     var h = 32;
     
-    var up = "[ "+scrGetKeybind(global.controls[KEY.UP, 0])+" ]";
-    var down = "[ "+scrGetKeybind(global.controls[KEY.DOWN, 0])+" ]";
+    var Jump = "[ "+scrGetKeybind(global.controls[KEY.JUMP, 0])+" ]";
+    var Z = "[ "+scrGetKeybind(global.controls[KEY.SHOOT, 0])+" ]";
+    var U = "[ "+scrGetKeybind(global.controls[KEY.UP, 0])+" ]";
+    var R = "[ "+scrGetKeybind(global.controls[KEY.RIGHT, 0])+" ]";
+    var L = "[ "+scrGetKeybind(global.controls[KEY.LEFT, 0])+" ]";
+    var D = "[ "+scrGetKeybind(global.controls[KEY.DOWN, 0])+" ]";
+    var AA = "[ "+scrGetKeybind(global.controls[KEY.ALIGN_LEFT, 0])+" ]";
+    var AD = "[ "+scrGetKeybind(global.controls[KEY.ALIGN_RIGHT, 0])+" ]";
     
     for (var i = 0; i &lt; 7; i+=1) 
     {
@@ -748,9 +796,10 @@ if (mode == input_maptransform)
             //vkid[2] = "Purple";
             vkid_spr = asset_get_index("sMenuVkid"+string(vkid[global.vkid]));
             
-            var tt = "Toggles Vkid.
-            Blue Vkid == 180-degree flipping.
-            Purple Vkid == 90-degree flipping.";
+            var tt = "Toggles Vkid type.#"
+            +Jump+" to flip.
+            Blue Vkid flips 180-degree.
+            Purple Vkid flips 90-degrees in the direction you're facing.";
             
             if (menuButtonToggle(xx,yy,w,h,true,vkid_spr,"[ "+vkid[global.vkid]+" Vkid ]","Vkid",global.vkid,tt))  
             {
@@ -762,7 +811,8 @@ if (mode == input_maptransform)
             
             
             case 2: //Telekid
-            var tt = "Toggles Telekid.
+            var tt = "Toggles Telekid.#"
+            +Z+" to shoot a teleport clone.
             Collision with blocks will teleport the player.
             Collision with killers will kill the player.";
             
@@ -775,7 +825,9 @@ if (mode == input_maptransform)
             case 3: //lunarkid
             var tt = "Toggles Lunarkid / Rocket.
             Movement is based on inertia.#"
-            +string(up)+" to accelerate.
+            +L+" to rotate CCW.#"
+            +R+" to rotate CW.#"
+            +U+" to accelerate.
             Hitbox is a 11x21 oval.";
             
             if (menuButtonToggle(xx,yy,w,h,true,sMenuLunarkid,"[ Lunarkid ]","Lunarkid",global.lunarkid,tt)) 
@@ -791,8 +843,8 @@ if (mode == input_maptransform)
             
             case 4: //linekid
             var tt = "Toggles Linekid.#"
-            +string(up)+" to rotate CCW.#"
-            +string(down)+" to rotate CW.
+            +U+" / "+AA+" to rotate CCW.#"
+            +D+" / "+AD+" to rotate CW.
             Hitbox is a 3x25 rectangle.";
 
             if menuButtonToggle(xx,yy,w,h,true,sMenuLinekid,"[ Linekid ]","Linekid",global.linekid,tt) 
@@ -829,48 +881,65 @@ if (mode == input_maptransform)
             <string>///save types
 if (mode == input_mapsaves) 
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Save Attributes";
     var xx = 528-130;
     var w = 130;
     var h = 32;
     
+    var Z = "( "+scrGetKeybind(global.controls[KEY.SHOOT, 0])+" )";
+    var S = "( "+scrGetKeybind(global.controls[KEY.SKIP, 0])+" )";    
+    //var U = "( "+scrGetKeybind(global.controls[KEY.UP, 0])+" )";
+    
     for (var i = 0; i &lt; 7; i+=1) 
     {
         var yy = 304-back_h/2+41+i*(h+8);
         var text;
-        
-        var Z = "( "+scrGetKeybind(global.controls[KEY.SHOOT, 0])+" )";
-        var S = "( "+scrGetKeybind(global.controls[KEY.SKIP, 0])+" )";
-        
+    
         switch (i)
         {
             case 0: //z saves
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuSaveZ,"[ "+Z+" Saves ]",Z+" Saves",global.savetypez))
+            var tt = "Toggles saves to be used when pressing "+Z+" on them.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuSaveZ,"[ "+Z+" Saves ]",Z+" Saves",global.savetypez,tt))
             {
                 global.savetypez = !global.savetypez;
             } break;
         
             
             case 1: //shoot saves
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuSaveShoot,"[ Shoot Saves ]","Shoot Saves",global.savetypeshoot))
+            var tt = "Toggles saves to be used when shot.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuSaveShoot,"[ Shoot Saves ]","Shoot Saves",global.savetypeshoot,tt))
             {
                 global.savetypeshoot = !global.savetypeshoot;
             } break;
         
             
             case 2: //s saves
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuSaveS,"[ "+S+" Saves ]",S+" Saves",global.savetypes))
+            var tt = "Toggles saves to be used when pressing "+S+" on them.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuSaveS,"[ "+S+" Saves ]",S+" Saves",global.savetypes,tt))
             {
                 global.savetypes = !global.savetypes;
             } break;
             
             
             case 3: //touch saves
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuSaveTouch,"[ Touch Saves ]","Touch Saves",global.savetypetouch))
+            var tt = "Toggles saved to be used when touched.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuSaveTouch,"[ Touch Saves ]","Touch Saves",global.savetypetouch,tt))
             {
                 global.savetypetouch = !global.savetypetouch;
             } break;
+            
+            /*case 4: //up saves
+            var tt = "Toggles saves to be used when pressing "+U+" on them.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuSaveUp,"[ "+U+" Saves ]",Up+" Saves",global.savetypeup,tt))
+            {
+                global.savetypeup = !global.savetypeup;
+            } break;*/
         }
     }
 }  
@@ -897,7 +966,7 @@ if (mode == input_mapsaves)
             <string>///physics options
 if (mode == input_mapphysics)
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Physics Options";
     var xx = 528-130;
     var w = 130;
@@ -911,7 +980,9 @@ if (mode == input_mapphysics)
         switch (i)
         {
             case 0: //infinite jump
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuInfJump,"[ Inf Jump ]","Inf Jump",global.infinitejump))
+            var tt = "Toggles infinite jump.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuInfJump,"[ Inf Jump ]","Inf Jump",global.infinitejump,tt))
             {
                 global.infinitejump = !global.infinitejump;
             } break;
@@ -925,7 +996,12 @@ if (mode == input_mapphysics)
             ices[3] = "Pressure";
             ice_spr = asset_get_index("sMenuIce"+string(ices[global.icetype]));
             
-            if (menuButtonToggle(xx,yy,w,h,true,ice_spr,ices[global.icetype]+" Ice","No Ice",global.icetype))
+            var tt = "Toggles ice physics.
+            Slip ice is similar to slip block collision.
+            Domu ice adds momentum to your max speed.
+            Pressure ice (Also known as CBT ice) makes you start moving with momentum.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,ice_spr,ices[global.icetype]+" Ice","No Ice",global.icetype,tt))
             {
                 global.icetype += 1;
                 
@@ -935,7 +1011,12 @@ if (mode == input_mapphysics)
         
             
             case 2: //slowshot
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuSlowshot,"[ Slowshot ]","Slowshot",global.slowshot)) 
+            var tt = "Toggles slow shot.
+            Bullets move at 1 speed.
+            Max bullets is 10.
+            Bullets will disappear after 16 seconds.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuSlowshot,"[ Slowshot ]","Slowshot",global.slowshot,tt)) 
             {
                 global.slowshot = !global.slowshot;
             } break;
@@ -965,7 +1046,7 @@ if (mode == input_mapphysics)
             <string>///border type
 if (mode == input_mapborders)
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Border Attributes";
     var xx = 528-130;
     var w = 130;
@@ -979,7 +1060,11 @@ if (mode == input_mapborders)
         switch (i)
         {
             case 0: //solid/death borders
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuBorderCollision,"Solid Border","Death Border",global.bordertype))
+            var tt = "Toggles room border type.
+            Death border will kill the player on collision.
+            Solid border will stop the player on collision.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuBorderCollision,"Solid Border","Death Border",global.bordertype,tt))
             {
                 global.bordertype = !global.bordertype;
             } break;
@@ -993,7 +1078,12 @@ if (mode == input_mapborders)
             wraps[3] = "XY";
             wrap_spr = asset_get_index("sMenuBorderWrap"+string(wraps[global.screenwraptype]))
 
-            if (menuButtonToggle(xx,yy,w,h,true,wrap_spr,wraps[global.screenwraptype]+" Wrap","No Wrap",global.screenwraptype)) 
+            var tt = "Toggles screenwrap type.
+            X Wrap will screenwrap the player horizontally.
+            Y Wrap will screenwrap the player vertically.
+            XY Wrap will screenwrap the player in both axes.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,wrap_spr,wraps[global.screenwraptype]+" Wrap","No Wrap",global.screenwraptype,tt)) 
             {
                 global.screenwraptype += 1;
                 
@@ -1009,7 +1099,12 @@ if (mode == input_mapborders)
             bboxs[2] = "Near";
             bbox_spr = asset_get_index("sMenuBorderBBox"+string(bboxs[global.borderbox]));
         
-            if (menuButtonToggle(xx,yy,w,h,true,bbox_spr,bboxs[global.borderbox]+" BBox","Center BBox",global.borderbox)) 
+            var tt = "Toggles border collision type.
+            Center BBox will cause the player to collide on their origin.
+            Far BBox will cause the player to collide on the farthest edge of their hitbox.
+            Near BBox will cause the player to collide on the nearest edge of their hitbox.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,bbox_spr,bboxs[global.borderbox]+" BBox","Center BBox",global.borderbox,tt)) 
             {
                 global.borderbox += 1; //cringe variable that doesn't fucking work idk
                 
@@ -1042,7 +1137,7 @@ if (mode == input_mapborders)
             <string>///interactions
 if (mode == input_mapactions)
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Misc. Interactions";
     var xx = 528-130;
     var w = 130;
@@ -1056,7 +1151,10 @@ if (mode == input_mapactions)
         switch (i)
         {
             case 0: //dot clipping
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuDotClip,"[ Dot Clip ]","Dot Clip",global.dotclip)) 
+            var tt = "Toggles Dotkid clipping.
+            Sets whether or not you will be pushed out of a block when switching to and from the normal Kid.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuDotClip,"[ Dot Clip ]","Dot Clip",global.dotclip,tt)) 
             {
                 global.dotclip = !global.dotclip;
             } break;
@@ -1067,7 +1165,10 @@ if (mode == input_mapactions)
             if (!global.dotplatfix) 
                 platfix_spr = sMenuDotNoFix;
             
-            if (menuButtonToggle(xx,yy,w,h,true,platfix_spr,"[ Dot Platfix ]","Dot Platfix",global.dotplatfix)) 
+            var tt = "Toggles Dotkid platform fix.
+            Sets whether or not you will properly collide with platforms as Dotkid.";
+                
+            if (menuButtonToggle(xx,yy,w,h,true,platfix_spr,"[ Dot Platfix ]","Dot Platfix",global.dotplatfix,tt)) 
             {
                 global.dotplatfix = !global.dotplatfix;
             } break;
@@ -1078,7 +1179,10 @@ if (mode == input_mapactions)
             if (!global.telerange)
                 telerange_spr = sMenuTeleRangeClose;
                 
-            if (menuButtonToggle(xx,yy,w,h,true,telerange_spr,"[ Tele Range ]","Tele Range",global.telerange)) 
+            var tt = "Toggles Telekid range.
+            Sets whether or not you can shoot a clone when you are within 12 pixels of a wall.";
+                
+            if (menuButtonToggle(xx,yy,w,h,true,telerange_spr,"[ Tele Range ]","Tele Range",global.telerange,tt)) 
             {
                 if (global.telerange = 12) 
                     global.telerange = 0;
@@ -1131,7 +1235,7 @@ if (mode == input_mapactions)
             <string>///player options
 if (mode == input_prefplayer) 
 {   
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Player Preferences";
     var xx = 528-130;
     var w = 130;
@@ -1152,7 +1256,13 @@ if (mode == input_prefplayer)
             death[3] = "Reset";
             var death_spr = asset_get_index("sMenuDeath"+string(death[global.deathEnabled]));
             
-            if (menuButtonToggle(xx,yy,w,h,true,death_spr,"[ "+string(death[global.deathEnabled]+" Death ]"),string(death[1])+" Death",global.deathEnabled)) 
+            var tt = "Toggles death type.
+            No death will only cause killers to be highlighted on collision.
+            Death will cause you to explode on collision with killers.
+            Hit Death will cause you to be hit and become intangible on collision with killers.
+            Reset Death will cause the room to immediately reste on collision with killers.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,death_spr,"[ "+string(death[global.deathEnabled]+" Death ]"),string(death[1])+" Death",global.deathEnabled,tt)) 
             {
                 global.deathEnabled += 1;
                 
@@ -1170,7 +1280,12 @@ if (mode == input_prefplayer)
             hitbox[2] = "Only";
             hitbox_spr = asset_get_index("sMenuHitbox"+string(hitbox[global.showhitbox]));
             
-            if (menuButtonToggle(xx,yy,w,h,true,hitbox_spr,"[ "+hitbox[global.showhitbox]+" Hitbox ]",string(hitbox[1])+" Hitbox",global.showhitbox)) 
+            var tt = "Toggles player hitbox opacity.
+            Hide hitbox will display the player normally.
+            Show hitbox will display your hitbox at low opacity.
+            Only hitbox will replace the player with a hitbox.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,hitbox_spr,"[ "+hitbox[global.showhitbox]+" Hitbox ]",string(hitbox[1])+" Hitbox",global.showhitbox,tt)) 
             {
                 global.showhitbox += 1;
                 
@@ -1182,7 +1297,11 @@ if (mode == input_prefplayer)
         
             
             case 2: //dot outline
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuDotOutline,"[ Dot Outline ]","Dot Outline",global.dotkidoutline))
+            var tt = "Toggles Dotkid outline.
+            Sets whether or not to draw a rectangle around the player's position while Dotkid is active.
+            Useful for seeing where the player currently is more easily.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuDotOutline,"[ Dot Outline ]","Dot Outline",global.dotkidoutline,tt))
             {
                 global.dotkidoutline = !global.dotkidoutline;
                 saveConfig();
@@ -1194,7 +1313,10 @@ if (mode == input_prefplayer)
             if (!global.savesubpixel) 
                 subpx_spr = sMenuFloorSubpixel;
                 
-            if (menuButtonToggle(xx,yy,w,h,true,subpx_spr,"[ Save Subpx ]","Save Subpx",global.savesubpixel)) 
+            var tt = "Toggles saving subpixels.
+            Sets whether or not to floor the player's X and Y subpixels on restart.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,subpx_spr,"[ Save Subpx ]","Save Subpx",global.savesubpixel,tt)) 
             {
                 global.savesubpixel = !global.savesubpixel;
                 saveConfig();
@@ -1225,7 +1347,7 @@ if (mode == input_prefplayer)
             <string>///screen options
 if (mode == input_prefscreen) 
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1)
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1)
     var head = "Set Screen Preferences";
     var xx = 528-130;
     var w = 130;
@@ -1243,7 +1365,9 @@ if (mode == input_prefscreen)
             if (window_get_fullscreen()) 
                 window_spr = sMenuWindowed;
                 
-            if (menuButtonToggle(xx,yy,w,h,true,window_spr,"[ Fullscreen ]","Fullscreen",window_get_fullscreen())) {
+            var tt = "Toggles fullscreen mode.";
+                
+            if (menuButtonToggle(xx,yy,w,h,true,window_spr,"[ Fullscreen ]","Fullscreen",window_get_fullscreen(),tt)) {
                 window_set_fullscreen(!window_get_fullscreen());
                 oWorld.alarm[0] = 1;
                 completelyResetZoom();
@@ -1256,21 +1380,28 @@ if (mode == input_prefscreen)
             if (global.hidesidebar) 
                 sidebar_spr = sMenuSidebarOpen;
                 
-            if (menuButtonToggle(xx,yy,w,h,true,sidebar_spr,"Show Sidebar","Hide Sidebar",global.hidesidebar)) {
+            var tt = "Toggles the sidebar.";
+                
+            if (menuButtonToggle(xx,yy,w,h,true,sidebar_spr,"Show Sidebar","Hide Sidebar",global.hidesidebar,tt)) {
                 global.hidesidebar = !global.hidesidebar;
                 saveConfig();
             } break;
         
             
             case 2: //mouse coords
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuCoords,"[ Coordinates ]","Coordinates",global.mousecoords)) {
+            var tt = "Toggles mouse coordinates display.
+            Sets whether or not to display the mouse cursor's position.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuCoords,"[ Coordinates ]","Coordinates",global.mousecoords,tt)) {
                 global.mousecoords = !global.mousecoords;
                 saveConfig();
             } break;
             
             
             case 3: //grid draw
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuGrid,"Grid: "+string(global.grid_draw),"Grid: off",global.grid_draw != 0)) {
+            var tt = "Toggles drawing the grid overlay.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuGrid,"Grid: "+string(global.grid_draw),"Grid: off",global.grid_draw != 0,tt)) {
                 if (!global.grid_sync) {
                     switch (global.grid_draw) {
                         case 0: global.grid_draw = 32; break;
@@ -1297,7 +1428,10 @@ if (mode == input_prefscreen)
             if (!global.grid_sync) 
                 gridsync_spr = sMenuGridDesync;
                 
-            if (menuButtonToggle(xx,yy,w,h,true,gridsync_spr,"[ Grid Sync ]","Grid Sync",global.grid_sync)) {
+            var tt = "Toggles grid sync.
+            Sets whether or not the grid overlay is synced with the current grid snap.";
+                
+            if (menuButtonToggle(xx,yy,w,h,true,gridsync_spr,"[ Grid Sync ]","Grid Sync",global.grid_sync,tt)) {
                 global.grid_sync = !global.grid_sync;
                 saveConfig();
             } break;
@@ -1327,7 +1461,7 @@ if (mode == input_prefscreen)
             <string>///system options
 if (mode == input_prefsystem) 
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set System Preferences";
     var xx = 528-130;
     var w = 130;
@@ -1345,7 +1479,10 @@ if (mode == input_prefsystem)
             if (global.waterlocked) 
                 waterlock_spr = sMenuWaterLock;
                 
-            if (menuButtonToggle(xx,yy,w,h,true,waterlock_spr,"[ Lock Water ]","Lock Water",global.waterlocked)) {
+            var tt = "Toggles water locking.
+            Sets whether or not you can delete water.";
+                
+            if (menuButtonToggle(xx,yy,w,h,true,waterlock_spr,"[ Lock Water ]","Lock Water",global.waterlocked,tt)) {
                 global.waterlocked = !global.waterlocked;
             } break;
         
@@ -1356,7 +1493,13 @@ if (mode == input_prefsystem)
             hotkey[1] = "Lock";
             hotkey[2] = "Fixed";
             hotkey_spr = asset_get_index("sMenuHotkey"+string(hotkey[global.hotkeylock]));
-            if (menuButtonToggle(xx,yy,w,h,true,hotkey_spr,"[ "+hotkey[global.hotkeylock]+" Keys ]","Lock Keys",global.hotkeylock)) {
+            
+            var tt = "Toggles hotkey lock type.
+            Unlocked allows you to freely use V, F, G and H.
+            Locked only allows you to use the hotkeys while holding Control.
+            Fixed makes the hotkeys inaccessible.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,hotkey_spr,"[ "+hotkey[global.hotkeylock]+" Keys ]","Lock Keys",global.hotkeylock,tt)) {
                 global.hotkeylock += 1;
                 
                 if (global.hotkeylock &gt; 2) 
@@ -1370,28 +1513,41 @@ if (mode == input_prefsystem)
             if (!global.airsaving) 
                 airsave_spr = sMenuFloorSave;
                 
-            if (menuButtonToggle(xx,yy,w,h,true,airsave_spr,"[ Air Saving ]","Air Saving",global.airsaving)) {
+            var tt = "Toggles saving in the air.
+            Sets whether or not you can press S to save in the air.
+            You cannot press S to save while standing on a save.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,airsave_spr,"[ Air Saving ]","Air Saving",global.airsaving,tt)) {
                 global.airsaving = !global.airsaving;
                 saveConfig();
             } break;
             
             
             case 3: //global time
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuTimer,"[ Global Time ]","Global Time",global.worldtime)) {
+            var tt = "Toggles persistent global timer.
+            Sets whether or not the global time will persist on restart.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuTimer,"[ Global Time ]","Global Time",global.worldtime,tt)) {
                 global.worldtime = !global.worldtime;
                 saveConfig();
             } break;
             
             
             case 4: //toggle backups
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuPrefsBackup,"[ Backups ]","Backups",global.backup)) {
+            var tt = "Toggles backup maps.
+            Sets whether or not to create a backup of the current map every 5 minutes.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuPrefsBackup,"[ Backups ]","Backups",global.backup,tt)) {
                 global.backup = !global.backup;
                 saveConfig();
             } break;
             
             
             case 5: //toggle update check
-            if (menuButtonToggle(xx,yy,w,h,true,sMenuPrefsUpdate,"[ Updates ]","Updates",global.checkupdates)) {
+            var tt = "Toggles update checking.
+            Sets whether or not to automatically install available updates.";
+            
+            if (menuButtonToggle(xx,yy,w,h,true,sMenuPrefsUpdate,"[ Updates ]","Updates",global.checkupdates,tt)) {
                 global.checkupdates = !global.checkupdates;
                 saveConfig();
             } break;
@@ -1421,7 +1577,7 @@ if (mode == input_prefsystem)
             <string>///depth order
 if (mode == input_prefdepth) 
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Depth Order";
     draw_text(528, 304-back_h/2+50,"Front");
     draw_text(528, 304+back_h/2-87,"Back");
@@ -1466,7 +1622,7 @@ if (mode == input_prefdepth)
                draw_sprite(sJumpRefresher, 0, spritesX+80, spritesY+16);
                break;
         }
-        fontSetup(font_small, c_black, fa_left, fa_top, 1);
+        fontSetup(global.systemfont, c_black, fa_left, fa_top, 1);
         draw_text(labelX,yy+10,text);
         
         if (i != 0) {
@@ -1540,7 +1696,7 @@ if (mode == input_prefdepth)
             <string>///control binds
 if (mode == input_prefctrls) 
 {
-    fontSetup(font_small, c_black, fa_center, fa_top, 1);
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Control Binds";
     var buttons_enabled = true;
     var xx = 528-130;
@@ -1748,7 +1904,7 @@ if (mode == input_info)
             <string>///about
 if (mode == input_about) 
 {
-    fontSetup(font_small,c_black,fa_center,fa_top,1);
+    fontSetup(global.systemfont,c_black,fa_center,fa_top,1);
     draw_text(528,304-260,"jtool version "+global.version_string
     +"#record version 1.1#"
     +"#made by Patrickgh3"

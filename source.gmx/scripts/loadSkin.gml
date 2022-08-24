@@ -29,6 +29,7 @@ else
     }
 }
 // ui
+global.systemfont = font_small;
 global.color_button = colorFromHsvDelimString(ini_read_string("ui","button_idle_color","0,0,175"),",");
 global.color_buttonhover = colorFromHsvDelimString(ini_read_string("ui","button_active_color","0,0,255"),",");
 global.color_palettepressed = colorFromHsvDelimString(ini_read_string("ui","button_palette_pressed_color","0,0,0"),",");

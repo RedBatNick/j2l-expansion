@@ -296,7 +296,8 @@ xx += dx+dx2;
 yy = y+yo*2;
 
 xx += sdx;
-if (menuButtonShift(xx, yy, sw, sh, "&gt;", buttons_enabled, 0)) {
+var tt = "Shift all objects Right by current grid snap.";
+if (menuButton(xx, yy, sw, sh, "&gt;", buttons_enabled, 0, tt)) {
     with (oEdit) { clearUndoStack(); }
     with (all) {
         if (objectInPalette(object_index) || object_index = oPlayer)
@@ -305,7 +306,8 @@ if (menuButtonShift(xx, yy, sw, sh, "&gt;", buttons_enabled, 0)) {
 }
 xx -= sdx;
 yy += sdy;
-if (menuButtonShift(xx, yy, sw, sh, "v", buttons_enabled, 0)) {
+var tt = "Shift all objects Down by current grid snap.";
+if (menuButton(xx, yy, sw, sh, "v", buttons_enabled, 0, tt)) {
     with (oEdit) { clearUndoStack(); }
     with (all) {
         if (objectInPalette(object_index) || object_index = oPlayer)
@@ -313,7 +315,8 @@ if (menuButtonShift(xx, yy, sw, sh, "v", buttons_enabled, 0)) {
     }
 }
 yy -= sdy*2;
-if (menuButtonShift(xx, yy, sw, sh, "^", buttons_enabled, 0)) {
+var tt = "Shift all objects Up by current grid snap.";
+if (menuButton(xx, yy, sw, sh, "^", buttons_enabled, 0, tt)) {
     with (oEdit) { clearUndoStack(); }
     with (all) {
         if (objectInPalette(object_index) || object_index = oPlayer)
@@ -322,7 +325,8 @@ if (menuButtonShift(xx, yy, sw, sh, "^", buttons_enabled, 0)) {
 }
 xx -= sdx;
 yy += sdy;
-if (menuButtonShift(xx, yy, sw, sh, "&lt;", buttons_enabled, 0)) {
+var tt = "Shift all objects Left by current grid snap.";
+if (menuButton(xx, yy, sw, sh, "&lt;", buttons_enabled, 0, tt)) {
     with (oEdit) { clearUndoStack(); }
     with (all) {
         if (objectInPalette(object_index) || object_index = oPlayer)

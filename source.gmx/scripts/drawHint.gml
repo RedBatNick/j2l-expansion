@@ -7,7 +7,7 @@ var label = argument[3];
 var time = argument[4];
 var show = argument[5];
 
-fontSetup(font_small,c_black,fa_left,fa_top,1);
+fontSetup(global.systemfont,c_black,fa_left,fa_top,1);
 draw_text(xx+5,yy+5,label);
 
 var num_ticks = 3;
