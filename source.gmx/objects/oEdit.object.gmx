@@ -52,6 +52,7 @@ redoDelay = 30;
 xsnapped_previous = 0;
 ysnapped_previous = 0;
 
+att_to_add = 0;
 usingMini = 0;
 </string>
           </argument>
@@ -151,7 +152,15 @@ if (shouldCaptureControls) {
             var inst = instance_position(mouse_x,mouse_y,all);
             if (inst != noone) 
             {
-                if (inst.object_index == oSave &amp;&amp; objectInPalette(oSave)) {
+                if (objectInPalette(inst.object_index)) {
+                    inputOverlay(input_attributes,inputCallback_addAttributesToObject,"Apply Attributes to Object");
+                    selected_instance = inst;
+                    if (att_to_add) {
+
+                    }
+                    else if (inst.code_step_written != "") then keyboard_string = inst.code_step_written;
+                }
+               /* if (inst.object_index == oSave &amp;&amp; objectInPalette(oSave)) {
                     canSign = 1;
                     for (i = 0; i &lt; instance_number(oSave); i+=1)
                     {
@@ -177,7 +186,7 @@ if (shouldCaptureControls) {
                     inputOverlay(input_textarea,inputCallback_addCodeToObject,"Enter Code for Step Event:");
                     selected_instance = inst;
                     if (inst.code_step_written != "") then keyboard_string = inst.code_step_written;
-                }
+                }*/
             }
         }
     } else if (space || middleHeld || draggedInstance != noone) {  // object movement

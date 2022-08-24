@@ -16,8 +16,8 @@ newSkinnableSprite(sPlayerSliding, "playersliding");
 newSkinnableSprite(sLunarkid, "lunarkid");
 newSkinnableSprite(sLinekid, "linekid");
 
+newSkinnableObject(sPlayerBlood, "blood",0);
 newSkinnableObject(sPlayerBullet, "bullet");
-newSkinnableSprite(sPlayerBlood, "blood");
 
 
 // Blocks.
@@ -253,8 +253,8 @@ newSkinnableObject(oSwitchJumpRefresher, "jumpswitchrefresher", 1/15);
 newSkinnableObject(oSlowJumpRefresher, "jumpslowrefresher", 1/15);
 
 
-//newSkinnableObject(oShootRefresherR, "shootrefresherR", 0);
-//newSkinnableObject(oShootRefresherL, "shootrefresherL", 0);
+newSkinnableSprite(oShootRefresherR, "shootrefresherR", 0);
+newSkinnableSprite(oShootRefresherL, "shootrefresherL", 0);
 
 
 // Gravity.
@@ -281,8 +281,8 @@ newSkinnableObject(oFieldTripleOff, "fieldtripleoff");
 
 
 // Saves.
-newSkinnableObject(oSave, "save", 0);
-newSkinnableObject(oSaveFlip, "save", 0);
+newSkinnableSprite(oSave, "save", 0);
+newSkinnableSprite(oSaveFlip, "save", 0);
 
 
 // Markers. 

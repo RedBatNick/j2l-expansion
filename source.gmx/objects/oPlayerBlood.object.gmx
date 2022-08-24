@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = choose(0,1,2);
-image_speed = 0;
-gravity = (0.1+random(0.2)) * global.grav;
+            <string>image_speed = 0;
+image_index = choose(0,1,2);
+gravity = (0.1+random(0.2)) * sign(global.grav);
 direction = random(360);//irandom(35)*10
 speed = random(6);
 
@@ -62,29 +62,6 @@ image_yscale = image_xscale;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="oPlatform">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// do nothing
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="oBlock">
       <action>
         <libid>1</libid>
@@ -104,7 +81,7 @@ image_yscale = image_xscale;
             <kind>1</kind>
             <string>move_contact_solid(direction, speed);
 speed = 0;
-gravity = 0;
+//gravity = 0;
 </string>
           </argument>
         </arguments>

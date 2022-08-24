@@ -815,6 +815,7 @@
             <script>scripts\inputCallback_VAlign.gml</script>
             <script>scripts\inputCallback_NewVersionOpenThread.gml</script>
             <script>scripts\inputCallback_addCodeToObject.gml</script>
+            <script>scripts\inputCallback_addAttributesToObject.gml</script>
             <script>scripts\inputCallback_addTextToSign.gml</script>
           </scripts>
         </scripts>
@@ -1417,7 +1418,7 @@
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="48">
+  <constants number="49">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
     <constant name="globalstate_input">3</constant>
@@ -1447,6 +1448,7 @@
     <constant name="input_prefdepth">17</constant>
     <constant name="input_prefctrls">18</constant>
     <constant name="input_position">19</constant>
+    <constant name="input_attributes">20</constant>
     <constant name="savetype_shoot">0</constant>
     <constant name="savetype_touch">1</constant>
     <constant name="bordertype_death">0</constant>
