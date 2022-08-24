@@ -85,6 +85,8 @@ fontSetup(global.systemfont,c_black,fa_center,fa_center,1);
 
 var xx = 928-back_w/2;
 var yy = 304-back_h/2;
+var w = 120;
+var h = 32;
 
 draw_sprite_ext(sPopup,0,xx+1,yy,(back_w-1)/sprite_get_width(sPopup),back_h/sprite_get_height(sPopup),0,c_white,1);
 draw_rectangle(xx,yy,xx+back_w-1,yy+back_h-1,true);
@@ -135,9 +137,7 @@ if (mode == input_textbox)
     var textbox_w = 40;
     var textbox_h = 32;
     var cursor_h = 20;
-    
-    var xx = 928-textbox_w/2;
-    var yy = 304+textbox_yo;
+
     var ycenter = yy+textbox_h/2;
     
     drawButton(xx,yy,textbox_w,textbox_h,true);
@@ -189,9 +189,7 @@ if (mode == input_textarea)
     var textbox_h = max(160, string_height(keyboard_string)+26);
     var textbox_yo = -10-64-(textbox_h-160)/2;
     var cursor_h = 20;
-    
-    var xx = 928-textbox_w/2;
-    var yy = 304+textbox_yo;
+
     var ycenter = yy+textbox_h/2;
     
     drawButton(xx,yy,textbox_w,textbox_h,true);
@@ -273,9 +271,7 @@ if (mode == input_attributes)
     var textbox_h = 32;
     var textbox_yo = -10-64-(textbox_h-160)/2;
     var cursor_h = 20;
-    
-    var xx = 928-textbox_w/2;
-    var yy = 304+textbox_yo;
+
     var ycenter = yy+textbox_h/2;
     
     drawButton(xx,yy,textbox_w,textbox_h,true);
@@ -299,6 +295,11 @@ if (mode == input_attributes)
         inputOverlayStringSubmit();
     }
 }
+
+var xx = 928-back_w/4;
+var yy = 304-back_h/2;
+var w = 120;
+var h = 32;
 </string>
           </argument>
         </arguments>
@@ -344,13 +345,10 @@ if (mode == input_fileformat)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Parse Other Map Formats";
-    var xx = 928-65;
-    var w = 130;
-    var h = 32;
     
-    for (var i = 0; i &lt; 7; i+=1) 
+    for (var i = 0; i &lt; 15; i+=1) 
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//-back_h/3+41+i*(h+8);
         var text;
         
         switch (i)
@@ -358,7 +356,7 @@ if (mode == input_fileformat)
             case 0: //open RMJ map
             var tt = "Import a Record My Jumps .map file.";
             
-            if (menuButton(xx-69,yy,w,h,"Import RMJ",true,sMenuOpenRMJMap,tt)) 
+            if (menuButton(xx,yy,w,h,"Import RMJ",true,sMenuOpenRMJMap,tt)) 
             {
                 if (!oEdit.undo_nochanges) 
                 {
@@ -371,12 +369,13 @@ if (mode == input_fileformat)
                     global.input_cancel = false;
                     inputCallback_LoadMap("rmj");
                 }
-            }
+            } break;
             
-            //save RMJ map
+            
+            case 1: //save RMJ map
             var tt = "Export map as a Record My Jumps .map file.";
             
-            if (menuButton(xx+69,yy,w,h,"Export RMJ",true,sMenuSaveRMJMap,tt))
+            if (menuButton(xx,yy,w,h,"Export RMJ",true,sMenuSaveRMJMap,tt))
             {
                 if (window_get_fullscreen()) 
                 {
@@ -389,11 +388,11 @@ if (mode == input_fileformat)
             } break;
             
             
-            case 1: //open old jmap
+            case 2: //open old jmap
             var tt = "Import a legacy .jmap file.
             Legacy jmaps are any official .jmaps made prior to version 2.0.0.";
             
-            if (menuButton(xx-69,yy,w,h,"Import Legacy",true,sMenuOpenJMap,tt)) 
+            if (menuButton(xx,yy,w,h,"Import Legacy",true,sMenuOpenJMap,tt)) 
             {
                 if (!oEdit.undo_nochanges) 
                 {
@@ -406,13 +405,14 @@ if (mode == input_fileformat)
                     global.input_cancel = false;
                     inputCallback_LoadMap("legacy");
                 }
-            }
+            } break;
             
-            //save old jmap
+
+            case 3: //save old jmap
             var tt = "Export map as a legacy .jmap file.
             Legacy jmaps are any official .jmaps made prior to version 2.0.0.";
             
-            if (menuButton(xx+69,yy,w,h,"Export Legacy",true,sMenuSaveJMap,tt)) 
+            if (menuButton(xx,yy,w,h,"Export Legacy",true,sMenuSaveJMap,tt)) 
             {
                 if (window_get_fullscreen()) 
                 {
@@ -425,10 +425,10 @@ if (mode == input_fileformat)
             } break;
             
             
-            case 2: //open cmap
+            case 4: //open cmap
             var tt = "Import a .cmap file.";
             
-            if (menuButton(xx-69,yy,w,h,"Import Ctool",true,sMenuOpenCMap,tt)) 
+            if (menuButton(xx,yy,w,h,"Import Ctool",true,sMenuOpenCMap,tt)) 
             {
                 if (!oEdit.undo_nochanges) 
                 {
@@ -441,12 +441,13 @@ if (mode == input_fileformat)
                     global.input_cancel = false;
                     inputCallback_LoadMap("ctool");
                 }
-            }
+            } break;
             
-            //save cmap
+            
+            case 5: //save cmap
             var tt = "Export map as a .cmap file.";
             
-            if (menuButton(xx+69,yy,w,h,"Export Ctool",true,sMenuSaveCMap,tt)) 
+            if (menuButton(xx,yy,w,h,"Export Ctool",true,sMenuSaveCMap,tt)) 
             {
                 if (window_get_fullscreen()) 
                 {
@@ -459,54 +460,55 @@ if (mode == input_fileformat)
             } break;
                         
             
-            case 3: //open iwm map
+            case 6: //open iwm map
             var tt = "Import an I Wanna Maker .map file.
             IWM maps are structurally very different from .jmaps, so a lot of information will be lost.";
             
-            if (menuButton(xx-69,yy,w,h,"Import IWM",true,sMenuOpenIWMMap,tt)) 
+            if (menuButton(xx,yy,w,h,"Import IWM",true,sMenuOpenIWMMap,tt)) 
             {
 
-            }
+            } break;
             
-            //save iwm map
+            
+            case 7: //save iwm map
             var tt = "Export map as an I Wanna Maker .map file.
             IWM maps are structurally very different from .jmaps, so a lot of information will be lost.";
             
-            if (menuButton(xx+69,yy,w,h,"Export IWM",true,sMenuSaveIWMMap,tt)) 
+            if (menuButton(xx,yy,w,h,"Export IWM",true,sMenuSaveIWMMap,tt)) 
             {
             
             } break;
             
             
-            case 4: //open gmx room
+            case 8: //open gmx room
             var tt = "Import a GameMaker: Studio .gmx room file.";
             
-            if (menuButton(xx-69,yy,w,h,"Import GMX",true,sMenuOpenGMXRoom,tt))
+            if (menuButton(xx,yy,w,h,"Import GMX",true,sMenuOpenGMXRoom,tt))
             {
 
-            }
+            } break;
             
-            //save gmx room
+            case 9: //save gmx room
             var tt = "Export map as a GameMaker: Studio .gmx room file.";
             
-            if (menuButton(xx+69,yy,w,h,"Export GMX",true,sMenuSaveGMXRoom,tt))
+            if (menuButton(xx,yy,w,h,"Export GMX",true,sMenuSaveGMXRoom,tt))
             {
             
             } break;
             
             
-            case 5: //open gm82 room
+            case 10: //open gm82 room
             var tt = "Import a GameMaker 8.2 room folder as a map.";
             
-            if (menuButton(xx-69,yy,w,h,"Import GM82",true,sMenuOpenGM82Room,tt))
+            if (menuButton(xx,yy,w,h,"Import GM82",true,sMenuOpenGM82Room,tt))
             {
 
-            }
+            } break;
             
-            //save gm82 room
+            case 11: //save gm82 room
             var tt = "Export map as a GameMaker 8.2 room folder.";
             
-            if (menuButton(xx+69,yy,w,h,"Export GM82",true,sMenuSaveGM82Room,tt))
+            if (menuButton(xx,yy,w,h,"Export GM82",true,sMenuSaveGM82Room,tt))
             {
             
             } break;
@@ -538,13 +540,10 @@ if (mode == input_filerecord)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Recording";
-    var xx = 928-130;
-    var w = 130;
-    var h = 32;
     
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -683,9 +682,6 @@ if (mode == input_maptransform)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Transformations";
-    var xx = 928-136;
-    var w = 130;
-    var h = 32;
     
     var Jump = "[ "+scrGetKeybind(global.controls[KEY.JUMP, 0])+" ]";
     var Z = "[ "+scrGetKeybind(global.controls[KEY.SHOOT, 0])+" ]";
@@ -698,7 +694,7 @@ if (mode == input_maptransform)
     
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -806,9 +802,6 @@ if (mode == input_mapsaves)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Save Attributes";
-    var xx = 928-130;
-    var w = 130;
-    var h = 32;
     
     var Z = "( "+scrGetKeybind(global.controls[KEY.SHOOT, 0])+" )";
     var S = "( "+scrGetKeybind(global.controls[KEY.SKIP, 0])+" )";    
@@ -816,7 +809,7 @@ if (mode == input_mapsaves)
     
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
     
         switch (i)
@@ -891,13 +884,10 @@ if (mode == input_mapphysics)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Physics Options";
-    var xx = 928-130;
-    var w = 130;
-    var h = 32;
-    
+
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -971,13 +961,10 @@ if (mode == input_mapborders)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Border Attributes";
-    var xx = 928-130;
-    var w = 130;
-    var h = 32;
-    
+
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -1062,13 +1049,10 @@ if (mode == input_mapactions)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Misc. Interactions";
-    var xx = 928-130;
-    var w = 130;
-    var h = 32;
-    
+
     for (var i = 0; i &lt; 7; i+=1)
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -1160,13 +1144,10 @@ if (mode == input_prefplayer)
 {   
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Player Preferences";
-    var xx = 928-130;
-    var w = 130;
-    var h = 32;
-    
+
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -1272,13 +1253,10 @@ if (mode == input_prefscreen)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1)
     var head = "Set Screen Preferences";
-    var xx = 928-130;
-    var w = 130;
-    var h = 32;
     
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i) 
@@ -1386,13 +1364,10 @@ if (mode == input_prefsystem)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set System Preferences";
-    var xx = 928-130;
-    var w = 130;
-    var h = 32;
-    
+
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -1622,13 +1597,10 @@ if (mode == input_prefctrls)
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Control Binds";
     var buttons_enabled = true;
-    var xx = 928-130;
-    var w = 65;
-    var h = 32;
     
     for (var i = 0; i &lt; numberOfKeys; i+=1) 
     {
-        var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         if (menuButton(xx,yy,w,h,bindName[i],buttons_enabled,false)) {
@@ -1677,8 +1649,6 @@ if (mode == input_prefctrls)
           <argument>
             <kind>1</kind>
             <string>///overlay setup
-var xx = 928-back_w/2;
-var yy = 304-back_h/2;
 var w = back_w-1;
 var h = 33;
 
@@ -1697,13 +1667,13 @@ if (mode &gt;= input_fileformat &amp;&amp; mode &lt;= input_prefctrls)
         draw_set_color(c_black);
         draw_rectangle(xx,yy,xx+w,yy+(h+(i*19)),1);
     }
-    draw_text(928,304-back_h/2+(h/2),head);
+    draw_text(928,16,head);
     
     // Ok button
     var button_yo = 145;
     var button_w = 90;
     var button_h = 32;
-    if (menuButton(928-button_w/2,304+button_yo,button_w,button_h,"Ok",true,false) || keyboard_check_pressed(vk_enter)) {
+    if (menuButton(928-button_w/2,381+button_yo,button_w,button_h,"Ok",true,false) || keyboard_check_pressed(vk_enter)) {
         inputOverlayYes();
     }
     
