@@ -826,7 +826,6 @@
           <script>scripts\menuSection.gml</script>
           <script>scripts\comboBoxButton.gml</script>
           <script>scripts\menuButtonTwoPart.gml</script>
-          <script>scripts\menuButtonShift.gml</script>
         </scripts>
         <scripts name="jump analysis">
           <scripts name="duration">
