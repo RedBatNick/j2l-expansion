@@ -321,7 +321,7 @@ if (mode == input_attributes)
     }
 }
 
-var xx = 928-back_w/4;
+var xx = 928-back_w/3;
 var yy = 304-back_h/2;
 var w = 160;
 var h = 32;
@@ -1497,13 +1497,117 @@ if (mode == input_prefsystem)
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///control binds
+if (mode == input_prefctrls) 
+{
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
+    var head = "Set Control Binds";
+    var buttons_enabled = true;
+    
+    for (var i = 0; i &lt; numberOfKeys; i+=1) 
+    {
+        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var text;
+        
+        if (menuButton(xx,yy,w,h,bindName[i],buttons_enabled,false)) {
+            
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///shift position
+if (mode == input_position) 
+{
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
+    var head = "Shift Palette Objects";
+    
+    var sw = 18;
+    var sh = 18;
+
+    var tt = "Shift all objects Right by current grid snap.";
+    if (menuButton(xx, yy, sw, sh, "&gt;", true, 0, tt)) {
+        with (oEdit) { clearUndoStack(); }
+        with (all) {
+            if (objectInPalette(object_index) || object_index = oPlayer)
+                x += oEdit.snap;
+        }
+    }
+    xx -= 25;
+    yy += 12;
+    var tt = "Shift all objects Down by current grid snap.";
+    if (menuButton(xx, yy, sw, sh, "v", true, 0, tt)) {
+        with (oEdit) { clearUndoStack(); }
+        with (all) {
+            if (objectInPalette(object_index) || object_index = oPlayer)
+                y += oEdit.snap;
+        }
+    }
+    yy -= 24;
+    var tt = "Shift all objects Up by current grid snap.";
+    if (menuButton(xx, yy, sw, sh, "^", true, 0, tt)) {
+        with (oEdit) { clearUndoStack(); }
+        with (all) {
+            if (objectInPalette(object_index) || object_index = oPlayer)
+                y -= oEdit.snap;
+        }
+    }
+    xx -= 25;
+    yy += 12;
+    var tt = "Shift all objects Left by current grid snap.";
+    if (menuButton(xx, yy, sw, sh, "&lt;", true, 0, tt)) {
+        with (oEdit) { clearUndoStack(); }
+        with (all) {
+            if (objectInPalette(object_index) || object_index = oPlayer)
+                x -= oEdit.snap;
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///depth order
 if (mode == input_prefdepth) 
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Depth Order";
-    draw_text(928, 304-back_h/2+50,"Front");
-    draw_text(928, 304+back_h/2-87,"Back");
+    draw_text(928, 304-back_h/3+50,"Front");
+    draw_text(928, 304+back_h/3-87,"Back");
     
     var labelX = 928-100;
     var spritesX = 928-40;
@@ -1514,7 +1618,7 @@ if (mode == input_prefdepth)
     
     for (var i = 0; i &lt; ds_list_size(global.depthList); i+=1) 
     {
-        var yy = 304-back_h/2+70+i*(h+10);
+        var yy = 40+i*(h+10);//304-back_h/2+70+i*(h+10);
         var text;
         var spritesY = yy+7;
         
@@ -1616,22 +1720,12 @@ if (mode == input_prefdepth)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///control binds
-if (mode == input_prefctrls) 
+            <string>///skins database
+if (mode == input_skins)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
-    var head = "Set Control Binds";
-    var buttons_enabled = true;
+    var head = "Switch Skins";
     
-    for (var i = 0; i &lt; numberOfKeys; i+=1) 
-    {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
-        var text;
-        
-        if (menuButton(xx,yy,w,h,bindName[i],buttons_enabled,false)) {
-            
-        }
-    }
 }
 </string>
           </argument>
@@ -1674,31 +1768,28 @@ if (mode == input_prefctrls)
           <argument>
             <kind>1</kind>
             <string>///overlay setup
-var w = back_w-1;
+var xx = 800;
+var yy = 11;
+var w = 256;
 var h = 33;
 
-if (mode &gt;= input_fileformat &amp;&amp; mode &lt;= input_prefctrls)
+if (mode &gt;= input_fileformat &amp;&amp; mode &lt;= input_prefdepth)
 {
-    /*for (i = 0; i &lt; 2; i+=1)
+    for (i = 0; i &lt; 2; i+=1)
     {
-        if (i = 1)
-        {
-            yy = (304+back_h/2)-53;
+        if (i = 1) 
+        { 
+            yy = 571;//564
         }
-        
-        draw_set_color(c_white);
-        draw_rectangle(xx,yy,xx+w,yy+(h+(i*19)),0);
-        
-        draw_set_color(c_black);
-       draw_rectangle(xx,yy,xx+w,yy+(h+(i*19)),1);
-    } */
-    draw_text(928,16,head);
+        draw_sprite_part_ext(sPopup,0,0,yy,w,h,xx,yy,1,1,c_white,1)
+        draw_line(xx,yy+(h-(i*33)),xx+w,yy+(h-(i*33)))
+    }
+    draw_text(928,24,head);
     
     // Ok button
-    var button_yo = 145;
     var button_w = 90;
-    var button_h = 32;
-    if (menuButton(928-button_w/2,381+button_yo,button_w,button_h,"Ok",true,false) || keyboard_check_pressed(vk_enter)) {
+    var button_h = 24;
+    if (menuButton(928-button_w/2,576,button_w,button_h,"Ok",true,false) || keyboard_check_pressed(vk_enter)) {
         inputOverlayYes();
     }
     

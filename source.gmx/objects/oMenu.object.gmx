@@ -294,7 +294,7 @@ if (menuButton(xx,yy,w,h,"Depth Order",buttons_enabled,sMenuDepth)) {
 }
 
 // shift all objects
-var sw = 18;
+/*var sw = 18;
 var sh = 18;
 var sdy = 12;
 var sdx = 25;
@@ -338,7 +338,7 @@ if (menuButton(xx, yy, sw, sh, "&lt;", buttons_enabled, 0, tt)) {
         if (objectInPalette(object_index) || object_index = oPlayer)
             x -= oEdit.snap;
     }
-}
+}*/
 
 // close menu
 var xw = 800;

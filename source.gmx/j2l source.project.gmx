@@ -1418,7 +1418,7 @@
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="49">
+  <constants number="50">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
     <constant name="globalstate_input">3</constant>
@@ -1445,10 +1445,11 @@
     <constant name="input_prefplayer">14</constant>
     <constant name="input_prefscreen">15</constant>
     <constant name="input_prefsystem">16</constant>
-    <constant name="input_prefdepth">17</constant>
-    <constant name="input_prefctrls">18</constant>
-    <constant name="input_position">19</constant>
-    <constant name="input_attributes">20</constant>
+    <constant name="input_prefctrls">17</constant>
+    <constant name="input_position">18</constant>
+    <constant name="input_skins">19</constant>
+    <constant name="input_prefdepth">20</constant>
+    <constant name="input_attributes">21</constant>
     <constant name="savetype_shoot">0</constant>
     <constant name="savetype_touch">1</constant>
     <constant name="bordertype_death">0</constant>
