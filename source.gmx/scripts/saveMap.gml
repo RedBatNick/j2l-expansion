@@ -167,7 +167,7 @@ var data = "Save#" + json_encode(map);
 //buffer_save(buffer, filename);
 //buffer_delete(buffer);
 var file = file_text_open_write(filename);
-file_text_write_string(file, fata);
+file_text_write_string(file, data);
 file_text_close(file);
 ds_map_destroy(map);
 
