@@ -10,8 +10,8 @@ var text = argument[4];
 var enabled = argument[5];
 var icon = argument[6];
 
-var mouse_hover1 = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w/2-1,yy+h-1) && enabled;
-var mouse_hover2 = point_in_rect(mouse_x,mouse_y,xx+w/2,yy,xx+w-1,yy+h-1) && enabled;
+var mouse_hover1 = point_in_rectangle(mouse_x,mouse_y,xx,yy,xx+w/2-1,yy+h-1) && enabled;
+var mouse_hover2 = point_in_rectangle(mouse_x,mouse_y,xx+w/2,yy,xx+w-1,yy+h-1) && enabled;
 
 drawButton(xx,yy,w,h,false);
 

@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>if (!global.mousecoords || global.state != globalstate_idle
-|| !point_in_rect(mouse_x,mouse_y,0,0,799,607)) 
+|| !point_in_rectangle(mouse_x,mouse_y,0,0,799,607)) 
     exit;
 
 fontSetup(global.systemfont, c_black, fa_left, fa_bottom, 1);

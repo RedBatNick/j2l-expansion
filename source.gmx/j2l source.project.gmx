@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="7" name="datafiles">
+  <datafiles number="8" name="datafiles">
     <datafile>
       <name>startup.jmap</name>
       <exists>-1</exists>
@@ -424,7 +424,7 @@
         <sprite>sprites\sBlockMaskSlip</sprite>
       </sprites>
       <sprite>sprites\sPlatformMask</sprite>
-      <sprite>sprites\sPink32</sprite>
+      <sprite>sprites\sTrigger</sprite>
     </sprites>
     <sprites name="editor">
       <sprite>sprites\sEditorKiller</sprite>
@@ -695,14 +695,6 @@
               <script>scripts\base32StringToFloat.gml</script>
             </scripts>
           </scripts>
-          <scripts name="base64">
-            <script>scripts\intToBase64String.gml</script>
-            <script>scripts\base64StringToInt.gml</script>
-          </scripts>
-          <scripts name="base128">
-            <script>scripts\intToBase128String.gml</script>
-            <script>scripts\base128StringToInt.gml</script>
-          </scripts>
           <scripts name="variable base">
             <script>scripts\intToBaseXString.gml</script>
             <script>scripts\baseXStringToInt.gml</script>
@@ -732,7 +724,7 @@
           <scripts name="legacy formats">
             <script>scripts\saveOldMap.gml</script>
             <script>scripts\loadOldMap.gml</script>
-            <scripts name="variable object ids">
+            <scripts name="object ids">
               <script>scripts\objectToSaveX.gml</script>
               <script>scripts\saveXToObject.gml</script>
             </scripts>
@@ -851,13 +843,11 @@
       </scripts>
       <scripts name="util">
         <script>scripts\fontSetup.gml</script>
-        <script>scripts\point_in_rect.gml</script>
         <script>scripts\padStringLeft.gml</script>
         <script>scripts\splitDelimString.gml</script>
         <script>scripts\stringIsInt.gml</script>
         <script>scripts\colorFromHsvDelimString.gml</script>
         <script>scripts\prefix_project_path_if_needed.gml</script>
-        <script>scripts\FSIniReadReal.gml</script>
         <script>scripts\handleObjectDragMode.gml</script>
         <script>scripts\findInstanceToDrag.gml</script>
       </scripts>
@@ -1011,6 +1001,7 @@
     <object>objects\oWorld</object>
     <objects name="menu">
       <object>objects\oPause</object>
+      <object>objects\oSidebar</object>
       <object>objects\oMenu</object>
       <object>objects\oInputOverlay</object>
       <object>objects\oZoom</object>
@@ -1020,6 +1011,7 @@
       </objects>
     </objects>
     <objects name="palette">
+      <object>objects\oEdit</object>
       <objects name="player">
         <object>objects\oPlayerStart</object>
         <object>objects\oPlayer</object>
@@ -1353,7 +1345,7 @@
         <object>objects\oWarp</object>
       </objects>
       <objects name="trigger">
-        <object>objects\oTrg</object>
+        <object>objects\oFreeTrigger</object>
       </objects>
     </objects>
     <objects name="other elements">
@@ -1393,12 +1385,6 @@
           </objects>
         </objects>
       </objects>
-    </objects>
-    <objects name="sidebar">
-      <object>objects\oHideSidebar</object>
-      <object>objects\oSidebar</object>
-      <object>objects\oSidebarDraw</object>
-      <object>objects\oEdit</object>
     </objects>
     <objects name="tool misc">
       <object>objects\oBorderDeath</object>

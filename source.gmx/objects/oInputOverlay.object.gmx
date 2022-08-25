@@ -373,7 +373,7 @@ if (mode == input_fileformat)
     
     for (var i = 0; i &lt; 15; i+=1) 
     {
-        var yy = 40+i*(h+8);//-back_h/3+41+i*(h+8);
+        var yy = 48+i*(h+8);//-back_h/3+41+i*(h+8);
         var text;
         
         switch (i)
@@ -568,7 +568,7 @@ if (mode == input_filerecord)
     
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -719,7 +719,7 @@ if (mode == input_maptransform)
     
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -834,7 +834,7 @@ if (mode == input_mapsaves)
     
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
     
         switch (i)
@@ -912,7 +912,7 @@ if (mode == input_mapphysics)
 
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -989,7 +989,7 @@ if (mode == input_mapborders)
 
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -1077,7 +1077,7 @@ if (mode == input_mapactions)
 
     for (var i = 0; i &lt; 7; i+=1)
     {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -1172,7 +1172,7 @@ if (mode == input_prefplayer)
 
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -1281,7 +1281,7 @@ if (mode == input_prefscreen)
     
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i) 
@@ -1299,22 +1299,9 @@ if (mode == input_prefscreen)
                 completelyResetZoom();
                 saveConfig();
             } break;
-        
             
-            case 1: //hide sidebar
-            var sidebar_spr = sMenuSidebarClose;
-            if (global.hidesidebar) 
-                sidebar_spr = sMenuSidebarOpen;
-                
-            var tt = "Toggles the sidebar.";
-                
-            if (menuButtonToggle(xx,yy,w,h,true,sidebar_spr,"Show Sidebar","Hide Sidebar",global.hidesidebar,tt)) {
-                global.hidesidebar = !global.hidesidebar;
-                saveConfig();
-            } break;
-        
             
-            case 2: //mouse coords
+            case 1: //mouse coords
             var tt = "Toggles mouse coordinates display.
             Sets whether or not to display the mouse cursor's position.";
             
@@ -1324,7 +1311,7 @@ if (mode == input_prefscreen)
             } break;
             
             
-            case 3: //grid draw
+            case 2: //grid draw
             var tt = "Toggles drawing the grid overlay.";
             
             if (menuButtonToggle(xx,yy,w,h,true,sMenuGrid,"Grid: "+string(global.grid_draw),"Grid: off",global.grid_draw != 0,tt)) {
@@ -1349,7 +1336,7 @@ if (mode == input_prefscreen)
             } break
             
             
-            case 4: //grid sync
+            case 3: //grid sync
             var gridsync_spr = sMenuGridSync;
             if (!global.grid_sync) 
                 gridsync_spr = sMenuGridDesync;
@@ -1392,7 +1379,7 @@ if (mode == input_prefsystem)
 
     for (var i = 0; i &lt; 7; i+=1) 
     {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         switch (i)
@@ -1506,7 +1493,7 @@ if (mode == input_prefctrls)
     
     for (var i = 0; i &lt; numberOfKeys; i+=1) 
     {
-        var yy = 40+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
+        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
         var text;
         
         if (menuButton(xx,yy,w,h,bindName[i],buttons_enabled,false)) {
@@ -1540,6 +1527,8 @@ if (mode == input_position)
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Shift Palette Objects";
     
+    var xx = 953;
+    var yy = 304;
     var sw = 18;
     var sh = 18;
 
@@ -1618,7 +1607,7 @@ if (mode == input_prefdepth)
     
     for (var i = 0; i &lt; ds_list_size(global.depthList); i+=1) 
     {
-        var yy = 40+i*(h+10);//304-back_h/2+70+i*(h+10);
+        var yy = 48+i*(h+10);//304-back_h/2+70+i*(h+10);
         var text;
         var spritesY = yy+7;
         
@@ -1726,6 +1715,7 @@ if (mode == input_skins)
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Switch Skins";
     
+    
 }
 </string>
           </argument>
@@ -1769,9 +1759,9 @@ if (mode == input_skins)
             <kind>1</kind>
             <string>///overlay setup
 var xx = 800;
-var yy = 11;
+var yy = 0;
 var w = 256;
-var h = 33;
+var h = 44;
 
 if (mode &gt;= input_fileformat &amp;&amp; mode &lt;= input_prefdepth)
 {
@@ -1781,8 +1771,8 @@ if (mode &gt;= input_fileformat &amp;&amp; mode &lt;= input_prefdepth)
         { 
             yy = 571;//564
         }
-        draw_sprite_part_ext(sPopup,0,0,yy,w,h,xx,yy,1,1,c_white,1)
-        draw_line(xx,yy+(h-(i*33)),xx+w,yy+(h-(i*33)))
+        draw_sprite_part_ext(sSidebar,0,0,yy,w,h,xx,yy,1,1,c_white,1)
+        draw_line(xx,yy+(h-(i*44)),xx+w,yy+(h-(i*44)))
     }
     draw_text(928,24,head);
     

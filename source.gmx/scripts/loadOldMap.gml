@@ -180,6 +180,7 @@ if (app == "ctool") {
             }
             file_text_read_string(f);
         }
+        show_debug_message("time in loop: "+string(current_time/1000));
     }
     file_text_close(f);
 }

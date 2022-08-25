@@ -76,7 +76,7 @@ usingMini = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>cursor_in_area = point_in_rect(mouse_x,mouse_y,xmin,ymin,xmax,ymax);
+            <string>cursor_in_area = point_in_rectangle(mouse_x,mouse_y,xmin,ymin,xmax,ymax);
 
 var left = mouse_check_button(mb_left);
 var right = mouse_check_button(mb_right);

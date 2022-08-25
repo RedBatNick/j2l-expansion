@@ -14,7 +14,7 @@ var tooltip = "";
 if (argument_count == 8)
     tooltip = argument[7];
 
-var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w-1,yy+h-1) && enabled;
+var mouse_hover = point_in_rectangle(mouse_x,mouse_y,xx,yy,xx+w-1,yy+h-1) && enabled;
 
 drawButton(xx,yy,w,h,mouse_hover);
 fontSetup(global.systemfont,c_black,fa_center,fa_center,1);

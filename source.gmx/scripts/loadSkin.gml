@@ -33,9 +33,9 @@ global.systemfont = font_small;
 global.color_button = colorFromHsvDelimString(ini_read_string("ui","button_idle_color","0,0,175"),",");
 global.color_buttonhover = colorFromHsvDelimString(ini_read_string("ui","button_active_color","0,0,255"),",");
 global.color_palettepressed = colorFromHsvDelimString(ini_read_string("ui","button_palette_pressed_color","0,0,0"),",");
-global.buttonhoveralpha = FSIniReadReal("ui","button_active_alpha",0.5);
-global.buttonpalettepressedalpha = FSIniReadReal("ui","button_palette_pressed_alpha",0.5);
-global.buttonhoverborder = FSIniReadReal("ui","button_active_border",false);
+global.buttonhoveralpha = ini_read_real("ui","button_active_alpha",0.5);
+global.buttonpalettepressedalpha = ini_read_real("ui","button_palette_pressed_alpha",0.5);
+global.buttonhoverborder = ini_read_real("ui","button_active_border",false);
 // objects
 var colorstring = ini_read_string("objects","killer_idle_color","0,0,255");
 global.color_killerhue = real(splitDelimString(colorstring,",",0));
@@ -48,13 +48,13 @@ global.color_killer2sat = real(splitDelimString(colorstring,",",1));
 global.color_killer2val = real(splitDelimString(colorstring,",",2));
 global.color_killer2 = colorFromHsvDelimString(colorstring,",");
 global.color_warp = colorFromHsvDelimString(ini_read_string("objects","warp_color","67,196,239"),",");
-global.bulletblockeralpha = FSIniReadReal("objects","bulletblocker_alpha",0.3)
+global.bulletblockeralpha = ini_read_real("objects","bulletblocker_alpha",0.3)
 // bg
 var bg_type = ini_read_string("bg","type","stretch");
-var bg_hspeed = FSIniReadReal("bg","hspeed",0);
-var bg_vspeed = FSIniReadReal("bg","vspeed",0);
-var bg_x = FSIniReadReal("bg","x",0);
-var bg_y = FSIniReadReal("bg","y",0);
+var bg_hspeed = ini_read_real("bg","hspeed",0);
+var bg_vspeed = ini_read_real("bg","vspeed",0);
+var bg_x = ini_read_real("bg","x",0);
+var bg_y = ini_read_real("bg","y",0);
 ini_close();
 file_delete(missing_ini_filename);
 // assign sprites from file
@@ -101,7 +101,7 @@ for (var key = ds_map_find_first(global.skinnable_objects); key != undefined; ke
         }
         
         name = string_lower(name);
-        skinnable[? "Speed"] = FSIniReadReal("objects", name + "_animspeed", skinnable[? "DefaultSpeed"]);
+        skinnable[? "Speed"] = ini_read_real("objects", name + "_animspeed", skinnable[? "DefaultSpeed"]);
     } else {
         sprite_assign(spr_index, spr_default);
         skinnable[? "Speed"] = skinnable[? "DefaultSpeed"];

@@ -55,7 +55,7 @@ with (obj)
 if (obj == oPlayer)
 {
     if (scrButtonCheckPressed(KEY.MOVE_PLACE)
-    && !global.paused && point_in_rect(mouse_x,mouse_y,0,0,800,608))
+    && !global.paused && point_in_rectangle(mouse_x,mouse_y,0,0,800,608))
     {
         if (!instance_exists(obj)) { loadPlayer(); }
         with (obj) 

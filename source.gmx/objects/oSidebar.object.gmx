@@ -3,11 +3,1732 @@
   <spriteName>sSidebar</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-90</depth>
+  <depth>-110</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///standard menu variables
+
+// editor instructions
+global.instructionspage = 0;
+
+// grid/speed boxes
+selected = false;
+
+//menu scrolling
+
+global.scrollY = 0;
+global.scrollYTarget = 0;
+global.scrollMax = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///palette variables
+
+// death display
+global.death_count = 0;
+
+// fps display
+global.PlayerFrameCounter = 0;
+global.SavedPlayerFrameCounter = 0;
+
+combobox_selected = false;
+tooltip_to_draw = "";
+
+/*
+    xx - x coordinate of the button location
+    yy - y coordinate of the button location
+    spr - sprite to draw
+    obj - object to select if clicked
+    off - offset to draw sprite at if origin is not centered
+    killer - whether or not to draw the object with the killer tint
+*/
+
+global.palette = ds_list_create();
+
+// Markers.
+newPaletteObject(oSave, 
+cyclePaletteObjects(oSaveFlip),
+false, "Save", false, "Markers");
+
+newPaletteObject(oPlayerStart,
+cyclePaletteObjects(oWarp), 
+false, "Player Start", false, "Markers");
+
+newPaletteObject(oWarp,
+cyclePaletteObjects(oPlayerStart),
+false, "Goal", false, "Markers");
+
+newPaletteObject(oBulletBlocker,
+cyclePaletteObjects(oAlignMarker),
+false, "Bullet Blocker", false, "Markers");
+
+
+// Blocks.
+newPaletteObject(oEditBlock,
+cyclePaletteObjects(oEditMiniBlock), 
+false, "Block", false, "Blocks");
+
+newPaletteObject(oSlipBlock,
+undefined,
+false, "Slip Block", false, "Blocks")
+
+newPaletteObject(oSolidLineU,
+cyclePaletteObjects(oSolidLineR,oSolidLineD,oSolidLineL),
+false, "Solid Line", false, "Blocks");
+
+newPaletteObject(oMiniSolidLineU,
+cyclePaletteObjects(oMiniSolidLineR,oMiniSolidLineD,oMiniSolidLineL),
+false, "Mini Solid Line", false, "Blocks");
+
+newPaletteObject(oSlope,
+cyclePaletteObjects(oSlopeUpRight,oSlopeDownRight,oSlopeDownLeft,oSlopeUpLeft),
+false, "Slopes", false, "Blocks");
+
+newPaletteObject(oSlideBlockR,
+cyclePaletteObjects(oSlideBlockD,oSlideBlockL,oSlideBlockU), 
+false, "Conveyors", false, "Blocks");
+
+
+// Spikes.
+newPaletteObject(oSpikeUp, 
+cyclePaletteObjects(oSpikeRight,oSpikeDown,oSpikeLeft), 
+true, "Spike", false, "Spikes");
+
+newPaletteObject(oMiniSpikeUp,
+cyclePaletteObjects(oMiniSpikeRight,oMiniSpikeDown,oMiniSpikeLeft),
+true, "Mini Spike", false, "Spikes");
+
+newPaletteObject(oSpikeUpThin,
+cyclePaletteObjects(oSpikeRightThin,oSpikeDownThin,oSpikeLeftThin),
+true, "Thin Spike", false, "Spikes");
+
+newPaletteObject(oMiniSpikeUpThin,
+cyclePaletteObjects(oMiniSpikeRightThin,oMiniSpikeDownThin,oMiniSpikeLeftThin),
+true, "Mini Thin Spike", false, "Spikes");
+
+newPaletteObject(oSpikeUpRightFlat,
+cyclePaletteObjects(oSpikeDownRightFlat,oSpikeDownLeftFlat,oSpikeUpLeftFlat),
+true, "Flat Spikes", false, "Spikes");
+
+newPaletteObject(oMiniSpikeUpFlat,
+cyclePaletteObjects(oMiniSpikeRightFlat,oMiniSpikeDownFlat,oMiniSpikeLeftFlat),
+true, "Mini Flat Spikes", false, "Spikes");
+
+newPaletteObject(oSpikeUpLine,
+cyclePaletteObjects(oSpikeUpLineHalf,oSpikeRightLine,oSpikeRightLineHalf,oSpikeDownLine,oSpikeDownLineHalf,oSpikeLeftLine,oSpikeLeftLineHalf),
+true, "Line Spikes", false, "Spikes");
+
+newPaletteObject(oMiniSpikeUpLine,
+cyclePaletteObjects(oMiniSpikeUpLineHalf,oMiniSpikeRightLine,oMiniSpikeRightLineHalf,oMiniSpikeDownLine,oMiniSpikeDownLineHalf,oMiniSpikeLeftLine,oMiniSpikeLeftLineHalf),
+true, "Mini Line Spikes", false, "Spikes");
+
+newPaletteObject(oSpikeUpHole,
+cyclePaletteObjects(oSpikeRightHole,oSpikeDownHole,oSpikeLeftHole),
+true, "Hole Spikes", false, "Spikes");
+
+newPaletteObject(oSpikeUpRightBox,
+cyclePaletteObjects(oSpikeDownRightBox,oSpikeDownLeftBox,oSpikeUpLeftBox),
+true, "Box Spikes", false, "Spikes");
+
+newPaletteObject(oSpikeUpRightCurved,
+cyclePaletteObjects(oSpikeRightUpCurved,oSpikeRightDownCurved,oSpikeDownRightCurved,oSpikeDownLeftCurved,oSpikeLeftDownCurved,oSpikeLeftUpCurved,oSpikeUpLeftCurved),
+true, "Curved Spikes", false, "Spikes");
+
+
+// Fruit.
+newPaletteObject(oApple,
+undefined,
+true, "Fruit", false, "Fruit");
+
+newPaletteObject(oEggplant,
+undefined,
+true, "Eggplant", false, "Fruit");
+
+newPaletteObject(oBananas,
+undefined,
+true, "Bananas", false, "Fruit");
+
+
+// Other Killers.
+newPaletteObject(oKillerLineV,
+cyclePaletteObjects(oKillerLineDB,oKillerLineH,oKillerLineDA),
+true, "Killer Line", false, "Other Killers");
+
+newPaletteObject(oKillerBlock,
+cyclePaletteObjects(oMiniKillerBlock), 
+true, "Killer Block", false, "Other Killers");
+
+
+// Platforms.
+newPaletteObject(oPlatform,
+cyclePaletteObjects(oPlatformSideways),
+false, "Platform", false, "Platforms");
+
+newPaletteObject(oSnaplessPlatform,
+cyclePaletteObjects(oSnaplessPlatformSideways),
+false, "Snapless Platform", false, "Platforms");
+
+newPaletteObject(oSnapform,
+cyclePaletteObjects(oSnapformSideways),
+false, "Snapform", false, "Platforms");
+
+newPaletteObject(oDisappearPlatform,
+cyclePaletteObjects(oDisappearPlatformSideways),
+false, "Disappear Platform", false, "Platforms");
+
+
+// Water.
+newPaletteObject(oWater,
+undefined,
+false, "Water1", false, "Water");
+
+newPaletteObject(oWater2,
+undefined,
+false, "Water2", false, "Water");
+
+newPaletteObject(oWater3,
+undefined,
+false, "Water3", false, "Water");
+
+newPaletteObject(oWaterNekoron,
+undefined,
+false, "Nekoron Water", false, "Water");
+
+newPaletteObject(oWaterCatharsis,
+undefined,
+false, "Catharsis Water", false, "Water");
+
+newPaletteObject(oWaterDisappear,
+undefined,
+false, "Disappear Water", false, "Water");
+
+
+// Vapor.
+newPaletteObject(oVaporUp,
+undefined,
+false, "Vapor Up", false, "Vapor");
+
+newPaletteObject(oVaporDown,
+undefined,
+false, "Vapor Down", false, "Vapor");
+
+newPaletteObject(oUpdraft,
+undefined,
+false, "Updraft", false, "Vapor");
+
+
+// Booster.
+newPaletteObject(oBoosterUp,
+cyclePaletteObjects(oBoosterUpRefresher,oBoosterUpApple),
+false, "Booster Up", false, "Boosters");
+
+newPaletteObject(oBoosterDown,
+cyclePaletteObjects(oBoosterDownRefresher,oBoosterDownApple),
+false, "Booster Down", false, "Boosters");
+
+
+// Ladders.
+newPaletteObject(oLadder,
+cyclePaletteObjects(oLadderVer,oLadderHor),
+false, "Ladder", false, "Ladders");
+
+
+// Vines.
+newPaletteObject(oVineR,
+cyclePaletteObjects(oVineD,oVineL,oVineU), 
+false, "Vine", false, "Vines");
+
+newPaletteObject(oRiseVineR,
+cyclePaletteObjects(oRiseVineD,oRiseVineL,oRiseVineU), 
+false, "Rise Vine", false, "Vines");
+
+newPaletteObject(oIceVineR,
+cyclePaletteObjects(oIceVineD,oIceVineL,oIceVineU), 
+false, "Ice Vine", false, "Vines");
+
+newPaletteObject(oFlipVineR,
+cyclePaletteObjects(oFlipVineD,oFlipVineL,oFlipVineU), 
+false, "Flip Vine", false, "Vines");
+
+newPaletteObject(oStickyVineR,
+cyclePaletteObjects(oStickyVineD,oStickyVineL,oStickyVineU), 
+false, "Sticky Vine", false, "Vines");
+
+newPaletteObject(oLowGravVineR,
+cyclePaletteObjects(oLowGravVineD,oLowGravVineL,oLowGravVineU), 
+false, "Low-Gravity Vine", false, "Vines");
+
+newPaletteObject(oFireVineR,
+cyclePaletteObjects(oFireVineD,oFireVineL,oFireVineU), 
+false, "Fire Vine", false, "Vines");
+
+
+
+// Refreshers.
+newPaletteObject(oJumpRefresher,
+undefined, 
+false, "Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oJumpDefresher,
+undefined, 
+false, "Jump Defresher", false, "Refreshers");
+
+newPaletteObject(oHighJumpRefresher,
+undefined, 
+false, "High Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oLowJumpRefresher,
+undefined, 
+false, "Low Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oFlipJumpRefresher,
+undefined, 
+false, "Flip Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oJumpTelefresher,
+undefined, 
+false, "Jump Telefresher", false, "Refreshers");
+
+newPaletteObject(oFastJumpRefresher,
+undefined, 
+false, "Fast Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oSwitchJumpRefresher,
+undefined, 
+false, "Switch Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oSlowJumpRefresher,
+undefined, 
+false, "Slow Jump Refresher", false, "Refreshers");
+
+newPaletteObject(oShootRefresherR,
+cyclePaletteObjects(oShootRefresherL),
+false, "Shoot Refresher", false, "Refreshers");
+
+
+// Gravity.
+newPaletteObject(oGravityArrowDown,
+cyclePaletteObjects(oGravityBlockDown), 
+false, "Gravity Down", false, "Gravity");
+
+newPaletteObject(oGravityArrowUp,
+cyclePaletteObjects(oGravityBlockUp),
+false, "Gravity Up", false, "Gravity");
+
+newPaletteObject(oGravityArrowRight,
+cyclePaletteObjects(oGravityBlockRight),
+false, "Gravity Right", false, "Gravity");
+
+newPaletteObject(oGravityArrowLeft,
+cyclePaletteObjects(oGravityBlockLeft),
+false, "Gravity Left", false, "Gravity");
+
+
+// Fields.
+newPaletteObject(oFieldLowGrav,
+cyclePaletteObjects(oFieldHighGrav),
+false, "Gravity Field", false, "Fields");
+
+newPaletteObject(oFieldHighSpeed,
+cyclePaletteObjects(oFieldLowSpeed),
+false, "Speed Field", false, "Fields");
+
+newPaletteObject(oFieldDotkidOn,
+cyclePaletteObjects(oFieldDotkidOff),
+false, "Dotkid Field", false, "Fields");
+
+newPaletteObject(oFieldTripleOn,
+cyclePaletteObjects(oFieldTripleOff),
+false, "Triple Field", false, "Fields");
+
+
+// Triggers.
+newPaletteObject(oFreeTrigger,
+undefined,
+false, "Free Trigger", false, "Triggers");
+
+
+groups = ds_map_create();
+group_order = ds_list_create();
+
+for (var i = 0; i &lt; ds_list_size(global.palette); i++) {
+    var obj_palette = global.palette[| i];
+    var group = obj_palette[? "Group"];
+    
+    if (!ds_map_exists(groups, group)) {
+        ds_map_add_list(groups, group, ds_list_create());
+        ds_list_add(group_order, group);
+    }
+
+    ds_list_add(groups[? group], obj_palette);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///analysis variables
+
+// player position
+global.RecordPlayerPosition = false;
+player = noone;
+
+//cancel hints
+cancelHints_Create();
+
+//jump durations
+jumpDurations_Create();
+
+//bhop hint
+bhopHint_Create();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_list_destroy(global.palette);
+ds_map_destroy(groups);
+ds_list_destroy(group_order);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///end step functions
+var choose_player = oPlayer;
+if (instance_exists(oRecordPlayer)) 
+    choose_player = oRecordPlayer;
+
+//cancel hints
+cancelHints_EndStep();
+
+//jump durations
+jumpDurations_EndStep(choose_player);
+
+//bhop hint
+bhopHint_EndStep(choose_player);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///scrolling functions
+if (global.state != globalstate_input &amp;&amp; point_in_rectangle(mouse_x, mouse_y, 800, 0, 1056, 608)) {
+    global.scrollYTarget += (mouse_wheel_down() - mouse_wheel_up()) * 64;
+    global.scrollYTarget = clamp(global.scrollYTarget, 0, global.scrollMax);
+    global.scrollY = lerp(global.scrollY, global.scrollYTarget, 0.25);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (array_length_1d(global.group_hidden) == 0) {
+    global.group_hidden = array_create(ds_list_size(group_order));
+
+    for (var i = 0; i &lt; array_length_1d(global.group_hidden); i++) {
+        global.group_hidden[i] = true;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initial setup
+if (global.hidesidebar) 
+    exit;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///object palette draw
+if (combobox_selected &amp;&amp; global.state == globalstate_input) {
+    combobox_selected = false;
+    global.comboboxselected = false;
+}
+
+var xpos = 816;
+var xo = 0;
+var w = 50;
+dx = w+8;
+
+var ypos = 48;
+var yo = 0;
+var h = 50;
+dy = h+8;
+
+var xxx = xpos;
+var yyy = ypos - global.scrollY;
+
+for (var i = 0; i &lt; ds_list_size(group_order); i++) {
+    var name = group_order[| i];
+    var group = groups[? name];
+    var group_w = (dx * 4) - 8;
+    var group_h = h * 0.5;
+    drawButton(xxx, yyy, group_w, group_h, false);
+    draw_set_font(global.systemfont);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_text(xxx + group_w * 0.5, yyy + group_h * 0.5, name);
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_center);
+    
+    // Draw highlight
+    var button_highlighted = point_in_rectangle(mouse_x, mouse_y, xxx, yyy, xxx + group_w, yyy + group_h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
+        
+    if (button_highlighted) {
+        draw_set_alpha(global.buttonhoveralpha);
+        draw_set_color(global.color_buttonhover);
+        draw_rectangle(xxx + 1, yyy + 1, xxx + group_w - 2, yyy + group_h - 2, false);
+        
+        if (global.buttonhoverborder) {
+            draw_set_alpha(0.3);
+            draw_set_color(c_black);
+            draw_rectangle(xxx - 1, yyy - 1, xxx + group_w, yyy + group_h, true);
+        }
+    }
+        
+    // Pressing button
+    if (button_highlighted) {
+        if (mouse_check_button_pressed(mb_left)) {
+            global.group_hidden[i] ^= true;
+            var flash = instance_create(xxx, yyy, oPaletteButtonFlash);
+            flash.w = group_w;
+            flash.h = group_h;
+        }
+    }
+    
+    yyy += group_h + 8;
+    
+    if (global.group_hidden[i]) {
+        continue;
+    }
+    
+    xxs = xxx;
+    yys = yyy;
+    
+    for (var j = 0; j &lt; ds_list_size(group); j++) {
+        xxx = xxs + dx * (j mod 4);
+        yyy = yys + dy * (j div 4);
+        var obj_palette = group[| j];
+        var obj = obj_palette[? "Object"];
+        var spr = object_get_sprite(obj);
+        var killer = obj_palette[? "Killer"];
+        var tooltip = obj_palette[? "ToolTip"];
+        var combo = obj_palette[? "Combo"];
+        drawButton(xxx, yyy, w, h, false);
+    
+        var color = c_white;
+        
+        if (killer) {
+            color = global.color_killer;
+        }
+        
+        // Draw object animations
+        var frame = skinnableImage(obj);
+        draw_sprite_ext(spr, frame, xxx + w / 2 - sprite_get_width(spr) / 2 + sprite_get_xoffset(spr), yyy + h / 2 - sprite_get_height(spr) / 2 + sprite_get_yoffset(spr), 1, 1, 0, color, 1);
+    
+        // Draw highlight and set tooltip
+        var button_highlighted = point_in_rectangle(mouse_x, mouse_y, xxx, yyy, xxx + w, yyy + h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
+        
+        if (button_highlighted) {
+            draw_set_alpha(global.buttonhoveralpha);
+            draw_set_color(global.color_buttonhover);
+            draw_rectangle(xxx + 1, yyy + 1, xxx + w - 2, yyy + h - 2, false);
+            
+            if (global.buttonhoverborder) {
+                draw_set_alpha(0.3);
+                draw_set_color(c_black);
+                draw_rectangle(xxx - 1, yyy - 1, xxx + w, yyy + h, true);
+            }
+            
+            if (tooltip != "") {
+                tooltip_to_draw = tooltip;
+            }
+        }
+        
+        // Pressing button
+        var is_comboboxtoggle = (combo == true);
+        
+        if (button_highlighted) {
+            if (mouse_check_button_pressed(mb_left)) {
+                with (oEdit) {
+                    selected_object = obj;
+                    selected_sprite = spr;
+                    selected_killer = killer;
+                    
+                    for (var k = 0; k &lt; ds_list_size(global.palette); k++) {
+                        var check_palette = global.palette[| k];
+                    
+                        if (obj == check_palette[? "Object"]) {
+                            selected_index = k;
+                            break;
+                        }
+                    }
+                    
+                    selected_cycle = 0;
+                }
+    
+                var flash = instance_create(xxx, yyy, oPaletteButtonFlash);
+                flash.w = w;
+                flash.h = h;
+            }
+            
+            if (mouse_check_button_pressed(mb_right) &amp;&amp; is_comboboxtoggle) {
+                combobox_selected = !combobox_selected;
+                global.comboboxselected = combobox_selected;
+            
+                var flash = instance_create(xxx, yyy, oPaletteButtonFlash);
+                flash.w = w;
+                flash.h = h;
+            }
+        }
+    }
+    
+    xxx = xxs;
+    yyy = yys + (dy * ceil(ds_list_size(group) / 4)) + 8;
+}
+
+//if (tooltip_to_draw != "") {
+    //draw_set_font(global.systemfont);
+    //var w = string_width(tooltip_to_draw) + 10;
+    //var xx = min(mouse_x, room_width - 5 - w);
+    //menuButton(xx, mouse_y + 20, w, 25, tooltip_to_draw, false, false);
+    drawTooltip();
+//}
+
+//for (var i = 0; i &lt; ds_list_size(global.palette); i += 1) {
+    /*
+        xx - x coordinate of the button location
+        yy - y coordinate of the button location
+        spr - sprite to draw
+        obj - object to select if clicked
+        off - offset to draw sprite at if origin is not centered
+        killer - whether or not to draw the object with the killer tint
+    */
+/*    
+    var obj_palette = global.palette[| i];
+    var xx = i mod 4;
+    var yy = i div 4;
+    var obj = obj_palette[? "Object"];
+    var spr = object_get_sprite(obj);
+    var killer = obj_palette[? "Killer"];
+    var tooltip = obj_palette[? "ToolTip"];
+    var combo = obj_palette[? "Combo"];
+
+    var in_combobox = -1//yy == 5// or yy == 6 or yy==7
+    if (in_combobox &amp;&amp; !combobox_selected) 
+        continue;
+    
+    // draw button backing and sprite
+    var xxx = xpos+xo+xx*dx;
+    var yyy = (ypos+yo+yy*dy)-global.scrollY[1];
+    drawButton(xxx,yyy,w,h,false);
+    
+    var color = c_white;
+    if killer color = global.color_killer;
+    
+    //draw object animations
+    var frame = skinnableImage(obj);
+    
+    //draw_sprite_ext(spr,frame,xxx+w/2-off,yyy+h/2-off,1,1,0,color,1)
+    draw_sprite_ext(spr,frame,xxx+w/2-sprite_get_width(spr)/2+sprite_get_xoffset(spr),yyy+h/2-sprite_get_height(spr)/2+sprite_get_yoffset(spr),1,1,0,color,1);
+    
+    // draw highlight and set tooltip
+    var button_highlighted = point_in_rectangle(mouse_x,mouse_y,xxx,yyy,xxx+w,yyy+h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
+    
+    if (button_highlighted) {
+        draw_set_alpha(global.buttonhoveralpha);
+        draw_set_color(global.color_buttonhover);
+        draw_rectangle(xxx+1,yyy+1,xxx+w-2,yyy+h-2,false);
+        
+        if (global.buttonhoverborder) {
+            draw_set_alpha(0.3);
+            draw_set_color(c_black);
+            draw_rectangle(xxx-1,yyy-1,xxx+w,yyy+h,true);
+        }
+        
+        if (tooltip != "") {
+            tooltip_to_draw = tooltip;
+        }
+    }
+    
+    // pressing button
+    var is_comboboxtoggle = combo == true;
+    if (button_highlighted) {
+        if (mouse_check_button_pressed(mb_left)) {
+            with (oEdit) {
+                selected_object = obj;
+                selected_sprite = spr;
+                selected_killer = killer;
+                selected_index = i;
+                selected_cycle = 0;
+            }
+
+            var flash = instance_create(xxx,yyy,oPaletteButtonFlash);
+            flash.w = w;
+            flash.h = h;
+        }
+        if (mouse_check_button_pressed(mb_right) &amp;&amp; is_comboboxtoggle) {
+            combobox_selected = !combobox_selected;
+            global.comboboxselected = combobox_selected;
+        
+            var flash = instance_create(xxx,yyy,oPaletteButtonFlash);
+            flash.w = w;
+            flash.h = h;
+        }
+    }
+    
+    // draw combo box back and detect mouse leave
+    if (is_comboboxtoggle &amp;&amp; combobox_selected) {
+        var combo_x = x+xo-8;
+        var combo_y = y+yo+(yy+1)*dy-9;
+        var combo_w = dx*4+8;
+        var combo_h = dy*combo+9;
+        
+        drawButton(combo_x,combo_y,combo_w,combo_h,false);
+        drawButton(xxx,yyy,w,combo_y-yyy+1,false);
+        draw_set_color(global.color_button);
+        draw_line(xxx,combo_y,xxx+w-2,combo_y);
+        
+        if (!point_in_rectangle(mouse_x,mouse_y,combo_x,yyy,combo_x+combo_w,combo_y+combo_h)) {
+            combobox_selected = false;
+            global.comboboxselected = false;
+        }
+    }
+}
+
+if (tooltip_to_draw != "") {
+    draw_set_font(global.systemfont);
+    var w = string_width(tooltip_to_draw)+10;
+    var xx = min(mouse_x, room_width-5-w);
+    menuButton(xx, mouse_y+20, w, 25, tooltip_to_draw, false, false);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///death display
+var xx = 808;
+var yy = yyy;
+
+var w = 136;
+var h = 32;
+
+drawButton(xx,yy,w,h,false);
+fontSetup(global.systemfont, c_black, fa_left, fa_center, 1);
+draw_text(xx+5, yy+16, "Deaths: "+string(global.death_count));
+
+var buttons_active = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+var xo = 92;
+
+if (menuButton(xx+xo,yy,w-xo,32,"Reset",buttons_active,false)) {
+    global.death_count = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///fps display
+var xx = 952;
+var yy = yyy;
+
+var w = 96;
+var h = 32;
+drawButton(xx,yy,w,h,false);
+fontSetup(global.systemfont, c_black, fa_left, fa_center, 1);
+draw_text(xx+12, yy+16, "FPS: "+string(fps));
+
+if (global.FrameCounterOn = true || global.record &gt; 0) {
+    draw_text(xx+70, yy+16, string(global.PlayerFrameCounter));
+}
+
+yyy += 32 + 8;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///player position
+var xx = 808;
+var yy = yyy;
+var w = 136;
+var char = 9;
+    
+if (global.sidebarlevel == 1) {
+    w = 240;
+}
+    
+drawButton(xx,yy,w,80,false);
+fontSetup(global.systemfont,c_black,fa_left,fa_top,1);
+
+if ((instance_exists(oRecordPlayer) || instance_exists(oRecordPlayerCopy)) &amp;&amp; global.RecordPlayerPosition = true)
+{
+    if (instance_exists(oRecordPlayer)) {
+        player = oRecordPlayer;
+    }
+    else if (instance_exists(oRecordPlayerCopy)) {
+        player = oRecordPlayerCopy;
+    }
+} 
+else if (instance_exists(oPlayer) || instance_exists(oPlayerCopy))
+{
+    if (instance_exists(oPlayer)) {
+        player = oPlayer;
+    }
+    else if (instance_exists(oPlayerCopy)) {
+        player = oPlayerCopy;
+    }
+}
+
+var text = array_create(3);
+text[0] = "Align    ";
+text[1] = "X   ";
+text[2] = "Y   ";
+if (player != noone &amp;&amp; instance_exists(player))
+{
+    var align = player.x mod 3;
+    var ypos = player.y;
+    var xpos = player.x;
+    
+    var xstr = xpos;
+    var ystr = ypos;
+    if (global.sidebarlevel == 1) {
+        xstr = string_format(xpos,3,char);
+        ystr = string_format(ypos,3,char);
+    }
+    
+    text[0] += string(align);
+    text[1] += string(xstr);
+    text[2] += string(ystr);
+}
+
+
+var yy2 = yy+5;
+var dy = 20;
+var xx2 = xx+7;
+
+for (i = 0; i &lt; 3; i+=1)
+{
+    draw_text(xx2,yy2+5,text[i]);
+    yy2 += dy;
+}
+
+var buttons_active = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+var buttonw = 24;
+var buttonh = 12;
+var buttonx = xx+136-buttonw;
+var buttony = yy;
+
+if (menuButton(buttonx,buttony,buttonw,buttonh,"",buttons_active,false)) {
+    global.sidebarlevel = !global.sidebarlevel;
+    saveConfig();
+}
+
+if (menuButton(x,buttony,buttonw,buttonh,"",buttons_active,false)) { 
+    global.RecordPlayerPosition = !global.RecordPlayerPosition;
+}
+
+fontSetup(global.systemfont,c_black,fa_center,fa_center,1);
+//if (global.sidebarstate == sidebar_classic) {
+//    draw_text(buttonx+buttonw/2,buttony+buttonh/2-5,". . .");
+//    draw_text(buttonx+buttonw/2-1,buttony+buttonh/2-5,". . .");
+//}
+draw_text(x+buttonw/2,buttony+buttonh/2-5,". . .");
+draw_text(x+buttonw/2-1,buttony+buttonh/2-5,". . .");
+
+/*if global.playery _extended {
+    var bx = x+140
+    var by = y+22
+    var bw = 32
+    var bh = 24
+    if menuButton(bx,by,bw,bh,"- .5",-100,buttons_active,false) {
+        nudgePlayerHalf(-1)
+    }
+    if menuButton(bx+bw+8,by,bw,bh,"+ .5",-100,buttons_active,false) {
+        nudgePlayerHalf(1)
+    }
+}*/
+
+yyy += 80 + 8;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///player speed
+var xx = 808;
+var yy = yyy;
+var w = 136;
+var char = 9;
+
+drawButton(xx,yy,w,80,false);
+fontSetup(global.systemfont,c_black,fa_left,fa_top,1);
+
+if ((instance_exists(oRecordPlayer) || instance_exists(oRecordPlayerCopy)) &amp;&amp; global.RecordPlayerPosition = true)
+{
+    if (instance_exists(oRecordPlayer)) {
+        player = oRecordPlayer;
+    }
+    else if (instance_exists(oRecordPlayerCopy)) {
+        player = oRecordPlayerCopy;
+    }
+} 
+else if (instance_exists(oPlayer) || instance_exists(oPlayerCopy))
+{
+    if (instance_exists(oPlayer)) {
+        player = oPlayer;
+    }
+    else if (instance_exists(oPlayerCopy)) {
+        player = oPlayerCopy;
+    }
+}
+
+var text = array_create(3);
+text[0] = "Gravity    ";
+text[1] = "H   ";
+text[2] = "V   ";
+if (player != noone &amp;&amp; instance_exists(player))
+{
+    var grav = player.gravity; 
+    var vspd = player.vspeed;
+    var hspd = player.hspeed;
+    
+    var hstr = hspd;
+    var vstr = vspd;
+    if (global.sidebarlevel == 1) {
+        hstr = string_format(hspd,2,char);
+        vstr = string_format(vspd,2,char);
+    }
+
+    text[0] += string(grav);
+    text[1] += string(hstr);
+    text[2] += string(vstr);
+}
+
+
+var yy2 = yy+5;
+var dy = 20;
+var xx2 = xx+7;
+
+for (i = 0; i &lt; 3; i+=1)
+{
+    draw_text(xx2,yy2+5,text[i]);
+    yy2 += dy;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///cancel hints
+var xx = 952;
+var yy = yyy;
+
+drawButton(xx,yy,96,80,false);
+drawHint(xx,yy,96,"Cancel",jc_duration,jc_show);
+
+yyy += 80 + 8;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///jump durations
+var xx = 808;
+var yy = yyy;
+
+var xo = 8;
+var yo = 5;
+var dy = 20;
+var w = 136;
+var h = 96;
+drawButton(xx,yy,w,h,false);
+jumpDurations_Draw(xx+xo,yy+yo,dy);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///bhop hint
+var xx = 952;
+var yy = yyy;
+var h = 64;
+
+if (global.sidebarlevel == 1) {
+    h = 96;
+}    
+
+drawButton(xx,yy,96,h,false);
+drawHint(xx,yy,96,"Bhop",bhop_offset,bhop_show);
+
+yyy += h;
+global.scrollMax = yyy + global.scrollY - 526;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>overlay</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///overlay setup
+var xx = 800;
+var yy = 0;
+var w = 256;
+var h = 44;
+
+for (i = 0; i &lt; 2; i+=1)
+{
+    if (i = 1) 
+    { 
+        yy = 571;//564
+    }
+    draw_sprite_part_ext(sSidebar,0,0,yy,w,h,xx,yy,1,1,c_white,1)
+    draw_line(xx,yy+(h-(i*44)),xx+w,yy+(h-(i*44)))
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///editor instructions
+var xx = 808;
+var yy = 8;
+var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+
+if (menuButtonToggle(xx,yy,96,32,enabled,false,"Hide","Instructions",global.editorinstructions)) {
+    global.editorinstructions = !global.editorinstructions;
+    saveConfig();
+}
+
+if (global.editorinstructions) {
+    var xx = 565;
+    var yy = 5;
+    var dy = 25;
+    var dx = 88;
+    var h = 432;
+    var buttons_active = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+    if (menuButton(xx+205,h,30,12,"",buttons_active,false)) {
+        global.instructionspage += 1;
+        
+        if (global.instructionspage &gt; 2) 
+            global.instructionspage = 0;
+    }
+    
+    fontSetup(global.systemfont,c_black,fa_center,fa_center,1);
+    draw_text(xx+220,h,". . .");
+    draw_text(xx+220,h,". . .");
+    
+    draw_sprite_ext(sPopup,0,xx-12,0,(800-(xx-12))/sprite_get_width(sPopup),(h-0)/sprite_get_height(sPopup),0,c_white,0.9);
+    fontSetup(global.systemfont,c_black,fa_left,fa_top,1);
+    draw_rectangle(xx-12,-1,800,h,true);
+
+    switch (global.instructionspage) {
+        case 0: // default keybinds
+        var maxarray = 17;
+        var button = array_create(maxarray);
+        button[0] = "L Click";
+        button[1] = "R Click";
+        button[2] = "M Click, Space";
+        button[3] = "Ctrl";
+        button[4] = "Alt";
+        button[5] = "Ctrl + Z";
+        button[6] = "Ctrl + Y";
+        button[7] = "[ "+scrGetKeybind(global.controls[KEY.SAVE_PLACE, 0])+" ]";//"S"
+        button[8] = "[ "+scrGetKeybind(global.controls[KEY.MOVE_PLACE, 0])+" ]";//"W"
+        
+        button[9] = "[ "+scrGetKeybind(global.controls[KEY.ALIGN_LEFT, 0])+" ]" 
+        +" / "+"[ "+scrGetKeybind(global.controls[KEY.NUDGE_LEFT, 0])+" ]"; //"A/N"
+        
+        button[10] = "[ "+scrGetKeybind(global.controls[KEY.ALIGN_RIGHT, 0])+" ]" 
+        +" / "+"[ "+scrGetKeybind(global.controls[KEY.NUDGE_RIGHT, 0])+" ]";//"D/M"
+        
+        button[11] = "[ "+scrGetKeybind(global.controls[KEY.V_ALIGN, 0])+" ]";//"V"
+        button[12] = "[ "+scrGetKeybind(global.controls[KEY.H_ALIGN, 0])+" ]";//"H"
+        button[13] = "0...9";
+        button[14] = "M Wheel";
+        button[15] = "X, C";
+        button[16] = "B";
+        
+        var action = array_create(maxarray);
+        action[0] = "Place Object";
+        action[1] = "Remove Object";
+        action[2] = "Move Object";
+        action[3] = "Select";
+        action[4] = "Edit Code";
+        action[5] = "Undo";
+        action[6] = "Redo";
+        action[7] = "Save";
+        action[8] = "Move Kid";
+        action[9] = "Nudge Kid Left";
+        action[10] = "Nudge Kid Right";
+        action[11] = "Set Valign";
+        action[12] = "Set Halign";
+        action[13] = "Select Object";
+        action[14] = "Change Object";
+        action[15] = "Zoom In/Out";
+        action[16] = "Ball";
+        
+        for (i = 0; i &lt; maxarray; i+=1)
+        {
+            draw_set_halign(fa_left);
+            draw_text(xx,yy,button[i]);
+            draw_set_halign(fa_right);
+            draw_text(xx+dx*2.5,yy,action[i]);
+            yy += dy;
+        } break;
+        
+        case 1: // TAS/recording keybinds
+        var maxarray = 13;
+        var button = array_create(maxarray);
+        button[0] = "TAS/Recording Controls";
+        button[1] = "Enter+F5-12";
+        button[2] = "F5-12";
+        button[3] = "F1";
+        button[4] = "Enter+F1";
+        button[5] = "Space";
+        button[6] = "Enter+1";
+        button[7] = "Enter+2";
+        button[8] = "Enter+Space";
+        button[9] = "J";
+        button[10] = "K";
+        button[11] = "U, I";
+        button[12] = "O, P";
+        
+        var action = array_create(maxarray);
+        action[0] = "";
+        action[1] = "Create Save State";
+        action[2] = "Load Save State";
+        action[3] = "Frame Advance";
+        action[4] = "Rewind";
+        action[5] = "Unpause";
+        action[6] = "Recording FA";
+        action[7] = "Recording Rewind";
+        action[8] = "Recording Unpause";
+        action[9] = "Jump";
+        action[10] = "Release Jump";
+        action[11] = "Nudge Kid X";
+        action[12] = "Vine Let Go";
+        
+        for (i = 0; i &lt; maxarray; i+=1)
+        {
+            draw_set_halign(fa_left);
+            draw_text(xx,yy,button[i]);
+            draw_set_halign(fa_right);
+            draw_text(xx+dx*2.5,yy,action[i]);
+            yy += dy;
+        } break;
+    }
+ }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///value tracker
+var xx = 912;
+var yy = 8;
+
+var sprite = sPlayerIdle;
+if (global.RecordPlayerPosition) 
+    sprite = sMenuRecord;
+    
+var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+if (menuButtonToggle(xx,yy,32,32,enabled,sprite,"","",global.RecordPlayerPosition)) {
+    global.RecordPlayerPosition = !global.RecordPlayerPosition;
+    saveConfig();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///menu (Esc) button
+var xx = 952;
+var yy = 8;
+
+var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected &amp;&amp; !global.hidesidebar;
+var clicked = menuButton(xx,yy,96,32,"Menu (Esc)",enabled,false);
+
+if (clicked) {
+    global.state = globalstate_menu;
+    saveAndResetZoom();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///grid overlay size
+var xx = 808;
+var yy = 576;
+var w = 112;
+var h = 24;
+var droph = 75;
+
+comboBoxButton(xx,yy,w,h,droph,"Snap: "+string(oEdit.snap),sMenuGrid);
+
+if (selected) {
+    drawButton(xx,yy-(h*3)-1,w,droph,false);
+    draw_set_color(global.color_button);
+    draw_line(xx,yy+h-1,xx+w-2,yy+h-1);
+}
+
+var bx = xx;
+var by = yy-(h*3)-1;
+var bw = 38;
+var bh = 38;
+var dx = 37;
+
+var gridsnap = array_create(5);
+gridsnap[0] = 32;
+gridsnap[1] = 16;
+gridsnap[2] = 8;
+gridsnap[3] = 1;
+gridsnap[4] = "other [ "+scrGetKeybind(global.controls[KEY.GRID_SNAP, 0])+" ]";
+for (i = 0; i &lt; 5; i+=1)
+{
+    if (i != 4)
+    {
+        if (selected &amp;&amp; menuButton(bx,by,bw,bh,string(gridsnap[i]),true,false)) {
+            oEdit.snap = gridsnap[i];
+            saveConfig();
+            selected = false;
+            global.comboboxselected = false;
+        }
+    }
+    else
+    {
+        if (selected &amp;&amp; menuButton(bx,by,bw*2-1,bh,string(gridsnap[i]),true,false)
+        &amp;&amp; global.state != globalstate_input) {
+            inputOverlay(input_textbox,inputCallback_GridCustom,"Grid snap (was "+string(oEdit.snap)+")");
+        }
+    }
+    
+    if (i != 2) {
+        bx += dx;
+    } else {
+        bx -= dx*2;
+        by += dx;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///room speed toggle
+var xx = 936;
+var yy = 576;
+var w = 112;
+var h = 24;
+var droph = 75;
+
+comboBoxButton(xx,yy,w,h,droph,"Speed: "+string(room_speed),sMenuSpeed);
+
+if (selected) {
+    drawButton(xx,yy-(h*3)-1,w,droph,false);
+    draw_set_color(global.color_button);
+    draw_line(xx,yy+h-1,xx+w-2,yy+h-1);
+}
+
+var bx = xx;
+var by = yy-(h*3)-1;
+var bw = 38;
+var bh = 38;
+var dx = 37;
+
+var roomspd = array_create(5);
+roomspd[0] = 50;
+roomspd[1] = 25;
+roomspd[2] = 10;
+roomspd[3] = 100;
+roomspd[4] = "other [ "+scrGetKeybind(global.controls[KEY.ROOM_SPEED, 0])+" ]";
+for (i = 0; i &lt; 5; i+=1)
+{    
+    if (i != 4)
+    {
+        if (selected &amp;&amp; menuButton(bx,by,bw,bh,string(roomspd[i]),true,false)) {
+            room_speed = roomspd[i];
+            selected = false;
+            global.comboboxselected = false;
+        }
+    }
+    else
+    {
+        if (selected &amp;&amp; menuButton(bx,by,bw*2-1,bh,string(roomspd[i]),true,false)
+        &amp;&amp; global.state != globalstate_input) {
+            inputOverlay(input_textbox,inputCallback_SpeedCustom,"Room speed (was "+string(room_speed)+")");
+        }
+    }
+    
+    if (i != 2) {
+        bx += dx;
+    } else {
+        bx -= dx*2;
+        by += dx;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///analysis level
+/*var xx = 808;
+var yy = 576;
+var w = 96;
+var h = 24;
+
+var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected;
+if (menuButtonToggle(xx,yy,w,h,enabled,false,"Advanced","Standard",global.sidebarlevel)) {
+    global.sidebarlevel = !global.sidebarlevel;
+    saveConfig();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite_ext(sSidebar,0,800,0,1,1,0,c_white,1);
+
+var view_w = 1056 - (256*global.hidesidebar);
+if (window_get_width() != view_w) {
+    window_set_size(view_w,608);
+    view_wport = view_w;
+    view_wview = view_w;
+    completelyResetZoom();
+    saveAndResetZoom();
+    if (!window_get_fullscreen()) { oZoom.x2 = view_w; }
+    display_set_gui_size(view_wport,view_hport);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

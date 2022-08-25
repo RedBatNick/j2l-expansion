@@ -1,8 +1,8 @@
 global.skinnable_objects = ds_map_create();
 
 // Menu.
-newSkinnableSprite(sMenu, "menu");
 newSkinnableSprite(sSidebar, "sidebar");
+newSkinnableSprite(sMenu, "menu");
 newSkinnableSprite(sPopup, "popup");
 
 
@@ -12,6 +12,9 @@ newSkinnableSprite(sPlayerRunning, "playerrunning");
 newSkinnableSprite(sPlayerJump, "playerjump");
 newSkinnableSprite(sPlayerFall, "playerfall");
 newSkinnableSprite(sPlayerSliding, "playersliding");
+newSkinnableSprite(sPlayerClimbBack, "playerclimbback");
+newSkinnableSprite(sPlayerClimbVer, "playerclimbver");
+newSkinnableSprite(sPlayerClimbHor, "playerclimbhor");
 
 newSkinnableSprite(sLunarkid, "lunarkid");
 newSkinnableSprite(sLinekid, "linekid");
@@ -244,13 +247,13 @@ newSkinnableObject(oFireVineD, "firevineD", 1/5);
 // Refreshers.
 newSkinnableObject(oJumpRefresher, "jumprefresher");
 newSkinnableObject(oJumpDefresher, "jumpdefresher", 1/15);
-newSkinnableObject(oHighJumpRefresher, "jumphighrefresher", 1/15);
-newSkinnableObject(oLowJumpRefresher, "jumplowrefresher", 1/15);
-newSkinnableObject(oFlipJumpRefresher, "jumpfliprefresher", 1/15);
+newSkinnableObject(oHighJumpRefresher, "highjumprefresher", 1/15);
+newSkinnableObject(oLowJumpRefresher, "lowjumprefresher", 1/15);
+newSkinnableObject(oFlipJumpRefresher, "flipjumprefresher", 1/15);
 newSkinnableObject(oJumpTelefresher, "jumptelerefresher", 1/15);
-newSkinnableObject(oFastJumpRefresher, "jumpfastrefresher", 1/15);
-newSkinnableObject(oSwitchJumpRefresher, "jumpswitchrefresher", 1/15);
-newSkinnableObject(oSlowJumpRefresher, "jumpslowrefresher", 1/15);
+newSkinnableObject(oFastJumpRefresher, "fastjumprefresher", 1/15);
+newSkinnableObject(oSwitchJumpRefresher, "switchjumprefresher", 1/15);
+newSkinnableObject(oSlowJumpRefresher, "slowjumprefresher", 1/15);
 
 
 newSkinnableSprite(oShootRefresherR, "shootrefresherR", 0);
@@ -296,7 +299,7 @@ newSkinnableObject(oWarp, "warp");
 
 
 // Triggers.
-newSkinnableObject(oTrg, "trigger");
+newSkinnableObject(oFreeTrigger, "trigger");
 
 
 // Mini objects (for ctool)

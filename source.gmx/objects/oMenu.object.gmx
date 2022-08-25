@@ -138,6 +138,12 @@ var dx2 = 40;
 var xo = 24;
 var yo = 52;
 
+var escpressed = keyboard_check_pressed(vk_escape) &amp;&amp; oMenu.steps_out_of_menu &gt; 0 &amp;&amp; global.state == globalstate_idle;
+
+if (escpressed) {
+    global.state = globalstate_menu;
+    saveAndResetZoom();
+}
 
 //FILE
 var xx = x+xo;
@@ -293,52 +299,6 @@ if (menuButton(xx,yy,w,h,"Depth Order",buttons_enabled,sMenuDepth)) {
     inputOverlay(input_prefdepth, false, "");
 }
 
-// shift all objects
-/*var sw = 18;
-var sh = 18;
-var sdy = 12;
-var sdx = 25;
-xx += dx+dx2;
-yy = y+yo*2;
-
-xx += sdx;
-var tt = "Shift all objects Right by current grid snap.";
-if (menuButton(xx, yy, sw, sh, "&gt;", buttons_enabled, 0, tt)) {
-    with (oEdit) { clearUndoStack(); }
-    with (all) {
-        if (objectInPalette(object_index) || object_index = oPlayer)
-            x += oEdit.snap;
-    }
-}
-xx -= sdx;
-yy += sdy;
-var tt = "Shift all objects Down by current grid snap.";
-if (menuButton(xx, yy, sw, sh, "v", buttons_enabled, 0, tt)) {
-    with (oEdit) { clearUndoStack(); }
-    with (all) {
-        if (objectInPalette(object_index) || object_index = oPlayer)
-            y += oEdit.snap;
-    }
-}
-yy -= sdy*2;
-var tt = "Shift all objects Up by current grid snap.";
-if (menuButton(xx, yy, sw, sh, "^", buttons_enabled, 0, tt)) {
-    with (oEdit) { clearUndoStack(); }
-    with (all) {
-        if (objectInPalette(object_index) || object_index = oPlayer)
-            y -= oEdit.snap;
-    }
-}
-xx -= sdx;
-yy += sdy;
-var tt = "Shift all objects Left by current grid snap.";
-if (menuButton(xx, yy, sw, sh, "&lt;", buttons_enabled, 0, tt)) {
-    with (oEdit) { clearUndoStack(); }
-    with (all) {
-        if (objectInPalette(object_index) || object_index = oPlayer)
-            x -= oEdit.snap;
-    }
-}*/
 
 // close menu
 var xw = 800;
@@ -362,6 +322,17 @@ if (menuButton(xx,yy,w,h,"About",buttons_enabled,false)) {
 yy += dy;
 if (menuButton(xx,yy,w,h,"Quit",buttons_enabled,false)) {
     exitPressed();
+}
+
+// toggle sidebar
+yy += dy*3;
+var sidebar_spr = sMenuSidebarClose;
+if (global.hidesidebar) 
+    sidebar_spr = sMenuSidebarOpen;
+ 
+if (menuButtonToggle(xx,yy,w,h,true,sidebar_spr,"Show Sidebar","Hide Sidebar",global.hidesidebar)) {
+    global.hidesidebar = !global.hidesidebar;
+    saveConfig();
 }
 
 draw_set_alpha(1);

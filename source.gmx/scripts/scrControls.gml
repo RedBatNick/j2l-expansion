@@ -44,28 +44,28 @@ switch(type)
 {
     case "loadKeyboardConfig":
         //standard keys
-        global.controls[KEY.LEFT, 0] =          FSIniReadReal("Keyboard",  "Left",          vk_left);
-        global.controls[KEY.RIGHT, 0] =         FSIniReadReal("Keyboard",  "Right",         vk_right);
-        global.controls[KEY.UP, 0] =            FSIniReadReal("Keyboard",  "Up",            vk_up);
-        global.controls[KEY.DOWN, 0] =          FSIniReadReal("Keyboard",  "Down",          vk_down);
-        global.controls[KEY.JUMP, 0] =          FSIniReadReal("Keyboard",  "Jump",          vk_shift);
-        global.controls[KEY.SHOOT, 0] =         FSIniReadReal("Keyboard",  "Shoot",         ord('Z'));
-        global.controls[KEY.RESTART, 0] =       FSIniReadReal("Keyboard",  "Restart",       ord('R'));
-        global.controls[KEY.SKIP, 0] =          FSIniReadReal("Keyboard",  "Skip",          ord('S'));
-        global.controls[KEY.SUICIDE, 0] =       FSIniReadReal("Keyboard",  "Suicide",       ord('Q'));
-        global.controls[KEY.PAUSE, 0] =         FSIniReadReal("Keyboard",  "Pause",         ord('P'));
+        global.controls[KEY.LEFT, 0] =          ini_read_real("Keyboard",  "Left",          vk_left);
+        global.controls[KEY.RIGHT, 0] =         ini_read_real("Keyboard",  "Right",         vk_right);
+        global.controls[KEY.UP, 0] =            ini_read_real("Keyboard",  "Up",            vk_up);
+        global.controls[KEY.DOWN, 0] =          ini_read_real("Keyboard",  "Down",          vk_down);
+        global.controls[KEY.JUMP, 0] =          ini_read_real("Keyboard",  "Jump",          vk_shift);
+        global.controls[KEY.SHOOT, 0] =         ini_read_real("Keyboard",  "Shoot",         ord('Z'));
+        global.controls[KEY.RESTART, 0] =       ini_read_real("Keyboard",  "Restart",       ord('R'));
+        global.controls[KEY.SKIP, 0] =          ini_read_real("Keyboard",  "Skip",          ord('S'));
+        global.controls[KEY.SUICIDE, 0] =       ini_read_real("Keyboard",  "Suicide",       ord('Q'));
+        global.controls[KEY.PAUSE, 0] =         ini_read_real("Keyboard",  "Pause",         ord('P'));
         
         //additional keys
-        global.controls[KEY.ALIGN_LEFT, 0] =    FSIniReadReal("Keyboard",  "Align Left",    ord('A'));
-        global.controls[KEY.ALIGN_RIGHT, 0] =   FSIniReadReal("Keyboard",  "Align Right",   ord('D'));
-        global.controls[KEY.SAVE_PLACE, 0] =    FSIniReadReal("Keyboard",  "Save Place",    ord('S'));
-        global.controls[KEY.MOVE_PLACE, 0] =    FSIniReadReal("Keyboard",  "Move Place",    ord('W'));
-        global.controls[KEY.GRID_SNAP, 0] =     FSIniReadReal("Keyboard",  "Grid Snap",     ord('G'));
-        global.controls[KEY.ROOM_SPEED, 0] =    FSIniReadReal("Keyboard",  "Room Speed",    ord('F'));
-        global.controls[KEY.H_ALIGN, 0] =       FSIniReadReal("Keyboard",  "H Align",       ord('H'));
-        global.controls[KEY.V_ALIGN, 0] =       FSIniReadReal("Keyboard",  "V Align",       ord('V'));
-        global.controls[KEY.NUDGE_LEFT, 0] =    FSIniReadReal("Keyboard",  "Nudge Left",    ord('N'));
-        global.controls[KEY.NUDGE_RIGHT, 0] =   FSIniReadReal("Keyboard",  "Nudge Right",   ord('M'));
+        global.controls[KEY.ALIGN_LEFT, 0] =    ini_read_real("Keyboard",  "Align Left",    ord('A'));
+        global.controls[KEY.ALIGN_RIGHT, 0] =   ini_read_real("Keyboard",  "Align Right",   ord('D'));
+        global.controls[KEY.SAVE_PLACE, 0] =    ini_read_real("Keyboard",  "Save Place",    ord('S'));
+        global.controls[KEY.MOVE_PLACE, 0] =    ini_read_real("Keyboard",  "Move Place",    ord('W'));
+        global.controls[KEY.GRID_SNAP, 0] =     ini_read_real("Keyboard",  "Grid Snap",     ord('G'));
+        global.controls[KEY.ROOM_SPEED, 0] =    ini_read_real("Keyboard",  "Room Speed",    ord('F'));
+        global.controls[KEY.H_ALIGN, 0] =       ini_read_real("Keyboard",  "H Align",       ord('H'));
+        global.controls[KEY.V_ALIGN, 0] =       ini_read_real("Keyboard",  "V Align",       ord('V'));
+        global.controls[KEY.NUDGE_LEFT, 0] =    ini_read_real("Keyboard",  "Nudge Left",    ord('N'));
+        global.controls[KEY.NUDGE_RIGHT, 0] =   ini_read_real("Keyboard",  "Nudge Right",   ord('M'));
         
         //menu keys
         global.controls[KEY.MENU_LEFT, 0] =     vk_left;
@@ -78,17 +78,17 @@ switch(type)
         break; 
         
     case "loadControllerConfig":
-        global.controllerIndex =                FSIniReadReal("Controller",  "Index",    -1); //-1 means no controller
-        global.controls[KEY.LEFT, 1] =          FSIniReadReal("Controller",  "Left",     gp_padl);
-        global.controls[KEY.RIGHT, 1] =         FSIniReadReal("Controller",  "Right",    gp_padr);
-        global.controls[KEY.UP, 1] =            FSIniReadReal("Controller",  "Up",       gp_padu);
-        global.controls[KEY.DOWN, 1] =          FSIniReadReal("Controller",  "Down",     gp_padd);
-        global.controls[KEY.JUMP, 1] =          FSIniReadReal("Controller",  "Jump",     gp_face1);
-        global.controls[KEY.SHOOT, 1] =         FSIniReadReal("Controller",  "Shoot",    gp_face3);
-        global.controls[KEY.RESTART, 1] =       FSIniReadReal("Controller",  "Restart",  gp_face4);
-        global.controls[KEY.SKIP, 1] =          FSIniReadReal("Controller",  "Skip",     gp_face2);
-        global.controls[KEY.SUICIDE, 1] =       FSIniReadReal("Controller",  "Suicide",  gp_select);
-        global.controls[KEY.PAUSE, 1] =         FSIniReadReal("Controller",  "Pause",    gp_start);
+        global.controllerIndex =                ini_read_real("Controller",  "Index",    -1); //-1 means no controller
+        global.controls[KEY.LEFT, 1] =          ini_read_real("Controller",  "Left",     gp_padl);
+        global.controls[KEY.RIGHT, 1] =         ini_read_real("Controller",  "Right",    gp_padr);
+        global.controls[KEY.UP, 1] =            ini_read_real("Controller",  "Up",       gp_padu);
+        global.controls[KEY.DOWN, 1] =          ini_read_real("Controller",  "Down",     gp_padd);
+        global.controls[KEY.JUMP, 1] =          ini_read_real("Controller",  "Jump",     gp_face1);
+        global.controls[KEY.SHOOT, 1] =         ini_read_real("Controller",  "Shoot",    gp_face3);
+        global.controls[KEY.RESTART, 1] =       ini_read_real("Controller",  "Restart",  gp_face4);
+        global.controls[KEY.SKIP, 1] =          ini_read_real("Controller",  "Skip",     gp_face2);
+        global.controls[KEY.SUICIDE, 1] =       ini_read_real("Controller",  "Suicide",  gp_select);
+        global.controls[KEY.PAUSE, 1] =         ini_read_real("Controller",  "Pause",    gp_start);
         global.controls[KEY.ALIGN_LEFT, 1] =    gp_shoulderl;
         global.controls[KEY.ALIGN_RIGHT, 1] =   gp_shoulderr;
         global.controls[KEY.ALIGN_LEFT, 1] =    ord('A');

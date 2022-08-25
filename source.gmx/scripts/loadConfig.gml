@@ -4,37 +4,37 @@ var filename = prefix_project_path_if_needed("config.ini");
 ini_open(filename);
 
 //player
-global.deathEnabled = FSIniReadReal("prefs","death",false);
-global.showhitbox = FSIniReadReal("prefs","showhitbox",0);
-global.dotkidoutline = FSIniReadReal("prefs","dotkidoutline",true);
-global.savesubpixel = FSIniReadReal("prefs","savesubpixel",true);
+global.deathEnabled = ini_read_real("prefs","death",false);
+global.showhitbox = ini_read_real("prefs","showhitbox",0);
+global.dotkidoutline = ini_read_real("prefs","dotkidoutline",true);
+global.savesubpixel = ini_read_real("prefs","savesubpixel",true);
 
 //sidebar
-global.hidesidebar = FSIniReadReal("prefs","hidesidebar",false);
-global.editorinstructions = FSIniReadReal("prefs","editorinstructions",true);
-oEdit.snap = FSIniReadReal("prefs","gridsnap",32);
-global.sidebarlevel = FSIniReadReal("prefs","sidebarlevel",0);
-//global.playerpos_extended = FSIniReadReal("prefs","playerpos_extended",false);
-var length = FSIniReadReal("prefs", "grouplength", 0);
+global.hidesidebar = ini_read_real("prefs","hidesidebar",false);
+global.editorinstructions = ini_read_real("prefs","editorinstructions",true);
+oEdit.snap = ini_read_real("prefs","gridsnap",32);
+global.sidebarlevel = ini_read_real("prefs","sidebarlevel",0);
+//global.playerpos_extended = ini_read_real("prefs","playerpos_extended",false);
+var length = ini_read_real("prefs", "grouplength", 0);
 
 for (var i = 0; i < length; i++) {
-    global.group_hidden[i] = FSIniReadReal("prefs", "grouphidden[" + string(i) + "]", true);
+    global.group_hidden[i] = ini_read_real("prefs", "grouphidden[" + string(i) + "]", true);
 }
 
 //screen
-window_set_fullscreen(FSIniReadReal("prefs","fullscreen",false)); oWorld.alarm[0] = 1;
-global.grid_draw = FSIniReadReal("prefs","grid_draw",false);
-global.grid_sync = FSIniReadReal("prefs","grid_sync",true);
-global.mousecoords = FSIniReadReal("prefs","mousecoords",false);
+window_set_fullscreen(ini_read_real("prefs","fullscreen",false)); oWorld.alarm[0] = 1;
+global.grid_draw = ini_read_real("prefs","grid_draw",false);
+global.grid_sync = ini_read_real("prefs","grid_sync",true);
+global.mousecoords = ini_read_real("prefs","mousecoords",false);
 var depthstring = ini_read_string("prefs","depthorder","0,1,2,3");
 global.skinName = ini_read_string("prefs","skin","pat_default");
 
 //system
-global.hotkeylock = FSIniReadReal("prefs","hotkeylock",0);
-global.airsaving = FSIniReadReal("prefs","airsaving",true);
-global.worldtime = FSIniReadReal("prefs","worldtime",false);
-global.backup = FSIniReadReal("prefs","backup",true);
-global.checkupdates = FSIniReadReal("prefs","checkupdates",false);
+global.hotkeylock = ini_read_real("prefs","hotkeylock",0);
+global.airsaving = ini_read_real("prefs","airsaving",true);
+global.worldtime = ini_read_real("prefs","worldtime",false);
+global.backup = ini_read_real("prefs","backup",true);
+global.checkupdates = ini_read_real("prefs","checkupdates",false);
 
 //keyboard controls
 scrControls("loadKeyboardConfig");

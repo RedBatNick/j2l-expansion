@@ -505,7 +505,7 @@ bhopHint_EndStep(choose_player);
           <argument>
             <kind>1</kind>
             <string>///scrolling functions
-if (global.state == globalstate_idle &amp;&amp; point_in_rect(mouse_x, mouse_y, 800, 0, 1056, 608)) {
+if (global.state != globalstate_input &amp;&amp; point_in_rectangle(mouse_x, mouse_y, 800, 0, 1056, 608)) {
     global.scrollYTarget += (mouse_wheel_down() - mouse_wheel_up()) * 64;
     global.scrollYTarget = clamp(global.scrollYTarget, 0, global.scrollMax);
     global.scrollY = lerp(global.scrollY, global.scrollYTarget, 0.25);
@@ -567,7 +567,7 @@ if (global.state == globalstate_idle &amp;&amp; point_in_rect(mouse_x, mouse_y, 
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -608,7 +608,7 @@ if (global.hidesidebar)
           <argument>
             <kind>1</kind>
             <string>///object palette draw
-if (combobox_selected &amp;&amp; global.state != globalstate_idle) {
+if (combobox_selected &amp;&amp; global.state == globalstate_input) {
     combobox_selected = false;
     global.comboboxselected = false;
 }
@@ -801,7 +801,7 @@ for (var i = 0; i &lt; ds_list_size(group_order); i++) {
     draw_sprite_ext(spr,frame,xxx+w/2-sprite_get_width(spr)/2+sprite_get_xoffset(spr),yyy+h/2-sprite_get_height(spr)/2+sprite_get_yoffset(spr),1,1,0,color,1);
     
     // draw highlight and set tooltip
-    var button_highlighted = point_in_rect(mouse_x,mouse_y,xxx,yyy,xxx+w,yyy+h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
+    var button_highlighted = point_in_rectangle(mouse_x,mouse_y,xxx,yyy,xxx+w,yyy+h) &amp;&amp; (!global.comboboxselected || in_combobox) &amp;&amp; global.state == globalstate_idle;
     
     if (button_highlighted) {
         draw_set_alpha(global.buttonhoveralpha);
@@ -857,7 +857,7 @@ for (var i = 0; i &lt; ds_list_size(group_order); i++) {
         draw_set_color(global.color_button);
         draw_line(xxx,combo_y,xxx+w-2,combo_y);
         
-        if (!point_in_rect(mouse_x,mouse_y,combo_x,yyy,combo_x+combo_w,combo_y+combo_h)) {
+        if (!point_in_rectangle(mouse_x,mouse_y,combo_x,yyy,combo_x+combo_w,combo_y+combo_h)) {
             combobox_selected = false;
             global.comboboxselected = false;
         }
@@ -1501,9 +1501,7 @@ var yy = 8;
 var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselected &amp;&amp; !global.hidesidebar;
 var clicked = menuButton(xx,yy,96,32,"Menu (Esc)",enabled,false);
 
-var escpressed = keyboard_check_pressed(vk_escape) &amp;&amp; oMenu.steps_out_of_menu &gt; 0 &amp;&amp; global.state == globalstate_idle;
-
-if (clicked || escpressed) {
+if (clicked) {
     global.state = globalstate_menu;
     saveAndResetZoom();
 }
@@ -1682,6 +1680,40 @@ var enabled = global.state == globalstate_idle &amp;&amp; !global.comboboxselect
 if (menuButtonToggle(xx,yy,w,h,enabled,false,"Advanced","Standard",global.sidebarlevel)) {
     global.sidebarlevel = !global.sidebarlevel;
     saveConfig();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite_ext(sSidebar,0,800,0,1,1,0,c_white,1);
+
+var view_w = 1056 - (256*global.hidesidebar);
+if (window_get_width() != view_w) {
+    window_set_size(view_w,608);
+    view_wport = view_w;
+    view_wview = view_w;
+    completelyResetZoom();
+    saveAndResetZoom();
+    if (!window_get_fullscreen()) { oZoom.x2 = view_w; }
+    display_set_gui_size(view_wport,view_hport);
 }
 </string>
           </argument>
