@@ -1711,7 +1711,7 @@ if (menuButtonToggle(xx,yy,w,h,enabled,false,"Advanced","Standard",global.sideba
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sSidebar,0,800,0,1,1,0,c_white,1);
+            <string>draw_self();
 
 var view_w = 1056 - (256*global.hidesidebar);
 if (window_get_width() != view_w) {

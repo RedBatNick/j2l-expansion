@@ -119,7 +119,7 @@ if (app == "ctool") {
     // save signs
     f = file_text_open_read(filename);
     
-    var textstr = "";
+    /*var textstr = "";
     var textstr2 = "";
     var substr = "";
     
@@ -169,7 +169,6 @@ if (app == "ctool") {
                     show_debug_message("x: "+string(xxx)+"#y: "+string(yyy)+"#textstr: "+string(textstr));
                 }
             }
-            file_text_read_string(f);
         }
         
         if (!found) {
@@ -178,10 +177,9 @@ if (app == "ctool") {
                 show_debug_message("found");
                 found = true;
             }
-            file_text_read_string(f);
         }
         show_debug_message("time in loop: "+string(current_time/1000));
-    }
+    }*/
     file_text_close(f);
 }
 
