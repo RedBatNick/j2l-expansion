@@ -263,8 +263,8 @@
         <function>
           <name>file_text_eof</name>
           <externalName>file_text_eof</externalName>
-          <kind>12</kind>
-          <help>file_text_eof(path)</help>
+          <kind>11</kind>
+          <help>tile_text_eof(path)</help>
           <returnType>1</returnType>
           <argCount>0</argCount>
           <args/>
