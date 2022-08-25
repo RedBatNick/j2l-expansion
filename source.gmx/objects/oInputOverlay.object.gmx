@@ -30,35 +30,105 @@ buttonConfig_Create();
 
 global.panel = ds_map_create();
 
+var Jump = "[ "+scrGetKeybind(global.controls[KEY.JUMP, 0])+" ]";
+var Z = "[ "+scrGetKeybind(global.controls[KEY.SHOOT, 0])+" ]";
+var S = "( "+scrGetKeybind(global.controls[KEY.SKIP, 0])+" )";
+var U = "[ "+scrGetKeybind(global.controls[KEY.UP, 0])+" ]";
+var R = "[ "+scrGetKeybind(global.controls[KEY.RIGHT, 0])+" ]";
+var L = "[ "+scrGetKeybind(global.controls[KEY.LEFT, 0])+" ]";
+var D = "[ "+scrGetKeybind(global.controls[KEY.DOWN, 0])+" ]";
+var AA = "[ "+scrGetKeybind(global.controls[KEY.ALIGN_LEFT, 0])+" ]";
+var AD = "[ "+scrGetKeybind(global.controls[KEY.ALIGN_RIGHT, 0])+" ]";
+
 newMenuPanel(input_fileformat, "Parse Other Map Formats",
     addPanelSeparation("RMJ Maps", sMenuRMJMap, "Import/Export a Record My Jumps .map file."),
-    addPanelButton("Import", false, menuFileFormat_RMJImport),
-    addPanelButton("Export", false, menuFileFormat_RMJExport),
+    addPanelButton("Import", sMenuOpenMap, menuFileFormat_RMJImport),
+    addPanelButton("Export", sMenuSaveMap, menuFileFormat_RMJExport),
     
     addPanelSeparation("Legacy Maps", sMenuJtoolMap, "Import/Export a legacy .jmap file.#Legacy jmaps are any official .jmaps made prior to version 2.0.0."),
-    addPanelButton("Import", false, menuFileFormat_LegacyImport),
-    addPanelButton("Export", false, menuFileFormat_LegacyExport),
+    addPanelButton("Import", sMenuOpenMap, menuFileFormat_LegacyImport),
+    addPanelButton("Export", sMenuSaveMap, menuFileFormat_LegacyExport),
 
     addPanelSeparation("Ctool Maps", sMenuCtoolMap, "Import/Export a ctool .cmap file."),
-    addPanelButton("Import", false, menuFileFormat_CtoolImport),
-    addPanelButton("Export", false, menuFileFormat_CtoolExport), 
+    addPanelButton("Import", sMenuOpenMap, menuFileFormat_CtoolImport),
+    addPanelButton("Export", sMenuSaveMap, menuFileFormat_CtoolExport), 
     
     addPanelSeparation("IWM Maps", sMenuIWMMap, "Import/Export an I Wanna Maker .map file."),//#IWM maps are structurally very different from .jmaps, so a lot of information will be lost."),
-    addPanelButton("Import", false, menuFileFormat_IWMImport),
-    addPanelButton("Export", false, menuFileFormat_IWMExport), 
+    addPanelButton("Import", sMenuOpenMap, menuFileFormat_IWMImport),
+    addPanelButton("Export", sMenuSaveMap, menuFileFormat_IWMExport), 
 
     addPanelSeparation("GMS Rooms", sMenuGMSRoom, "Import/Export a GameMaker Studio .room file."),
-    addPanelButton("Import", false, menuFileFormat_GMSImport),
-    addPanelButton("Export", false, menuFileFormat_GMSExport), 
+    addPanelButton("Import", sMenuOpenMap, menuFileFormat_GMSImport),
+    addPanelButton("Export", sMenuSaveMap, menuFileFormat_GMSExport), 
     addPanelButton("Settings", false, menuFileFormat_GMSSettings),
     
     addPanelSeparation("GM82 Rooms", sMenuGM82Room, "Import/Export a GameMaker 8.2 room folder."),
-    addPanelButton("Import", false, menuFileFormat_GM82Import),
-    addPanelButton("Export", false, menuFileFormat_GM82Export), 
+    addPanelButton("Import", sMenuOpenMap, menuFileFormat_GM82Import),
+    addPanelButton("Export", sMenuSaveMap, menuFileFormat_GM82Export), 
     addPanelButton("Settings", false, menuFileFormat_GM82Settings),
 );
 
+newMenuPanel(input_filerecord, "Recording",
+    addPanelButton("Start", sMenuRecord, menuFileRecord_Start, "Start a recording#(Will restart the room once pressed)."),
+    addPanelButton("Stop", sMenuStop, menuFileRecord_Stop, "Stop a currently active recording."),
+    addPanelButton("Erase", sMenuEraser, menuFileRecord_Eraser, "Erase a currently active recording."),
+    addPanelButton("Continue", sMenuContinue, menuFileRecord_Continue, "Continue a previous recording#(Will restart the room once pressed)."),
+    addPanelButton("Save", sMenuSaveMap, menuFileRecord_Save, "Save a currently active recording."),
+    addPanelButton("Load", sMenuOpenMap, menuFileRecord_Load, "Load a previous recording."),
+);
 
+
+newMenuPanel(input_maptransform, "Set Transformations",
+    addPanelButton("Dotkid", sMenuDotkid, menuMapTransform_Dotkid, "Toggles Dotkid.#Hitbox is a 2x2 rectangle."),
+    addPanelButton("Vkid", sMenuVkidBlue, menuMapTransform_Vkid, "Toggles Vkid type.#"+Jump+" to flip.#Blue Vkid flips 180-degree.#Purple Vkid flips 90-degrees in the direction you're facing."),
+    addPanelButton("Telekid", sMenuTelekid, menuMapTransform_Telekid, "Toggles Telekid.#"+Z+" to shoot a teleport clone.#Collision with blocks will teleport the player.#Collision with killers will kill the player."),
+    addPanelButton("Lunarkid", sMenuLunarkid, menuMapTransform_Lunarkid, "Toggles Lunarkid / Rocket.#Movement is based on inertia.#"+L+" to rotate CCW.#"+R+" to rotate CW.#"+U+" to accelerate.#Hitbox is a 11x21 oval."),
+    addPanelButton("Linekid", sMenuLinekid, menuMapTransform_Linekid, "Toggles Linekid.#"+U+" / "+AA+" to rotate CCW.#"+D+" / "+AD+" to rotate CW.#Hitbox is a 3x25 rectangle."),
+);
+
+newMenuPanel(input_mapsaves, "Set Save Attributes",
+    addPanelButton("Z Saves", sMenuSaveZ, menuMapSaves_Z, "Toggles saves to be used when pressing "+Z+" on them."),
+    addPanelButton("Shoot Saves", sMenuSaveShoot, menuMapSaves_Shoot, "Toggles saves to be used when shot."),
+    addPanelButton("S Saves", sMenuSaveS, menuMapSaves_S, "Toggles saves to be used when pressing "+S+" on them."),
+    addPanelButton("Touch Saves", sMenuSaveTouch, menuMapSaves_Touch, "Toggles saves to be used when touched."),
+);
+
+newMenuPanel(input_mapphysics, "Set Physics Options",
+    addPanelButton("Infinite Jump", sMenuInfJump, menuMapPhysics_InfJump, "Toggles infinite jump."),
+    addPanelButton("No Ice", sMenuIceNo, menuMapPhysics_Ice, "Toggles ice physics.#Slip ice is similar to slip block collision.#Domu ice adds momentum to your max speed.#Pressure ice (Also known as CBT ice) makes you start moving with momentum."),
+    addPanelButton("Slowshot", sMenuSlowshot, menuMapPhysics_Slowshot, "Toggles slow shot.#Bullets move at 1 speed.#Max bullets is 10.#Bullets will disappear after 16 seconds."),
+);
+
+newMenuPanel(input_mapborders, "Set Border Attributes",
+    addPanelButton("Solid Border", sMenuBorderCollision, menuMapBorders_Type, "Toggles room border type.#Death border will kill the player on collision.#Solid border will stop the player on collision."),
+    addPanelButton("No Screenwrap", sMenuBorderWrapNo, menuMapBorders_Screenwrap, "Toggles screenwrap type.#X Wrap will screenwrap the player horizontally.#Y Wrap will screenwrap the player vertically.#XY Wrap will screenwrap the player in both axes."),
+    addPanelButton("Center BBox", sMenuBorderBBoxCenter, menuMapBorders_BBox, "Toggles border collision type.#Center BBox will cause the player to collide on their origin.#Far BBox will cause the player to collide on the farthest edge of their hitbox.#Near BBox will cause the player to collide on the nearest edge of their hitbox."),
+);
+
+newMenuPanel(input_mapactions, "Set Misc. Interactions",
+    addPanelButton("Dot Clip", sMenuDotClip, menuMapActions_DotClip, "Toggles Dotkid clipping.#Sets whether or not you will be pushed out of a block when switching to and from the normal Kid."),
+    addPanelButton("Dot Platfix", sMenuDotPlatFix, menuMapActions_DotPlatFix, "Toggles Dotkid platform fix.#Sets whether or not you will properly collide with platforms as Dotkid."),
+    addPanelButton("Tele Range", sMenuTeleRangeFar, menuMapActions_TeleRange, "Toggles Telekid range.#Sets whether or not you can shoot a clone when you are within 12 pixels of a wall."),
+);
+
+
+newMenuPanel(input_prefplayer, "Set Player Preferences",
+    addPanelButton("No Death", sMenuDeath, menuPrefPlayer_Death, "Toggles death type.#No death will only cause killers to be highlighted on collision.#Death will cause you to explode on collision with killers.#Hit Death will cause you to be hit and become intangible on collision with killers.#Reset Death will cause the room to immediately reste on collision with killers."),
+    addPanelButton("Hide Hitbox", sMenuHitboxHide, menuPrefPlayer_Hitbox, "Toggles player hitbox opacity.#Hide hitbox will display the player normally.#Show hitbox will display your hitbox at low opacity.#Only hitbox will replace the player with a hitbox."),
+    addPanelButton("Dot Outline", sMenuDotOutline, menuPrefPlayer_DotOutline, "Toggles Dotkid outline.#Sets whether or not to draw a rectangle around the player's position while Dotkid is active.#Useful for seeing where the player currently is more easily."),
+    addPanelButton("Save Subpixel", sMenuSaveSubpixel, menuPrefPlayer_Subpixel, "Toggles saving subpixels.#Sets whether or not to floor the player's X and Y subpixels on restart."),
+);
+
+newMenuPanel(input_prefscreen, "Set Screen Preferences",
+    addPanelButton("Fullscreen", sMenuFullscreen, menuPrefScreen_Fullscreen, "Toggles fullscreen mode."),
+    addPanelButton("Coordinates, ", sMenuCoords, menuPrefScreen_Coords, "Toggles mouse coordinates display.#Sets whether or not to display the mouse cursor's position."),
+    addPanelButton("Grid: "+string(global.grid_draw), sMenuGrid, menuPrefScreen_GridDraw, "Toggles drawing the grid overlay."),
+    addPanelButton("Grid Sync", sMenuGridSync, menuPrefScreen_GridSync, "Toggles grid sync.#Sets whether or not the grid overlay is synced with the current grid snap."),
+);
+
+newMenuPanel(input_prefsystem, "Set System Preferences",
+
+);
 
 //input_fileformat
 //input_filerecord
@@ -431,6 +501,7 @@ for (var i = 0; i &lt; ds_list_size(buttons); i++) {
     var bh = h;
      
     if (!active) {
+        yy += 8;
         bh *= 0.75;
     }
     
@@ -440,344 +511,6 @@ for (var i = 0; i &lt; ds_list_size(buttons); i++) {
     
     yy += bh + 8;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>file dropdowns</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///map formatting
-
-/*
-if (mode == input_fileformat) 
-{
-    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
-    var head = "Parse Other Map Formats";
-    
-    for (var i = 0; i &lt; 15; i+=1) 
-    {
-        var yy = 48+i*(h+8);//-back_h/3+41+i*(h+8);
-        var text;
-        
-        switch (i)
-        {
-            case 0: //open RMJ map
-            var tt = "Import a Record My Jumps .map file.";
-            
-            if (menuButton(xx,yy,w,h,"Import RMJ",true,sMenuOpenRMJMap,tt)) 
-            {
-                if (!oEdit.undo_nochanges) 
-                {
-                    inputOverlay(input_yesno,inputCallback_LoadRMJMap,
-                    "Map has been modified. Save changes?");
-                }
-                else 
-                {
-                    global.input_bool = false;
-                    global.input_cancel = false;
-                    inputCallback_LoadMap("rmj");
-                }
-            } break;
-            
-            
-            case 1: //save RMJ map
-            var tt = "Export map as a Record My Jumps .map file.";
-            
-            if (menuButton(xx,yy,w,h,"Export RMJ",true,sMenuSaveRMJMap,tt))
-            {
-                if (window_get_fullscreen()) 
-                {
-                    window_set_fullscreen(false);
-                    oWorld.alarm[0] = 1;
-                    oWorld.buffertype = "rmj";
-                    oWorld.alarm[1] = 2;
-                }
-                else { saveRMJMap(); }
-            } break;
-            
-            
-            case 2: //open old jmap
-            var tt = "Import a legacy .jmap file.
-            Legacy jmaps are any official .jmaps made prior to version 2.0.0.";
-            
-            if (menuButton(xx,yy,w,h,"Import Legacy",true,sMenuOpenJMap,tt)) 
-            {
-                if (!oEdit.undo_nochanges) 
-                {
-                    inputOverlay(input_yesno,inputCallback_LoadMap("legacy"),
-                    "Map has been modified. Save changes?");
-                }
-                else 
-                {
-                    global.input_bool = false;
-                    global.input_cancel = false;
-                    inputCallback_LoadMap("legacy");
-                }
-            } break;
-            
-
-            case 3: //save old jmap
-            var tt = "Export map as a legacy .jmap file.
-            Legacy jmaps are any official .jmaps made prior to version 2.0.0.";
-            
-            if (menuButton(xx,yy,w,h,"Export Legacy",true,sMenuSaveJMap,tt)) 
-            {
-                if (window_get_fullscreen()) 
-                {
-                    window_set_fullscreen(false);
-                    oWorld.alarm[0] = 1;
-                    oWorld.buffertype = "legacy";
-                    oWorld.alarm[2] = 2;
-                }
-                else { saveMapAskName("legacy"); }
-            } break;
-            
-            
-            case 4: //open cmap
-            var tt = "Import a .cmap file.";
-            
-            if (menuButton(xx,yy,w,h,"Import Ctool",true,sMenuOpenCMap,tt)) 
-            {
-                if (!oEdit.undo_nochanges) 
-                {
-                    inputOverlay(input_yesno,inputCallback_LoadMap("ctool"),
-                    "Map has been modified. Save changes?");
-                }
-                else 
-                {
-                    global.input_bool = false;
-                    global.input_cancel = false;
-                    inputCallback_LoadMap("ctool");
-                }
-            } break;
-            
-            
-            case 5: //save cmap
-            var tt = "Export map as a .cmap file.";
-            
-            if (menuButton(xx,yy,w,h,"Export Ctool",true,sMenuSaveCMap,tt)) 
-            {
-                if (window_get_fullscreen()) 
-                {
-                    window_set_fullscreen(false);
-                    oWorld.alarm[0] = 1;
-                    oWorld.buffertype = "ctool";
-                    oWorld.alarm[2] = 2;
-                }
-                else { saveMapAskName("ctool"); }
-            } break;
-                        
-            
-            case 6: //open iwm map
-            var tt = "Import an I Wanna Maker .map file.#IWM maps are structurally very different from .jmaps, so a lot of information will be lost.";
-            
-            if (menuButton(xx,yy,w,h,"Import IWM",true,sMenuOpenIWMMap,tt)) 
-            {
-
-            } break;
-            
-            
-            case 7: //save iwm map
-            var tt = "Export map as an I Wanna Maker .map file.
-            IWM maps are structurally very different from .jmaps, so a lot of information will be lost.";
-            
-            if (menuButton(xx,yy,w,h,"Export IWM",true,sMenuSaveIWMMap,tt)) 
-            {
-            
-            } break;
-            
-            
-            case 8: //open gmx room
-            var tt = "Import a GameMaker: Studio .gmx room file.";
-            
-            if (menuButton(xx,yy,w,h,"Import GMX",true,sMenuOpenGMXRoom,tt))
-            {
-
-            } break;
-            
-            case 9: //save gmx room
-            var tt = "Export map as a GameMaker: Studio .gmx room file.";
-            
-            if (menuButton(xx,yy,w,h,"Export GMX",true,sMenuSaveGMXRoom,tt))
-            {
-            
-            } break;
-            
-            
-            case 10: //open gm82 room
-            var tt = "Import a GameMaker 8.2 room folder as a map.";
-            
-            if (menuButton(xx,yy,w,h,"Import GM82",true,sMenuOpenGM82Room,tt))
-            {
-
-            } break;
-            
-            case 11: //save gm82 room
-            var tt = "Export map as a GameMaker 8.2 room folder.";
-            
-            if (menuButton(xx,yy,w,h,"Export GM82",true,sMenuSaveGM82Room,tt))
-            {
-            
-            } break;
-        }
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///recording
-if (mode == input_filerecord) 
-{
-    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
-    var head = "Recording";
-    
-    for (var i = 0; i &lt; 7; i+=1) 
-    {
-        var yy = 48+i*(h+8);//var yy = 304-back_h/2+41+i*(h+8);
-        var text;
-        
-        switch (i)
-        {        
-            case 0: //start recording
-            var tt = "Start a recording
-            (Will restart the room once pressed).";
-            
-            if (menuButton(xx,yy,w,h,"Start",true,sMenuRecord,tt)) 
-            {
-                global.PlayerFrameCounter = 0;
-                startRecord();
-                escape_button_just_clicked = true;
-            } break;
-            
-            
-            case 1: //stop recording
-            var tt = "Stop a currently active recording.";
-            
-            if (menuButton(xx,yy,w,h,"Stop",true,sMenuStop,tt))
-            {
-                global.savecount = 0;
-                global.SavedPlayerFrameCounter = global.PlayerFrameCounter;
-                global.RecordPlayerPosition = true;
-                
-                if (instance_exists(oPlayer)) 
-                {
-                    global.stopX = oPlayer.x;
-                    global.stopY = oPlayer.y;
-                    global.stopgrav = global.recordGrav;
-                    global.stopplayer_xscale = global.player_xscale;
-                    global.stopVspeed = oPlayer.vspeed;
-                    global.stopDjump = oPlayer.djump;
-                }
-                else if (global.paused)
-                { 
-                    global.stopX = global.pausedX;
-                    global.stopY = global.pausedY;
-                    global.stopgrav = global.pausedgrav;
-                    global.stopplayer_xscale = global.pausedplayer_xscale;
-                    global.stopVspeed = global.pausedVspeed;
-                    global.stopDjump = global.pausedDjump;
-                }
-    
-                playRecord();
-                escape_button_just_clicked = true;
-            } break;
-            
-            
-            case 2: //erase recording
-            var tt = "Erase a currently active recording.";
-            
-            if (menuButton(xx,yy,w,h,"Erase",true,sMenuEraser,tt))
-            {
-                eraserRecord();
-                global.record = 0;
-                global.FrameCounterOn = false;
-                global.PlayerFrameCounter = 0;
-            } break
-            
-            
-            case 3: //continue recording
-            var tt = "Continue a previous recording
-            (Will restart the room once pressed).";
-            
-            if (menuButton(xx,yy,w,h,"Continue",true,sMenuContinue,tt)) 
-            {
-                escape_button_just_clicked = true;
-                
-                if (!global.paused)
-                    continueRecordAskName();
-            } break;
-            
-            
-            case 4: //save recording
-            var tt = "Save a currently active recording.";
-            
-            if (!global.paused &amp;&amp; menuButton(xx,yy,w,h,"Save",true,sMenuSaveMap,tt)) 
-            {
-                saveRecordAskName();
-            } break;
-            
-            
-            case 5: //load recording
-            var tt = "Load a previous recording.";
-            
-            if (!global.paused &amp;&amp; menuButton(xx,yy,w,h,"Load",true,sMenuOpenMap,tt)) 
-            {
-                loadRecordAskName();
-            } break;
-        }
-    }
-}   
 </string>
           </argument>
         </arguments>
@@ -1418,8 +1151,7 @@ if (mode == input_prefscreen)
             
             
             case 1: //mouse coords
-            var tt = "Toggles mouse coordinates display.
-            Sets whether or not to display the mouse cursor's position.";
+            var tt = "Toggles mouse coordinates display.#Sets whether or not to display the mouse cursor's position.";
             
             if (menuButtonToggle(xx,yy,w,h,true,sMenuCoords,"[ Coordinates ]","Coordinates",global.mousecoords,tt)) {
                 global.mousecoords = !global.mousecoords;
@@ -1457,8 +1189,7 @@ if (mode == input_prefscreen)
             if (!global.grid_sync) 
                 gridsync_spr = sMenuGridDesync;
                 
-            var tt = "Toggles grid sync.
-            Sets whether or not the grid overlay is synced with the current grid snap.";
+            var tt = "Toggles grid sync.#Sets whether or not the grid overlay is synced with the current grid snap.";
                 
             if (menuButtonToggle(xx,yy,w,h,true,gridsync_spr,"[ Grid Sync ]","Grid Sync",global.grid_sync,tt)) {
                 global.grid_sync = !global.grid_sync;

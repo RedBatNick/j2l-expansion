@@ -1,0 +1,2 @@
+///menuFileRecord_Load()
+loadRecordAskName();

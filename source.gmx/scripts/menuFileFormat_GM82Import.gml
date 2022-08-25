@@ -1,1 +1,1 @@
-///menuFileFormat_GM82Import
+///menuFileFormat_GM82Import()

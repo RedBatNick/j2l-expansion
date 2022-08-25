@@ -798,6 +798,54 @@
             <script>scripts\menuFileFormat_GM82Settings.gml</script>
           </scripts>
         </scripts>
+        <scripts name="file record">
+          <script>scripts\menuFileRecord_Start.gml</script>
+          <script>scripts\menuFileRecord_Stop.gml</script>
+          <script>scripts\menuFileRecord_Eraser.gml</script>
+          <script>scripts\menuFileRecord_Continue.gml</script>
+          <script>scripts\menuFileRecord_Save.gml</script>
+          <script>scripts\menuFileRecord_Load.gml</script>
+        </scripts>
+        <scripts name="map transforms">
+          <script>scripts\menuMapTransform_Dotkid.gml</script>
+          <script>scripts\menuMapTransform_Vkid.gml</script>
+          <script>scripts\menuMapTransform_Telekid.gml</script>
+          <script>scripts\menuMapTransform_Lunarkid.gml</script>
+          <script>scripts\menuMapTransform_Linekid.gml</script>
+        </scripts>
+        <scripts name="map saves">
+          <script>scripts\menuMapSaves_Z.gml</script>
+          <script>scripts\menuMapSaves_Shoot.gml</script>
+          <script>scripts\menuMapSaves_S.gml</script>
+          <script>scripts\menuMapSaves_Touch.gml</script>
+        </scripts>
+        <scripts name="map physics">
+          <script>scripts\menuMapPhysics_InfJump.gml</script>
+          <script>scripts\menuMapPhysics_Ice.gml</script>
+          <script>scripts\menuMapPhysics_Slowshot.gml</script>
+        </scripts>
+        <scripts name="map borders">
+          <script>scripts\menuMapBorders_Type.gml</script>
+          <script>scripts\menuMapBorders_Screenwrap.gml</script>
+          <script>scripts\menuMapBorders_BBox.gml</script>
+        </scripts>
+        <scripts name="map actions">
+          <script>scripts\menuMapActions_DotClip.gml</script>
+          <script>scripts\menuMapActions_DotPlatFix.gml</script>
+          <script>scripts\menuMapActions_TeleRange.gml</script>
+        </scripts>
+        <scripts name="pref player">
+          <script>scripts\menuPrefPlayer_Death.gml</script>
+          <script>scripts\menuPrefPlayer_Hitbox.gml</script>
+          <script>scripts\menuPrefPlayer_DotOutline.gml</script>
+          <script>scripts\menuPrefPlayer_Subpixel.gml</script>
+        </scripts>
+        <scripts name="pref screen">
+          <script>scripts\menuPrefScreen_Fullscreen.gml</script>
+          <script>scripts\menuPrefScreen_Coords.gml</script>
+          <script>scripts\menuPrefScreen_GridDraw.gml</script>
+          <script>scripts\menuPrefScreen_GridSync.gml</script>
+        </scripts>
       </scripts>
       <scripts name="palette">
         <script>scripts\reloadObjects.gml</script>
