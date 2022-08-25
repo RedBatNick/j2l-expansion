@@ -19,8 +19,8 @@ newSkinnableSprite(sPlayerClimbHor, "playerclimbhor");
 newSkinnableSprite(sLunarkid, "lunarkid");
 newSkinnableSprite(sLinekid, "linekid");
 
-newSkinnableObject(sPlayerBlood, "blood",0);
-newSkinnableObject(sPlayerBullet, "bullet");
+newSkinnableSprite(sPlayerBlood, "blood",0);
+newSkinnableSprite(sPlayerBullet, "bullet");
 
 
 // Blocks.
