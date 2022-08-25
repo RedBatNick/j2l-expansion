@@ -298,6 +298,18 @@ newPaletteObject(oFireVineR,
 cyclePaletteObjects(oFireVineD,oFireVineL,oFireVineU), 
 false, "Fire Vine", false, "Vines");
 
+newPaletteObject(oZeroGravVineR,
+cyclePaletteObjects(oZeroGravVineD,oZeroGravVineL,oZeroGravVineU), 
+false, "Zero-Gravity Vine", false, "Vines");
+
+newPaletteObject(oAutoVineR,
+cyclePaletteObjects(oAutoVineD,oAutoVineL,oAutoVineU), 
+false, "Auto Vine", false, "Vines");
+
+newPaletteObject(oReverseVineR,
+cyclePaletteObjects(oReverseVineD,oReverseVineL,oReverseVineU), 
+false, "Reverse Vine", false, "Vines");
+
 
 
 // Refreshers.
@@ -362,19 +374,19 @@ false, "Gravity Left", false, "Gravity");
 
 // Fields.
 newPaletteObject(oFieldLowGrav,
-cyclePaletteObjects(oFieldHighGrav),
+cyclePaletteObjects(oFieldHighGrav,oFieldZeroGrav,oFieldAntiGrav),
 false, "Gravity Field", false, "Fields");
 
 newPaletteObject(oFieldHighSpeed,
-cyclePaletteObjects(oFieldLowSpeed),
+cyclePaletteObjects(oFieldLowSpeed,oFieldAutoSpeed,oFieldBuffSpeed),
 false, "Speed Field", false, "Fields");
 
 newPaletteObject(oFieldDotkidOn,
-cyclePaletteObjects(oFieldDotkidOff),
+cyclePaletteObjects(oFieldDotkidOff,oFieldDotkidShoot),
 false, "Dotkid Field", false, "Fields");
 
-newPaletteObject(oFieldTripleOn,
-cyclePaletteObjects(oFieldTripleOff),
+newPaletteObject(oFieldTripleJumpOn,
+cyclePaletteObjects(oFieldTripleJumpOff,oFieldTripleJumpShoot),
 false, "Triple Field", false, "Fields");
 
 

@@ -287,62 +287,82 @@
           <sprite>sprites\sLadderHor</sprite>
         </sprites>
         <sprites name="vine">
-          <sprites name="standard">
-            <sprite>sprites\sVineU</sprite>
-            <sprite>sprites\sVineR</sprite>
-            <sprite>sprites\sVineL</sprite>
-            <sprite>sprites\sVineD</sprite>
-          </sprites>
-          <sprites name="rise">
-            <sprite>sprites\sRiseVineU</sprite>
-            <sprite>sprites\sRiseVineR</sprite>
-            <sprite>sprites\sRiseVineL</sprite>
-            <sprite>sprites\sRiseVineD</sprite>
-          </sprites>
-          <sprites name="ice">
-            <sprite>sprites\sIceVineU</sprite>
-            <sprite>sprites\sIceVineR</sprite>
-            <sprite>sprites\sIceVineL</sprite>
-            <sprite>sprites\sIceVineD</sprite>
-          </sprites>
-          <sprites name="flip">
-            <sprite>sprites\sFlipVineU</sprite>
-            <sprite>sprites\sFlipVineR</sprite>
-            <sprite>sprites\sFlipVineL</sprite>
-            <sprite>sprites\sFlipVineD</sprite>
-          </sprites>
-          <sprites name="sticky">
-            <sprite>sprites\sStickyVineU</sprite>
-            <sprite>sprites\sStickyVineR</sprite>
-            <sprite>sprites\sStickyVineL</sprite>
-            <sprite>sprites\sStickyVineD</sprite>
-          </sprites>
-          <sprites name="low-gravity">
-            <sprite>sprites\sLowGravVineU</sprite>
-            <sprite>sprites\sLowGravVineR</sprite>
-            <sprite>sprites\sLowGravVineL</sprite>
-            <sprite>sprites\sLowGravVineD</sprite>
-          </sprites>
-          <sprites name="twin">
-            <sprites name="white">
-              <sprite>sprites\sWhiteVineU</sprite>
-              <sprite>sprites\sWhiteVineR</sprite>
-              <sprite>sprites\sWhiteVineL</sprite>
-              <sprite>sprites\sWhiteVineD</sprite>
+          <sprites name="light">
+            <sprites name="standard">
+              <sprite>sprites\sVineU</sprite>
+              <sprite>sprites\sVineR</sprite>
+              <sprite>sprites\sVineL</sprite>
+              <sprite>sprites\sVineD</sprite>
             </sprites>
-            <sprites name="black">
-              <sprite>sprites\sBlackVineU</sprite>
-              <sprite>sprites\sBlackVineR</sprite>
-              <sprite>sprites\sBlackVineL</sprite>
-              <sprite>sprites\sBlackVineD</sprite>
+            <sprites name="rise">
+              <sprite>sprites\sRiseVineU</sprite>
+              <sprite>sprites\sRiseVineR</sprite>
+              <sprite>sprites\sRiseVineL</sprite>
+              <sprite>sprites\sRiseVineD</sprite>
             </sprites>
-          </sprites>
-          <sprites name="fire">
-            <sprite>sprites\sFireVineU</sprite>
-            <sprite>sprites\sFireVineR</sprite>
-            <sprite>sprites\sFireVineL</sprite>
-            <sprite>sprites\sFireVineD</sprite>
-            <sprite>sprites\sFireVinePart</sprite>
+            <sprites name="ice">
+              <sprite>sprites\sIceVineU</sprite>
+              <sprite>sprites\sIceVineR</sprite>
+              <sprite>sprites\sIceVineL</sprite>
+              <sprite>sprites\sIceVineD</sprite>
+            </sprites>
+            <sprites name="flip">
+              <sprite>sprites\sFlipVineU</sprite>
+              <sprite>sprites\sFlipVineR</sprite>
+              <sprite>sprites\sFlipVineL</sprite>
+              <sprite>sprites\sFlipVineD</sprite>
+            </sprites>
+            <sprites name="sticky">
+              <sprite>sprites\sStickyVineU</sprite>
+              <sprite>sprites\sStickyVineR</sprite>
+              <sprite>sprites\sStickyVineL</sprite>
+              <sprite>sprites\sStickyVineD</sprite>
+            </sprites>
+            <sprites name="low-gravity">
+              <sprite>sprites\sLowGravVineU</sprite>
+              <sprite>sprites\sLowGravVineR</sprite>
+              <sprite>sprites\sLowGravVineL</sprite>
+              <sprite>sprites\sLowGravVineD</sprite>
+            </sprites>
+            <sprites name="twin">
+              <sprites name="white">
+                <sprite>sprites\sWhiteVineU</sprite>
+                <sprite>sprites\sWhiteVineR</sprite>
+                <sprite>sprites\sWhiteVineL</sprite>
+                <sprite>sprites\sWhiteVineD</sprite>
+              </sprites>
+              <sprites name="black">
+                <sprite>sprites\sBlackVineU</sprite>
+                <sprite>sprites\sBlackVineR</sprite>
+                <sprite>sprites\sBlackVineL</sprite>
+                <sprite>sprites\sBlackVineD</sprite>
+              </sprites>
+            </sprites>
+            <sprites name="fire">
+              <sprite>sprites\sFireVineU</sprite>
+              <sprite>sprites\sFireVineR</sprite>
+              <sprite>sprites\sFireVineL</sprite>
+              <sprite>sprites\sFireVineD</sprite>
+              <sprite>sprites\sFireVinePart</sprite>
+            </sprites>
+            <sprites name="zero-gravity">
+              <sprite>sprites\sZeroVineU</sprite>
+              <sprite>sprites\sZeroVineR</sprite>
+              <sprite>sprites\sZeroVineL</sprite>
+              <sprite>sprites\sZeroVineD</sprite>
+            </sprites>
+            <sprites name="autorun">
+              <sprite>sprites\sAutoVineU</sprite>
+              <sprite>sprites\sAutoVineR</sprite>
+              <sprite>sprites\sAutoVineL</sprite>
+              <sprite>sprites\sAutoVineD</sprite>
+            </sprites>
+            <sprites name="reverse">
+              <sprite>sprites\sReverseVineU</sprite>
+              <sprite>sprites\sReverseVineR</sprite>
+              <sprite>sprites\sReverseVineL</sprite>
+              <sprite>sprites\sReverseVineD</sprite>
+            </sprites>
           </sprites>
         </sprites>
         <sprites name="refresher">
@@ -384,18 +404,24 @@
           <sprites name="gravity">
             <sprite>sprites\sFieldLowGrav</sprite>
             <sprite>sprites\sFieldHighGrav</sprite>
+            <sprite>sprites\sFieldZeroGrav</sprite>
+            <sprite>sprites\sFieldAntiGrav</sprite>
           </sprites>
           <sprites name="speed">
             <sprite>sprites\sFieldHighSpeed</sprite>
             <sprite>sprites\sFieldLowSpeed</sprite>
+            <sprite>sprites\sFieldAutoSpeed</sprite>
+            <sprite>sprites\sFieldBuffSpeed</sprite>
           </sprites>
           <sprites name="dotkid">
-            <sprite>sprites\sFieldDotOn</sprite>
-            <sprite>sprites\sFieldDotOff</sprite>
+            <sprite>sprites\sFieldDotkidShoot</sprite>
+            <sprite>sprites\sFieldDotkidOn</sprite>
+            <sprite>sprites\sFieldDotkidOff</sprite>
           </sprites>
           <sprites name="triple jump">
-            <sprite>sprites\sFieldTripleOn</sprite>
-            <sprite>sprites\sFieldTripleOff</sprite>
+            <sprite>sprites\sFieldTripleJumpShoot</sprite>
+            <sprite>sprites\sFieldTripleJumpOn</sprite>
+            <sprite>sprites\sFieldTripleJumpOff</sprite>
           </sprites>
         </sprites>
       </sprites>
@@ -738,6 +764,9 @@
             </scripts>
           </scripts>
         </scripts>
+      </scripts>
+      <scripts name="menu">
+        <script>scripts\newMenuPanel.gml</script>
       </scripts>
       <scripts name="palette">
         <script>scripts\reloadObjects.gml</script>
@@ -1219,62 +1248,82 @@
           <object>objects\oLadderHor</object>
         </objects>
         <objects name="vine">
-          <objects name="standard">
-            <object>objects\oVineU</object>
-            <object>objects\oVineR</object>
-            <object>objects\oVineL</object>
-            <object>objects\oVineD</object>
-          </objects>
-          <objects name="rise">
-            <object>objects\oRiseVineU</object>
-            <object>objects\oRiseVineR</object>
-            <object>objects\oRiseVineL</object>
-            <object>objects\oRiseVineD</object>
-          </objects>
-          <objects name="ice">
-            <object>objects\oIceVineU</object>
-            <object>objects\oIceVineR</object>
-            <object>objects\oIceVineL</object>
-            <object>objects\oIceVineD</object>
-          </objects>
-          <objects name="flip">
-            <object>objects\oFlipVineU</object>
-            <object>objects\oFlipVineR</object>
-            <object>objects\oFlipVineL</object>
-            <object>objects\oFlipVineD</object>
-          </objects>
-          <objects name="sticky">
-            <object>objects\oStickyVineU</object>
-            <object>objects\oStickyVineR</object>
-            <object>objects\oStickyVineL</object>
-            <object>objects\oStickyVineD</object>
-          </objects>
-          <objects name="low-gravity">
-            <object>objects\oLowGravVineU</object>
-            <object>objects\oLowGravVineR</object>
-            <object>objects\oLowGravVineL</object>
-            <object>objects\oLowGravVineD</object>
-          </objects>
-          <objects name="twin">
-            <objects name="white">
-              <object>objects\oWhiteVineU</object>
-              <object>objects\oWhiteVineR</object>
-              <object>objects\oWhiteVineL</object>
-              <object>objects\oWhiteVineD</object>
+          <objects name="light">
+            <objects name="standard">
+              <object>objects\oVineU</object>
+              <object>objects\oVineR</object>
+              <object>objects\oVineL</object>
+              <object>objects\oVineD</object>
             </objects>
-            <objects name="black">
-              <object>objects\oBlackVineU</object>
-              <object>objects\oBlackVineR</object>
-              <object>objects\oBlackVineL</object>
-              <object>objects\oBlackVineD</object>
+            <objects name="rise">
+              <object>objects\oRiseVineU</object>
+              <object>objects\oRiseVineR</object>
+              <object>objects\oRiseVineL</object>
+              <object>objects\oRiseVineD</object>
             </objects>
-          </objects>
-          <objects name="fire">
-            <object>objects\oFireVineU</object>
-            <object>objects\oFireVineR</object>
-            <object>objects\oFireVineL</object>
-            <object>objects\oFireVineD</object>
-            <object>objects\oFireVinePart</object>
+            <objects name="ice">
+              <object>objects\oIceVineU</object>
+              <object>objects\oIceVineR</object>
+              <object>objects\oIceVineL</object>
+              <object>objects\oIceVineD</object>
+            </objects>
+            <objects name="flip">
+              <object>objects\oFlipVineU</object>
+              <object>objects\oFlipVineR</object>
+              <object>objects\oFlipVineL</object>
+              <object>objects\oFlipVineD</object>
+            </objects>
+            <objects name="sticky">
+              <object>objects\oStickyVineU</object>
+              <object>objects\oStickyVineR</object>
+              <object>objects\oStickyVineL</object>
+              <object>objects\oStickyVineD</object>
+            </objects>
+            <objects name="low-gravity">
+              <object>objects\oLowGravVineU</object>
+              <object>objects\oLowGravVineR</object>
+              <object>objects\oLowGravVineL</object>
+              <object>objects\oLowGravVineD</object>
+            </objects>
+            <objects name="twin">
+              <objects name="white">
+                <object>objects\oWhiteVineU</object>
+                <object>objects\oWhiteVineR</object>
+                <object>objects\oWhiteVineL</object>
+                <object>objects\oWhiteVineD</object>
+              </objects>
+              <objects name="black">
+                <object>objects\oBlackVineU</object>
+                <object>objects\oBlackVineR</object>
+                <object>objects\oBlackVineL</object>
+                <object>objects\oBlackVineD</object>
+              </objects>
+            </objects>
+            <objects name="fire">
+              <object>objects\oFireVineU</object>
+              <object>objects\oFireVineR</object>
+              <object>objects\oFireVineL</object>
+              <object>objects\oFireVineD</object>
+              <object>objects\oFireVinePart</object>
+            </objects>
+            <objects name="zero-gravity">
+              <object>objects\oZeroGravVineU</object>
+              <object>objects\oZeroGravVineR</object>
+              <object>objects\oZeroGravVineL</object>
+              <object>objects\oZeroGravVineD</object>
+            </objects>
+            <objects name="autorun">
+              <object>objects\oAutoVineU</object>
+              <object>objects\oAutoVineR</object>
+              <object>objects\oAutoVineL</object>
+              <object>objects\oAutoVineD</object>
+            </objects>
+            <objects name="reverse">
+              <object>objects\oReverseVineU</object>
+              <object>objects\oReverseVineR</object>
+              <object>objects\oReverseVineL</object>
+              <object>objects\oReverseVineD</object>
+            </objects>
           </objects>
         </objects>
         <objects name="refresher">
@@ -1317,18 +1366,24 @@
           <objects name="gravity">
             <object>objects\oFieldLowGrav</object>
             <object>objects\oFieldHighGrav</object>
+            <object>objects\oFieldZeroGrav</object>
+            <object>objects\oFieldAntiGrav</object>
           </objects>
           <objects name="speed">
             <object>objects\oFieldHighSpeed</object>
             <object>objects\oFieldLowSpeed</object>
+            <object>objects\oFieldAutoSpeed</object>
+            <object>objects\oFieldBuffSpeed</object>
           </objects>
           <objects name="dotkid">
+            <object>objects\oFieldDotkidShoot</object>
             <object>objects\oFieldDotkidOn</object>
             <object>objects\oFieldDotkidOff</object>
           </objects>
           <objects name="triple jump">
-            <object>objects\oFieldTripleOn</object>
-            <object>objects\oFieldTripleOff</object>
+            <object>objects\oFieldTripleJumpShoot</object>
+            <object>objects\oFieldTripleJumpOn</object>
+            <object>objects\oFieldTripleJumpOff</object>
           </objects>
         </objects>
       </objects>
@@ -1381,7 +1436,7 @@
             <object>objects\oFieldDotkidOffMini</object>
           </objects>
           <objects name="triple jump">
-            <object>objects\oFieldTripleOnMini</object>
+            <object>objects\oFieldTripleJumpOnMini</object>
           </objects>
         </objects>
       </objects>

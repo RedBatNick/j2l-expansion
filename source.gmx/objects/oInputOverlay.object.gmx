@@ -27,6 +27,12 @@
             <kind>1</kind>
             <string>tooltip_to_draw = "";
 buttonConfig_Create();
+
+global.panel = ds_list_create();
+
+//newMenuPanel
+
+input = ds_map_create();
 </string>
           </argument>
         </arguments>

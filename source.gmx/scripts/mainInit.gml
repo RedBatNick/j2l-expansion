@@ -90,6 +90,7 @@ global.savetypetouch = 0;
 
 //physics
 global.infinitejump = false;
+global.invertcontrols = false;
 global.icetype = icetype_none;
 global.slippage = 0;
 global.slowshot = false;

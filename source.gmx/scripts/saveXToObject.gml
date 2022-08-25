@@ -50,8 +50,8 @@ if (readid >= 1)
     switch (saveid) 
     {
         case 27: return oPlatformSideways;
-        case 28: return oFieldTripleOn;
-        case 29: return oFieldTripleOff;
+        case 28: return oFieldTripleJumpOn;
+        case 29: return oFieldTripleJumpOff;
         case 30: return oBoosterUp;
         case 31: return oBoosterUpMini;
         case 32: return oBoosterUpRefresher;
@@ -74,7 +74,7 @@ if (readid >= 1)
         case 49: return oWaterMini;
         case 50: return oWater2Mini;
         case 51: return oWater3Mini;
-        case 52: return oFieldTripleOnMini;
+        case 52: return oFieldTripleJumpOnMini;
         case 53: return oFieldDotkidOnMini;
         case 54: return oFieldDotkidOffMini;
         case 55: return oVaporUpMini;

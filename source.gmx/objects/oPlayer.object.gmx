@@ -69,7 +69,7 @@ ladderH = false; //sets if player is movuing left/right on a ladder
 //gravity variables
 lowGrav = false; //low-gravity for the player
 highGrav = false; //high-gravity for the player
-noGrav = false; //zero-gravity for the player
+zeroGrav = false; //zero-gravity for the player
 antiGrav = false; //anti-gravity for the player
 
 
@@ -84,7 +84,8 @@ buffSpeed = false; //buffer-run for the player
 vineJump = 0; //sets if player is interacting with a red vine
 vineSlip = 0; //sets if player is interacting with an ice vine / pressure vine
 vineStick = 0; //sets if player is interacting with a sticky vine
-vineGrav = 0; //sets if player is interacting with any gravity vines
+vineLowGrav = 0; //sets if player is interacting with a low gravity vine
+vineZeroGrav = 0; //sets if player is interacting with a zero gravity vine
 vineSpeed = 0; //sets if player is interacting with a fire vine / plasma vine
 //vineOsc = 0; //sets if player is interacting with a mercury vine
 vineAuto = 0; //sets if player is interacting with an auto vine
@@ -478,7 +479,49 @@ if (!global.recordingpaused &amp;&amp; !instance_exists(oRecordPlayer))
 
 if (!global.lunarkid) 
 {
-    h = 0;
+    if (!vineAuto &amp;&amp; !place_meeting(x, y, oFieldAutoSpeed) &amp;&amp; !autoSpeed)
+    {
+        h = 0; 
+        
+        if (global.invertcontrols)
+        {
+            if (!vineBuff &amp;&amp; !place_meeting(x, y, oFieldBuffSpeed) &amp;&amp; !buffSpeed)
+            {
+                right = (scrButtonCheck(KEY.LEFT,1));// || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.leftButton)));
+                left = (scrButtonCheck(KEY.RIGHT,1));// || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.rightButton)));
+            }
+            else
+            {
+                right = scrButtonCheckPressed(KEY.LEFT);
+                left = scrButtonCheckPressed(KEY.RIGHT);
+            }
+        }
+        else
+        {
+            if (!vineBuff &amp;&amp; !place_meeting(x, y, oFieldBuffSpeed) &amp;&amp; !buffSpeed)
+            {
+                left = (scrButtonCheck(KEY.LEFT,1));// || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.leftButton)));
+                right = (scrButtonCheck(KEY.RIGHT,1));// || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.rightButton)));
+            }
+            else
+            {
+                left = scrButtonCheckPressed(KEY.LEFT);
+                right = scrButtonCheckPressed(KEY.RIGHT);
+            }
+        }
+        
+        var L = left;
+        var R = right;
+        var U = (scrButtonCheck(KEY.UP,1));// || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.upButton)));
+        var D = (scrButtonCheck(KEY.RIGHT,1));// || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.downButton)));
+    }
+    else if (vineAuto || place_meeting(x, y, oFieldAutoSpeed) || autoSpeed)
+    {
+        L = noone; 
+        R = noone;
+        h = sign(global.player_xscale); 
+        hspeed = h * maxSpeed; 
+    }
     
     // Check for block underneath for nudging.
     var notOnBlock = (place_free(x, y+global.grav));
@@ -556,10 +599,14 @@ if (!global.lunarkid)
             gravity = 0.7 * sign(global.grav);
         } else if (place_meeting(x, y, oFieldLowGrav) || lowGrav == true) {
             gravity = 0.2 * sign(global.grav);
+        } else if (place_meeting(x, y, oFieldZeroGrav) || zeroGrav || vineZeroGrav) {
+            gravity = 0;
+        } else if (place_meeting(x, y, oFieldAntiGrav) || antiGrav == true) { 
+            gravity = -0.4 * sign(-global.grav);
         } else if (vineStick) {
             gravity = 0;
             vineStick = false; 
-        } else if (vineGrav) {
+        } else if (vineLowGrav) {
             gravity = 0.3 * sign(global.grav);
         }
         
@@ -820,9 +867,14 @@ if (!global.lunarkid)
     }
     
     // moving
-    var h = R;
-    if (h == 0) { h = -L; }
-    if (frozen) { h = 0; }
+    if (!frozen)
+    {
+        if (R)
+            h = 1;
+        else if (L)
+            h = -1;
+    }
+    else { h = 0; }
     
     if (h != 0) 
     {
@@ -1092,7 +1144,10 @@ if (!global.lunarkid)
         //var onWhite = ((onVineR &amp;&amp; vineR.object_index == oTwinWhiteVineR) || (onVineL &amp;&amp; vineL.object_index == oTwinWhiteVineL));
         //var onBlack = ((onVineR &amp;&amp; vineR.object_index == oTwinBlackVineR) || (onVineL &amp;&amp; vineL.object_index == oTwinBlackVineL));
         var onFire = ((onVineR &amp;&amp; vineR.object_index == oFireVineR) || (onVineL &amp;&amp; vineL.object_index == oFireVineL));
-    
+        var onZeroGrav = ((onVineR &amp;&amp; vineR.object_index == oZeroGravVineR) || (onVineL &amp;&amp; vineL.object_index == oZeroGravVineL));
+        var onAuto = ((onVineR &amp;&amp; vineR.object_index == oAutoVineR) || (onVineL &amp;&amp; vineL.object_index == oAutoVineL));
+        var onReverse = ((onVineR &amp;&amp; vineR.object_index == oReverseVineR) || (onVineL &amp;&amp; vineL.object_index == oReverseVineL));
+        
         if (onVineL) 
             global.player_xscale = -1;
         else 
@@ -1146,18 +1201,27 @@ if (!global.lunarkid)
             }
             
             if (onLowGrav) { 
-                vineGrav = 1; 
+                vineLowGrav = 1; 
+            }
+            if (onZeroGrav) {
+                vineZeroGrav = 1;
             }
             if (onFire) { 
                 maxSpeed = 6; 
                 vineSpeed = 1; 
             }
+            if (onAuto) {
+                vineAuto = 1;
+            }
         }
     }
     
     //Particles for low grav / fire vines
-    /*if (vineGrav &amp;&amp; global.count mod 10 == 1) {
-        part_particles_create(global.partSys,x,y,global.vinePart,2); 
+    /*if (vineLowGrav &amp;&amp; global.count mod 10 == 1) {
+        part_particles_create(global.partsys_vine,x,y,global.vineLowGravPart,2); 
+    }*/
+    /*if (vineLowGrav &amp;&amp; global.count mod 7 == 1) {
+        part_particles_create(global.vinesys_vine,x,y,global.vineZeroGravPart,2); 
     }*/
     if (vineSpeed &amp;&amp; global.count mod 3 == 1) {
         instance_create(x,y,oFireVinePart);

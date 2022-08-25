@@ -243,6 +243,21 @@ newSkinnableObject(oFireVineR, "firevineR", 1/5);
 newSkinnableObject(oFireVineL, "firevineL", 1/5);
 newSkinnableObject(oFireVineD, "firevineD", 1/5);
 
+newSkinnableObject(oZeroGravVineU, "zerogravvineU");
+newSkinnableObject(oZeroGravVineR, "zerogravvineR");
+newSkinnableObject(oZeroGravVineL, "zerogravvineL");
+newSkinnableObject(oZeroGravVineD, "zerogravvineD");
+
+newSkinnableObject(oAutoVineU, "autovineU",1/5);
+newSkinnableObject(oAutoVineR, "autovineR",1/5);
+newSkinnableObject(oAutoVineL, "autovineL",1/5);
+newSkinnableObject(oAutoVineD, "autovineD",1/5);
+
+newSkinnableObject(oReverseVineU, "reversevineU");
+newSkinnableObject(oReverseVineR, "reversevineR");
+newSkinnableObject(oReverseVineL, "reversevineL");
+newSkinnableObject(oReverseVineD, "reversevineD");
+
 
 // Refreshers.
 newSkinnableObject(oJumpRefresher, "jumprefresher");
@@ -275,12 +290,21 @@ newSkinnableObject(oGravityBlockDown, "gravblockdown");
 // Fields.
 newSkinnableObject(oFieldLowGrav, "fieldlowgrav", 0.3);
 newSkinnableObject(oFieldHighGrav, "fieldhighgrav", 0.3);
+newSkinnableObject(oFieldZeroGrav, "fieldzerograv", 0.3);
+newSkinnableObject(oFieldAntiGrav, "fieldantigrav", 0.3);
+
 newSkinnableObject(oFieldHighSpeed, "fieldhighspeed", 0.3);
 newSkinnableObject(oFieldLowSpeed, "fieldlowspeed", 0.3);
+newSkinnableObject(oFieldAutoSpeed, "fieldautospeed", 0.3);
+newSkinnableObject(oFieldBuffSpeed, "fieldbuffspeed", 0.3);
+
 newSkinnableObject(oFieldDotkidOn, "fielddotkidon");
 newSkinnableObject(oFieldDotkidOff, "fielddotkidoff");
-newSkinnableObject(oFieldTripleOn, "fieldtripleon");
-newSkinnableObject(oFieldTripleOff, "fieldtripleoff");
+newSkinnableObject(oFieldDotkidShoot, "fielddotkidshoot");
+
+newSkinnableObject(oFieldTripleJumpOn, "fieldtriplejumpon");
+newSkinnableObject(oFieldTripleJumpOff, "fieldtriplejumpoff");
+newSkinnableObject(oFieldTripleJumpShoot, "fieldtriplejumpshoot");
 
 
 // Saves.
@@ -315,4 +339,4 @@ newSkinnableObject(oGravityBlockUpMini, "gravblockup");
 newSkinnableObject(oGravityBlockDownMini, "gravblockdown");
 newSkinnableObject(oFieldDotkidOnMini, "fielddotkidon");
 newSkinnableObject(oFieldDotkidOffMini, "fielddotkidoff");
-newSkinnableObject(oFieldTripleOnMini, "fieldtripleon");
+newSkinnableObject(oFieldTripleJumpOnMini, "fieldtripleon");
