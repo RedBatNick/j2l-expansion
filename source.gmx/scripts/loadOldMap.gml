@@ -165,7 +165,7 @@ if (app == "ctool") {
                             event_user(11);
                         }
                     }
-                    show_debug_message("x: "+string(xxx)+"#y: "+string(yyy)+"#textstr: "+string(textstr));
+                    //show_debug_message("x: "+string(xxx)+"#y: "+string(yyy)+"#textstr: "+string(textstr));
                 }
             }
         }

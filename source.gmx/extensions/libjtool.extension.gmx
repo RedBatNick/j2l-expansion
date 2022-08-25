@@ -265,9 +265,11 @@
           <externalName>file_text_eof</externalName>
           <kind>11</kind>
           <help>tile_text_eof(path)</help>
-          <returnType>1</returnType>
-          <argCount>0</argCount>
-          <args/>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args>
+            <arg>2</arg>
+          </args>
         </function>
       </functions>
       <constants/>
