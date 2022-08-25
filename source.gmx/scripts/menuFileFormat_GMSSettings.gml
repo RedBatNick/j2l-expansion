@@ -1,0 +1,1 @@
+///menuFileFormat_GMSSettings

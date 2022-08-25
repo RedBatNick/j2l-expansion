@@ -470,6 +470,11 @@
           <sprite>sprites\sMenuSaveMap</sprite>
           <sprite>sprites\sMenuOpenMap</sprite>
           <sprite>sprites\sMenuClearMap</sprite>
+          <sprites name="rmj map">
+            <sprite>sprites\sMenuRMJMap</sprite>
+            <sprite>sprites\sMenuSaveRMJMap</sprite>
+            <sprite>sprites\sMenuOpenRMJMap</sprite>
+          </sprites>
           <sprites name="legacy jtool map">
             <sprite>sprites\sMenuJtoolMap</sprite>
             <sprite>sprites\sMenuSaveJMap</sprite>
@@ -480,20 +485,15 @@
             <sprite>sprites\sMenuSaveCMap</sprite>
             <sprite>sprites\sMenuOpenCMap</sprite>
           </sprites>
-          <sprites name="rmj map">
-            <sprite>sprites\sMenuRMJMap</sprite>
-            <sprite>sprites\sMenuSaveRMJMap</sprite>
-            <sprite>sprites\sMenuOpenRMJMap</sprite>
-          </sprites>
           <sprites name="iwm map">
             <sprite>sprites\sMenuIWMMap</sprite>
             <sprite>sprites\sMenuSaveIWMMap</sprite>
             <sprite>sprites\sMenuOpenIWMMap</sprite>
           </sprites>
-          <sprites name="gmx room">
-            <sprite>sprites\sMenuGMXRoom</sprite>
-            <sprite>sprites\sMenuSaveGMXRoom</sprite>
-            <sprite>sprites\sMenuOpenGMXRoom</sprite>
+          <sprites name="gms room">
+            <sprite>sprites\sMenuGMSRoom</sprite>
+            <sprite>sprites\sMenuSaveGMSRoom</sprite>
+            <sprite>sprites\sMenuOpenGMSRoom</sprite>
           </sprites>
           <sprites name="gm82 room">
             <sprite>sprites\sMenuGM82Room</sprite>
@@ -770,8 +770,34 @@
         <script>scripts\newMenuPanel.gml</script>
         <script>scripts\addPanelSeparation.gml</script>
         <script>scripts\addPanelButton.gml</script>
-        <script>scripts\menuFileFormat_RMJImport.gml</script>
-        <script>scripts\menuFileFormat_RMJExport.gml</script>
+        <scripts name="file format">
+          <scripts name="rmj map">
+            <script>scripts\menuFileFormat_RMJImport.gml</script>
+            <script>scripts\menuFileFormat_RMJExport.gml</script>
+          </scripts>
+          <scripts name="legacy jtool map">
+            <script>scripts\menuFileFormat_LegacyImport.gml</script>
+            <script>scripts\menuFileFormat_LegacyExport.gml</script>
+          </scripts>
+          <scripts name="ctool map">
+            <script>scripts\menuFileFormat_CtoolImport.gml</script>
+            <script>scripts\menuFileFormat_CtoolExport.gml</script>
+          </scripts>
+          <scripts name="iwm map">
+            <script>scripts\menuFileFormat_IWMImport.gml</script>
+            <script>scripts\menuFileFormat_IWMExport.gml</script>
+          </scripts>
+          <scripts name="gms room">
+            <script>scripts\menuFileFormat_GMSImport.gml</script>
+            <script>scripts\menuFileFormat_GMSExport.gml</script>
+            <script>scripts\menuFileFormat_GMSSettings.gml</script>
+          </scripts>
+          <scripts name="gm82 room">
+            <script>scripts\menuFileFormat_GM82Import.gml</script>
+            <script>scripts\menuFileFormat_GM82Export.gml</script>
+            <script>scripts\menuFileFormat_GM82Settings.gml</script>
+          </scripts>
+        </scripts>
       </scripts>
       <scripts name="palette">
         <script>scripts\reloadObjects.gml</script>

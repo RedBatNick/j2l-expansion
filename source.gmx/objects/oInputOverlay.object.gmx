@@ -31,13 +31,31 @@ buttonConfig_Create();
 global.panel = ds_map_create();
 
 newMenuPanel(input_fileformat, "Parse Other Map Formats",
-    addPanelSeparation("RMJ Maps", sMenuOpenRMJMap, "Import/Export a Record My Jumps .map file."),
+    addPanelSeparation("RMJ Maps", sMenuRMJMap, "Import/Export a Record My Jumps .map file."),
     addPanelButton("Import", false, menuFileFormat_RMJImport),
     addPanelButton("Export", false, menuFileFormat_RMJExport),
     
-    addPanelSeparation("Legacy Maps", sMenuOpenJMap, "Import/Export a legacy .jmap file.#Legacy jmaps are any official .jmaps made prior to version 2.0.0."),
-    addPanelButton("Import", false, menuFileFormat_RMJImport),
-    addPanelButton("Export", false, menuFileFormat_RMJExport),
+    addPanelSeparation("Legacy Maps", sMenuJtoolMap, "Import/Export a legacy .jmap file.#Legacy jmaps are any official .jmaps made prior to version 2.0.0."),
+    addPanelButton("Import", false, menuFileFormat_LegacyImport),
+    addPanelButton("Export", false, menuFileFormat_LegacyExport),
+
+    addPanelSeparation("Ctool Maps", sMenuCtoolMap, "Import/Export a ctool .cmap file."),
+    addPanelButton("Import", false, menuFileFormat_CtoolImport),
+    addPanelButton("Export", false, menuFileFormat_CtoolExport), 
+    
+    addPanelSeparation("IWM Maps", sMenuIWMMap, "Import/Export an I Wanna Maker .map file."),//#IWM maps are structurally very different from .jmaps, so a lot of information will be lost."),
+    addPanelButton("Import", false, menuFileFormat_IWMImport),
+    addPanelButton("Export", false, menuFileFormat_IWMExport), 
+
+    addPanelSeparation("GMS Rooms", sMenuGMSRoom, "Import/Export a GameMaker Studio .room file."),
+    addPanelButton("Import", false, menuFileFormat_GMSImport),
+    addPanelButton("Export", false, menuFileFormat_GMSExport), 
+    addPanelButton("Settings", false, menuFileFormat_GMSSettings),
+    
+    addPanelSeparation("GM82 Rooms", sMenuGM82Room, "Import/Export a GameMaker 8.2 room folder."),
+    addPanelButton("Import", false, menuFileFormat_GM82Import),
+    addPanelButton("Export", false, menuFileFormat_GM82Export), 
+    addPanelButton("Settings", false, menuFileFormat_GM82Settings),
 );
 
 
@@ -585,8 +603,7 @@ if (mode == input_fileformat)
                         
             
             case 6: //open iwm map
-            var tt = "Import an I Wanna Maker .map file.
-            IWM maps are structurally very different from .jmaps, so a lot of information will be lost.";
+            var tt = "Import an I Wanna Maker .map file.#IWM maps are structurally very different from .jmaps, so a lot of information will be lost.";
             
             if (menuButton(xx,yy,w,h,"Import IWM",true,sMenuOpenIWMMap,tt)) 
             {
