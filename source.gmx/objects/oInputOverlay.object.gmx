@@ -28,11 +28,59 @@
             <string>tooltip_to_draw = "";
 buttonConfig_Create();
 
-global.panel = ds_list_create();
+global.panel = ds_map_create();
 
-//newMenuPanel
+newMenuPanel(input_fileformat, "Parse Other Map Formats",
+    addPanelSeparation("RMJ Maps", sMenuOpenRMJMap, "Import/Export a Record My Jumps .map file."),
+    addPanelButton("Import", false, menuFileFormat_RMJImport),
+    addPanelButton("Export", false, menuFileFormat_RMJExport),
+    
+    addPanelSeparation("Legacy Maps", sMenuOpenJMap, "Import/Export a legacy .jmap file.#Legacy jmaps are any official .jmaps made prior to version 2.0.0."),
+    addPanelButton("Import", false, menuFileFormat_RMJImport),
+    addPanelButton("Export", false, menuFileFormat_RMJExport),
+);
+
+
+
+//input_fileformat
+//input_filerecord
+//input_maptransform
+//input_mapsaves
+//input_mapphysics
+//input_mapborders
+//input_mapactions
+//input_prefplayer
+//input_prefscreen
+//input_prefsystem
+//input_prefctrls
+//input_position
+//input_prefdepth
+//input_skins
 
 input = ds_map_create();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_map_destroy(global.panel);
 </string>
           </argument>
         </arguments>
@@ -337,6 +385,49 @@ var h = 32;
       </action>
       <action>
         <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///draw panels
+var menu = global.panel[? mode];
+var head = menu[? "Title"];
+var buttons = menu[? "Buttons"]
+var yy = 48;
+
+fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
+
+for (var i = 0; i &lt; ds_list_size(buttons); i++) {
+    var button = buttons[| i];
+    var active = button[? "Active"];
+    var bh = h;
+     
+    if (!active) {
+        bh *= 0.75;
+    }
+    
+    if (menuButton(xx, yy, w, bh, button[? "Text"], active, button[? "Icon"], button[? "Tooltip"])) {
+        script_execute(button[? "Callback"]);
+    }
+    
+    yy += bh + 8;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>605</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -372,6 +463,8 @@ var h = 32;
           <argument>
             <kind>1</kind>
             <string>///map formatting
+
+/*
 if (mode == input_fileformat) 
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);

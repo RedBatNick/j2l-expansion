@@ -119,7 +119,7 @@ if (app == "ctool") {
     // save signs
     f = file_text_open_read(filename);
     
-    /*var textstr = "";
+    var textstr = "";
     var textstr2 = "";
     var substr = "";
     
@@ -133,7 +133,6 @@ if (app == "ctool") {
     while (!file_text_eof(f))
     {
         textstr = file_text_read_string(f);
-        show_debug_message(textstr);
         if (found)
         {
             i = 0;
@@ -174,12 +173,10 @@ if (app == "ctool") {
         if (!found) {
             if (string_count("savestrings",textstr) == 1)
             {
-                show_debug_message("found");
                 found = true;
             }
         }
-        show_debug_message("time in loop: "+string(current_time/1000));
-    }*/
+    }
     file_text_close(f);
 }
 

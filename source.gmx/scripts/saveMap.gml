@@ -161,11 +161,14 @@ with (all) {
 ds_map_add_list(map, "Objects", objects);
 
 var data = "Save#" + json_encode(map);
-var buffer = buffer_create(string_byte_length(data), buffer_fixed, 1);
-buffer_seek(buffer, buffer_seek_start, 0);
-buffer_write(buffer, buffer_text, data);
-buffer_save(buffer, filename);
-buffer_delete(buffer);
+//var buffer = buffer_create(string_byte_length(data), buffer_fixed, 1);
+//buffer_seek(buffer, buffer_seek_start, 0);
+//buffer_write(buffer, buffer_text, data);
+//buffer_save(buffer, filename);
+//buffer_delete(buffer);
+var file = file_text_open_write(filename);
+file_text_write_string(file, fata);
+file_text_close(file);
 ds_map_destroy(map);
 
 // warning messages for oob or unrecognized objects

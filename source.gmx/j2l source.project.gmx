@@ -658,6 +658,7 @@
         <sprite>sprites\sDepthPlayerHint</sprite>
       </sprites>
       <sprite>sprites\sWakahaEasterEgg</sprite>
+      <sprite>sprites\sNothing</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -767,6 +768,10 @@
       </scripts>
       <scripts name="menu">
         <script>scripts\newMenuPanel.gml</script>
+        <script>scripts\addPanelSeparation.gml</script>
+        <script>scripts\addPanelButton.gml</script>
+        <script>scripts\menuFileFormat_RMJImport.gml</script>
+        <script>scripts\menuFileFormat_RMJExport.gml</script>
       </scripts>
       <scripts name="palette">
         <script>scripts\reloadObjects.gml</script>

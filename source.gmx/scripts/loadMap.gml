@@ -13,10 +13,13 @@ if (string_copy(save_check, 1, 5) != "Save#")
     return 0;
 }
 
-var buffer = buffer_load(filename);
-buffer_seek(buffer, buffer_seek_start, 0);
-var map = json_decode(string_delete(buffer_read(buffer, buffer_text), 1, 5));
-buffer_delete(buffer);
+//var buffer = buffer_load(filename);
+//buffer_seek(buffer, buffer_seek_start, 0);
+//var map = json_decode(string_delete(buffer_read(buffer, buffer_text), 1, 5));
+//buffer_delete(buffer);
+var file = file_text_open_read(filename);
+var map = json_decode(string_delete(file_text_read_string(file), 1, 5));
+file_text_close(file);
 
 // version
 var vers = map[? "Version"];
