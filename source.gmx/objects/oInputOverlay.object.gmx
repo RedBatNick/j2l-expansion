@@ -127,7 +127,12 @@ newMenuPanel(input_prefscreen, "Set Screen Preferences",
 );
 
 newMenuPanel(input_prefsystem, "Set System Preferences",
-
+    addPanelButton("Lock Water", sMenuWaterLock, menuPrefSystem_WaterLock, "Toggles water locking.#Sets whether or not you can delete water."),
+    addPanelButton("Lock Keys", sMenuHotkeyLock, menuPrefSystem_HotkeyLock, "Toggles hotkey lock type.#Unlocked allows you to freely use V, F, G and H.#Locked only allows you to use the hotkeys while holding Control.#Fixed makes the hotkeys inaccessible."),
+    addPanelButton("Air Saving", sMenuAirSave, menuPrefSystem_AirSaving, "Toggles saving in the air.#Sets whether or not you can press S to save in the air.#You cannot press S to save while standing on a save."),
+    addPanelButton("World Time", sMenuTimer, menuPrefSystem_WorldTime, "Toggles persistent global timer.#Sets whether or not the global time will persist on restart."),
+    addPanelButton("Backups", sMenuPrefsBackup, menuPrefSystem_Backups, "Toggles backup maps.#Sets whether or not to create a backup of the current map every 5 minutes."),
+    addPanelButton("Updates", sMenuPrefsUpdate, menuPrefSystem_Updates, "Toggles update checking.#Sets whether or not to automatically install available updates."),
 );
 
 //input_fileformat
@@ -1236,8 +1241,7 @@ if (mode == input_prefsystem)
             if (global.waterlocked) 
                 waterlock_spr = sMenuWaterLock;
                 
-            var tt = "Toggles water locking.
-            Sets whether or not you can delete water.";
+            var tt = "Toggles water locking.#Sets whether or not you can delete water.";
                 
             if (menuButtonToggle(xx,yy,w,h,true,waterlock_spr,"[ Lock Water ]","Lock Water",global.waterlocked,tt)) {
                 global.waterlocked = !global.waterlocked;
@@ -1251,10 +1255,7 @@ if (mode == input_prefsystem)
             hotkey[2] = "Fixed";
             hotkey_spr = asset_get_index("sMenuHotkey"+string(hotkey[global.hotkeylock]));
             
-            var tt = "Toggles hotkey lock type.
-            Unlocked allows you to freely use V, F, G and H.
-            Locked only allows you to use the hotkeys while holding Control.
-            Fixed makes the hotkeys inaccessible.";
+            var tt = "Toggles hotkey lock type.#Unlocked allows you to freely use V, F, G and H.#Locked only allows you to use the hotkeys while holding Control.#Fixed makes the hotkeys inaccessible.";
             
             if (menuButtonToggle(xx,yy,w,h,true,hotkey_spr,"[ "+hotkey[global.hotkeylock]+" Keys ]","Lock Keys",global.hotkeylock,tt)) {
                 global.hotkeylock += 1;
@@ -1270,9 +1271,7 @@ if (mode == input_prefsystem)
             if (!global.airsaving) 
                 airsave_spr = sMenuFloorSave;
                 
-            var tt = "Toggles saving in the air.
-            Sets whether or not you can press S to save in the air.
-            You cannot press S to save while standing on a save.";
+            var tt = "Toggles saving in the air.#Sets whether or not you can press S to save in the air.#You cannot press S to save while standing on a save.";
             
             if (menuButtonToggle(xx,yy,w,h,true,airsave_spr,"[ Air Saving ]","Air Saving",global.airsaving,tt)) {
                 global.airsaving = !global.airsaving;
@@ -1281,8 +1280,7 @@ if (mode == input_prefsystem)
             
             
             case 3: //global time
-            var tt = "Toggles persistent global timer.
-            Sets whether or not the global time will persist on restart.";
+            var tt = "Toggles persistent global timer.#Sets whether or not the global time will persist on restart.";
             
             if (menuButtonToggle(xx,yy,w,h,true,sMenuTimer,"[ Global Time ]","Global Time",global.worldtime,tt)) {
                 global.worldtime = !global.worldtime;
@@ -1291,8 +1289,7 @@ if (mode == input_prefsystem)
             
             
             case 4: //toggle backups
-            var tt = "Toggles backup maps.
-            Sets whether or not to create a backup of the current map every 5 minutes.";
+            var tt = "Toggles backup maps.#Sets whether or not to create a backup of the current map every 5 minutes.";
             
             if (menuButtonToggle(xx,yy,w,h,true,sMenuPrefsBackup,"[ Backups ]","Backups",global.backup,tt)) {
                 global.backup = !global.backup;
@@ -1301,8 +1298,7 @@ if (mode == input_prefsystem)
             
             
             case 5: //toggle update check
-            var tt = "Toggles update checking.
-            Sets whether or not to automatically install available updates.";
+            var tt = "Toggles update checking.#Sets whether or not to automatically install available updates.";
             
             if (menuButtonToggle(xx,yy,w,h,true,sMenuPrefsUpdate,"[ Updates ]","Updates",global.checkupdates,tt)) {
                 global.checkupdates = !global.checkupdates;

@@ -846,6 +846,14 @@
           <script>scripts\menuPrefScreen_GridDraw.gml</script>
           <script>scripts\menuPrefScreen_GridSync.gml</script>
         </scripts>
+        <scripts name="pref system">
+          <script>scripts\menuPrefSystem_WaterLock.gml</script>
+          <script>scripts\menuPrefSystem_HotkeyLock.gml</script>
+          <script>scripts\menuPrefSystem_AirSaving.gml</script>
+          <script>scripts\menuPrefSystem_WorldTime.gml</script>
+          <script>scripts\menuPrefSystem_Backups.gml</script>
+          <script>scripts\menuPrefSystem_Updates.gml</script>
+        </scripts>
       </scripts>
       <scripts name="palette">
         <script>scripts\reloadObjects.gml</script>
