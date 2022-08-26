@@ -82,7 +82,7 @@ newMenuPanel(input_maptransform, "Set Transformations",
     addPanelButton("Dotkid", sMenuDotkid, menuMapTransform_Dotkid, "Toggles Dotkid.#Hitbox is a 2x2 rectangle."),
     addPanelButton("Vkid", sMenuVkidBlue, menuMapTransform_Vkid, "Toggles Vkid type.#"+Jump+" to flip.#Blue Vkid flips 180-degree.#Purple Vkid flips 90-degrees in the direction you're facing."),
     addPanelButton("Telekid", sMenuTelekid, menuMapTransform_Telekid, "Toggles Telekid.#"+Z+" to shoot a teleport clone.#Collision with blocks will teleport the player.#Collision with killers will kill the player."),
-    addPanelButton("Lunarkid", sMenuLunarkid, menuMapTransform_Lunarkid, "Toggles Lunarkid / Rocket.#Movement is based on inertia.#"+L+" to rotate CCW.#"+R+" to rotate CW.#"+U+" to accelerate.#Hitbox is a 11x21 oval."),
+    addPanelButton("Lunarkid", sMenuLunarkid, menuMapTransform_Lunarkid, "Toggles Lunarkid / Rocket.#Movement is based on inertia.#"+L+" to rotate CCW.#"+R+" to rotate CW.#"+U+" to accelerate."),
     addPanelButton("Linekid", sMenuLinekid, menuMapTransform_Linekid, "Toggles Linekid.#"+U+" / "+AA+" to rotate CCW.#"+D+" / "+AD+" to rotate CW.#Hitbox is a 3x25 rectangle."),
 );
 
@@ -113,6 +113,7 @@ newMenuPanel(input_mapactions, "Set Misc. Interactions",
 
 
 newMenuPanel(input_prefplayer, "Set Player Preferences",
+    addPanelButton("Draw Bow", sMenuBow, menuPrefPlayer_DrawBow, "Toggles the player's bow.#This does not apply to the lunar landers."),
     addPanelButton("No Death", sMenuDeath, menuPrefPlayer_Death, "Toggles death type.#No death will only cause killers to be highlighted on collision.#Death will cause you to explode on collision with killers.#Hit Death will cause you to be hit and become intangible on collision with killers.#Reset Death will cause the room to immediately reste on collision with killers."),
     addPanelButton("Hide Hitbox", sMenuHitboxHide, menuPrefPlayer_Hitbox, "Toggles player hitbox opacity.#Hide hitbox will display the player normally.#Show hitbox will display your hitbox at low opacity.#Only hitbox will replace the player with a hitbox."),
     addPanelButton("Dot Outline", sMenuDotOutline, menuPrefPlayer_DotOutline, "Toggles Dotkid outline.#Sets whether or not to draw a rectangle around the player's position while Dotkid is active.#Useful for seeing where the player currently is more easily."),
@@ -494,27 +495,29 @@ var h = 32;
             <kind>1</kind>
             <string>///draw panels
 var menu = global.panel[? mode];
-var head = menu[? "Title"];
-var buttons = menu[? "Buttons"]
-var yy = 48;
-
-fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
-
-for (var i = 0; i &lt; ds_list_size(buttons); i++) {
-    var button = buttons[| i];
-    var active = button[? "Active"];
-    var bh = h;
-     
-    if (!active) {
-        yy += 8;
-        bh *= 0.75;
-    }
+if (menu != undefined) {
+    var head = menu[? "Title"];
+    var buttons = menu[? "Buttons"]
+    var yy = 48;
     
-    if (menuButton(xx, yy, w, bh, button[? "Text"], active, button[? "Icon"], button[? "Tooltip"])) {
-        script_execute(button[? "Callback"]);
-    }
+    fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     
-    yy += bh + 8;
+    for (var i = 0; i &lt; ds_list_size(buttons); i++) {
+        var button = buttons[| i];
+        var active = button[? "Active"];
+        var bh = h;
+         
+        if (!active) {
+            yy += 8;
+            bh *= 0.75;
+        }
+        
+        if (menuButton(xx, yy, w, bh, button[? "Text"], active, button[? "Icon"], button[? "Tooltip"])) {
+            script_execute(button[? "Callback"]);
+        }
+        
+        yy += bh + 8;
+    }
 }
 </string>
           </argument>
@@ -557,7 +560,7 @@ for (var i = 0; i &lt; ds_list_size(buttons); i++) {
           <argument>
             <kind>1</kind>
             <string>///transformations
-if (mode == input_maptransform) 
+/*if (mode == input_maptransform) 
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Transformations";
@@ -677,7 +680,7 @@ if (mode == input_maptransform)
           <argument>
             <kind>1</kind>
             <string>///save types
-if (mode == input_mapsaves) 
+/*if (mode == input_mapsaves) 
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Save Attributes";
@@ -728,13 +731,13 @@ if (mode == input_mapsaves)
                 global.savetypetouch = !global.savetypetouch;
             } break;
             
-            /*case 4: //up saves
+            case 4: //up saves
             var tt = "Toggles saves to be used when pressing "+U+" on them.";
             
             if (menuButtonToggle(xx,yy,w,h,true,sMenuSaveUp,"[ "+U+" Saves ]",Up+" Saves",global.savetypeup,tt))
             {
                 global.savetypeup = !global.savetypeup;
-            } break;*/
+            } break;
         }
     }
 }  
@@ -759,7 +762,7 @@ if (mode == input_mapsaves)
           <argument>
             <kind>1</kind>
             <string>///physics options
-if (mode == input_mapphysics)
+/*if (mode == input_mapphysics)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Physics Options";
@@ -836,7 +839,7 @@ if (mode == input_mapphysics)
           <argument>
             <kind>1</kind>
             <string>///border type
-if (mode == input_mapborders)
+/*if (mode == input_mapborders)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Border Attributes";
@@ -899,7 +902,7 @@ if (mode == input_mapborders)
                 
                 if (global.borderbox &gt; 2) 
                     global.borderbox = 0;
-            } */break;
+            } break;
         }
     }
 }   
@@ -924,7 +927,7 @@ if (mode == input_mapborders)
           <argument>
             <kind>1</kind>
             <string>///interactions
-if (mode == input_mapactions)
+/*if (mode == input_mapactions)
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Misc. Interactions";
@@ -1019,7 +1022,7 @@ if (mode == input_mapactions)
           <argument>
             <kind>1</kind>
             <string>///player options
-if (mode == input_prefplayer) 
+/*if (mode == input_prefplayer) 
 {   
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set Player Preferences";
@@ -1128,7 +1131,7 @@ if (mode == input_prefplayer)
           <argument>
             <kind>1</kind>
             <string>///screen options
-if (mode == input_prefscreen) 
+/*if (mode == input_prefscreen) 
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1)
     var head = "Set Screen Preferences";
@@ -1224,7 +1227,7 @@ if (mode == input_prefscreen)
           <argument>
             <kind>1</kind>
             <string>///system options
-if (mode == input_prefsystem) 
+/*if (mode == input_prefsystem) 
 {
     fontSetup(global.systemfont, c_black, fa_center, fa_top, 1);
     var head = "Set System Preferences";

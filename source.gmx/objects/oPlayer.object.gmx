@@ -39,9 +39,6 @@ if (global.linekid) {
 }
     
 if (global.lunarkid) {
-    //sl = instance_create(x, y, objBow);
-    //sl.sprite_index = sprLander; 
-    
     gravity = 0; //sets lunarkid to spawn inert 
     friction = 0.0005;
 }
@@ -510,10 +507,8 @@ if (!global.lunarkid)
             }
         }
         
-        var L = left;
-        var R = right;
-        var U = (scrButtonCheck(KEY.UP,1));// || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.upButton)));
-        var D = (scrButtonCheck(KEY.RIGHT,1));// || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.downButton)));
+        L = left;
+        R = right;
     }
     else if (vineAuto || place_meeting(x, y, oFieldAutoSpeed) || autoSpeed)
     {
@@ -524,7 +519,7 @@ if (!global.lunarkid)
     }
     
     // Check for block underneath for nudging.
-    var notOnBlock = (place_free(x, y+global.grav));
+    var notOnBlock = (place_free(x, y+sign(global.grav)));
     
     if (global.checkNudgeEarly)
         nudgeBlockCheck = place_meeting(x,y+global.grav,oBlock);
@@ -536,9 +531,7 @@ if (!global.lunarkid)
         vOff = 1;
     else
         vOff = 2;
-    
-    var notOnBlock = (place_free(x, y + sign(global.grav)));
-    
+
     //var onVineD = vineCheck(x, y+vOff, oVineD, notOnBlock);
     var onVineL = vineCheck(x+vOff, y, oVineL, notOnBlock);
     var onVineR = vineCheck(x-vOff, y, oVineR, notOnBlock);
@@ -602,7 +595,7 @@ if (!global.lunarkid)
         } else if (place_meeting(x, y, oFieldZeroGrav) || zeroGrav || vineZeroGrav) {
             gravity = 0;
         } else if (place_meeting(x, y, oFieldAntiGrav) || antiGrav == true) { 
-            gravity = -0.4 * sign(-global.grav);
+            gravity = -0.4 * sign(global.grav);
         } else if (vineStick) {
             gravity = 0;
             vineStick = false; 
@@ -972,10 +965,10 @@ if (!global.lunarkid)
     }
     
     // terminal velocity
-    if (abs(vspeed) &gt; maxVspeed)
+    if (!highd &amp;&amp; vspeed &gt; maxVspeed)
         vspeed = sign(vspeed)*maxVspeed;
     
-    // jump, shoot, suicide
+    // jump
     if (!frozen)
     {
         if (scrButtonCheckPressed(KEY.JUMP))//|| (keyboard_check(ord("J")))
@@ -988,19 +981,14 @@ else
 {
     if (!frozen) //Lunar Lander, aka "Rocket"
     {
-        if (scrButtonCheckPressed(KEY.JUMP) &amp;&amp; global.vkid) { playerJump(); }
-        
-        if (start)
-        { 
-            //if (instance_exists(objBow)) { instance_destroy(objBow); } 
-        }
-    
-        if ((gravity == 0) &amp;&amp; (L || (R || (U || D))))
+        if (scrButtonCheckPressed(KEY.JUMP) &amp;&amp; global.vkid) { playerJump(); } 
+        if ((gravity == 0) &amp;&amp; (L || R || U || D))
         {
             start = true;
             gravity = 0.008;
         }
             
+        if (U) { motion_add((image_angle + 90), 0.013); }
         image_angle = (image_angle + 360 + (L - R)) % 360;
         
         global.playerAngle = image_angle;
@@ -1010,9 +998,10 @@ else
 
 if (!frozen)
 {
+    // shoot, suicide
     if (scrButtonCheckPressed(KEY.SHOOT) &amp;&amp; !keyboard_check(vk_control))
         playerShoot();
-    if (scrButtonCheckPressed(KEY.SUICIDE)) 
+    if (scrButtonCheckPressed(KEY.SUICIDE) &amp;&amp; !keyboard_check(vk_control)) 
         killPlayer();
 }
 
@@ -1175,7 +1164,7 @@ if (!global.lunarkid)
                 else 
                     hspeed = 15;
         
-                if (onFlip) { flipGravity(0); }
+                if (onFlip) { flipGravity(undefined,0); }
                     
                 vspeed = -9 * sign(global.grav);
                 audio_play_sound(sndWallJump,0,0);
@@ -1696,14 +1685,23 @@ if (global.showhitbox != 0)
     image_xscale,image_yscale,image_angle,pCol,(0.5*global.showhitbox));
 }
 
-if (mask_index = sDotkid &amp;&amp; global.dotkidoutline)
-    draw_sprite_ext(sDotkidOutline,0,x,y,1,1,image_angle,pCol,1);
+if (mask_index == sDotkid &amp;&amp; global.dotkidoutline)
+    draw_sprite_ext(sDotkidOutline,0,round(x),round(y),1,1,image_angle,pCol,1);
 
 if (teled) { 
     var telex = 96 * global.player_xscale;
     draw_sprite_ext(mask_index, image_index, x+telex, y, global.player_xscale, sign(global.grav), image_angle, image_blend, 0.5);
 }
     
+if (global.drawbow || (mask_index == sLunarkid &amp;&amp; !start))
+{
+    var bow = sPlayerBow;
+    if (mask_index == sLunarkid)
+        bow = sLander;
+    
+    draw_sprite_ext(bow,0,drawX,drawY,global.player_xscale,sign(global.grav),image_angle,c_white,1);
+}
+
 if (hit &gt; 0)
     draw_sprite_ext(sPlayerHit,0,hitX,hitY,1,1,0,c_white,hit/floor(50/2));
 </string>

@@ -83,11 +83,13 @@
           </sprites>
           <sprites name="lunarkid">
             <sprite>sprites\sLunarkid</sprite>
+            <sprite>sprites\sLander</sprite>
           </sprites>
           <sprites name="linekid">
             <sprite>sprites\sLinekid</sprite>
           </sprites>
         </sprites>
+        <sprite>sprites\sPlayerBow</sprite>
         <sprite>sprites\sPlayerBullet</sprite>
         <sprites name="death">
           <sprite>sprites\sPlayerBlood</sprite>
@@ -572,6 +574,7 @@
       <sprites name="prefs">
         <sprites name="player">
           <sprite>sprites\sMenuPrefsPlayer</sprite>
+          <sprite>sprites\sMenuBow</sprite>
           <sprites name="death">
             <sprite>sprites\sMenuDeathNo</sprite>
             <sprite>sprites\sMenuDeath</sprite>
@@ -632,10 +635,9 @@
       </sprites>
       <sprites name="sidebar">
         <sprite>sprites\sMenuPrefsSidebar</sprite>
-        <sprites name="analysis">
-          <sprite>sprites\sMenuSpeed</sprite>
-        </sprites>
+        <sprite>sprites\sMenuSpeed</sprite>
       </sprites>
+      <sprite>sprites\sMenuLockedIcon</sprite>
     </sprites>
     <sprites name="misc">
       <sprites name="analysis">
@@ -835,6 +837,7 @@
           <script>scripts\menuMapActions_TeleRange.gml</script>
         </scripts>
         <scripts name="pref player">
+          <script>scripts\menuPrefPlayer_DrawBow.gml</script>
           <script>scripts\menuPrefPlayer_Death.gml</script>
           <script>scripts\menuPrefPlayer_Hitbox.gml</script>
           <script>scripts\menuPrefPlayer_DotOutline.gml</script>

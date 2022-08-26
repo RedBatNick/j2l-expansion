@@ -4,6 +4,7 @@ var filename = prefix_project_path_if_needed("config.ini");
 ini_open(filename);
 
 //player
+global.drawbow = ini_read_real("prefs","drawbox",false);
 global.deathEnabled = ini_read_real("prefs","death",false);
 global.showhitbox = ini_read_real("prefs","showhitbox",0);
 global.dotkidoutline = ini_read_real("prefs","dotkidoutline",true);

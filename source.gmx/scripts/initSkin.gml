@@ -19,8 +19,10 @@ newSkinnableSprite(sPlayerClimbHor, "playerclimbhor");
 newSkinnableSprite(sLunarkid, "lunarkid");
 newSkinnableSprite(sLinekid, "linekid");
 
+newSkinnableSprite(sPlayerBow, "bow");
 newSkinnableSprite(sPlayerBlood, "blood",0);
 newSkinnableSprite(sPlayerBullet, "bullet");
+newSkinnableSprite(sPlayerHit, "hit");
 
 
 // Blocks.

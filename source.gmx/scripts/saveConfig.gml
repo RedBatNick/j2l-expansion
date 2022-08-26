@@ -12,6 +12,7 @@ var filename = prefix_project_path_if_needed("config.ini");
 ini_open(filename);
 
 //player
+ini_write_real("prefs","drawbow",global.drawbow);
 ini_write_real("prefs","death",global.deathEnabled);
 ini_write_real("prefs","showhitbox",global.showhitbox);
 ini_write_real("prefs","dotkidoutline",global.dotkidoutline);

@@ -4,6 +4,9 @@ map[? "Text"] = argument[0];
 map[? "Icon"] = argument[1];
 map[? "Callback"] = argument[2];
 map[? "Active"] = true;
-map[? "Tooltip"] = "";
+
+if (argument_count >= 4) {
+    map[? "Tooltip"] = argument[3];
+}
 
 return map;
